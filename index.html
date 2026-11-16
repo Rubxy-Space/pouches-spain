@@ -81,7 +81,11 @@
 .b2b-cinta,
 .b2b-pildora,
 .b2b-entrada__esquina,
-.b2b-entrada__marcas {
+.b2b-entrada__marcas,
+.b2b-marquesina,
+.b2b-pie__nombre,
+.b2b-pie__titulo,
+.b2b-pie__18 {
   font-family: var(--b2b-display);
   font-stretch: 75%;
   font-weight: 700;
@@ -270,6 +274,9 @@
   font-size: 14px;
 }
 .b2b-pildora__menu { display: none; position: relative; }
+/* Cuando los enlaces no caben (lo mide b2b-snus.js), se ve el botón «Menú». */
+.b2b-pildora.is-compacta .b2b-pildora__enlaces { display: none; }
+.b2b-pildora.is-compacta .b2b-pildora__menu { display: block; }
 .b2b-pildora summary { list-style: none; cursor: pointer; }
 .b2b-pildora summary::-webkit-details-marker { display: none; }
 .b2b-pildora__panel {
@@ -278,12 +285,62 @@
   right: -8px;
   display: grid;
   min-width: 220px;
+  /* La píldora es fija: si el menú es más alto que la pantalla, se recorre dentro. */
+  max-height: calc(100vh - 140px);
+  max-height: calc(100dvh - 140px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 10px;
   border-radius: 18px;
   background: var(--b2b-ink);
 }
 .b2b-pildora__panel a { padding: 10px 14px; border-radius: 10px; font-size: 22px; }
 .b2b-pildora__panel a:hover { background: rgba(255, 255, 255, 0.12); }
+.b2b-pildora__sub { display: grid; margin: -4px 0 6px 14px; }
+.b2b-pildora__panel .b2b-pildora__sub a { padding: 6px 14px; font-size: 17px; color: rgba(255, 255, 255, 0.68); }
+.b2b-pildora__panel .b2b-pildora__sub a:hover { color: #fff; }
+
+/* Desplegables del menú (Marcas, Sabores, Niveles): se abren al pasar el ratón o con el teclado.
+   El panel lleva un margen transparente arriba para que el ratón no lo pierda al bajar. */
+.b2b-desplegable { position: relative; display: flex; }
+.b2b-desplegable__boton::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  vertical-align: 0.28em;
+  transform: rotate(45deg);
+}
+.b2b-desplegable__panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 2;
+  padding-top: 14px;
+  visibility: hidden;
+  opacity: 0;
+  translate: -50% -4px;
+  transition: opacity 0.15s ease, translate 0.15s ease, visibility 0s linear 0.15s;
+}
+.b2b-desplegable:hover .b2b-desplegable__panel,
+.b2b-desplegable:focus-within .b2b-desplegable__panel {
+  visibility: visible;
+  opacity: 1;
+  translate: -50% 0;
+  transition: opacity 0.15s ease, translate 0.15s ease, visibility 0s;
+}
+.b2b-desplegable__caja {
+  display: grid;
+  min-width: 200px;
+  padding: 8px;
+  border-radius: 16px;
+  background: var(--b2b-ink);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+.b2b-pildora .b2b-desplegable__caja a { padding: 9px 14px; border-radius: 10px; }
 
 /* ---------- Entrada ---------- */
 .b2b-entrada { padding: 8px 8px 0; background: var(--b2b-paper); }
@@ -376,17 +433,63 @@
 .b2b-cifras dt { color: var(--b2b-muted); font-size: 14px; }
 
 .b2b-entrada__marcas {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 22px;
   padding: 18px 32px 22px;
   font-size: clamp(22px, 2.2vw, 30px);
 }
-.b2b-entrada__marcas p { color: var(--b2b-ink); }
-.b2b-entrada__marcas ul { display: flex; flex-wrap: wrap; gap: 4px 22px; }
-.b2b-entrada__marcas a { color: var(--b2b-soft); text-decoration: none; transition: color 0.15s ease; }
-.b2b-entrada__marcas a:hover { color: var(--b2b-ink); }
+
+/* ---------- Marcas en movimiento (fila de la entrada y sección «B2B · Marcas») ---------- */
+.b2b-marquesina { display: flex; align-items: center; gap: 22px; min-width: 0; line-height: 1.1; }
+.b2b-marquesina__rotulo { flex: 0 0 auto; color: var(--b2b-ink); }
+.b2b-marquesina__ventana { position: relative; flex: 1 1 auto; min-width: 0; }
+.b2b-marquesina__pista { display: flex; align-items: center; }
+.b2b-marquesina__item { display: flex; align-items: center; flex: 0 0 auto; }
+.b2b-marquesina__item a {
+  display: block;
+  color: var(--b2b-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.b2b-marquesina__item a:hover,
+.b2b-marquesina__item a:focus-visible { color: var(--b2b-ink); }
+.b2b-marquesina__logo { display: block; width: auto; height: 1.5em; max-width: 150px; object-fit: contain; opacity: 0.4; transition: opacity 0.15s ease; -webkit-user-drag: none; }
+.b2b-marquesina__item a:hover .b2b-marquesina__logo,
+.b2b-marquesina__item a:focus-visible .b2b-marquesina__logo { opacity: 1; }
+/* Quieta: las marcas en una fila que salta de línea. */
+.b2b-marquesina:not(.is-movil) .b2b-marquesina__pista { flex-wrap: wrap; gap: 4px 22px; }
+/* En movimiento: una sola línea con los bordes difuminados y un punto entre marcas. */
+.b2b-marquesina.is-movil .b2b-marquesina__ventana {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  touch-action: pan-y;
+  cursor: grab;
+}
+.b2b-marquesina.is-movil .b2b-marquesina__pista { width: max-content; }
+.b2b-marquesina.is-movil .b2b-marquesina__item::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin: 0 26px;
+  border-radius: 50%;
+  background: var(--b2b-line-strong);
+}
+.b2b-marquesina.is-lista .b2b-marquesina__pista { animation: b2b-marquesina var(--b2b-mq-dur, 40s) linear infinite; will-change: transform; }
+.b2b-marquesina.is-lista:hover .b2b-marquesina__pista { animation-play-state: paused; }
+.b2b-marquesina.is-arrastrando .b2b-marquesina__ventana { cursor: grabbing; }
+.b2b-marquesina.is-arrastrando .b2b-marquesina__pista,
+.b2b-marquesina.is-foco .b2b-marquesina__pista { animation: none; }
+.b2b-marquesina.is-foco .b2b-marquesina__ventana { overflow-x: auto; }
+@keyframes b2b-marquesina { to { transform: translateX(-50%); } }
+/* Sección «B2B · Marcas»: franja propia, con fondo blanco, gris o negro. */
+.b2b-marcas-mov { padding: 26px 0; font-size: clamp(24px, 2.6vw, 38px); }
+.b2b-marcas-mov.b2b-fondo--negro { background: var(--b2b-ink); }
+.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__rotulo,
+.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item a:hover,
+.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item a:focus-visible { color: #fff; }
+.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item a { color: rgba(255, 255, 255, 0.42); }
+.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item::after { background: rgba(255, 255, 255, 0.25); }
 
 /* ---------- Ventajas ---------- */
 .b2b-ventajas__cabecera {
@@ -1050,6 +1153,40 @@ html.b2b-sin-scroll { overflow: hidden; }
 .b2b-guia__aviso { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--b2b-line); font-size: 13px; color: var(--b2b-muted); }
 .b2b-guia__cuerpo .b2b-faq__item:first-of-type { border-top: 2px solid var(--b2b-ink); }
 
+/* ---------- Pie ---------- */
+.b2b-pie { padding: 64px 0 28px; background: var(--b2b-ink); color: rgba(255, 255, 255, 0.7); font-size: 14px; }
+.b2b-pie a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+.b2b-pie a:hover { color: #fff; }
+.b2b-pie__arriba { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr)); gap: 36px 28px; }
+.b2b-pie__nombre { display: flex; align-items: center; gap: 12px; color: #fff; font-size: 32px; line-height: 1; }
+.b2b-pie__nombre .b2b-bandera { width: 30px; height: 20px; }
+.b2b-pie__texto { max-width: 34ch; margin-top: 14px; }
+.b2b-pie__titulo { margin-bottom: 14px; color: #fff; font-size: 17px; }
+.b2b-pie__col ul { display: grid; gap: 9px; }
+.b2b-pie__abajo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 52px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.b2b-pie__aviso { display: flex; flex: 1 1 280px; align-items: center; gap: 12px; color: #fff; }
+.b2b-pie__18 {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 15px;
+}
+.b2b-pie__pagos { display: flex; flex-wrap: wrap; gap: 6px; }
+.b2b-pie__pago { display: block; width: 38px; height: 24px; }
+.b2b-pie__legal { display: flex; flex-wrap: wrap; gap: 6px 18px; width: 100%; color: rgba(255, 255, 255, 0.5); font-size: 12px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .b2b-items.is-lista .b2b-prod { grid-template-columns: 76px minmax(0, 1fr); }
@@ -1072,6 +1209,8 @@ html.b2b-sin-scroll { overflow: hidden; }
   .b2b-col__media { order: -1; max-height: 280px; }
   .b2b-guia__grid { grid-template-columns: minmax(0, 1fr); }
   .b2b-guia__indice { position: static; }
+  .b2b-pie__arriba { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .b2b-pie__marca { grid-column: 1 / -1; }
 }
 
 @media (max-width: 760px) {
@@ -1126,6 +1265,7 @@ html.b2b-sin-scroll { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .b2b-marquesina.is-movil .b2b-marquesina__ventana { overflow-x: auto; }
   .b2b *,
   .b2b-gate,
   .b2b-pildora { animation: none !important; transition: none !important; }
@@ -1147,9 +1287,9 @@ html.b2b-sin-scroll { overflow: hidden; }
     .pv-barra button { font: inherit; padding: 4px 10px; border: 1px solid #c9bb7d; border-radius: 999px; background: #fff; cursor: pointer; }
     .pv-barra button[aria-pressed="true"] { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
     .pv-barra a { padding: 4px 10px; border: 1px solid #c9bb7d; border-radius: 999px; background: #fff; color: inherit; font-weight: 700; text-decoration: none; }
-    .pv-pie { padding: 28px 0 80px; font-size: 12px; color: #6f6f6f; }
-    .pv-pie__in { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 10px 26px; }
-    .pv-pie a { color: inherit; }
+    /* Solo en la vista previa: hueco para el botón amarillo, que flota abajo a la izquierda. */
+    .b2b-pie { padding-bottom: 76px; }
+    .pv-pago { display: inline-block; padding: 4px 8px; border: 1px solid rgba(255,255,255,.3); border-radius: 4px; color: #fff; font: 600 11px/1 var(--font-body-family); }
   </style>
 </head>
 <body>
@@ -1168,15 +1308,51 @@ html.b2b-sin-scroll { overflow: hidden; }
   <div class="b2b b2b-cabecera" data-b2b-cabecera>
     <div class="b2b-cinta">
       <div class="b2b-cinta__pista">
-        <span data-pv-cinta>Marca española · Stock en España y envío en 24 a 48 h · Desde una lata, sin pedido mínimo · Precios mayoristas con cuenta profesional ·</span>
+        <span data-pv-cinta>Marca española · Stock en España y envío en 24 a 48 h · Embalaje discreto · Desde una lata, sin pedido mínimo · Precios mayoristas con cuenta profesional · Solo mayores de 18 ·</span>
       </div>
     </div>
     <nav class="b2b-pildora" aria-label="Principal" data-b2b-pildora>
       <a class="b2b-pildora__logo" href="#"><span class="b2b-bandera" aria-hidden="true"></span>Pouches Spain</a>
       <div class="b2b-pildora__enlaces">
         <a href="#pedido">Catálogo</a>
-        <a href="#ventajas">Ventajas</a>
-        <a href="#condiciones">Condiciones</a>
+        <div class="b2b-desplegable">
+          <a class="b2b-desplegable__boton" href="seo.html#marcas">Marcas</a>
+          <div class="b2b-desplegable__panel">
+            <div class="b2b-desplegable__caja">
+              <a href="seo.html#marca-cuba">Cuba</a>
+              <a href="seo.html#marca-killa">Killa</a>
+              <a href="seo.html#marca-loop">LOOP</a>
+              <a href="seo.html#marca-pablo">Pablo</a>
+              <a href="seo.html#marca-velo">VELO</a>
+              <a href="seo.html#marca-white-fox">White Fox</a>
+              <a href="seo.html#marca-xqs">XQS</a>
+              <a href="seo.html#marca-zyn">ZYN</a>
+            </div>
+          </div>
+        </div>
+        <div class="b2b-desplegable">
+          <a class="b2b-desplegable__boton" href="seo.html#sabores">Sabores</a>
+          <div class="b2b-desplegable__panel">
+            <div class="b2b-desplegable__caja">
+              <a href="seo.html#sabor-menta">Menta</a>
+              <a href="seo.html#sabor-frutas">Frutas</a>
+              <a href="seo.html#sabor-frutos-rojos">Frutos rojos</a>
+              <a href="seo.html#sabor-citricos">Cítricos</a>
+            </div>
+          </div>
+        </div>
+        <div class="b2b-desplegable">
+          <a class="b2b-desplegable__boton" href="seo.html#niveles">Niveles</a>
+          <div class="b2b-desplegable__panel">
+            <div class="b2b-desplegable__caja">
+              <a href="seo.html#nivel-1">Suave</a>
+              <a href="seo.html#nivel-2">Medio</a>
+              <a href="seo.html#nivel-3">Fuerte</a>
+              <a href="seo.html#nivel-4">Extra fuerte</a>
+            </div>
+          </div>
+        </div>
+        <a href="seo.html#guia">Guías</a>
         <a href="#alta">Profesionales</a>
         <a href="#">Entrar</a>
       </div>
@@ -1184,8 +1360,13 @@ html.b2b-sin-scroll { overflow: hidden; }
         <summary>Menú</summary>
         <div class="b2b-pildora__panel">
           <a href="#pedido">Catálogo</a>
-          <a href="#ventajas">Ventajas</a>
-          <a href="#condiciones">Condiciones</a>
+          <a href="seo.html#marcas">Marcas</a>
+          <div class="b2b-pildora__sub"><a href="seo.html#marca-cuba">Cuba</a><a href="seo.html#marca-killa">Killa</a><a href="seo.html#marca-loop">LOOP</a><a href="seo.html#marca-pablo">Pablo</a><a href="seo.html#marca-velo">VELO</a><a href="seo.html#marca-white-fox">White Fox</a><a href="seo.html#marca-xqs">XQS</a><a href="seo.html#marca-zyn">ZYN</a></div>
+          <a href="seo.html#sabores">Sabores</a>
+          <div class="b2b-pildora__sub"><a href="seo.html#sabor-menta">Menta</a><a href="seo.html#sabor-frutas">Frutas</a><a href="seo.html#sabor-frutos-rojos">Frutos rojos</a><a href="seo.html#sabor-citricos">Cítricos</a></div>
+          <a href="seo.html#niveles">Niveles</a>
+          <div class="b2b-pildora__sub"><a href="seo.html#nivel-1">Suave</a><a href="seo.html#nivel-2">Medio</a><a href="seo.html#nivel-3">Fuerte</a><a href="seo.html#nivel-4">Extra fuerte</a></div>
+          <a href="seo.html#guia">Guías</a>
           <a href="#alta">Profesionales</a>
           <a href="#">Entrar</a>
         </div>
@@ -1215,17 +1396,22 @@ html.b2b-sin-scroll { overflow: hidden; }
         <div><dt>lata, sin pedido mínimo</dt><dd>Desde 1</dd></div>
       </dl>
       <div class="b2b-entrada__marcas">
-        <p>Marcas</p>
-        <ul>
-          <li><a href="#marca-cuba">Cuba</a></li>
-          <li><a href="#marca-killa">Killa</a></li>
-          <li><a href="#marca-loop">LOOP</a></li>
-          <li><a href="#marca-pablo">Pablo</a></li>
-          <li><a href="#marca-velo">VELO</a></li>
-          <li><a href="#marca-white-fox">White Fox</a></li>
-          <li><a href="#marca-xqs">XQS</a></li>
-          <li><a href="#marca-zyn">ZYN</a></li>
-        </ul>
+        <!-- snippets/b2b-marquesina-marcas.liquid: el bucle y el arrastre los monta b2b-snus.js -->
+        <div class="b2b-marquesina is-movil" data-b2b-marquesina data-velocidad="40">
+          <p class="b2b-marquesina__rotulo">Marcas</p>
+          <div class="b2b-marquesina__ventana">
+            <ul class="b2b-marquesina__pista" aria-label="Marcas">
+              <li class="b2b-marquesina__item"><a href="#marca-cuba">Cuba</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-killa">Killa</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-loop">LOOP</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-pablo">Pablo</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-velo">VELO</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-white-fox">White Fox</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-xqs">XQS</a></li>
+              <li class="b2b-marquesina__item"><a href="#marca-zyn">ZYN</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1360,7 +1546,63 @@ html.b2b-sin-scroll { overflow: hidden; }
     </aside>
   </main>
 
-  <footer class="pv-pie"><div class="pv-pie__in"><span><span class="b2b-bandera" role="img" aria-label="Bandera de España"></span> Pouches Spain · Marca española de bolsas de nicotina</span><a href="#">Aviso legal</a><a href="#">Privacidad</a></div></footer>
+  <!-- sections/b2b-pie.liquid (en la tienda, los iconos de pago son los oficiales de las formas activas) -->
+  <footer class="b2b b2b-pie">
+    <div class="b2b-wrap">
+    <div class="b2b-pie__arriba">
+      <div class="b2b-pie__marca">
+        <p class="b2b-pie__nombre"><span class="b2b-bandera" aria-hidden="true"></span>Pouches Spain</p>
+        <div class="b2b-rte b2b-pie__texto"><p>Marca española de bolsas de nicotina sin tabaco. Stock en España y envío en 24 a 48 horas.</p></div>
+      </div>
+      <nav class="b2b-pie__col" aria-label="Marcas">
+        <p class="b2b-pie__titulo">Marcas</p>
+        <ul>
+            <li><a href="seo.html#marca-cuba">Cuba</a></li>
+            <li><a href="seo.html#marca-killa">Killa</a></li>
+            <li><a href="seo.html#marca-loop">LOOP</a></li>
+            <li><a href="seo.html#marca-pablo">Pablo</a></li>
+            <li><a href="seo.html#marca-velo">VELO</a></li>
+            <li><a href="seo.html#marca-white-fox">White Fox</a></li>
+            <li><a href="seo.html#marca-xqs">XQS</a></li>
+            <li><a href="seo.html#marca-zyn">ZYN</a></li>
+        </ul>
+      </nav>
+      <nav class="b2b-pie__col" aria-label="Sabores">
+        <p class="b2b-pie__titulo">Sabores</p>
+        <ul>
+            <li><a href="seo.html#sabor-menta">Menta</a></li>
+            <li><a href="seo.html#sabor-frutas">Frutas</a></li>
+            <li><a href="seo.html#sabor-frutos-rojos">Frutos rojos</a></li>
+            <li><a href="seo.html#sabor-citricos">Cítricos</a></li>
+        </ul>
+      </nav>
+      <nav class="b2b-pie__col" aria-label="Niveles">
+        <p class="b2b-pie__titulo">Niveles</p>
+        <ul>
+            <li><a href="seo.html#nivel-1">Suave, hasta 5 mg</a></li>
+            <li><a href="seo.html#nivel-2">Medio, de 6 a 9 mg</a></li>
+            <li><a href="seo.html#nivel-3">Fuerte, de 10 a 14 mg</a></li>
+            <li><a href="seo.html#nivel-4">Extra fuerte, más de 14 mg</a></li>
+        </ul>
+      </nav>
+      <nav class="b2b-pie__col" aria-label="Ayuda">
+        <p class="b2b-pie__titulo">Ayuda</p>
+        <ul>
+            <li><a href="seo.html#guia">Qué son las bolsas de nicotina</a></li>
+            <li><a href="#alta">Cuenta profesional</a></li>
+            <li><a href="#">Envíos y entregas</a></li>
+            <li><a href="#">Devoluciones</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="b2b-pie__abajo">
+      <p class="b2b-pie__aviso"><span class="b2b-pie__18" aria-hidden="true">18+</span>Venta solo a mayores de 18 años.</p>
+      <ul class="b2b-pie__pagos" aria-label="Formas de pago"><li><span class="pv-pago">Visa</span></li><li><span class="pv-pago">Mastercard</span></li><li><span class="pv-pago">Apple Pay</span></li><li><span class="pv-pago">Google Pay</span></li><li><span class="pv-pago">Bizum</span></li></ul>
+      <p class="b2b-pie__legal"><span>© 2026 Pouches Spain</span><a href="#">Política de privacidad</a><a href="#">Términos del servicio</a><a href="#">Política de envío</a><a href="#">Política de reembolsos</a></p>
+    </div>
+    </div>
+  </footer>
 
   <!-- sections/b2b-aviso-acceso.liquid -->
   <div data-pv-acceso-hueco></div>
@@ -2286,8 +2528,23 @@ window.PV_FOTOS = {
     if (cab.dataset.b2bListo) return;
     cab.dataset.b2bListo = '1';
     var pildora = uno('[data-b2b-pildora]', cab);
+    if (!pildora) return;
+
+    // Si los enlaces no caben en la píldora (depende del menú de cada tienda), se pasa al botón «Menú».
+    function compactar() {
+      pildora.classList.remove('is-compacta');
+      if (pildora.offsetWidth > window.innerWidth - 24) pildora.classList.add('is-compacta');
+    }
+    compactar();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(compactar);
+    var esperaAncho = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(esperaAncho);
+      esperaAncho = setTimeout(compactar, 120);
+    });
+
     var cinta = uno('.b2b-cinta', cab);
-    if (!pildora || !cinta) return;
+    if (!cinta) return;
     var pendiente = false;
     function revisar() {
       pendiente = false;
@@ -2299,11 +2556,113 @@ window.PV_FOTOS = {
     revisar();
   }
 
+  /* ---------- 4. Marcas en movimiento: bucle continuo que se para al pasar el ratón y se arrastra ---------- */
+  function iniciarMarquesina(m) {
+    if (m.dataset.b2bListo) return;
+    m.dataset.b2bListo = '1';
+    if (!m.classList.contains('is-movil')) return;
+    var ventana = uno('.b2b-marquesina__ventana', m);
+    var pista = uno('.b2b-marquesina__pista', m);
+    if (!ventana || !pista) return;
+    // Con «reducir movimiento» la fila se queda quieta y se recorre con scroll.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var originales = Array.prototype.slice.call(pista.children);
+    var velocidad = parseFloat(m.getAttribute('data-velocidad')) || 40; // píxeles por segundo
+    var mitad = 0;
+    var duracion = 0;
+
+    // Repite el juego de marcas hasta cubrir la ventana dos veces: la animación mueve la pista
+    // media longitud (-50 %) y empieza de nuevo sin que se note el salto.
+    function montar() {
+      todos('[data-b2b-copia]', pista).forEach(function (n) { n.parentNode.removeChild(n); });
+      m.classList.remove('is-lista');
+      var ancho = pista.offsetWidth;
+      if (!ancho) return;
+      var veces = Math.max(1, Math.ceil(ventana.clientWidth / ancho));
+      for (var i = 1; i < veces * 2; i++) {
+        originales.forEach(function (li) {
+          var copia = li.cloneNode(true);
+          copia.setAttribute('data-b2b-copia', '');
+          copia.setAttribute('aria-hidden', 'true');
+          todos('a', copia).forEach(function (a) { a.setAttribute('tabindex', '-1'); });
+          pista.appendChild(copia);
+        });
+      }
+      mitad = ancho * veces;
+      duracion = mitad / velocidad;
+      m.style.setProperty('--b2b-mq-dur', duracion.toFixed(2) + 's');
+      pista.style.animationDelay = '';
+      m.classList.add('is-lista');
+    }
+
+    // Arrastrar con ratón o dedo: se para la animación, la pista sigue al puntero y al soltar
+    // la animación continúa desde ahí (retraso negativo).
+    var inicioX = 0, base = 0, pos = 0, punteroId = null, pulsado = false, movido = false;
+    function normalizar(v) {
+      if (!mitad) return v;
+      v = v % mitad;
+      return v > 0 ? v - mitad : v;
+    }
+    ventana.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || !mitad) return;
+      pulsado = true; movido = false; inicioX = e.clientX; punteroId = e.pointerId;
+    });
+    ventana.addEventListener('pointermove', function (e) {
+      if (!pulsado || e.pointerId !== punteroId) return;
+      var dx = e.clientX - inicioX;
+      if (!movido) {
+        if (Math.abs(dx) < 6) return;
+        movido = true;
+        base = new DOMMatrixReadOnly(getComputedStyle(pista).transform).m41;
+        m.classList.add('is-arrastrando');
+        try { ventana.setPointerCapture(punteroId); } catch (err) { /* el navegador no lo admite */ }
+      }
+      pos = normalizar(base + dx);
+      pista.style.transform = 'translateX(' + pos.toFixed(1) + 'px)';
+    });
+    function soltar(e) {
+      if (!pulsado || (e && e.pointerId !== punteroId)) return;
+      pulsado = false;
+      if (!movido) return;
+      pista.style.transform = '';
+      pista.style.animationDelay = (pos / mitad * duracion).toFixed(3) + 's';
+      m.classList.remove('is-arrastrando');
+    }
+    ventana.addEventListener('pointerup', soltar);
+    ventana.addEventListener('pointercancel', soltar);
+    // Después de arrastrar, el clic no abre la marca.
+    ventana.addEventListener('click', function (e) {
+      if (movido) { e.preventDefault(); e.stopPropagation(); movido = false; }
+    }, true);
+    ventana.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    // Con teclado: la fila se para y se recorre con scroll para que la marca enfocada se vea.
+    m.addEventListener('focusin', function (e) {
+      m.classList.add('is-foco');
+      if (e.target.scrollIntoView) e.target.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
+    m.addEventListener('focusout', function (e) {
+      if (m.contains(e.relatedTarget)) return;
+      m.classList.remove('is-foco');
+      ventana.scrollLeft = 0;
+    });
+
+    montar();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(montar);
+    var espera = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(espera);
+      espera = setTimeout(montar, 200);
+    });
+  }
+
   function iniciar(ctx) {
     ctx = ctx || document;
     todos('[data-b2b-cabecera]', ctx).forEach(iniciarCabecera);
     todos('[data-b2b-gate]', ctx).forEach(iniciarAcceso);
     todos('[data-b2b-pedido]', ctx).forEach(iniciarPedido);
+    todos('[data-b2b-marquesina]', ctx).forEach(iniciarMarquesina);
   }
 
   window.B2BSnus = { iniciar: iniciar };
