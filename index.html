@@ -875,7 +875,6 @@
 .b2b-barra.is-fija { position: sticky; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25); }
 .b2b-barra__resumen { font-size: 14px; font-weight: 700; }
 .b2b-barra__minimo { margin-top: 1px; color: rgba(255, 255, 255, 0.68); font-size: 12px; }
-.b2b-barra__nota { margin-top: 2px; color: rgba(255, 255, 255, 0.72); font-size: 12px; }
 .b2b-barra__progreso { max-width: 320px; height: 3px; margin-top: 6px; border-radius: 2px; background: rgba(255, 255, 255, 0.2); overflow: hidden; }
 .b2b-barra__progreso i { display: block; width: 0; height: 100%; background: #fff; transition: width 0.3s ease; }
 .b2b-barra__total { text-align: right; }
@@ -1473,7 +1472,7 @@ html.b2b-sin-scroll { overflow: hidden; }
           <div class="b2b-cond__fila"><dt>Pago</dt><dd class="b2b-rte"><p>Particulares: al hacer el pedido. Empresas: el primer pedido por transferencia antes del envío; desde el segundo, domiciliación SEPA a 30 días, sujeta a revisión.</p></dd></div>
           <div class="b2b-cond__fila"><dt>Incidencias</dt><dd class="b2b-rte"><p>Si llega un bulto dañado o falta mercancía, avísanos en 48 horas con una foto y lo reponemos en el siguiente envío.</p></dd></div>
           <div class="b2b-cond__fila"><dt>Factura</dt><dd class="b2b-rte"><p>Con cada pedido, con el IVA desglosado. Las empresas la tienen también en su área de cliente.</p></dd></div>
-          <div class="b2b-cond__fila"><dt>Verificación de edad</dt><dd class="b2b-rte"><p>Particulares: en la primera compra, antes de pagar, con una foto del DNI o NIE y un selfie. La hace iDenfy, un proveedor europeo de verificación de identidad. Cuentas profesionales: no hace falta, las validamos al dar de alta.</p></dd></div>
+          <div class="b2b-cond__fila"><dt>Mayores de 18</dt><dd class="b2b-rte"><p>Solo vendemos a mayores de 18 años. Al entrar en la tienda te pedimos que lo confirmes.</p></dd></div>
         </dl>
       </div>
     </section>
@@ -1534,7 +1533,6 @@ html.b2b-sin-scroll { overflow: hidden; }
           <details class="b2b-faq__item"><summary>¿Cuántas latas puedo pedir?</summary><div class="b2b-rte b2b-faq__resp"><p>Como particular puedes pedir hasta 10 unidades de cada lata. Si necesitas más, escríbenos y te preparamos el pedido o te abrimos una cuenta profesional. Los negocios con cuenta profesional no tienen tope.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Cómo funciona el precio por volumen?</summary><div class="b2b-rte b2b-faq__resp"><p>Cada referencia tiene tramos por cantidad. En el catálogo ves el precio de cada tramo y el importe cambia al subir o bajar unidades.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Qué pasa si una referencia está agotada?</summary><div class="b2b-rte b2b-faq__resp"><p>Aparece como agotada y no se puede pedir. Escríbenos y te decimos cuándo vuelve a entrar.</p></div></details>
-          <details class="b2b-faq__item"><summary>¿Cómo verificáis la edad?</summary><div class="b2b-rte b2b-faq__resp"><p>Antes de pagar tu primer pedido te pedimos una foto de tu DNI o NIE y un selfie corto. La verificación la hace iDenfy, un proveedor europeo especializado. Si compras con tu cuenta de cliente, solo la haces una vez. Las cuentas profesionales no la necesitan.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Enviáis fuera de España?</summary><div class="b2b-rte b2b-faq__resp"><p>De momento no. Cada país regula estos productos de forma distinta.</p></div></details>
         </div>
       </div>
@@ -1895,7 +1893,6 @@ window.PV_FOTOS = {
     }
     if (compra) {
       h += '<div class="b2b-barra" data-b2b-barra><div><p class="b2b-barra__resumen" data-b2b-resumen>Elige cantidades para preparar el pedido.</p>' +
-        (mayorista ? '' : '<p class="b2b-barra__nota">Primera compra: verificamos tu edad con DNI o NIE y un selfie antes de pagar.</p>') +
         (MINIMO > 0 ? '<p class="b2b-barra__minimo" data-b2b-minimo>Pedido mínimo: ' + dinero(MINIMO) + '</p>' +
         '<div class="b2b-barra__progreso" aria-hidden="true"><i data-b2b-progreso></i></div>' : '') + '</div>' +
         '<p class="b2b-barra__total"><span>' + (mayorista ? 'Total sin IVA' : 'Total IVA incluido') + '</span><strong data-b2b-total>' + dinero(0) + '</strong></p>' +
@@ -1918,7 +1915,7 @@ window.PV_FOTOS = {
 
   var AVISO_ACCESO = '<dialog class="b2b b2b-gate" data-b2b-gate data-dias="30" aria-labelledby="b2b-gate-x">' +
     '<div data-b2b-gate-paso1><h2 class="b2b-h3" id="b2b-gate-x">¿Tienes 18 años o más?</h2>' +
-    '<div class="b2b-rte b2b-gate__texto"><p>Vendemos bolsas de nicotina y solo podemos venderlas a mayores de edad. Confirma tu edad para entrar; en tu primer pedido la comprobaremos con tu DNI.</p></div>' +
+    '<div class="b2b-rte b2b-gate__texto"><p>Vendemos bolsas de nicotina y solo podemos venderlas a mayores de edad. Confirma tu edad para entrar.</p></div>' +
     '<div class="b2b-gate__acciones"><button type="button" class="b2b-btn" data-b2b-gate-si>Sí, tengo 18 o más</button>' +
     '<button type="button" class="b2b-btn b2b-btn--ghost" data-b2b-gate-no>No</button></div></div>' +
     '<div data-b2b-gate-paso2 hidden><h2 class="b2b-h3">No podemos venderte</h2>' +
@@ -1977,28 +1974,7 @@ window.PV_FOTOS = {
   document.querySelector('[data-pv-muro]').innerHTML = muro;
   document.querySelector('[data-pv-expositor]').innerHTML = expositor();
 
-  // Demostración del paso de verificación de edad (en la tienda lo muestra iDenfy antes de pagar).
-  var estadoActual = 'invitado';
-  var verificacionVista = false;
-  var DEMO_VERIFICACION = '<dialog class="b2b b2b-gate" data-pv-verificacion aria-labelledby="pv-verif-t">' +
-    '<h2 class="b2b-h3" id="pv-verif-t">Antes de pagar, verificamos tu edad</h2>' +
-    '<div class="b2b-rte b2b-gate__texto"><p>Solo en tu primera compra. Se hace desde el móvil o el ordenador en menos de un minuto.</p></div>' +
-    '<ol class="b2b-pasos"><li><span>Foto de tu DNI o NIE, por delante y por detrás.</span></li>' +
-    '<li><span>Un selfie corto que comprueba que eres la persona del documento y que estás delante de la cámara.</span></li>' +
-    '<li><span>Verificado: sigues al pago.</span></li></ol>' +
-    '<p class="b2b-alta__nota">Pantalla de ejemplo. En la tienda este paso lo muestra iDenfy al pulsar «Tramitar pedido».</p>' +
-    '<div class="b2b-gate__acciones"><button type="button" class="b2b-btn" data-pv-verif-cerrar>Entendido</button></div></dialog>';
-  document.body.insertAdjacentHTML('beforeend', DEMO_VERIFICACION);
-  var dlgVerif = document.querySelector('[data-pv-verificacion]');
-  dlgVerif.querySelector('[data-pv-verif-cerrar]').addEventListener('click', function () { dlgVerif.close(); });
-  document.addEventListener('b2b:carrito-actualizado', function () {
-    if (estadoActual === 'aprobado' || verificacionVista) return;
-    verificacionVista = true;
-    if (typeof dlgVerif.showModal === 'function') dlgVerif.showModal();
-  });
-
   function pintar(estado) {
-    estadoActual = estado;
     document.querySelector('[data-pv-hero]').innerHTML = accionEntrada(estado);
     document.querySelector('[data-pv-pedido]').innerHTML = catalogo(estado);
     document.querySelectorAll('[data-pv-estado]').forEach(function (b) {
