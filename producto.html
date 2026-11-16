@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Vista previa de la ficha de producto de Pouches Spain.">
   <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title>Ficha de producto · Pouches Spain</title>
+  <meta name="description" content="Bolsas de nicotina con stock en España: sabor, nicotina por bolsa, precio por lata y envío en 24 a 48 horas.">
   <!-- Solo para la vista previa local de la ficha de producto (sections/b2b-producto.liquid). -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +89,7 @@
 .b2b-pildora,
 .b2b-entrada__esquina,
 .b2b-entrada__marcas,
+.b2b-entrada__sello,
 .b2b-marquesina,
 .b2b-pie__nombre,
 .b2b-pie__titulo,
@@ -462,6 +464,33 @@
 .b2b-entrada .b2b-link { color: var(--b2b-crema); }
 .b2b-entrada .b2b-estado { background: rgba(245, 243, 235, 0.16); color: var(--b2b-crema); }
 .b2b-entrada__esquinas .b2b-bandera { width: 2em; height: 0.66em; }
+/* Sello «Marca española»: píldora crema para que se lea encima de las latas. */
+.b2b-entrada__sello {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px 9px 13px;
+  border-radius: 999px;
+  background: var(--b2b-crema);
+  color: var(--b2b-ink);
+  box-shadow: 0 6px 20px rgba(22, 24, 32, 0.16);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.b2b-entrada__esquinas .b2b-entrada__sello .b2b-bandera { width: 1.9em; height: 0.72em; margin-right: 0; }
+/* El fondo (muro de latas o foto) lleva al catálogo: la capa de textos deja pasar el clic salvo en
+   enlaces, botones y textos que se pueden seleccionar. */
+a.b2b-entrada__fondo { cursor: pointer; }
+.b2b-entrada__capa { pointer-events: none; }
+.b2b-entrada__capa a,
+.b2b-entrada__capa button,
+.b2b-entrada__lead,
+.b2b-entrada__sub { pointer-events: auto; }
+.b2b-muro { transition: scale 0.8s var(--b2b-ease); }
+@media (hover: hover) {
+  a.b2b-entrada__fondo:hover .b2b-muro { scale: 1.09; }
+}
 
 /* Portada clara (estilo por defecto): las latas a color se ven detrás de un velo crema traslúcido,
    casi transparente arriba y más tupido abajo, donde van el titular, el texto y el botón. */
@@ -471,7 +500,8 @@
 }
 /* El sol asoma por detrás de las latas. */
 .b2b-entrada--claro .b2b-entrada__marco > .b2b-sol { z-index: -3; }
-.b2b-entrada--claro .b2b-entrada__fondo--muro { mix-blend-mode: normal; }
+/* Las fotos de producto suelen traer fondo blanco: con la mezcla el blanco desaparece y solo quedan las latas. */
+.b2b-entrada--claro .b2b-entrada__fondo--muro { mix-blend-mode: multiply; }
 .b2b-entrada--claro .b2b-muro { opacity: 1; filter: none; }
 .b2b-entrada--claro .b2b-entrada__titulo { color: var(--b2b-rojo); }
 .b2b-entrada--claro .b2b-entrada__titulo em { color: var(--b2b-ink); }
@@ -535,7 +565,7 @@
 .b2b-marquesina__item { display: flex; align-items: center; flex: 0 0 auto; }
 .b2b-marquesina__item a {
   display: block;
-  color: var(--b2b-soft);
+  color: var(--b2b-muted);
   text-decoration: none;
   transition: color 0.15s ease;
   -webkit-user-drag: none;
@@ -543,7 +573,7 @@
 }
 .b2b-marquesina__item a:hover,
 .b2b-marquesina__item a:focus-visible { color: var(--b2b-rojo); }
-.b2b-marquesina__logo { display: block; width: auto; height: 1.5em; max-width: 150px; object-fit: contain; opacity: 0.4; transition: opacity 0.15s ease; -webkit-user-drag: none; }
+.b2b-marquesina__logo { display: block; width: auto; height: 1.5em; max-width: 150px; object-fit: contain; opacity: 0.5; transition: opacity 0.15s ease; -webkit-user-drag: none; }
 .b2b-marquesina__item a:hover .b2b-marquesina__logo,
 .b2b-marquesina__item a:focus-visible .b2b-marquesina__logo { opacity: 1; }
 /* Quieta: las marcas en una fila que salta de línea. */
@@ -580,8 +610,8 @@
 .b2b-marcas-mov.b2b-fondo--rojo .b2b-marquesina__item a:hover,
 .b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item a:focus-visible,
 .b2b-marcas-mov.b2b-fondo--rojo .b2b-marquesina__item a:focus-visible { color: var(--b2b-crema); }
-.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item a { color: rgba(245, 243, 235, 0.45); }
-.b2b-marcas-mov.b2b-fondo--rojo .b2b-marquesina__item a { color: rgba(245, 243, 235, 0.62); }
+.b2b-marcas-mov.b2b-fondo--negro .b2b-marquesina__item a { color: rgba(245, 243, 235, 0.72); }
+.b2b-marcas-mov.b2b-fondo--rojo .b2b-marquesina__item a { color: rgba(245, 243, 235, 0.88); }
 
 /* ---------- Ventajas ---------- */
 .b2b-ventajas__cabecera {
@@ -644,7 +674,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--b2b-soft);
+  color: var(--b2b-muted);
   font-size: 13px;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -686,7 +716,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--b2b-soft);
+  color: var(--b2b-muted);
   font-size: clamp(16px, 1.6vw, 21px);
   line-height: 1.2;
   cursor: pointer;
@@ -917,7 +947,10 @@
   cursor: pointer;
   transition: background-color 0.12s ease;
 }
-.b2b-paso__btn svg { width: 13px; height: 13px; }
+/* Icono de «−» y «+» con máscara: sin un SVG por botón, el catálogo pesa miles de elementos menos. */
+.b2b-paso__btn::before { content: ""; width: 13px; height: 13px; background: currentColor; -webkit-mask: var(--b2b-icono-paso) center / contain no-repeat; mask: var(--b2b-icono-paso) center / contain no-repeat; }
+.b2b-paso__btn[data-b2b-menos] { --b2b-icono-paso: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 14 14%22%3E%3Cpath d=%22M2 7h10%22 stroke=%22%23000%22 stroke-width=%221.9%22 stroke-linecap=%22round%22 fill=%22none%22/%3E%3C/svg%3E"); }
+.b2b-paso__btn[data-b2b-mas] { --b2b-icono-paso: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 14 14%22%3E%3Cpath d=%22M2 7h10M7 2v10%22 stroke=%22%23000%22 stroke-width=%221.9%22 stroke-linecap=%22round%22 fill=%22none%22/%3E%3C/svg%3E"); }
 @media (hover: hover) { .b2b-paso__btn:hover { background: var(--b2b-gris-2); } }
 .b2b-paso__btn:active { background: var(--b2b-line-strong); }
 .b2b .b2b-paso__input {
@@ -1130,7 +1163,7 @@ html.b2b-sin-scroll { overflow: hidden; }
 }
 .b2b-col__titulo { font-size: clamp(34px, 4.8vw, 66px); line-height: 0.98; }
 .b2b-col__texto { max-width: 56ch; margin-top: 16px; color: var(--b2b-muted); }
-.b2b-col__dato { margin-top: 16px; font-size: 13px; letter-spacing: 0.04em; /* lint-ia: permitido rótulo de dato en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
+.b2b-col__dato { margin-top: 16px; font-size: 13px; letter-spacing: 0.04em; /* lint-ia: permitido rótulo de dato en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
 .b2b-col__media { border-radius: var(--b2b-radius); overflow: hidden; background: var(--b2b-gris); }
 .b2b-col__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .b2b-col__media.is-producto { display: grid; place-items: center; aspect-ratio: 1; padding: 8%; background: var(--b2b-gris); }
@@ -1227,7 +1260,7 @@ html.b2b-sin-scroll { overflow: hidden; }
 .b2b-guia__ante { margin-bottom: 10px; font-size: 13px; letter-spacing: 0.06em; /* lint-ia: permitido antetítulo en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
 .b2b-guia__titulo { font-size: clamp(32px, 4.4vw, 60px); line-height: 1; max-width: 20ch; }
 .b2b-guia__lead { max-width: 60ch; margin-top: 18px; font-size: 19px; color: var(--b2b-muted); }
-.b2b-guia__meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 13px; letter-spacing: 0.03em; /* lint-ia: permitido meta en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
+.b2b-guia__meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 13px; letter-spacing: 0.03em; /* lint-ia: permitido meta en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
 .b2b-guia__indice { position: sticky; top: 96px; padding-top: 6px; border-top: 2px solid var(--b2b-rojo); }
 .b2b-guia__indice-t { margin-bottom: 10px; font-size: 12px; letter-spacing: 0.06em; /* lint-ia: permitido rótulo del índice en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
 .b2b-guia__indice ol { padding-left: 1.2em; list-style: decimal; color: var(--b2b-muted); }
@@ -1290,8 +1323,8 @@ html.b2b-sin-scroll { overflow: hidden; }
 .b2b-pie__legal { display: flex; flex-wrap: wrap; gap: 6px 18px; width: 100%; color: rgba(245, 243, 235, 0.5); font-size: 12px; }
 
 /* ---------- Ficha de producto (B2B · Ficha de producto) ---------- */
-/* Arriba deja sitio a la píldora del menú, que flota sobre la página. */
-.b2b-ficha { padding: 112px 0 88px; }
+/* El hueco bajo la píldora del menú lo pone la cabecera (.b2b-pildora-hueco) fuera de la portada. */
+.b2b-ficha { padding: 28px 0 88px; }
 .b2b-ficha__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
@@ -1477,6 +1510,55 @@ html.b2b-sin-scroll { overflow: hidden; }
 .b2b-tarjeta__media.is-logo img { width: 100%; height: 100%; object-fit: contain; }
 .b2b-col__logo { display: block; width: auto; height: 44px; max-width: 240px; margin-bottom: 16px; object-fit: contain; object-position: left center; }
 
+/* ---------- Ayuda y textos legales (vista previa; en Shopify, las páginas de políticas) ---------- */
+.b2b-ayuda [id] { scroll-margin-top: 110px; }
+.b2b-ayuda__apartado + .b2b-ayuda__apartado { margin-top: 48px; padding-top: 8px; border-top: 1px solid var(--b2b-line); }
+.b2b-ayuda__aviso { margin-top: 18px; padding: 12px 16px; border-radius: var(--b2b-radius); background: var(--b2b-warn-soft); color: #5a3a00; font-size: 14px; }
+.b2b-hueco { padding: 0 3px; border-radius: 3px; background: #fbe7a1; color: var(--b2b-ink); }
+.b2b-rte h3 { margin: 1.6em 0 0.4em; font-size: 18px; font-weight: 700; line-height: 1.25; }
+.b2b-rte h4 { margin: 1.3em 0 0.3em; font-size: 16px; font-weight: 700; }
+.b2b-tabla { margin: 1em 0; overflow-x: auto; }
+.b2b-tabla table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; line-height: 1.45; }
+.b2b-tabla th,
+.b2b-tabla td { padding: 9px 10px; border-bottom: 1px solid var(--b2b-line); text-align: left; vertical-align: top; }
+.b2b-tabla th { color: var(--b2b-muted); font-size: 13px; font-weight: 700; }
+
+/* ---------- Página no encontrada (B2B · Página 404) ---------- */
+.b2b-404 { position: relative; overflow: hidden; isolation: isolate; }
+.b2b-404 > .b2b-sol { top: -210px; right: -240px; opacity: 0.55; }
+.b2b-404__caja { display: grid; justify-items: start; gap: 22px; max-width: 820px; }
+.b2b-404__codigo { color: var(--b2b-rojo); font-family: var(--b2b-display); font-size: clamp(96px, 17vw, 210px); font-weight: 900; line-height: 0.82; letter-spacing: -0.04em; }
+.b2b-404__titulo { font-size: clamp(34px, 5vw, 64px); }
+.b2b-404__texto { max-width: 52ch; font-size: 17px; }
+.b2b-404__buscar { display: flex; gap: 8px; width: 100%; max-width: 540px; }
+.b2b-404__buscar .b2b-input { flex: 1 1 auto; min-width: 0; }
+.b2b-404__enlaces { margin-top: 6px; }
+
+/* ---------- Botón de WhatsApp (B2B · Botón de WhatsApp) ---------- */
+.b2b-whatsapp {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 7px 20px 7px 7px;
+  border-radius: 999px;
+  background: var(--b2b-ink);
+  color: var(--b2b-crema);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(22, 24, 32, 0.28);
+  transition: transform 0.2s var(--b2b-ease), bottom 0.25s var(--b2b-ease);
+}
+.b2b-whatsapp svg { flex: 0 0 auto; width: 40px; height: 40px; padding: 7px; border-radius: 50%; background: #25d366; color: #ffffff; }
+@media (hover: hover) { .b2b-whatsapp:hover { transform: translateY(-2px); } }
+/* Con la barra del pedido fija abajo, el botón sube para no taparla. */
+body:has(.b2b-barra.is-fija:not(.b2b-barra--ficha)) .b2b-whatsapp { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .b2b-items.is-lista .b2b-prod { grid-template-columns: 76px minmax(0, 1fr); }
@@ -1586,7 +1668,7 @@ html.b2b-sin-scroll { overflow: hidden; }
   .b2b-pestanas { margin-top: 48px; }
 }
 @media (max-width: 640px) {
-  .b2b-ficha { padding: 104px 0 60px; }
+  .b2b-ficha { padding: 16px 0 60px; }
   .b2b-ficha__foto { padding: 6%; }
   .b2b-ficha__titulo { font-size: clamp(28px, 8.6vw, 38px); }
   .b2b-ficha__compra { padding: 14px 14px 12px; }
@@ -1595,6 +1677,13 @@ html.b2b-sin-scroll { overflow: hidden; }
   .b2b-pestanas__lista { gap: 4px 20px; margin: 0 -16px; padding: 0 16px; }
   .b2b-ficha__datos > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .b2b-rejilla--fila { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .b2b-404__buscar { flex-wrap: wrap; }
+  .b2b-404__buscar .b2b-btn { width: 100%; }
+  .b2b-whatsapp--icono-movil { padding: 7px; }
+  .b2b-whatsapp--icono-movil span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  body:has(.b2b-barra.is-fija:not(.b2b-barra--ficha)) .b2b-whatsapp { bottom: calc(170px + env(safe-area-inset-bottom, 0px)); }
 }
 
 </style>
@@ -1684,8 +1773,9 @@ html.b2b-sin-scroll { overflow: hidden; }
           <a href="index.html#alta">Profesionales</a>
         </div>
       </details>
-      <a class="b2b-pildora__carrito" href="index.html">Carrito <span data-b2b-carrito-cuenta>0</span></a>
+      <a class="b2b-pildora__carrito" href="index.html#pedido">Carrito <span data-b2b-carrito-cuenta>0</span></a>
     </nav>
+    <div class="b2b-pildora-hueco" aria-hidden="true"></div>
   </div>
 
   <main id="main" data-pv-producto></main>
@@ -1735,21 +1825,24 @@ html.b2b-sin-scroll { overflow: hidden; }
         <ul>
             <li><a href="seo.html#guia">Qué son las bolsas de nicotina</a></li>
             <li><a href="index.html#alta">Cuenta profesional</a></li>
-            <li><a href="#">Envíos y entregas</a></li>
-            <li><a href="#">Devoluciones</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="ayuda.html#envios">Envíos y entregas</a></li>
+            <li><a href="ayuda.html#devoluciones">Devoluciones</a></li>
+            <li><a href="ayuda.html#contacto">Contacto</a></li>
         </ul>
       </nav>
     </div>
     <div class="b2b-pie__abajo">
       <p class="b2b-pie__aviso"><span class="b2b-pie__18" aria-hidden="true">18+</span>Venta solo a mayores de 18 años.</p>
       <ul class="b2b-pie__pagos" aria-label="Formas de pago" data-pv-pagos></ul>
-      <p class="b2b-pie__legal"><span>© 2026 Pouches Spain</span><a href="#">Política de privacidad</a><a href="#">Términos del servicio</a><a href="#">Política de envío</a><a href="#">Política de reembolsos</a></p>
+      <p class="b2b-pie__legal"><span>© 2026 Pouches Spain</span><a href="ayuda.html#aviso-legal">Aviso legal</a><a href="ayuda.html#privacidad">Política de privacidad</a><a href="ayuda.html#cookies">Política de cookies</a><a href="ayuda.html#condiciones">Condiciones de venta</a><a href="ayuda.html#envios">Envíos</a><a href="ayuda.html#devoluciones">Devoluciones</a></p>
     </div>
     </div>
   </footer>
 
   <div data-pv-acceso-hueco></div>
+
+  <!-- sections/b2b-whatsapp.liquid (en la tienda abre WhatsApp con el número de los ajustes; aquí, contacto) -->
+  <a class="b2b b2b-whatsapp b2b-whatsapp--icono-movil" href="ayuda.html#contacto" aria-label="¿Dudas? Escríbenos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg><span>¿Dudas? Escríbenos</span></a>
 
   <script>
 /* Generado por proveedor/generar.py con el stock del proveedor. No editar a mano. */
@@ -1867,8 +1960,6 @@ window.PV_TEXTOS = {"77-apple-mint":["Manzana con final de menta","Sabor a manza
     return '<span class="b2b-fuerza" role="img" aria-label="Nicotina ' + NIVELES[n] + ', ' + n + ' de 4">' + h + '</span>';
   }
 
-  var MENOS = '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-  var MAS = '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   var CANDADO = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3.5 7h9v7h-9z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
 
   /* Tramos de precio que ve cada cliente: los profesionales los suyos; los particulares el descuento
@@ -1900,9 +1991,9 @@ window.PV_TEXTOS = {"77-apple-mint":["Manzana con final de menta","Sabor a manza
       }
       h += '</div><div class="b2b-var__cant">';
       if (v.stock > 0) {
-        h += '<div class="b2b-paso"><button type="button" class="b2b-paso__btn" data-b2b-menos aria-label="Quitar 1 de ' + esc(nombre) + '">' + MENOS + '</button>' +
+        h += '<div class="b2b-paso"><button type="button" class="b2b-paso__btn" data-b2b-menos aria-label="Quitar 1 de ' + esc(nombre) + '"></button>' +
           '<input class="b2b-paso__input" type="number" inputmode="numeric" min="0" step="1" value="' + (inicial || 0) + '" data-b2b-cant aria-label="Cantidad de ' + esc(nombre) + '">' +
-          '<button type="button" class="b2b-paso__btn" data-b2b-mas aria-label="Añadir 1 de ' + esc(nombre) + '">' + MAS + '</button></div>';
+          '<button type="button" class="b2b-paso__btn" data-b2b-mas aria-label="Añadir 1 de ' + esc(nombre) + '"></button></div>';
       } else {
         h += '<span class="b2b-muted">No disponible</span>';
       }
@@ -2171,6 +2262,37 @@ window.PV_TEXTOS = {"77-apple-mint":["Manzana con final de menta","Sabor a manza
     return h + '</div></section>';
   }
 
+  // Meta descripción y datos estructurados de la ficha (en Shopify los pone b2b-producto.liquid y el tema).
+  function metadatos(p, variantes, mayorista) {
+    var t = TEXTOS[p.h];
+    var desc = (t ? t[1] + ' ' : '') + p.marca + ' ' + p.titulo + ', ' + PV.mgTxt(p.mg) + ' mg por bolsa. Envío en 24 a 48 h desde España.';
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', desc);
+    var base = location.href.replace(/[?#].*$/, '').replace(/producto\.html$/, '');
+    var ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: p.marca + ' ' + p.titulo,
+      description: t ? t[2] : desc,
+      image: base + 'img/p/800/' + p.h + '.webp',
+      brand: { '@type': 'Brand', name: p.marca },
+      sku: p.variantes[0].sku,
+      offers: variantes.map(function (v) {
+        return { '@type': 'Offer', name: v.titulo, sku: v.sku, price: ((mayorista ? v.precio : v.pvp) / 100).toFixed(2), priceCurrency: 'EUR',
+          availability: 'https://schema.org/' + (v.stock > 0 ? 'InStock' : 'OutOfStock'), url: base + 'producto.html#' + p.h };
+      })
+    };
+    if (p.ean) ld.gtin13 = p.ean;
+    var nodo = document.getElementById('pv-ld-producto');
+    if (!nodo) {
+      nodo = document.createElement('script');
+      nodo.type = 'application/ld+json';
+      nodo.id = 'pv-ld-producto';
+      document.head.appendChild(nodo);
+    }
+    nodo.textContent = JSON.stringify(ld);
+  }
+
   var main = document.querySelector('[data-pv-producto]');
   var porDefecto = (PV.productos.filter(function (p) { return p.insignia === 'top'; })[0] || PV.productos[0]).h;
   function pintar() {
@@ -2179,6 +2301,7 @@ window.PV_TEXTOS = {"77-apple-mint":["Manzana con final de menta","Sabor a manza
     var p = PV.porHandle[h] || PV.porHandle[porDefecto];
     var estado = PV.estado();
     main.innerHTML = ficha(p, estado);
+    metadatos(p, p.variantes.filter(function (v) { return estado === 'aprobado' || v.latas <= PV.TOPE_PARTICULAR; }), estado === 'aprobado');
     window.scrollTo(0, 0);
     document.title = p.marca + ' ' + p.titulo + ' · Pouches Spain';
     document.querySelectorAll('[data-pv-estado]').forEach(function (b) {
