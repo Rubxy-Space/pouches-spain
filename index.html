@@ -91,7 +91,12 @@
 .b2b-marquesina,
 .b2b-pie__nombre,
 .b2b-pie__titulo,
-.b2b-pie__18 {
+.b2b-pie__18,
+.b2b-ficha__titulo,
+.b2b-ficha__titular,
+.b2b-ficha__marca,
+.b2b-pestanas__tab,
+.b2b-ver-mas {
   font-family: var(--b2b-display);
   font-weight: 800;
   /* lint-ia: permitido mayúsculas como rótulo de la marca, según la identidad visual de Pouches Spain */
@@ -735,13 +740,15 @@
   .b2b-prod:hover .b2b-prod__media svg { transform: scale(1.05) rotate(-3deg); }
 }
 .b2b-prod.is-activa .b2b-prod__media { box-shadow: inset 0 0 0 2px var(--b2b-rojo); }
+/* La foto también abre la ficha del producto. */
+.b2b-prod__foto { display: block; width: 100%; height: 100%; }
 /* Fotos de producto con fondo blanco: el blanco se funde con el gris de la ficha.
    Las PNG sin fondo se ven igual. */
 .b2b-prod__media img,
 .b2b-carta__media img,
 .b2b-tarjeta__media.is-producto img { mix-blend-mode: multiply; }
-/* En la cabecera de colección la lata va delante del sol: sin mezcla, para que los rayos no se vean a través. */
-.b2b-col__media.is-producto img { position: relative; mix-blend-mode: normal; }
+/* Cabecera de colección: la foto también se funde con el gris (las del proveedor traen fondo blanco). */
+.b2b-col__media.is-producto img { mix-blend-mode: multiply; }
 .b2b-insignia {
   position: absolute;
   top: 10px;
@@ -1126,7 +1133,7 @@ html.b2b-sin-scroll { overflow: hidden; }
 .b2b-col__dato { margin-top: 16px; font-size: 13px; letter-spacing: 0.04em; /* lint-ia: permitido rótulo de dato en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
 .b2b-col__media { border-radius: var(--b2b-radius); overflow: hidden; background: var(--b2b-gris); }
 .b2b-col__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.b2b-col__media.is-producto { display: grid; place-items: center; aspect-ratio: 1; padding: 8%; background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22 fill=%22none%22 stroke=%22%23F2C84B%22 stroke-width=%221.3%22 stroke-linecap=%22round%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2220%22/%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2227%22/%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2234%22/%3E%3Cline x1=%22142.0%22 y1=%22100.0%22 x2=%22156.0%22 y2=%22100.0%22/%3E%3Cline x1=%22141.6%22 y1=%22105.5%22 x2=%22150.6%22 y2=%22106.7%22/%3E%3Cline x1=%22140.6%22 y1=%22110.9%22 x2=%22154.1%22 y2=%22114.5%22/%3E%3Cline x1=%22138.8%22 y1=%22116.1%22 x2=%22147.1%22 y2=%22119.5%22/%3E%3Cline x1=%22136.4%22 y1=%22121.0%22 x2=%22148.5%22 y2=%22128.0%22/%3E%3Cline x1=%22133.3%22 y1=%22125.6%22 x2=%22140.5%22 y2=%22131.0%22/%3E%3Cline x1=%22129.7%22 y1=%22129.7%22 x2=%22139.6%22 y2=%22139.6%22/%3E%3Cline x1=%22125.6%22 y1=%22133.3%22 x2=%22131.0%22 y2=%22140.5%22/%3E%3Cline x1=%22121.0%22 y1=%22136.4%22 x2=%22128.0%22 y2=%22148.5%22/%3E%3Cline x1=%22116.1%22 y1=%22138.8%22 x2=%22119.5%22 y2=%22147.1%22/%3E%3Cline x1=%22110.9%22 y1=%22140.6%22 x2=%22114.5%22 y2=%22154.1%22/%3E%3Cline x1=%22105.5%22 y1=%22141.6%22 x2=%22106.7%22 y2=%22150.6%22/%3E%3Cline x1=%22100.0%22 y1=%22142.0%22 x2=%22100.0%22 y2=%22156.0%22/%3E%3Cline x1=%2294.5%22 y1=%22141.6%22 x2=%2293.3%22 y2=%22150.6%22/%3E%3Cline x1=%2289.1%22 y1=%22140.6%22 x2=%2285.5%22 y2=%22154.1%22/%3E%3Cline x1=%2283.9%22 y1=%22138.8%22 x2=%2280.5%22 y2=%22147.1%22/%3E%3Cline x1=%2279.0%22 y1=%22136.4%22 x2=%2272.0%22 y2=%22148.5%22/%3E%3Cline x1=%2274.4%22 y1=%22133.3%22 x2=%2269.0%22 y2=%22140.5%22/%3E%3Cline x1=%2270.3%22 y1=%22129.7%22 x2=%2260.4%22 y2=%22139.6%22/%3E%3Cline x1=%2266.7%22 y1=%22125.6%22 x2=%2259.5%22 y2=%22131.0%22/%3E%3Cline x1=%2263.6%22 y1=%22121.0%22 x2=%2251.5%22 y2=%22128.0%22/%3E%3Cline x1=%2261.2%22 y1=%22116.1%22 x2=%2252.9%22 y2=%22119.5%22/%3E%3Cline x1=%2259.4%22 y1=%22110.9%22 x2=%2245.9%22 y2=%22114.5%22/%3E%3Cline x1=%2258.4%22 y1=%22105.5%22 x2=%2249.4%22 y2=%22106.7%22/%3E%3Cline x1=%2258.0%22 y1=%22100.0%22 x2=%2244.0%22 y2=%22100.0%22/%3E%3Cline x1=%2258.4%22 y1=%2294.5%22 x2=%2249.4%22 y2=%2293.3%22/%3E%3Cline x1=%2259.4%22 y1=%2289.1%22 x2=%2245.9%22 y2=%2285.5%22/%3E%3Cline x1=%2261.2%22 y1=%2283.9%22 x2=%2252.9%22 y2=%2280.5%22/%3E%3Cline x1=%2263.6%22 y1=%2279.0%22 x2=%2251.5%22 y2=%2272.0%22/%3E%3Cline x1=%2266.7%22 y1=%2274.4%22 x2=%2259.5%22 y2=%2269.0%22/%3E%3Cline x1=%2270.3%22 y1=%2270.3%22 x2=%2260.4%22 y2=%2260.4%22/%3E%3Cline x1=%2274.4%22 y1=%2266.7%22 x2=%2269.0%22 y2=%2259.5%22/%3E%3Cline x1=%2279.0%22 y1=%2263.6%22 x2=%2272.0%22 y2=%2251.5%22/%3E%3Cline x1=%2283.9%22 y1=%2261.2%22 x2=%2280.5%22 y2=%2252.9%22/%3E%3Cline x1=%2289.1%22 y1=%2259.4%22 x2=%2285.5%22 y2=%2245.9%22/%3E%3Cline x1=%2294.5%22 y1=%2258.4%22 x2=%2293.3%22 y2=%2249.4%22/%3E%3Cline x1=%22100.0%22 y1=%2258.0%22 x2=%22100.0%22 y2=%2244.0%22/%3E%3Cline x1=%22105.5%22 y1=%2258.4%22 x2=%22106.7%22 y2=%2249.4%22/%3E%3Cline x1=%22110.9%22 y1=%2259.4%22 x2=%22114.5%22 y2=%2245.9%22/%3E%3Cline x1=%22116.1%22 y1=%2261.2%22 x2=%22119.5%22 y2=%2252.9%22/%3E%3Cline x1=%22121.0%22 y1=%2263.6%22 x2=%22128.0%22 y2=%2251.5%22/%3E%3Cline x1=%22125.6%22 y1=%2266.7%22 x2=%22131.0%22 y2=%2259.5%22/%3E%3Cline x1=%22129.7%22 y1=%2270.3%22 x2=%22139.6%22 y2=%2260.4%22/%3E%3Cline x1=%22133.3%22 y1=%2274.4%22 x2=%22140.5%22 y2=%2269.0%22/%3E%3Cline x1=%22136.4%22 y1=%2279.0%22 x2=%22148.5%22 y2=%2272.0%22/%3E%3Cline x1=%22138.8%22 y1=%2283.9%22 x2=%22147.1%22 y2=%2280.5%22/%3E%3Cline x1=%22140.6%22 y1=%2289.1%22 x2=%22154.1%22 y2=%2285.5%22/%3E%3Cline x1=%22141.6%22 y1=%2294.5%22 x2=%22150.6%22 y2=%2293.3%22/%3E%3Cline x1=%22163.9%22 y1=%22102.8%22 x2=%22185.9%22 y2=%22103.8%22/%3E%3Cline x1=%22163.5%22 y1=%22108.4%22 x2=%22176.3%22 y2=%22110.1%22/%3E%3Cline x1=%22162.5%22 y1=%22113.9%22 x2=%22175.2%22 y2=%22116.7%22/%3E%3Cline x1=%22161.0%22 y1=%22119.2%22 x2=%22182.0%22 y2=%22125.9%22/%3E%3Cline x1=%22159.1%22 y1=%22124.5%22 x2=%22171.1%22 y2=%22129.5%22/%3E%3Cline x1=%22156.8%22 y1=%22129.6%22 x2=%22168.3%22 y2=%22135.6%22/%3E%3Cline x1=%22154.0%22 y1=%22134.4%22 x2=%22172.5%22 y2=%22146.2%22/%3E%3Cline x1=%22150.8%22 y1=%22139.0%22 x2=%22161.1%22 y2=%22146.9%22/%3E%3Cline x1=%22147.2%22 y1=%22143.2%22 x2=%22156.8%22 y2=%22152.0%22/%3E%3Cline x1=%22143.2%22 y1=%22147.2%22 x2=%22158.1%22 y2=%22163.4%22/%3E%3Cline x1=%22139.0%22 y1=%22150.8%22 x2=%22146.9%22 y2=%22161.1%22/%3E%3Cline x1=%22134.4%22 y1=%22154.0%22 x2=%22141.4%22 y2=%22164.9%22/%3E%3Cline x1=%22129.6%22 y1=%22156.8%22 x2=%22139.7%22 y2=%22176.3%22/%3E%3Cline x1=%22124.5%22 y1=%22159.1%22 x2=%22129.5%22 y2=%22171.1%22/%3E%3Cline x1=%22119.2%22 y1=%22161.0%22 x2=%22123.2%22 y2=%22173.4%22/%3E%3Cline x1=%22113.9%22 y1=%22162.5%22 x2=%22118.6%22 y2=%22184.0%22/%3E%3Cline x1=%22108.4%22 y1=%22163.5%22 x2=%22110.1%22 y2=%22176.3%22/%3E%3Cline x1=%22102.8%22 y1=%22163.9%22 x2=%22103.4%22 y2=%22176.9%22/%3E%3Cline x1=%2297.2%22 y1=%22163.9%22 x2=%2296.2%22 y2=%22185.9%22/%3E%3Cline x1=%2291.6%22 y1=%22163.5%22 x2=%2289.9%22 y2=%22176.3%22/%3E%3Cline x1=%2286.1%22 y1=%22162.5%22 x2=%2283.3%22 y2=%22175.2%22/%3E%3Cline x1=%2280.8%22 y1=%22161.0%22 x2=%2274.1%22 y2=%22182.0%22/%3E%3Cline x1=%2275.5%22 y1=%22159.1%22 x2=%2270.5%22 y2=%22171.1%22/%3E%3Cline x1=%2270.4%22 y1=%22156.8%22 x2=%2264.4%22 y2=%22168.3%22/%3E%3Cline x1=%2265.6%22 y1=%22154.0%22 x2=%2253.8%22 y2=%22172.5%22/%3E%3Cline x1=%2261.0%22 y1=%22150.8%22 x2=%2253.1%22 y2=%22161.1%22/%3E%3Cline x1=%2256.8%22 y1=%22147.2%22 x2=%2248.0%22 y2=%22156.8%22/%3E%3Cline x1=%2252.8%22 y1=%22143.2%22 x2=%2236.6%22 y2=%22158.1%22/%3E%3Cline x1=%2249.2%22 y1=%22139.0%22 x2=%2238.9%22 y2=%22146.9%22/%3E%3Cline x1=%2246.0%22 y1=%22134.4%22 x2=%2235.1%22 y2=%22141.4%22/%3E%3Cline x1=%2243.2%22 y1=%22129.6%22 x2=%2223.7%22 y2=%22139.7%22/%3E%3Cline x1=%2240.9%22 y1=%22124.5%22 x2=%2228.9%22 y2=%22129.5%22/%3E%3Cline x1=%2239.0%22 y1=%22119.2%22 x2=%2226.6%22 y2=%22123.2%22/%3E%3Cline x1=%2237.5%22 y1=%22113.9%22 x2=%2216.0%22 y2=%22118.6%22/%3E%3Cline x1=%2236.5%22 y1=%22108.4%22 x2=%2223.7%22 y2=%22110.1%22/%3E%3Cline x1=%2236.1%22 y1=%22102.8%22 x2=%2223.1%22 y2=%22103.4%22/%3E%3Cline x1=%2236.1%22 y1=%2297.2%22 x2=%2214.1%22 y2=%2296.2%22/%3E%3Cline x1=%2236.5%22 y1=%2291.6%22 x2=%2223.7%22 y2=%2289.9%22/%3E%3Cline x1=%2237.5%22 y1=%2286.1%22 x2=%2224.8%22 y2=%2283.3%22/%3E%3Cline x1=%2239.0%22 y1=%2280.8%22 x2=%2218.0%22 y2=%2274.1%22/%3E%3Cline x1=%2240.9%22 y1=%2275.5%22 x2=%2228.9%22 y2=%2270.5%22/%3E%3Cline x1=%2243.2%22 y1=%2270.4%22 x2=%2231.7%22 y2=%2264.4%22/%3E%3Cline x1=%2246.0%22 y1=%2265.6%22 x2=%2227.5%22 y2=%2253.8%22/%3E%3Cline x1=%2249.2%22 y1=%2261.0%22 x2=%2238.9%22 y2=%2253.1%22/%3E%3Cline x1=%2252.8%22 y1=%2256.8%22 x2=%2243.2%22 y2=%2248.0%22/%3E%3Cline x1=%2256.8%22 y1=%2252.8%22 x2=%2241.9%22 y2=%2236.6%22/%3E%3Cline x1=%2261.0%22 y1=%2249.2%22 x2=%2253.1%22 y2=%2238.9%22/%3E%3Cline x1=%2265.6%22 y1=%2246.0%22 x2=%2258.6%22 y2=%2235.1%22/%3E%3Cline x1=%2270.4%22 y1=%2243.2%22 x2=%2260.3%22 y2=%2223.7%22/%3E%3Cline x1=%2275.5%22 y1=%2240.9%22 x2=%2270.5%22 y2=%2228.9%22/%3E%3Cline x1=%2280.8%22 y1=%2239.0%22 x2=%2276.8%22 y2=%2226.6%22/%3E%3Cline x1=%2286.1%22 y1=%2237.5%22 x2=%2281.4%22 y2=%2216.0%22/%3E%3Cline x1=%2291.6%22 y1=%2236.5%22 x2=%2289.9%22 y2=%2223.7%22/%3E%3Cline x1=%2297.2%22 y1=%2236.1%22 x2=%2296.6%22 y2=%2223.1%22/%3E%3Cline x1=%22102.8%22 y1=%2236.1%22 x2=%22103.8%22 y2=%2214.1%22/%3E%3Cline x1=%22108.4%22 y1=%2236.5%22 x2=%22110.1%22 y2=%2223.7%22/%3E%3Cline x1=%22113.9%22 y1=%2237.5%22 x2=%22116.7%22 y2=%2224.8%22/%3E%3Cline x1=%22119.2%22 y1=%2239.0%22 x2=%22125.9%22 y2=%2218.0%22/%3E%3Cline x1=%22124.5%22 y1=%2240.9%22 x2=%22129.5%22 y2=%2228.9%22/%3E%3Cline x1=%22129.6%22 y1=%2243.2%22 x2=%22135.6%22 y2=%2231.7%22/%3E%3Cline x1=%22134.4%22 y1=%2246.0%22 x2=%22146.2%22 y2=%2227.5%22/%3E%3Cline x1=%22139.0%22 y1=%2249.2%22 x2=%22146.9%22 y2=%2238.9%22/%3E%3Cline x1=%22143.2%22 y1=%2252.8%22 x2=%22152.0%22 y2=%2243.2%22/%3E%3Cline x1=%22147.2%22 y1=%2256.8%22 x2=%22163.4%22 y2=%2241.9%22/%3E%3Cline x1=%22150.8%22 y1=%2261.0%22 x2=%22161.1%22 y2=%2253.1%22/%3E%3Cline x1=%22154.0%22 y1=%2265.6%22 x2=%22164.9%22 y2=%2258.6%22/%3E%3Cline x1=%22156.8%22 y1=%2270.4%22 x2=%22176.3%22 y2=%2260.3%22/%3E%3Cline x1=%22159.1%22 y1=%2275.5%22 x2=%22171.1%22 y2=%2270.5%22/%3E%3Cline x1=%22161.0%22 y1=%2280.8%22 x2=%22173.4%22 y2=%2276.8%22/%3E%3Cline x1=%22162.5%22 y1=%2286.1%22 x2=%22184.0%22 y2=%2281.4%22/%3E%3Cline x1=%22163.5%22 y1=%2291.6%22 x2=%22176.3%22 y2=%2289.9%22/%3E%3Cline x1=%22163.9%22 y1=%2297.2%22 x2=%22176.9%22 y2=%2296.6%22/%3E%3C/svg%3E") center / 92% no-repeat, var(--b2b-gris); }
+.b2b-col__media.is-producto { display: grid; place-items: center; aspect-ratio: 1; padding: 8%; background: var(--b2b-gris); }
 .b2b-col__media.is-producto img,
 .b2b-col__media.is-producto svg { width: 100%; height: 100%; object-fit: contain; }
 
@@ -1281,6 +1288,192 @@ html.b2b-sin-scroll { overflow: hidden; }
 .b2b-pie__pago { display: block; width: 38px; height: 24px; }
 .b2b-pie__legal { display: flex; flex-wrap: wrap; gap: 6px 18px; width: 100%; color: rgba(245, 243, 235, 0.5); font-size: 12px; }
 
+/* ---------- Ficha de producto (B2B · Ficha de producto) ---------- */
+/* Arriba deja sitio a la píldora del menú, que flota sobre la página. */
+.b2b-ficha { padding: 112px 0 88px; }
+.b2b-ficha__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 32px 56px;
+  align-items: start;
+}
+.b2b-ficha__galeria { position: sticky; top: 96px; min-width: 0; }
+.b2b-ficha__foto {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 8%;
+  border-radius: calc(var(--b2b-radius) * 2);
+  background: var(--b2b-gris);
+  overflow: hidden;
+}
+.b2b-ficha__foto[style*="--tono"] { background: color-mix(in srgb, var(--tono) 16%, var(--b2b-gris)); }
+/* Foto con fondo blanco: el blanco se funde con el gris, como en las fichas del catálogo. */
+.b2b-ficha__foto img { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.b2b-ficha__foto .b2b-insignia { top: 18px; left: 18px; padding: 6px 10px 5px; font-size: 11px; }
+.b2b-ficha__foto .b2b-prod__mg { top: 18px; right: 20px; font-size: 16px; }
+.b2b-ficha__miniaturas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.b2b-ficha__mini {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 72px;
+  aspect-ratio: 1;
+  padding: 6px;
+  border: 1px solid var(--b2b-line);
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  cursor: pointer;
+}
+.b2b-ficha__mini[aria-pressed="true"] { border-color: var(--b2b-ink); box-shadow: inset 0 0 0 1px var(--b2b-ink); }
+.b2b-ficha__mini img { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+
+.b2b-ficha__info { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.b2b-ficha__marca {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--b2b-rojo);
+  font-size: 14px;
+  text-decoration: none;
+}
+.b2b-ficha__logo { display: block; width: auto; height: 48px; max-width: 240px; object-fit: contain; object-position: left center; }
+.b2b-ficha__marca:hover .b2b-ficha__logo { opacity: 0.7; }
+.b2b-ficha__titulo { font-size: clamp(30px, 3.4vw, 50px); font-weight: 900; line-height: 0.98; text-wrap: balance; }
+.b2b-ficha__sub { color: var(--b2b-muted); font-size: 15px; }
+.b2b-ficha__nivel { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; }
+.b2b-ficha__nivel .b2b-fuerza { gap: 4px; }
+.b2b-ficha__nivel .b2b-fuerza i { width: 11px; height: 11px; border-width: 2px; }
+.b2b-ficha__precio { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding-top: 2px; }
+.b2b-ficha__precio strong { font-size: clamp(30px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.b2b-ficha__precio span { color: var(--b2b-muted); font-size: 14px; }
+.b2b-ficha__gancho { padding-top: 14px; border-top: 1px solid var(--b2b-line); }
+.b2b-ficha__titular { color: var(--b2b-rojo); font-size: 15px; letter-spacing: 0.03em; line-height: 1.25; }
+.b2b-ficha__entradilla { margin-top: 4px; font-size: 16px; }
+
+.b2b-ficha__compra {
+  padding: 18px 18px 14px;
+  border: 1px solid var(--b2b-line);
+  border-radius: calc(var(--b2b-radius) * 2);
+  background: var(--b2b-claro);
+}
+.b2b-ficha .b2b-formatos { padding: 0 0 8px; }
+.b2b-ficha .b2b-formato { padding: 9px 16px; font-size: 13px; }
+.b2b-ficha .b2b-prod__vars { padding: 0; }
+.b2b-ficha .b2b-var[data-b2b-oculta] { display: none; }
+.b2b-ficha .b2b-var {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "fmt fmt"
+    "cant precio";
+  gap: 10px 16px;
+  padding: 6px 0 2px;
+}
+.b2b-ficha .b2b-var__nombre { display: inline; margin-right: 8px; font-size: 14px; }
+.b2b-ficha .b2b-var__precio { align-self: center; }
+.b2b-ficha .b2b-precio { font-size: 18px; }
+.b2b-ficha .b2b-var__imp { display: none; }
+.b2b-ficha .b2b-paso { max-width: 200px; }
+.b2b-barra--ficha {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 18px;
+  margin-top: 16px;
+  padding: 8px 8px 8px 22px;
+}
+.b2b-barra--ficha .b2b-barra__resumen { display: none; }
+.b2b-barra--ficha .b2b-barra__total { text-align: left; }
+/* En la ficha la barra se queda en su sitio: el botón ya está a la vista. */
+.b2b-barra--ficha.is-fija { position: relative; bottom: auto; box-shadow: none; }
+.b2b-barra--ficha .b2b-btn { min-height: 52px; padding: 0 28px; }
+.b2b-ficha .b2b-tope { margin-top: 12px; }
+
+.b2b-ficha__entrega { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; }
+.b2b-ficha__entrega svg { flex: 0 0 auto; width: 24px; height: 24px; color: var(--b2b-rojo); }
+.b2b-ficha__ventajas {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: calc(var(--b2b-radius) * 2);
+  background: var(--b2b-gris);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.b2b-ficha__ventaja { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; align-items: start; }
+.b2b-ficha__icono {
+  width: 22px;
+  height: 22px;
+  background: var(--b2b-rojo);
+  -webkit-mask: var(--b2b-icono) center / contain no-repeat;
+  mask: var(--b2b-icono) center / contain no-repeat;
+}
+.b2b-ficha__ventaja--envio { --b2b-icono: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3v3h-7%22/%3E%3Ccircle cx=%226.5%22 cy=%2217.5%22 r=%221.8%22/%3E%3Ccircle cx=%2217%22 cy=%2217.5%22 r=%221.8%22/%3E%3C/svg%3E"); }
+.b2b-ficha__ventaja--caja { --b2b-icono: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5zM3.5 7.5 12 12l8.5-4.5M12 12v9%22/%3E%3C/svg%3E"); }
+.b2b-ficha__ventaja--lata { --b2b-icono: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%228.5%22/%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%225.2%22/%3E%3C/svg%3E"); }
+.b2b-ficha__ventaja--tienda { --b2b-icono: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M3.5 9.5h17l-1.6-5H5.1zM5 9.5v10h14v-10M9.5 19.5v-5h5v5%22/%3E%3C/svg%3E"); }
+.b2b-ficha__ventaja--edad { --b2b-icono: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%221.7%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%229%22/%3E%3Cpath d=%22M8.2 9.2 9.6 8v8M13.6 12a1.9 1.9 0 1 1 0-3.9 1.9 1.9 0 0 1 0 3.9 2.1 2.1 0 1 1 0 4.1 2.1 2.1 0 0 1 0-4.1z%22/%3E%3C/svg%3E"); }
+.b2b-ficha__pagos { display: flex; flex-wrap: wrap; gap: 6px; }
+.b2b-ficha__pagos svg { display: block; width: 38px; height: 24px; }
+
+/* Pestañas: descripción, ficha técnica, envío y uso */
+.b2b-pestanas { margin-top: 64px; }
+.b2b-pestanas__lista {
+  display: flex;
+  gap: 4px 28px;
+  border-bottom: 1px solid var(--b2b-line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.b2b-pestanas__lista::-webkit-scrollbar { display: none; }
+.b2b-pestanas__tab {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 0 auto;
+  margin: 0 0 -1px;
+  padding: 0 0 13px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--b2b-muted);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+.b2b-pestanas__tab:hover { color: var(--b2b-ink); }
+.b2b-pestanas__tab[aria-selected="true"] { border-bottom-color: var(--b2b-rojo); color: var(--b2b-ink); }
+.b2b-pestanas__panel { max-width: 74ch; padding: 26px 0 4px; font-size: 16px; line-height: 1.65; }
+.b2b-pestanas__panel:focus-visible { outline-offset: 6px; }
+.b2b-ficha__datos { display: grid; max-width: 680px; margin: 0; }
+.b2b-ficha__datos > div { display: grid; grid-template-columns: minmax(130px, 200px) minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--b2b-line); }
+.b2b-ficha__datos dt { color: var(--b2b-muted); font-size: 14px; }
+.b2b-ficha__datos dd { margin: 0; font-size: 15px; font-weight: 600; }
+
+/* Más de la marca */
+.b2b-ficha__mas { margin-top: 72px; }
+.b2b-ficha__mas-cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 24px; }
+.b2b-rejilla--fila { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.b2b-carta__cuerpo .b2b-fuerza { align-self: flex-start; }
+
+/* «Ver más» del catálogo */
+.b2b-ver-mas {
+  display: flex;
+  justify-content: center;
+  margin: 28px auto 0;
+}
+.b2b-ver-mas[hidden] { display: none; }
+.b2b-ver-mas .b2b-btn span { margin-left: 6px; opacity: 0.7; font-variant-numeric: tabular-nums; }
+
+/* Logos de marca: tinta sobre fondos claros y blancos sobre la banda roja o negra. */
+.b2b-fondo--rojo .b2b-marquesina__logo,
+.b2b-fondo--negro .b2b-marquesina__logo { filter: brightness(0) invert(1); opacity: 0.62; }
+.b2b-fondo--rojo .b2b-marquesina__item a:hover .b2b-marquesina__logo,
+.b2b-fondo--negro .b2b-marquesina__item a:hover .b2b-marquesina__logo,
+.b2b-fondo--rojo .b2b-marquesina__item a:focus-visible .b2b-marquesina__logo,
+.b2b-fondo--negro .b2b-marquesina__item a:focus-visible .b2b-marquesina__logo { opacity: 1; }
+.b2b-tarjeta__media.is-logo { aspect-ratio: 16 / 10; padding: 14% 16%; background: var(--b2b-claro); border: 1px solid var(--b2b-line); }
+.b2b-tarjeta__media.is-logo img { width: 100%; height: 100%; object-fit: contain; }
+.b2b-col__logo { display: block; width: auto; height: 44px; max-width: 240px; margin-bottom: 16px; object-fit: contain; object-position: left center; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .b2b-items.is-lista .b2b-prod { grid-template-columns: 76px minmax(0, 1fr); }
@@ -1380,6 +1573,27 @@ html.b2b-sin-scroll { overflow: hidden; }
   .b2b-pildora { animation: none !important; transition: none !important; }
 }
 
+/* Ficha de producto en pantallas medianas y móviles */
+@media (max-width: 1080px) {
+  .b2b-rejilla--fila { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .b2b-ficha__grid { grid-template-columns: minmax(0, 1fr); }
+  .b2b-ficha__galeria { position: static; max-width: 560px; width: 100%; margin: 0 auto; }
+  .b2b-pestanas { margin-top: 48px; }
+}
+@media (max-width: 640px) {
+  .b2b-ficha { padding: 104px 0 60px; }
+  .b2b-ficha__foto { padding: 6%; }
+  .b2b-ficha__titulo { font-size: clamp(28px, 8.6vw, 38px); }
+  .b2b-ficha__compra { padding: 14px 14px 12px; }
+  .b2b-barra--ficha { grid-template-columns: minmax(0, 1fr); padding: 12px; border-radius: 18px; }
+  .b2b-barra--ficha .b2b-barra__total { padding-left: 6px; }
+  .b2b-pestanas__lista { gap: 4px 20px; margin: 0 -16px; padding: 0 16px; }
+  .b2b-ficha__datos > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .b2b-rejilla--fila { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 </style>
   <style>
     :root {
@@ -1410,6 +1624,7 @@ html.b2b-sin-scroll { overflow: hidden; }
       <button type="button" data-pv-estado="aprobado">Profesional</button>
       <button type="button" data-pv-acceso>Aviso de acceso</button>
       <a href="seo.html">Páginas SEO</a>
+      <a href="producto.html">Ficha de producto</a>
     </div>
   </details>
 
@@ -1427,27 +1642,13 @@ html.b2b-sin-scroll { overflow: hidden; }
         <div class="b2b-desplegable">
           <a class="b2b-desplegable__boton" href="seo.html#marcas">Marcas</a>
           <div class="b2b-desplegable__panel">
-            <div class="b2b-desplegable__caja">
-              <a href="seo.html#marca-cuba">Cuba</a>
-              <a href="seo.html#marca-killa">Killa</a>
-              <a href="seo.html#marca-loop">LOOP</a>
-              <a href="seo.html#marca-pablo">Pablo</a>
-              <a href="seo.html#marca-velo">VELO</a>
-              <a href="seo.html#marca-white-fox">White Fox</a>
-              <a href="seo.html#marca-xqs">XQS</a>
-              <a href="seo.html#marca-zyn">ZYN</a>
-            </div>
+            <div class="b2b-desplegable__caja" data-pv-menu-marcas data-base="seo.html"></div>
           </div>
         </div>
         <div class="b2b-desplegable">
           <a class="b2b-desplegable__boton" href="seo.html#sabores">Sabores</a>
           <div class="b2b-desplegable__panel">
-            <div class="b2b-desplegable__caja">
-              <a href="seo.html#sabor-menta">Menta</a>
-              <a href="seo.html#sabor-frutas">Frutas</a>
-              <a href="seo.html#sabor-frutos-rojos">Frutos rojos</a>
-              <a href="seo.html#sabor-citricos">Cítricos</a>
-            </div>
+            <div class="b2b-desplegable__caja" data-pv-menu-sabores data-base="seo.html"></div>
           </div>
         </div>
         <div class="b2b-desplegable">
@@ -1470,9 +1671,9 @@ html.b2b-sin-scroll { overflow: hidden; }
         <div class="b2b-pildora__panel">
           <a href="#pedido">Catálogo</a>
           <a href="seo.html#marcas">Marcas</a>
-          <div class="b2b-pildora__sub"><a href="seo.html#marca-cuba">Cuba</a><a href="seo.html#marca-killa">Killa</a><a href="seo.html#marca-loop">LOOP</a><a href="seo.html#marca-pablo">Pablo</a><a href="seo.html#marca-velo">VELO</a><a href="seo.html#marca-white-fox">White Fox</a><a href="seo.html#marca-xqs">XQS</a><a href="seo.html#marca-zyn">ZYN</a></div>
+          <div class="b2b-pildora__sub" data-pv-menu-marcas data-base="seo.html"></div>
           <a href="seo.html#sabores">Sabores</a>
-          <div class="b2b-pildora__sub"><a href="seo.html#sabor-menta">Menta</a><a href="seo.html#sabor-frutas">Frutas</a><a href="seo.html#sabor-frutos-rojos">Frutos rojos</a><a href="seo.html#sabor-citricos">Cítricos</a></div>
+          <div class="b2b-pildora__sub" data-pv-menu-sabores data-base="seo.html"></div>
           <a href="seo.html#niveles">Niveles</a>
           <div class="b2b-pildora__sub"><a href="seo.html#nivel-1">Suave</a><a href="seo.html#nivel-2">Medio</a><a href="seo.html#nivel-3">Fuerte</a><a href="seo.html#nivel-4">Extra fuerte</a></div>
           <a href="seo.html#guia">Guías</a>
@@ -1495,14 +1696,14 @@ html.b2b-sin-scroll { overflow: hidden; }
           <div class="b2b-entrada__esquinas"><p><span class="b2b-bandera" role="img" aria-label="Bandera de España"></span>Marca española</p><p>Catálogo invierno 2026</p></div>
           <h1 class="b2b-h1 b2b-entrada__titulo" id="b2b-entrada-x">Nicotina por lata <em>o por caja</em></h1>
           <div class="b2b-entrada__pie">
-            <div class="b2b-rte b2b-entrada__lead"><p>Bolsas de nicotina sin tabaco de 14 marcas, con stock en España y envío en 24 a 48 horas. Compra desde una lata; si tienes un negocio, abre una cuenta profesional y verás precios mayoristas.</p></div>
+            <div class="b2b-rte b2b-entrada__lead"><p>Bolsas de nicotina sin tabaco de 39 marcas, con stock en España y envío en 24 a 48 horas. Compra desde una lata; si tienes un negocio, abre una cuenta profesional y verás precios mayoristas.</p></div>
             <div class="b2b-entrada__accion" data-pv-hero></div>
           </div>
         </div>
       </div>
       <dl class="b2b-cifras">
-        <div><dt>marcas</dt><dd>14</dd></div>
-        <div><dt>referencias en stock</dt><dd>+120</dd></div>
+        <div><dt>marcas</dt><dd>39</dd></div>
+        <div><dt>referencias en stock</dt><dd>+470</dd></div>
         <div><dt>entrega en península</dt><dd>48 h</dd></div>
         <div><dt>lata, sin pedido mínimo</dt><dd>Desde 1</dd></div>
       </dl>
@@ -1511,16 +1712,7 @@ html.b2b-sin-scroll { overflow: hidden; }
         <div class="b2b-marquesina is-movil" data-b2b-marquesina data-velocidad="40">
           <p class="b2b-marquesina__rotulo">Marcas</p>
           <div class="b2b-marquesina__ventana">
-            <ul class="b2b-marquesina__pista" aria-label="Marcas">
-              <li class="b2b-marquesina__item"><a href="#marca-cuba">Cuba</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-killa">Killa</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-loop">LOOP</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-pablo">Pablo</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-velo">VELO</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-white-fox">White Fox</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-xqs">XQS</a></li>
-              <li class="b2b-marquesina__item"><a href="#marca-zyn">ZYN</a></li>
-            </ul>
+            <ul class="b2b-marquesina__pista" aria-label="Marcas" data-pv-marquesina data-base="filtro"></ul>
           </div>
         </div>
       </div>
@@ -1551,8 +1743,8 @@ html.b2b-sin-scroll { overflow: hidden; }
           </article>
           <article class="b2b-bento__item b2b-bento__item--normal">
             <div class="b2b-bento__txt">
-              <p class="b2b-bento__cifra">+120</p>
-              <h3 class="b2b-bento__titulo">referencias de 14 marcas</h3>
+              <p class="b2b-bento__cifra">+470</p>
+              <h3 class="b2b-bento__titulo">referencias de 39 marcas</h3>
               <p class="b2b-bento__texto">Siempre con stock de lo que más rota.</p>
             </div>
           </article>
@@ -1668,32 +1860,18 @@ html.b2b-sin-scroll { overflow: hidden; }
       </div>
       <nav class="b2b-pie__col" aria-label="Marcas">
         <p class="b2b-pie__titulo">Marcas</p>
-        <ul>
-            <li><a href="seo.html#marca-cuba">Cuba</a></li>
-            <li><a href="seo.html#marca-killa">Killa</a></li>
-            <li><a href="seo.html#marca-loop">LOOP</a></li>
-            <li><a href="seo.html#marca-pablo">Pablo</a></li>
-            <li><a href="seo.html#marca-velo">VELO</a></li>
-            <li><a href="seo.html#marca-white-fox">White Fox</a></li>
-            <li><a href="seo.html#marca-xqs">XQS</a></li>
-            <li><a href="seo.html#marca-zyn">ZYN</a></li>
-        </ul>
+        <ul data-pv-pie-marcas data-base="seo.html"></ul>
       </nav>
       <nav class="b2b-pie__col" aria-label="Sabores">
         <p class="b2b-pie__titulo">Sabores</p>
-        <ul>
-            <li><a href="seo.html#sabor-menta">Menta</a></li>
-            <li><a href="seo.html#sabor-frutas">Frutas</a></li>
-            <li><a href="seo.html#sabor-frutos-rojos">Frutos rojos</a></li>
-            <li><a href="seo.html#sabor-citricos">Cítricos</a></li>
-        </ul>
+        <ul data-pv-pie-sabores data-base="seo.html"></ul>
       </nav>
       <nav class="b2b-pie__col" aria-label="Niveles">
         <p class="b2b-pie__titulo">Niveles</p>
         <ul>
             <li><a href="seo.html#nivel-1">Suave, hasta 5 mg</a></li>
-            <li><a href="seo.html#nivel-2">Medio, de 6 a 9 mg</a></li>
-            <li><a href="seo.html#nivel-3">Fuerte, de 10 a 14 mg</a></li>
+            <li><a href="seo.html#nivel-2">Medio, de 5 a 9 mg</a></li>
+            <li><a href="seo.html#nivel-3">Fuerte, de 9 a 14 mg</a></li>
             <li><a href="seo.html#nivel-4">Extra fuerte, más de 14 mg</a></li>
         </ul>
       </nav>
@@ -1720,99 +1898,25 @@ html.b2b-sin-scroll { overflow: hidden; }
   <div data-pv-acceso-hueco></div>
 
   <script>
-/*
-  Solo para la vista previa. Fotos oficiales de producto de cada marca (packshots de 860 px con fondo
-  transparente, tomados de las fichas de snusdaddy.com). Decisión de Rubén: se usan también en la web
-  pública y él asume el riesgo de derechos. Clave «marca|título» del producto de ejemplo.
-  En Shopify no hace falta: cada ficha usa la foto que se sube al producto.
-*/
-window.PV_FOTOS = {
-  'ZYN|Cool Mint': 'img/zyn-cool-mint.png',
-  'ZYN|Citrus Extra Strong': 'img/zyn-citrus-extra-strong.png',
-  'ZYN|Black Cherry': 'img/zyn-black-cherry.png',
-  'VELO|Freezing Peppermint Max': 'img/velo-freezing-peppermint-max.png',
-  'VELO|Tropical Mango': 'img/velo-tropical-mango.png',
-  'VELO|Purple Grape': 'img/velo-purple-grape.png',
-  'VELO|Bright Spearmint Mini': 'img/velo-bright-spearmint-mini.png',
-  'XQS|Blueberry Mint': 'img/xqs-blueberry-mint.png',
-  'XQS|Tropical': 'img/xqs-tropical.png',
-  'Cuba|White Peach': 'img/cuba-white-peach.png',
-  'Cuba|White Watermelon': 'img/cuba-white-watermelon.png',
-  'White Fox|Full Charge': 'img/white-fox-full-charge.png',
-  'White Fox|Double Mint': 'img/white-fox-double-mint.png',
-  'Pablo|Ice Cold': 'img/pablo-ice-cold.png',
-  'Pablo|Exclusive Grape Ice': 'img/pablo-exclusive-grape-ice.png',
-  'Killa|Cold Mint': 'img/killa-cold-mint.png',
-  'Killa|Watermelon': 'img/killa-watermelon.png',
-  'LOOP|Jalapeño Lime': 'img/loop-jalapeno-lime.png',
-  'LOOP|Habanero Mint': 'img/loop-habanero-mint.png'
-};
+/* Generado por proveedor/generar.py con el stock del proveedor. No editar a mano. */
+window.PV_CATALOGO = {"marcas":[{"n":"77","h":"77","l":"img/marcas/77.png","w":498},{"n":"Après","h":"apres","l":"img/marcas/apres.png","w":414},{"n":"Aroma","h":"aroma","l":"img/marcas/aroma.png","w":674},{"n":"Björn","h":"bjorn","l":"img/marcas/bjorn.png","w":515},{"n":"Chainpop","h":"chainpop","l":"img/marcas/chainpop.png","w":708},{"n":"Cuba","h":"cuba","l":"img/marcas/cuba.png","w":426},{"n":"Denssi","h":"denssi","l":"img/marcas/denssi.png","w":527},{"n":"Dope","h":"dope","l":"img/marcas/dope.png","w":398},{"n":"Dosh","h":"dosh","l":"img/marcas/dosh.png","w":160},{"n":"FEDRS","h":"fedrs","l":"img/marcas/fedrs.png","w":467},{"n":"FIX","h":"fix","l":"img/marcas/fix.png","w":378},{"n":"Garant","h":"garant","l":"img/marcas/garant.png","w":424},{"n":"GOAT","h":"goat","l":"img/marcas/goat.png","w":618},{"n":"Greatest","h":"greatest","l":"img/marcas/greatest.png","w":436},{"n":"Iceberg","h":"iceberg","l":"img/marcas/iceberg.png","w":594},{"n":"INIC","h":"inic","l":"img/marcas/inic.png","w":391},{"n":"ITS","h":"its","l":"img/marcas/its.png","w":255},{"n":"K#RWA","h":"k-rwa","l":"img/marcas/k-rwa.png","w":600},{"n":"Kelly White","h":"kelly-white","l":"img/marcas/kelly-white.png","w":938},{"n":"Killa","h":"killa","l":"img/marcas/killa.png","w":298},{"n":"Klint","h":"klint","l":"img/marcas/klint.png","w":495},{"n":"Kuma","h":"kuma","l":"img/marcas/kuma.png","w":512},{"n":"LOOP","h":"loop","l":"img/marcas/loop.png","w":500},{"n":"MAF","h":"maf","l":"img/marcas/maf.png","w":418},{"n":"Mynt","h":"mynt","l":"img/marcas/mynt.png","w":415},{"n":"NICS","h":"nics","l":"img/marcas/nics.png","w":200},{"n":"NOIS","h":"nois","l":"img/marcas/nois.png","w":348},{"n":"Noto","h":"noto","l":"img/marcas/noto.png","w":503},{"n":"Pablo","h":"pablo","l":"img/marcas/pablo.png","w":258},{"n":"R4VE","h":"r4ve","l":"img/marcas/r4ve.png","w":396},{"n":"Rush","h":"rush","l":"img/marcas/rush.png","w":650},{"n":"Siberia","h":"siberia","l":"img/marcas/siberia.png","w":584},{"n":"Skruf","h":"skruf","l":"img/marcas/skruf.png","w":537},{"n":"Snoberg","h":"snoberg","l":"img/marcas/snoberg.png","w":655},{"n":"SYX","h":"syx","l":"img/marcas/syx.png","w":401},{"n":"VELO","h":"velo","l":"img/marcas/velo.png","w":528},{"n":"White Fox","h":"white-fox","l":"img/marcas/white-fox.png","w":250},{"n":"XQS","h":"xqs","l":"img/marcas/xqs.png","w":421},{"n":"Zeus","h":"zeus","l":"img/marcas/zeus.png","w":348}],"familias":[{"h":"menta","n":"Menta","i":"De la hierbabuena suave a las mentas heladas más fuertes. El sabor más pedido."},{"h":"frutas","n":"Frutas","i":"Sandía, manzana, melocotón, uva y más, solos o con un toque de frío."},{"h":"frutos-rojos","n":"Frutos rojos","i":"Fresa, frambuesa, cereza, arándano y frutos del bosque."},{"h":"citricos","n":"Cítricos","i":"Limón, lima, naranja y pomelo: frescos y algo ácidos."},{"h":"tropical","n":"Tropical","i":"Mango, piña, maracuyá, lichi y otras frutas tropicales."},{"h":"bebidas","n":"Bebidas","i":"Cola, bebida energética, limonada y otros refrescos."},{"h":"dulces","n":"Dulces","i":"Vainilla, chicle, caramelo, regaliz y sabores de golosina."},{"h":"clasicos","n":"Clásicos","i":"Sabores originales y botánicos, sin fruta ni menta como protagonista."}],"productos":[{"id":144473407,"h":"pablo-mini-ice-cold","m":"Pablo","t":"Mini Ice Cold","s":"Menta helada","f":"menta","mg":15,"pv":590,"pr":275,"st":56,"fb":"Mini","b":"top","e":"5744000761510"},{"id":144470214,"h":"pablo-ice-cold","m":"Pablo","t":"Ice Cold","s":"Menta helada","f":"menta","mg":24,"pv":590,"pr":305,"st":61,"b":"top","e":"5744000760186"},{"id":159183855,"h":"velo-freezing-peppermint-max","m":"VELO","t":"Freezing Peppermint Max","s":"Menta piperita helada","f":"menta","mg":16.8,"pv":750,"pr":465,"st":32,"b":"top"},{"id":159183852,"h":"velo-freezing-peppermint-ultra","m":"VELO","t":"Freezing Peppermint Ultra","s":"Menta piperita helada","f":"menta","mg":14,"pv":750,"pr":465,"st":70,"b":"top"},{"id":144474486,"h":"pablo-exclusive-grape-ice","m":"Pablo","t":"Exclusive Grape Ice","s":"Uva helada","f":"frutas","mg":30,"pv":590,"pr":290,"st":69,"b":"top","e":"5744000761626"},{"id":144482926,"h":"pablo-ice-cold-xxl","m":"Pablo","t":"Ice Cold XXL","s":"Menta helada","f":"menta","mg":24,"pv":690,"pr":360,"st":63,"fb":"XXL","b":"top","e":"5744000760940"},{"id":144473431,"h":"pablo-exclusive-mango-ice","m":"Pablo","t":"Exclusive Mango Ice","s":"Mango helado","f":"tropical","mg":30,"pv":590,"pr":290,"st":39,"b":"top","e":"5744000761633"},{"id":159259316,"h":"pablo-exclusive-strawberry-kiwi","m":"Pablo","t":"Exclusive Strawberry Kiwi","s":"Fresa y kiwi","f":"frutos-rojos","mg":30,"pv":590,"pr":290,"st":53,"b":"top"},{"id":150844261,"h":"garant-extreme","m":"Garant","t":"Extreme","s":"Sabor original","f":"clasicos","mg":25,"pv":650,"pr":340,"st":43,"b":"top","e":"4779049510202"},{"id":144473442,"h":"pablo-exclusive-frosted-ice","m":"Pablo","t":"Exclusive Frosted Ice","s":"Menta helada","f":"menta","mg":30,"pv":590,"pr":290,"st":50,"e":"5744000761664"},{"id":153117823,"h":"pablo-exclusive-tropical-punch","m":"Pablo","t":"Exclusive Tropical Punch","s":"Ponche tropical","f":"bebidas","mg":30,"pv":590,"pr":290,"st":32,"e":"5740031400572"},{"id":144954184,"h":"pablo-exclusive-passion-fruit","m":"Pablo","t":"Exclusive Passion Fruit","s":"Maracuyá","f":"tropical","mg":30,"pv":590,"pr":290,"st":67,"e":"5744000761978"},{"id":164142900,"h":"cuba-ice-mint-black-limted-edition","m":"Cuba","t":"Ice Mint Black Limited Edition","s":"Menta helada","f":"menta","mg":30,"pv":590,"pr":310,"st":45},{"id":153117835,"h":"pablo-exclusive-cherry-cola","m":"Pablo","t":"Exclusive Cherry Cola","s":"Cereza y cola","f":"bebidas","mg":30,"pv":590,"pr":290,"st":44,"e":"5740031400756"},{"id":144473436,"h":"pablo-exclusive-banana-ice","m":"Pablo","t":"Exclusive Banana Ice","s":"Plátano helado","f":"tropical","mg":30,"pv":590,"pr":290,"st":44,"e":"5744000761602"},{"id":144473508,"h":"killa-mini-frosted-mint","m":"Killa","t":"Mini Frosted Mint","s":"Menta helada","f":"menta","mg":8,"pv":550,"pr":260,"st":34,"fb":"Mini","e":"5744000761688"},{"id":153117845,"h":"pablo-exclusive-strawberry-watermelon","m":"Pablo","t":"Exclusive Strawberry Watermelon","s":"Fresa y sandía","f":"frutos-rojos","mg":30,"pv":590,"pr":290,"st":54,"e":"5740031400541"},{"id":162195089,"h":"klint-avalanche-mint","m":"Klint","t":"Avalanche Mint","s":"Menta helada","f":"menta","mg":17.5,"pv":450,"pr":180,"st":62,"e":"7350117055022"},{"id":149484282,"h":"velo-crispy-peppermint","m":"VELO","t":"Crispy Peppermint","s":"Menta piperita","f":"menta","mg":10,"pv":750,"pr":465,"st":34,"e":"8595682141162"},{"id":153117862,"h":"pablo-exclusive-lemonade","m":"Pablo","t":"Exclusive Lemonade","s":"Limonada","f":"bebidas","mg":30,"pv":590,"pr":290,"st":30,"e":"5740031400602"},{"id":159259321,"h":"pablo-exclusive-blueberry-cranberry-cherry","m":"Pablo","t":"Exclusive Blueberry Cranberry Cherry","s":"Arándanos y cereza","f":"frutos-rojos","mg":30,"pv":590,"pr":290,"st":58},{"id":154106722,"h":"cuba-grape-strong","m":"Cuba","t":"Grape Strong","s":"Uva","f":"frutas","mg":43,"pv":590,"pr":310,"st":52,"e":"5905753347493"},{"id":159259320,"h":"pablo-exclusive-cola","m":"Pablo","t":"Exclusive Cola","s":"Cola","f":"bebidas","mg":30,"pv":590,"pr":290,"st":57},{"id":144470099,"h":"killa-cola","m":"Killa","t":"Cola","s":"Cola","f":"bebidas","mg":11.2,"pv":590,"pr":275,"st":69,"e":"5744000760100"},{"id":159183850,"h":"velo-freezing-peppermint","m":"VELO","t":"Freezing Peppermint","s":"Menta piperita helada","f":"menta","mg":14,"pv":750,"pr":465,"st":68},{"id":144473452,"h":"pablo-exclusive-bubblegum","m":"Pablo","t":"Exclusive Bubblegum","s":"Chicle","f":"dulces","mg":30,"pv":590,"pr":290,"st":60,"e":"5744000761619"},{"id":153117842,"h":"pablo-exclusive-orange","m":"Pablo","t":"Exclusive Orange","s":"Naranja","f":"citricos","mg":30,"pv":590,"pr":290,"st":51,"e":"5740031400510"},{"id":159259318,"h":"pablo-exclusive-pink-lemonade","m":"Pablo","t":"Exclusive Pink Lemonade","s":"Limonada rosa","f":"bebidas","mg":30,"pv":590,"pr":290,"st":55},{"id":144473491,"h":"pablo-exclusive-strawberry-lychee","m":"Pablo","t":"Exclusive Strawberry Lychee","s":"Fresa y lichi","f":"frutos-rojos","mg":30,"pv":590,"pr":290,"st":58,"e":"5744000761657"},{"id":159259317,"h":"pablo-exclusive-sour-blueberries","m":"Pablo","t":"Exclusive Sour Blueberries","s":"Arándanos ácidos","f":"frutos-rojos","mg":30,"pv":590,"pr":290,"st":54},{"id":144482780,"h":"nois-extreme-144482780","m":"NOIS","t":"Extreme","s":"Sabor original","f":"clasicos","mg":25,"pv":590,"pr":280,"st":40,"e":"4742024720033"},{"id":160488042,"h":"cuba-blackberry-strong","m":"Cuba","t":"Blackberry Strong","s":"Mora","f":"frutos-rojos","mg":43,"pv":590,"pr":310,"st":50,"e":"5905753347899"},{"id":162099102,"h":"pablo-exclusive-pineapple","m":"Pablo","t":"Exclusive Pineapple","s":"Piña","f":"tropical","mg":30,"pv":590,"pr":290,"st":56},{"id":144470241,"h":"white-fox-mint-slim","m":"White Fox","t":"Mint Slim","s":"Menta","f":"menta","mg":12,"pv":690,"pr":405,"st":47,"fb":"Slim","e":"7350049929798"},{"id":162847223,"h":"pablo-gold-frosted-ice","m":"Pablo","t":"Gold Frosted Ice","s":"Menta helada","f":"menta","mg":17,"pv":590,"pr":290,"st":50},{"id":164142956,"h":"cuba-ice-mint-white-limted-edition","m":"Cuba","t":"Ice Mint White Limited Edition","s":"Menta helada","f":"menta","mg":30,"pv":590,"pr":310,"st":60},{"id":164508044,"h":"loop-red-chili-melon-medium","m":"LOOP","t":"Red Chili Melon Medium","s":"Melón y chile rojo","f":"frutas","mg":7,"pv":790,"pr":580,"st":43},{"id":144470176,"h":"killa-watermelon","m":"Killa","t":"Watermelon","s":"Sandía","f":"frutas","mg":11.2,"pv":590,"pr":275,"st":64,"e":"5744000760148"},{"id":144469992,"h":"killa-blueberry","m":"Killa","t":"Blueberry","s":"Arándano","f":"frutos-rojos","mg":11.2,"pv":590,"pr":275,"st":44,"e":"5744000760094"},{"id":164641689,"h":"rush-green-apple","m":"Rush","t":"Green Apple","s":"Manzana verde","f":"frutas","mg":11,"pv":490,"pr":210,"st":69},{"id":162847261,"h":"pablo-gold-grape-ice","m":"Pablo","t":"Gold Grape Ice","s":"Uva helada","f":"frutas","mg":17,"pv":590,"pr":290,"st":47},{"id":159368532,"h":"killa-energy","m":"Killa","t":"Energy","s":"Bebida energética","f":"bebidas","mg":11.2,"pv":590,"pr":275,"st":45,"e":"5744000760087"},{"id":162847243,"h":"pablo-gold-frosted-mint","m":"Pablo","t":"Gold Frosted Mint","s":"Menta helada","f":"menta","mg":17,"pv":590,"pr":290,"st":70},{"id":150844301,"h":"garant-ice-peach-extreme","m":"Garant","t":"Ice Peach Extreme","s":"Melocotón helado","f":"frutas","mg":25,"pv":650,"pr":340,"st":42,"e":"4779049510691"},{"id":144481824,"h":"cuba-pineapple-strong","m":"Cuba","t":"Pineapple Strong","s":"Piña","f":"tropical","mg":43,"pv":590,"pr":310,"st":68,"e":"5904717759006"},{"id":162846625,"h":"pablo-gold-blueberry-peach-ice","m":"Pablo","t":"Gold Blueberry Peach Ice","s":"Arándano y melocotón helados","f":"frutos-rojos","mg":17,"pv":590,"pr":290,"st":67},{"id":145794020,"h":"iceberg-arasaka","m":"Iceberg","t":"Arasaka","s":"Sabor original","f":"clasicos","mg":30,"pv":590,"pr":305,"st":59,"e":"4653575732553"},{"id":164872894,"h":"nics-black-cherry","m":"NICS","t":"Black Cherry","s":"Cereza negra","f":"frutos-rojos","mg":4,"pv":550,"pr":265,"st":34,"b":"nuevo"},{"id":154222485,"h":"garant-freeze-extreme","m":"Garant","t":"Freeze Extreme","s":"Frescor helado","f":"menta","mg":25,"pv":650,"pr":340,"st":31,"e":"4779049511605"},{"id":151147574,"h":"velo-lime-flame","m":"VELO","t":"Lime Flame","s":"Lima picante","f":"citricos","mg":10,"pv":750,"pr":465,"st":38,"e":"5715345008493"},{"id":150844278,"h":"garant-ice-cool","m":"Garant","t":"Ice Cool","s":"Menta helada","f":"menta","mg":17.5,"pv":650,"pr":340,"st":60,"e":"4779049510752"},{"id":144474502,"h":"nois-extreme-blueberry","m":"NOIS","t":"Blueberry Extreme","s":"Arándano","f":"frutos-rojos","mg":25,"pv":590,"pr":280,"st":44,"e":"4742024720217"},{"id":164417975,"h":"xqs-citrus-burning","m":"XQS","t":"Citrus Burning","s":"Cítricos con picor","f":"citricos","mg":8,"pv":650,"pr":335,"st":51},{"id":164348975,"h":"klint-black-mint","m":"Klint","t":"Black Mint","s":"Menta","f":"menta","mg":11.5,"pv":450,"pr":180,"st":54},{"id":149789645,"h":"garant-raspberry-extreme","m":"Garant","t":"Raspberry Extreme","s":"Frambuesa","f":"frutos-rojos","mg":25,"pv":650,"pr":340,"st":70,"e":"4779049510783"},{"id":144482779,"h":"nois-cool-strong-144482779","m":"NOIS","t":"Cool Strong","s":"Menta fresca","f":"menta","mg":17.5,"pv":550,"pr":250,"st":39,"e":"4742024720118"},{"id":160488048,"h":"cuba-mango-strong","m":"Cuba","t":"Mango Strong","s":"Mango","f":"tropical","mg":43,"pv":590,"pr":310,"st":56,"e":"5905753347868"},{"id":164417882,"h":"xqs-hot-lime","m":"XQS","t":"Hot Lime","s":"Lima picante","f":"citricos","mg":8,"pv":650,"pr":335,"st":40},{"id":162194987,"h":"klint-freeze-mint","m":"Klint","t":"Freeze Mint","s":"Menta helada","f":"menta","mg":11.2,"pv":450,"pr":180,"st":42,"e":"7350117050034"},{"id":144480235,"h":"77-apple-mint","m":"77","t":"Apple & Mint","s":"Manzana y menta","f":"frutas","mg":10.4,"pv":590,"pr":290,"st":37,"e":"5905591980258"},{"id":144480201,"h":"77-black-currant","m":"77","t":"Black Currant","s":"Grosella negra","f":"frutos-rojos","mg":10.4,"pv":590,"pr":290,"st":44,"e":"5905591980265"},{"id":152696954,"h":"77-ghost-bubble-gum-mini","m":"77","t":"Bubble Gum Mini","s":"Chicle","f":"dulces","mg":20,"pv":590,"pr":290,"st":69,"fb":"Mini","e":"5906670981982"},{"id":161619000,"h":"77-bubbly-fizz","m":"77","t":"Bubbly Fizz","s":"Sabor original","f":"clasicos","mg":10.4,"pv":590,"pr":290,"st":64,"e":"5907053727791"},{"id":164756047,"h":"77-classic-ultra","m":"77","t":"Classic Ultra","s":"Sabor original","f":"clasicos","mg":33,"pv":590,"pr":290,"st":37,"b":"nuevo"},{"id":155478946,"h":"77-cola","m":"77","t":"Cola","s":"Cola","f":"bebidas","mg":10.4,"pv":590,"pr":290,"st":47,"e":"5906670984518"},{"id":144480394,"h":"77-cola-cherry","m":"77","t":"Cola & Cherry","s":"Cola y cereza","f":"bebidas","mg":10.4,"pv":590,"pr":290,"st":32,"e":"5905591980364"},{"id":164756512,"h":"77-cola-cherry-ultra","m":"77","t":"Cola & Cherry Ultra","s":"Cola y cereza","f":"bebidas","mg":33,"pv":590,"pr":290,"st":51,"b":"nuevo"},{"id":144480384,"h":"77-cola-vanilla","m":"77","t":"Cola & Vanilla","s":"Cola y vainilla","f":"bebidas","mg":10.4,"pv":590,"pr":290,"st":63,"e":"5905591980289"},{"id":164756020,"h":"77-cola-vanilla-ultra","m":"77","t":"Cola & Vanilla Ultra","s":"Cola y vainilla","f":"bebidas","mg":33,"pv":590,"pr":290,"st":51,"b":"nuevo"},{"id":152696963,"h":"77-ghost-cola-ice-mini","m":"77","t":"Cola Ice Mini","s":"Cola helada","f":"bebidas","mg":20,"pv":590,"pr":290,"st":37,"fb":"Mini","e":"5906670981968"},{"id":158630564,"h":"77-ghost-cola-vanilla-mini","m":"77","t":"Cola Vanilla Mini","s":"Cola y vainilla","f":"bebidas","mg":20,"pv":590,"pr":290,"st":36,"fb":"Mini","e":"5907053726626"},{"id":144480060,"h":"77-forest-fruits","m":"77","t":"Forest Fruits","s":"Frutos del bosque","f":"frutos-rojos","mg":10.4,"pv":590,"pr":290,"st":67,"e":"5905591980296"},{"id":164756100,"h":"77-forest-fruits-ultra","m":"77","t":"Forest Fruits Ultra","s":"Frutos del bosque","f":"frutos-rojos","mg":33,"pv":590,"pr":290,"st":49,"b":"nuevo"},{"id":158631618,"h":"77-freeze-mint","m":"77","t":"Freeze Mint","s":"Menta helada","f":"menta","mg":10.4,"pv":590,"pr":290,"st":65,"e":"5907053717358"},{"id":163098198,"h":"77-ghost-freeze-mint-mini","m":"77","t":"Freeze Mint Mini","s":"Menta helada","f":"menta","mg":20,"pv":590,"pr":290,"st":64,"fb":"Mini","e":"5907053731507"},{"id":164755946,"h":"77-freeze-mint-ultra","m":"77","t":"Freeze Mint Ultra","s":"Menta helada","f":"menta","mg":33,"pv":590,"pr":290,"st":59,"b":"nuevo"},{"id":158631600,"h":"77-grape-ice","m":"77","t":"Grape Ice","s":"Uva helada","f":"frutas","mg":10.4,"pv":590,"pr":290,"st":47,"e":"5907053718041"},{"id":147903067,"h":"77-ice-mint","m":"77","t":"Ice Mint","s":"Menta helada","f":"menta","mg":10.4,"pv":590,"pr":290,"st":66,"e":"5905591980371"},{"id":164756196,"h":"77-ice-mint-ultra","m":"77","t":"Ice Mint Ultra","s":"Menta helada","f":"menta","mg":33,"pv":590,"pr":290,"st":63,"b":"nuevo"},{"id":152696971,"h":"77-ghost-mango-mini","m":"77","t":"Mango Mini","s":"Mango","f":"tropical","mg":20,"pv":590,"pr":290,"st":45,"fb":"Mini","e":"5906670981975"},{"id":152696974,"h":"77-ghost-original-mini","m":"77","t":"Original Mini","s":"Sabor original","f":"clasicos","mg":20,"pv":590,"pr":290,"st":48,"fb":"Mini","e":"5906670981999"},{"id":144480224,"h":"77-peach-mint","m":"77","t":"Peach & Mint","s":"Melocotón y menta","f":"frutas","mg":10.4,"pv":590,"pr":290,"st":67,"e":"5905591980319"},{"id":163098364,"h":"77-ghost-peppermint-mini","m":"77","t":"Peppermint Mini","s":"Menta piperita","f":"menta","mg":20,"pv":590,"pr":290,"st":66,"fb":"Mini","e":"5907053734591"},{"id":158631626,"h":"77-pink-punch","m":"77","t":"Pink Punch","s":"Ponche rosa","f":"bebidas","mg":10.4,"pv":590,"pr":290,"st":32,"e":"5907053716474"},{"id":144480215,"h":"77-raspberry","m":"77","t":"Raspberry","s":"Frambuesa","f":"frutos-rojos","mg":10.4,"pv":590,"pr":290,"st":58,"e":"5905591985864"},{"id":155478941,"h":"77-raspberry-vanilla","m":"77","t":"Raspberry & Vanilla","s":"Frambuesa y vainilla","f":"frutos-rojos","mg":10.4,"pv":590,"pr":290,"st":42,"e":"5905591986199"},{"id":164756002,"h":"77-raspberry-vanilla-ultra","m":"77","t":"Raspberry Vanilla Ultra","s":"Frambuesa y vainilla","f":"frutos-rojos","mg":33,"pv":590,"pr":290,"st":33,"b":"nuevo"},{"id":144480182,"h":"77-strawberry","m":"77","t":"Strawberry","s":"Fresa","f":"frutos-rojos","mg":10.4,"pv":590,"pr":290,"st":66,"e":"5905591980333"},{"id":149453703,"h":"77-watermelon-ice","m":"77","t":"Watermelon Ice","s":"Sandía helada","f":"frutas","mg":10.4,"pv":590,"pr":290,"st":41,"e":"5905591980357"},{"id":158631595,"h":"77-ghost-watermelon-ice-mini","m":"77","t":"Watermelon Ice Mini","s":"Sandía helada","f":"frutas","mg":20,"pv":590,"pr":290,"st":42,"fb":"Mini","e":"5907053726633"},{"id":164756068,"h":"77-watermelon-ice-ultra","m":"77","t":"Watermelon Ice Ultra","s":"Sandía helada","f":"frutas","mg":33,"pv":590,"pr":290,"st":58,"b":"nuevo"},{"id":159061658,"h":"apres-hyper-strong-menthol","m":"Après","t":"Hyper Strong Menthol","s":"Mentol","f":"menta","mg":11,"pv":650,"pr":320,"st":56,"e":"7350129391057"},{"id":162734363,"h":"apres-ice-tea-peach-light","m":"Après","t":"Ice Tea Peach Light","s":"Té helado de melocotón","f":"bebidas","mg":4,"pv":650,"pr":320,"st":63},{"id":162734117,"h":"apres-mint-light","m":"Après","t":"Mint Light","s":"Menta","f":"menta","mg":4,"pv":650,"pr":320,"st":63},{"id":163417048,"h":"aroma-attention-bubble-gum-crazy-strong","m":"Aroma","t":"Attention Bubble Gum Crazy Strong","s":"Chicle","f":"dulces","mg":35,"pv":450,"pr":180,"st":57},{"id":163417124,"h":"aroma-attention-hot-peach-crazy-strong","m":"Aroma","t":"Attention Hot Peach Crazy Strong","s":"Melocotón","f":"frutas","mg":35,"pv":450,"pr":180,"st":51},{"id":163417117,"h":"aroma-attention-ice-blueberry-crazy-strong","m":"Aroma","t":"Attention Ice Blueberry Crazy Strong","s":"Arándano helado","f":"frutos-rojos","mg":35,"pv":450,"pr":180,"st":44},{"id":163417112,"h":"aroma-attention-lime-fresh-crazy-strong","m":"Aroma","t":"Attention Lime Fresh Crazy Strong","s":"Lima fresca","f":"citricos","mg":35,"pv":450,"pr":180,"st":39},{"id":163417129,"h":"aroma-attention-peppermint-crazy-strong","m":"Aroma","t":"Attention Peppermint Crazy Strong","s":"Menta piperita","f":"menta","mg":35,"pv":450,"pr":180,"st":56},{"id":163417052,"h":"aroma-attention-spearmint-crazy-strong","m":"Aroma","t":"Attention Spearmint Crazy Strong","s":"Hierbabuena","f":"menta","mg":35,"pv":450,"pr":180,"st":61},{"id":163417091,"h":"aroma-essence-bubble-gum-strong","m":"Aroma","t":"Essence Bubble Gum Strong","s":"Chicle","f":"dulces","mg":13,"pv":450,"pr":180,"st":59},{"id":163416987,"h":"aroma-essence-hot-peach-strong","m":"Aroma","t":"Essence Hot Peach Strong","s":"Melocotón","f":"frutas","mg":13,"pv":450,"pr":180,"st":37},{"id":163417016,"h":"aroma-essence-ice-blueberry-strong","m":"Aroma","t":"Essence Ice Blueberry Strong","s":"Arándano helado","f":"frutos-rojos","mg":13,"pv":450,"pr":180,"st":66},{"id":163417098,"h":"aroma-essence-lime-fresh-strong","m":"Aroma","t":"Essence Lime Fresh Strong","s":"Lima fresca","f":"citricos","mg":13,"pv":450,"pr":180,"st":66},{"id":163417030,"h":"aroma-essence-peppermint-strong","m":"Aroma","t":"Essence Peppermint Strong","s":"Menta piperita","f":"menta","mg":13,"pv":450,"pr":180,"st":39},{"id":163417023,"h":"aroma-essence-spearmint-strong","m":"Aroma","t":"Essence Spearmint Strong","s":"Hierbabuena","f":"menta","mg":13,"pv":450,"pr":180,"st":32},{"id":158016001,"h":"bjoern-berry-liquorice-medium","m":"Björn","t":"Berry Liquorice Medium","s":"Regaliz de frutos rojos","f":"dulces","mg":9.1,"pv":450,"pr":180,"st":63,"e":"5906670981227"},{"id":158016002,"h":"bjoern-blueberry-medium","m":"Björn","t":"Blueberry Medium","s":"Arándano","f":"frutos-rojos","mg":9.1,"pv":450,"pr":180,"st":64,"e":"5906670981166"},{"id":158016003,"h":"bjoern-cola-ice-medium","m":"Björn","t":"Cola Ice Medium","s":"Cola helada","f":"bebidas","mg":9.1,"pv":450,"pr":180,"st":65,"e":"5906670981173"},{"id":158016009,"h":"bjoern-cola-ice-strong","m":"Björn","t":"Cola Ice Strong","s":"Cola helada","f":"bebidas","mg":19.5,"pv":450,"pr":180,"st":30,"e":"5906670981142"},{"id":158016006,"h":"bjoern-rhub-elder-punch-medium","m":"Björn","t":"Rhub-Elder Punch Medium","s":"Ruibarbo y saúco","f":"bebidas","mg":9.1,"pv":450,"pr":180,"st":68,"e":"5906670981234"},{"id":156181782,"h":"chainpop-cherry-chili","m":"Chainpop","t":"Cherry & Chili","s":"Cereza y chile","f":"frutos-rojos","mg":9,"pv":650,"pr":355,"st":61,"e":"7350156930144"},{"id":154106706,"h":"cuba-apple-juice-medium","m":"Cuba","t":"Apple Juice Medium","s":"Zumo de manzana","f":"frutas","mg":10.4,"pv":490,"pr":210,"st":36,"e":"5905753347455"},{"id":147888097,"h":"cuba-banana-hit-medium","m":"Cuba","t":"Banana Hit Medium","s":"Plátano","f":"tropical","mg":10.4,"pv":490,"pr":210,"st":61,"e":"5905753347226"},{"id":147888163,"h":"cuba-black-currant-medium","m":"Cuba","t":"Black Currant Medium","s":"Grosella negra","f":"frutos-rojos","mg":10.4,"pv":490,"pr":210,"st":45,"e":"5905753347202"},{"id":162734024,"h":"cuba-blackberry-light","m":"Cuba","t":"Blackberry Light","s":"Mora","f":"frutos-rojos","mg":4,"pv":550,"pr":265,"st":52,"e":"5905753347929"},{"id":160653390,"h":"cuba-blackberry-medium","m":"Cuba","t":"Blackberry Medium","s":"Mora","f":"frutos-rojos","mg":10.4,"pv":490,"pr":210,"st":45,"e":"5905753347844"},{"id":144480851,"h":"cuba-blueberry","m":"Cuba","t":"Blueberry Medium","s":"Arándano","f":"frutos-rojos","mg":10.4,"pv":490,"pr":210,"st":38,"e":"5904717759013"},{"id":162734016,"h":"cuba-cherry-light","m":"Cuba","t":"Cherry Light","s":"Cereza","f":"frutos-rojos","mg":4,"pv":550,"pr":265,"st":44,"e":"5905753347912"},{"id":144482643,"h":"cuba-cola-medium","m":"Cuba","t":"Cola Medium","s":"Cola","f":"bebidas","mg":10.4,"pv":490,"pr":210,"st":67,"e":"5904717759815"},{"id":154106714,"h":"cuba-cold-dry-medium","m":"Cuba","t":"Cold Dry Medium","s":"Frescor helado","f":"menta","mg":10.4,"pv":490,"pr":210,"st":44,"e":"5905753347462"},{"id":162734057,"h":"cuba-double-fresh-light","m":"Cuba","t":"Double Fresh Light","s":"Menta fresca","f":"menta","mg":4,"pv":550,"pr":265,"st":44,"e":"5905753347936"},{"id":144714757,"h":"cuba-forest-berries-medium","m":"Cuba","t":"Forest Berries Medium","s":"Frutos del bosque","f":"frutos-rojos","mg":10.4,"pv":490,"pr":210,"st":39,"e":"5904717759518"},{"id":154106711,"h":"cuba-grape-medium","m":"Cuba","t":"Grape Medium","s":"Uva","f":"frutas","mg":10.4,"pv":490,"pr":210,"st":41,"e":"5905753347486"},{"id":160653383,"h":"cuba-mango-medium","m":"Cuba","t":"Mango Medium","s":"Mango","f":"tropical","mg":10.4,"pv":490,"pr":210,"st":38,"e":"5905753347813"},{"id":144482559,"h":"cuba-pineapple-medium","m":"Cuba","t":"Pineapple Medium","s":"Piña","f":"tropical","mg":10.4,"pv":490,"pr":210,"st":65,"e":"5904717759037"},{"id":144482650,"h":"cuba-watermelon-medium","m":"Cuba","t":"Watermelon Medium","s":"Sandía","f":"frutas","mg":10.4,"pv":490,"pr":210,"st":33,"e":"5904717759501"},{"id":155234115,"h":"denssi-blueberry-freeze","m":"Denssi","t":"Blueberry Freeze","s":"Arándano helado","f":"frutos-rojos","mg":11.2,"pv":650,"pr":345,"st":68,"e":"6429811315242"},{"id":155234119,"h":"denssi-mango-freeze","m":"Denssi","t":"Mango Freeze","s":"Mango helado","f":"tropical","mg":11.2,"pv":650,"pr":345,"st":31,"e":"6429811315877"},{"id":155234117,"h":"denssi-strawberry-freeze","m":"Denssi","t":"Strawberry Freeze","s":"Fresa helada","f":"frutos-rojos","mg":11.2,"pv":650,"pr":345,"st":70,"e":"6429811315211"},{"id":150434890,"h":"dope-blueberry-50","m":"Dope","t":"Blueberry #50","s":"Arándano","f":"frutos-rojos","mg":35,"pv":490,"pr":215,"st":57,"e":"8594203202450"},{"id":150434867,"h":"dope-cherry-50","m":"Dope","t":"Cherry Ice #50","s":"Cereza helada","f":"frutos-rojos","mg":35,"pv":490,"pr":215,"st":34,"e":"8594203202399"},{"id":144482285,"h":"dope-freeze-50","m":"Dope","t":"Freeze #50","s":"Frescor helado","f":"menta","mg":35,"pv":490,"pr":215,"st":37,"e":"8594203201446"},{"id":144481914,"h":"dope-freeze-strong","m":"Dope","t":"Freeze Strong","s":"Frescor helado","f":"menta","mg":11.2,"pv":490,"pr":215,"st":35,"e":"8594203200425"},{"id":144472398,"h":"dope-ice-cool","m":"Dope","t":"Ice Cool Strong","s":"Menta helada","f":"menta","mg":11.2,"pv":490,"pr":215,"st":31,"e":"8594203200043"},{"id":144482356,"h":"dope-mango-50","m":"Dope","t":"Ice Mango #50","s":"Mango helado","f":"tropical","mg":35,"pv":490,"pr":215,"st":67,"e":"8594203201729"},{"id":144476949,"h":"dope-ice-mango-crazy-strong","m":"Dope","t":"Ice Mango Crazy Strong","s":"Mango helado","f":"tropical","mg":20,"pv":490,"pr":215,"st":31,"e":"8594203201521"},{"id":144472405,"h":"dope-ice-mango","m":"Dope","t":"Ice Mango Strong","s":"Mango helado","f":"tropical","mg":11.2,"pv":490,"pr":215,"st":38,"e":"8594203200074"},{"id":150434921,"h":"dope-ice-mint-50","m":"Dope","t":"Icy Mint #50","s":"Menta helada","f":"menta","mg":35,"pv":490,"pr":215,"st":47,"e":"8594203202429"},{"id":163463190,"h":"dosh-cola-16mg","m":"Dosh","t":"Cola 16 mg","s":"Cola","f":"bebidas","mg":16,"pv":690,"pr":370,"st":33},{"id":163463127,"h":"dosh-cola-9mg","m":"Dosh","t":"Cola 9 mg","s":"Cola","f":"bebidas","mg":9,"pv":690,"pr":370,"st":52},{"id":163463028,"h":"dosh-fresh-mint-16mg","m":"Dosh","t":"Fresh Mint 16 mg","s":"Menta fresca","f":"menta","mg":16,"pv":690,"pr":370,"st":35},{"id":163463226,"h":"dosh-fresh-mint-35mg","m":"Dosh","t":"Fresh Mint 35 mg","s":"Menta fresca","f":"menta","mg":35,"pv":690,"pr":370,"st":69},{"id":163463067,"h":"dosh-fresh-mint-9mg","m":"Dosh","t":"Fresh Mint 9 mg","s":"Menta fresca","f":"menta","mg":9,"pv":690,"pr":370,"st":33},{"id":163463211,"h":"dosh-spearmint-fresh-35mg","m":"Dosh","t":"Spearmint Fresh 35 mg","s":"Hierbabuena","f":"menta","mg":35,"pv":690,"pr":370,"st":54},{"id":163463111,"h":"dosh-spearmint-fresh-9mg","m":"Dosh","t":"Spearmint Fresh 9 mg","s":"Hierbabuena","f":"menta","mg":9,"pv":690,"pr":370,"st":36},{"id":163463253,"h":"dosh-strawberry-lush-16mg","m":"Dosh","t":"Strawberry Lush 16 mg","s":"Fresa","f":"frutos-rojos","mg":16,"pv":690,"pr":370,"st":55},{"id":163463134,"h":"dosh-strawberry-lush-9mg","m":"Dosh","t":"Strawberry Lush 9 mg","s":"Fresa","f":"frutos-rojos","mg":9,"pv":690,"pr":370,"st":59},{"id":163463170,"h":"dosh-watermelon-16mg","m":"Dosh","t":"Watermelon 16 mg","s":"Sandía","f":"frutas","mg":16,"pv":690,"pr":370,"st":54},{"id":163463023,"h":"dosh-watermelon-6mg","m":"Dosh","t":"Watermelon 6 mg","s":"Sandía","f":"frutas","mg":6,"pv":690,"pr":370,"st":30},{"id":163554457,"h":"fedrs-black-bloody-orange","m":"FEDRS","t":"Black Bloody Orange","s":"Naranja sanguina","f":"citricos","mg":32.5,"pv":650,"pr":345,"st":34},{"id":163554448,"h":"fedrs-black-cherry-frost","m":"FEDRS","t":"Black Cherry Frost","s":"Cereza helada","f":"frutos-rojos","mg":32.5,"pv":650,"pr":345,"st":66},{"id":163554439,"h":"fedrs-black-evilberry","m":"FEDRS","t":"Black Evilberry","s":"Frutos rojos","f":"frutos-rojos","mg":32.5,"pv":650,"pr":345,"st":57},{"id":163554427,"h":"fedrs-black-freeze-mint","m":"FEDRS","t":"Black Freeze Mint","s":"Menta helada","f":"menta","mg":32.5,"pv":650,"pr":345,"st":45},{"id":163554416,"h":"fedrs-black-ice-lemonade","m":"FEDRS","t":"Black Ice Lemonade","s":"Limonada helada","f":"bebidas","mg":32.5,"pv":650,"pr":345,"st":34},{"id":163554593,"h":"fedrs-black-mango-storm","m":"FEDRS","t":"Black Mango Storm","s":"Mango","f":"tropical","mg":32.5,"pv":650,"pr":345,"st":47},{"id":163554578,"h":"fedrs-black-sweet-raspberry","m":"FEDRS","t":"Black Sweet Raspberry","s":"Frambuesa dulce","f":"frutos-rojos","mg":32.5,"pv":650,"pr":345,"st":32},{"id":163554553,"h":"fedrs-black-tropical-blast","m":"FEDRS","t":"Black Tropical Blast","s":"Frutas tropicales","f":"tropical","mg":32.5,"pv":650,"pr":345,"st":48},{"id":163661630,"h":"fedrs-only-blueberry","m":"FEDRS","t":"Only Blueberry","s":"Arándano","f":"frutos-rojos","mg":13,"pv":650,"pr":345,"st":33},{"id":163661619,"h":"fedrs-only-cola","m":"FEDRS","t":"Only Cola","s":"Cola","f":"bebidas","mg":13,"pv":650,"pr":345,"st":63},{"id":163661617,"h":"fedrs-only-cool-mint","m":"FEDRS","t":"Only Cool Mint","s":"Menta fresca","f":"menta","mg":13,"pv":650,"pr":345,"st":61},{"id":163661611,"h":"fedrs-only-freeze-mint","m":"FEDRS","t":"Only Freeze Mint","s":"Menta helada","f":"menta","mg":13,"pv":650,"pr":345,"st":55},{"id":163661575,"h":"fedrs-only-ice-spearmint","m":"FEDRS","t":"Only Ice Spearmint","s":"Hierbabuena helada","f":"menta","mg":13,"pv":650,"pr":345,"st":60},{"id":163661572,"h":"fedrs-only-lime-lemon","m":"FEDRS","t":"Only Lime & Lemon","s":"Lima y limón","f":"citricos","mg":13,"pv":650,"pr":345,"st":57},{"id":163661569,"h":"fedrs-only-mango","m":"FEDRS","t":"Only Mango","s":"Mango","f":"tropical","mg":13,"pv":650,"pr":345,"st":54},{"id":144765471,"h":"fix-blueberry-ice","m":"FIX","t":"Blueberry Ice","s":"Arándano helado","f":"frutos-rojos","mg":11.5,"pv":550,"pr":250,"st":36,"e":"7350117055169"},{"id":144765467,"h":"fix-chai-latte","m":"FIX","t":"Chai Latte","s":"Chai latte","f":"bebidas","mg":8.4,"pv":550,"pr":250,"st":32,"e":"7350117055190"},{"id":150866960,"h":"fix-peach-rhubarb","m":"FIX","t":"Peach Rhubarb","s":"Melocotón y ruibarbo","f":"frutas","mg":5.6,"pv":550,"pr":250,"st":69,"e":"7350117055244"},{"id":161104856,"h":"fix-peppermint","m":"FIX","t":"Peppermint","s":"Menta piperita","f":"menta","mg":9.8,"pv":550,"pr":250,"st":60},{"id":144765451,"h":"fix-pineapple-rum-coconut","m":"FIX","t":"Pineapple Rum Coconut","s":"Piña, ron y coco","f":"tropical","mg":9.8,"pv":550,"pr":250,"st":57,"e":"7350117055145"},{"id":161104855,"h":"fix-spearmint","m":"FIX","t":"Spearmint","s":"Hierbabuena","f":"menta","mg":8.4,"pv":550,"pr":250,"st":59},{"id":144765446,"h":"fix-strawberry-kiwi","m":"FIX","t":"Strawberry Kiwi","s":"Fresa y kiwi","f":"frutos-rojos","mg":9.8,"pv":550,"pr":250,"st":52,"e":"7350117055152"},{"id":150867048,"h":"fix-sweet-mint-lemon","m":"FIX","t":"Sweet Mint Lemon","s":"Menta dulce y limón","f":"citricos","mg":5.6,"pv":550,"pr":250,"st":34,"e":"7350117055213"},{"id":151271290,"h":"fix-watermelon-ice","m":"FIX","t":"Watermelon Ice","s":"Sandía helada","f":"frutas","mg":11.5,"pv":550,"pr":250,"st":57,"e":"7350117055121"},{"id":162158613,"h":"garant-prime-arctic-frost","m":"Garant","t":"Arctic Frost","s":"Frescor helado","f":"menta","mg":10.8,"pv":550,"pr":250,"st":35},{"id":149789784,"h":"garant-cherry-extreme","m":"Garant","t":"Cherry Extreme","s":"Cereza","f":"frutos-rojos","mg":25,"pv":650,"pr":340,"st":45,"e":"4779049510790"},{"id":158771051,"h":"garant-cherry-medium","m":"Garant","t":"Cherry Medium","s":"Cereza","f":"frutos-rojos","mg":10,"pv":650,"pr":340,"st":57},{"id":149789735,"h":"garant-citrus-extreme","m":"Garant","t":"Citrus Extreme","s":"Cítricos","f":"citricos","mg":25,"pv":650,"pr":340,"st":37,"e":"4779049510844"},{"id":149789817,"h":"garant-cola-extreme","m":"Garant","t":"Cola Extreme","s":"Cola","f":"bebidas","mg":25,"pv":650,"pr":340,"st":37,"e":"4779049510813"},{"id":158771059,"h":"garant-energy-drink-medium","m":"Garant","t":"Energy Drink Medium","s":"Bebida energética","f":"bebidas","mg":10,"pv":650,"pr":340,"st":65},{"id":163999915,"h":"garant-prime-extreme","m":"Garant","t":"Extreme","s":"Menta","f":"menta","mg":10.8,"pv":550,"pr":250,"st":68},{"id":156621415,"h":"garant-extreme-cherry-mini","m":"Garant","t":"Extreme Cherry Mini","s":"Cereza","f":"frutos-rojos","mg":19.5,"pv":650,"pr":340,"st":51,"fb":"Mini"},{"id":159804667,"h":"garant-extreme-ice-appricot","m":"Garant","t":"Extreme Ice Appricot","s":"Albaricoque helado","f":"frutas","mg":19.5,"pv":650,"pr":340,"st":63,"e":"4779049518277"},{"id":164000178,"h":"garant-extreme-ice-cool-peppermint","m":"Garant","t":"Extreme Ice Cool Peppermint","s":"Menta piperita helada","f":"menta","mg":25,"pv":650,"pr":340,"st":44},{"id":156631209,"h":"garant-extreme-ice-peach-mini","m":"Garant","t":"Extreme Ice Peach Mini","s":"Melocotón helado","f":"frutas","mg":19.5,"pv":650,"pr":340,"st":46,"fb":"Mini"},{"id":164000214,"h":"garant-extreme-wintergreen","m":"Garant","t":"Extreme Wintergreen","s":"Wintergreen","f":"menta","mg":25,"pv":650,"pr":340,"st":39},{"id":150844499,"h":"garant-fresh-mint-extreme","m":"Garant","t":"Fresh Mint Extreme","s":"Menta fresca","f":"menta","mg":25,"pv":650,"pr":340,"st":35,"e":"4779049510677"},{"id":162158765,"h":"garant-prime-frost-berry","m":"Garant","t":"Frost Berry","s":"Frutos rojos helados","f":"frutos-rojos","mg":10.8,"pv":550,"pr":250,"st":64},{"id":149789578,"h":"garant-grape-extreme","m":"Garant","t":"Grape Extreme","s":"Uva","f":"frutas","mg":25,"pv":650,"pr":340,"st":44,"e":"4779049510806"},{"id":150844326,"h":"garant-ice-blueberry-extreme","m":"Garant","t":"Ice Blueberry Extreme","s":"Arándano helado","f":"frutos-rojos","mg":25,"pv":650,"pr":340,"st":67,"e":"4779049510707"},{"id":158771064,"h":"garant-ice-blueberry-medium","m":"Garant","t":"Ice Blueberry Medium","s":"Arándano helado","f":"frutos-rojos","mg":10,"pv":650,"pr":340,"st":70},{"id":162158662,"h":"garant-prime-ice-cool","m":"Garant","t":"Ice Cool","s":"Menta helada","f":"menta","mg":10.8,"pv":550,"pr":250,"st":43},{"id":150844369,"h":"garant-ice-cool-extreme-150844369","m":"Garant","t":"Ice Cool Extreme","s":"Menta helada","f":"menta","mg":25,"pv":650,"pr":340,"st":69,"e":"4779049510202"},{"id":164000187,"h":"garant-ice-cool-peppermint","m":"Garant","t":"Ice Cool Peppermint","s":"Menta piperita helada","f":"menta","mg":11,"pv":650,"pr":340,"st":53},{"id":162158786,"h":"garant-prime-ice-cool-peppermint","m":"Garant","t":"Ice Cool Peppermint","s":"Menta piperita helada","f":"menta","mg":10.8,"pv":550,"pr":250,"st":44},{"id":158771066,"h":"garant-ice-peach-medium","m":"Garant","t":"Ice Peach Medium","s":"Melocotón helado","f":"frutas","mg":10,"pv":650,"pr":340,"st":31},{"id":150844398,"h":"garant-mango-lime-extreme","m":"Garant","t":"Mango Lime Extreme","s":"Mango y lima","f":"tropical","mg":25,"pv":650,"pr":340,"st":57,"e":"4779049510684"},{"id":158771060,"h":"garant-mint-medium","m":"Garant","t":"Mint Medium","s":"Menta","f":"menta","mg":10,"pv":650,"pr":340,"st":66},{"id":158771055,"h":"garant-raspberry-medium","m":"Garant","t":"Raspberry Medium","s":"Frambuesa","f":"frutos-rojos","mg":10,"pv":650,"pr":340,"st":61},{"id":163999937,"h":"garant-prime-wintergreen","m":"Garant","t":"Wintergreen","s":"Wintergreen","f":"menta","mg":10.8,"pv":550,"pr":250,"st":49},{"id":146921343,"h":"goat-blueberry","m":"GOAT","t":"Blueberry Strong","s":"Arándano","f":"frutos-rojos","mg":11.5,"pv":490,"pr":215,"st":46,"e":"8594203202580"},{"id":155282578,"h":"greatest-cold-dry-8","m":"Greatest","t":"Cold Dry 8","s":"Frescor helado","f":"menta","mg":8,"pv":650,"pr":340,"st":69,"e":"429811342064"},{"id":155552223,"h":"greatest-cold-dry-xl","m":"Greatest","t":"Cold Dry XL","s":"Frescor helado","f":"menta","mg":13.32,"pv":650,"pr":340,"st":57,"fb":"XL","e":"6429811342392"},{"id":162643069,"h":"iceberg-apricot-mini","m":"Iceberg","t":"Apricot Mini","s":"Albaricoque","f":"frutas","mg":20,"pv":590,"pr":305,"st":35,"fb":"Mini"},{"id":162646145,"h":"iceberg-arctic-mint","m":"Iceberg","t":"Arctic Mint","s":"Menta helada","f":"menta","mg":30,"pv":590,"pr":305,"st":36},{"id":162643109,"h":"iceberg-arctic-mint-mini","m":"Iceberg","t":"Arctic Mint Mini","s":"Menta helada","f":"menta","mg":20,"pv":590,"pr":305,"st":34,"fb":"Mini"},{"id":162646131,"h":"iceberg-berries","m":"Iceberg","t":"Berries","s":"Frutos rojos","f":"frutos-rojos","mg":30,"pv":590,"pr":305,"st":63},{"id":162643128,"h":"iceberg-berries-mini","m":"Iceberg","t":"Berries Mini","s":"Frutos rojos","f":"frutos-rojos","mg":20,"pv":590,"pr":305,"st":53,"fb":"Mini"},{"id":145793707,"h":"iceberg-black-145793707","m":"Iceberg","t":"Black","s":"Sabor original","f":"clasicos","mg":30,"pv":590,"pr":305,"st":33,"e":"4643481467922"},{"id":162646128,"h":"iceberg-black-currant","m":"Iceberg","t":"Black Currant","s":"Grosella negra","f":"frutos-rojos","mg":30,"pv":590,"pr":305,"st":60},{"id":145658922,"h":"iceberg-bubblegum-145658922","m":"Iceberg","t":"Bubble Gum","s":"Chicle","f":"dulces","mg":30,"pv":590,"pr":305,"st":56,"e":"4698230422134"},{"id":144479626,"h":"iceberg-cherry","m":"Iceberg","t":"Cherry","s":"Cereza","f":"frutos-rojos","mg":30,"pv":590,"pr":305,"st":43,"e":"143424621"},{"id":144477733,"h":"iceberg-cherry-apricot-gum","m":"Iceberg","t":"Cherry Apricot Gum","s":"Cereza, albaricoque y chicle","f":"dulces","mg":30,"pv":590,"pr":305,"st":36,"e":"4750901238489"},{"id":162646124,"h":"iceberg-citrus-mix","m":"Iceberg","t":"Citrus Mix","s":"Mezcla de cítricos","f":"citricos","mg":30,"pv":590,"pr":305,"st":56},{"id":145666610,"h":"iceberg-cola-145666610","m":"Iceberg","t":"Cola","s":"Cola","f":"bebidas","mg":30,"pv":590,"pr":305,"st":36,"e":"145664919"},{"id":145659398,"h":"iceberg-dragon-fruit","m":"Iceberg","t":"Dragon Fruit","s":"Pitaya","f":"tropical","mg":30,"pv":590,"pr":305,"st":40,"e":"4923593782213"},{"id":145658931,"h":"iceberg-energy","m":"Iceberg","t":"Energy","s":"Bebida energética","f":"bebidas","mg":30,"pv":590,"pr":305,"st":65,"e":"4664580654808"},{"id":162643244,"h":"iceberg-energy-mini","m":"Iceberg","t":"Energy Mini","s":"Bebida energética","f":"bebidas","mg":20,"pv":590,"pr":305,"st":46,"fb":"Mini"},{"id":162646120,"h":"iceberg-fruity-gum","m":"Iceberg","t":"Fruity Gum","s":"Chicle de frutas","f":"dulces","mg":30,"pv":590,"pr":305,"st":52},{"id":162643146,"h":"iceberg-fruity-gum-mini","m":"Iceberg","t":"Fruity Gum Mini","s":"Chicle de frutas","f":"dulces","mg":20,"pv":590,"pr":305,"st":30,"fb":"Mini"},{"id":145793817,"h":"iceberg-grape","m":"Iceberg","t":"Grape","s":"Uva","f":"frutas","mg":30,"pv":590,"pr":305,"st":61,"e":"4603544001128"},{"id":162643384,"h":"iceberg-grape-mini","m":"Iceberg","t":"Grape Mini","s":"Uva","f":"frutas","mg":20,"pv":590,"pr":305,"st":63,"fb":"Mini"},{"id":162643276,"h":"iceberg-green-apple-mini","m":"Iceberg","t":"Green Apple Mini","s":"Manzana verde","f":"frutas","mg":20,"pv":590,"pr":305,"st":37,"fb":"Mini"},{"id":162646116,"h":"iceberg-ice-cool","m":"Iceberg","t":"Ice Cool","s":"Menta helada","f":"menta","mg":30,"pv":590,"pr":305,"st":48},{"id":162643409,"h":"iceberg-ice-cool-mini","m":"Iceberg","t":"Ice Cool Mini","s":"Menta helada","f":"menta","mg":20,"pv":590,"pr":305,"st":47,"fb":"Mini"},{"id":144477672,"h":"kiwi-strawberry","m":"Iceberg","t":"Kiwi Strawberry","s":"Kiwi y fresa","f":"tropical","mg":30,"pv":590,"pr":305,"st":57,"e":"280246198"},{"id":162646112,"h":"iceberg-peppermint","m":"Iceberg","t":"Peppermint","s":"Menta piperita","f":"menta","mg":30,"pv":590,"pr":305,"st":44},{"id":144477760,"h":"iceberg-raspberry-gum","m":"Iceberg","t":"Raspberry Gum","s":"Chicle de frambuesa","f":"dulces","mg":30,"pv":590,"pr":305,"st":63,"e":"4750901248525"},{"id":145658872,"h":"iceberg-sour-berries","m":"Iceberg","t":"Sour Berries","s":"Frutos rojos ácidos","f":"frutos-rojos","mg":30,"pv":590,"pr":305,"st":47,"e":"145658394"},{"id":162643334,"h":"iceberg-sour-berries-mini","m":"Iceberg","t":"Sour Berries Mini","s":"Frutos rojos ácidos","f":"frutos-rojos","mg":20,"pv":590,"pr":305,"st":54,"fb":"Mini"},{"id":163260996,"h":"iceberg-sweet-mint-163260996","m":"Iceberg","t":"Sweet Mint","s":"Menta dulce","f":"menta","mg":30,"pv":590,"pr":305,"st":51},{"id":162643349,"h":"iceberg-sweet-mint-mini","m":"Iceberg","t":"Sweet Mint Mini","s":"Menta dulce","f":"menta","mg":20,"pv":590,"pr":305,"st":69,"fb":"Mini"},{"id":162643370,"h":"iceberg-watermelon-mini","m":"Iceberg","t":"Watermelon Mini","s":"Sandía","f":"frutas","mg":20,"pv":590,"pr":305,"st":49,"fb":"Mini"},{"id":144477821,"h":"iceberg-watermelon-mint-gum","m":"Iceberg","t":"Watermelon Mint Gum","s":"Sandía, menta y chicle","f":"dulces","mg":30,"pv":590,"pr":305,"st":42,"e":"4751901249529"},{"id":161925372,"h":"inic-berry-fusion-extra-strong","m":"INIC","t":"Berry Fusion Extra Strong","s":"Mezcla de frutos rojos","f":"frutos-rojos","mg":18,"pv":650,"pr":330,"st":43},{"id":161920868,"h":"inic-fresh-mint-strong","m":"INIC","t":"Fresh Mint Strong","s":"Menta fresca","f":"menta","mg":12,"pv":650,"pr":330,"st":49},{"id":161925357,"h":"inic-tropical-fruit-extra-strong","m":"INIC","t":"Tropical Fruit Extra Strong","s":"Frutas tropicales","f":"tropical","mg":18,"pv":650,"pr":330,"st":69},{"id":161925381,"h":"inic-wintermint-extra-strong","m":"INIC","t":"Wintermint Extra Strong","s":"Menta de invierno","f":"menta","mg":18,"pv":650,"pr":330,"st":52},{"id":163971952,"h":"its-blackcurrant-medium","m":"ITS","t":"Blackcurrant Medium","s":"Grosella negra","f":"frutos-rojos","mg":12,"pv":490,"pr":215,"st":67},{"id":163972227,"h":"its-blackcurrant-x-strong","m":"ITS","t":"Blackcurrant X Strong","s":"Grosella negra","f":"frutos-rojos","mg":20,"pv":490,"pr":215,"st":55},{"id":163972146,"h":"its-mango-medium","m":"ITS","t":"Mango Medium","s":"Mango","f":"tropical","mg":12,"pv":490,"pr":215,"st":56},{"id":163972427,"h":"its-mango-x-strong","m":"ITS","t":"Mango X Strong","s":"Mango","f":"tropical","mg":20,"pv":490,"pr":215,"st":50},{"id":163972204,"h":"its-watermelon-medium","m":"ITS","t":"Watermelon Medium","s":"Sandía","f":"frutas","mg":12,"pv":490,"pr":215,"st":32},{"id":161161850,"h":"kurwa-collection-blueberry-ice","m":"K#RWA","t":"Collection Blueberry Ice","s":"Arándano helado","f":"frutos-rojos","mg":12,"pv":550,"pr":260,"st":64},{"id":163506938,"h":"kurwa-collection-blueberry-ice-low","m":"K#RWA","t":"Collection Blueberry Ice Low","s":"Arándano helado","f":"frutos-rojos","mg":4,"pv":550,"pr":240,"st":34},{"id":161161846,"h":"kurwa-collection-double-apple","m":"K#RWA","t":"Collection Double Apple","s":"Doble manzana","f":"frutas","mg":12,"pv":550,"pr":260,"st":60},{"id":163506962,"h":"kurwa-collection-double-apple-low","m":"K#RWA","t":"Collection Double Apple Low","s":"Doble manzana","f":"frutas","mg":4,"pv":550,"pr":240,"st":58},{"id":161161847,"h":"kurwa-collection-fizzy-cherry","m":"K#RWA","t":"Collection Fizzy Cherry","s":"Cereza efervescente","f":"frutos-rojos","mg":12,"pv":550,"pr":260,"st":61},{"id":163506313,"h":"kurwa-collection-fizzy-cherry-low","m":"K#RWA","t":"Collection Fizzy Cherry Low","s":"Cereza efervescente","f":"frutos-rojos","mg":4,"pv":550,"pr":240,"st":65},{"id":161161848,"h":"kurwa-collection-grape-ice","m":"K#RWA","t":"Collection Grape Ice","s":"Uva helada","f":"frutas","mg":12,"pv":550,"pr":260,"st":62},{"id":163506855,"h":"kurwa-collection-grape-ice-low","m":"K#RWA","t":"Collection Grape Ice Low","s":"Uva helada","f":"frutas","mg":4,"pv":550,"pr":240,"st":33},{"id":161160970,"h":"kurwa-collection-max-blueberry-ice","m":"K#RWA","t":"Collection Max Blueberry Ice","s":"Arándano helado","f":"frutos-rojos","mg":43,"pv":590,"pr":305,"st":45},{"id":161160968,"h":"kurwa-collection-max-grape-ice","m":"K#RWA","t":"Collection Max Grape Ice","s":"Uva helada","f":"frutas","mg":43,"pv":590,"pr":305,"st":43},{"id":161160975,"h":"kurwa-collection-max-strong-mint","m":"K#RWA","t":"Collection Max Strong Mint","s":"Menta intensa","f":"menta","mg":43,"pv":590,"pr":305,"st":50},{"id":161160953,"h":"kurwa-collection-max-triple-mango","m":"K#RWA","t":"Collection Max Triple Mango","s":"Triple mango","f":"tropical","mg":43,"pv":590,"pr":305,"st":69},{"id":161161851,"h":"kurwa-collection-strong-mint","m":"K#RWA","t":"Collection Strong Mint","s":"Menta intensa","f":"menta","mg":12,"pv":550,"pr":260,"st":65},{"id":161161837,"h":"kurwa-collection-triple-mango","m":"K#RWA","t":"Collection Triple Mango","s":"Triple mango","f":"tropical","mg":12,"pv":550,"pr":260,"st":51},{"id":163506348,"h":"kurwa-collection-triple-mango-low","m":"K#RWA","t":"Collection Triple Mango Low","s":"Triple mango","f":"tropical","mg":4,"pv":550,"pr":240,"st":59},{"id":160241484,"h":"kelly-white-cool-mint-slim","m":"Kelly White","t":"Cool Mint Slim","s":"Menta fresca","f":"menta","mg":7.5,"pv":650,"pr":345,"st":66,"fb":"Slim","e":"7350139080019"},{"id":160241504,"h":"kelly-white-cucumber-mint-mini","m":"Kelly White","t":"Cucumber Mint Mini","s":"Pepino y menta","f":"menta","mg":5,"pv":650,"pr":345,"st":45,"fb":"Mini","e":"7350139080309"},{"id":160241496,"h":"kelly-white-hot-cherry-mini","m":"Kelly White","t":"Hot Cherry Mini","s":"Cereza picante","f":"frutos-rojos","mg":6.5,"pv":650,"pr":345,"st":37,"fb":"Mini","e":"7350139080248"},{"id":163368495,"h":"kelly-white-raspberry-lemon-extra-strong-slim","m":"Kelly White","t":"Raspberry Lemon Extra Strong Slim","s":"Frambuesa y limón","f":"frutos-rojos","mg":10,"pv":650,"pr":345,"st":48,"fb":"Slim"},{"id":160241489,"h":"kelly-white-raspberry-lemon-mini","m":"Kelly White","t":"Raspberry Lemon Mini","s":"Frambuesa y limón","f":"frutos-rojos","mg":5.5,"pv":650,"pr":345,"st":30,"fb":"Mini","e":"7350139080163"},{"id":160241508,"h":"kelly-white-sparkling-strawberry-slim","m":"Kelly White","t":"Sparkling Strawberry Slim","s":"Fresa burbujeante","f":"frutos-rojos","mg":5,"pv":650,"pr":345,"st":49,"fb":"Slim","e":"7350139080026"},{"id":160241499,"h":"kelly-white-strawberry-lime-mini","m":"Kelly White","t":"Strawberry Lime Mini","s":"Fresa y lima","f":"frutos-rojos","mg":5,"pv":650,"pr":345,"st":40,"fb":"Mini","e":"7350139080262"},{"id":160241512,"h":"kelly-white-sweet-melon-mint-slim","m":"Kelly White","t":"Sweet Melon Mint Slim","s":"Melón dulce y menta","f":"frutas","mg":5,"pv":650,"pr":345,"st":53,"fb":"Slim","e":"7350139080033"},{"id":160241483,"h":"kelly-white-sweet-peach-slim","m":"Kelly White","t":"Sweet Peach Slim","s":"Melocotón dulce","f":"frutas","mg":4,"pv":650,"pr":345,"st":65,"fb":"Slim","e":"7350139080040"},{"id":160241482,"h":"kelly-white-sweet-peach-strong-mini","m":"Kelly White","t":"Sweet Peach Strong Mini","s":"Melocotón dulce","f":"frutas","mg":6,"pv":650,"pr":345,"st":64,"fb":"Mini","e":"7350139080224"},{"id":144473203,"h":"killa-banana-ice","m":"Killa","t":"Banana Ice","s":"Plátano helado","f":"tropical","mg":11.2,"pv":590,"pr":275,"st":57,"e":"5744000761305"},{"id":144473208,"h":"killa-bubblegum","m":"Killa","t":"Bubblegum","s":"Chicle","f":"dulces","mg":11.2,"pv":590,"pr":275,"st":62,"e":"5744000761299"},{"id":153128592,"h":"killa-exclusive-blue-raspberry","m":"Killa","t":"Exclusive Blue Raspberry","s":"Frambuesa azul","f":"frutos-rojos","mg":13.2,"pv":590,"pr":275,"st":59,"e":"5740031400787"},{"id":153157204,"h":"killa-exclusive-cold-dry","m":"Killa","t":"Exclusive Cold Dry","s":"Frescor helado","f":"menta","mg":13.2,"pv":590,"pr":275,"st":53,"e":"5740031400961"},{"id":153128776,"h":"killa-exclusive-dark-cherry","m":"Killa","t":"Exclusive Dark Cherry","s":"Cereza negra","f":"frutos-rojos","mg":13.2,"pv":590,"pr":275,"st":38,"e":"5740031400930"},{"id":153128785,"h":"killa-exclusive-lemonade","m":"Killa","t":"Exclusive Lemonade","s":"Limonada","f":"bebidas","mg":13.2,"pv":590,"pr":275,"st":47,"e":"5740031400909"},{"id":153128703,"h":"killa-exclusive-strawberry-watermelon","m":"Killa","t":"Exclusive Strawberry Watermelon","s":"Fresa y sandía","f":"frutos-rojos","mg":13.2,"pv":590,"pr":275,"st":47,"e":"5740031400848"},{"id":144473231,"h":"killa-mango-ice","m":"Killa","t":"Mango Ice","s":"Mango helado","f":"tropical","mg":11.2,"pv":590,"pr":275,"st":44,"e":"5744000761336"},{"id":144470204,"h":"killa-melon","m":"Killa","t":"Melon","s":"Melón","f":"frutas","mg":11.2,"pv":590,"pr":275,"st":51,"e":"5744000760124"},{"id":144473526,"h":"killa-mini-banana-ice","m":"Killa","t":"Mini Banana Ice","s":"Plátano helado","f":"tropical","mg":8,"pv":550,"pr":260,"st":52,"fb":"Mini","e":"5744000761718"},{"id":144473533,"h":"killa-mini-blueberry","m":"Killa","t":"Mini Blueberry","s":"Arándano","f":"frutos-rojos","mg":8,"pv":550,"pr":260,"st":59,"fb":"Mini","e":"5744000761695"},{"id":144472084,"h":"killa-pineapple","m":"Killa","t":"Pineapple","s":"Piña","f":"tropical","mg":11.2,"pv":590,"pr":275,"st":45,"e":"5744000760865"},{"id":162195186,"h":"klint-alaskan-mint","m":"Klint","t":"Alaskan Mint","s":"Menta helada","f":"menta","mg":21,"pv":450,"pr":180,"st":36,"e":"7350117055046"},{"id":162192763,"h":"klint-apple-mint-x-strong","m":"Klint","t":"Apple Mint X-Strong","s":"Manzana y menta","f":"frutas","mg":14,"pv":450,"pr":180,"st":32,"e":"7350117050119"},{"id":162195168,"h":"klint-arctic-mint-max-ultra-strong","m":"Klint","t":"Arctic Mint Max Ultra Strong","s":"Menta helada","f":"menta","mg":19.68,"pv":450,"pr":180,"st":59,"e":"7350117055039"},{"id":162192550,"h":"klint-arctic-mint-x-strong","m":"Klint","t":"Arctic Mint X-Strong","s":"Menta helada","f":"menta","mg":14,"pv":450,"pr":180,"st":65,"e":"7350117050065"},{"id":162195296,"h":"klint-blueberry-mini","m":"Klint","t":"Blueberry Mini","s":"Arándano","f":"frutos-rojos","mg":6.4,"pv":450,"pr":180,"st":64,"fb":"Mini"},{"id":162194662,"h":"klint-breeze-mint","m":"Klint","t":"Breeze Mint","s":"Menta fresca","f":"menta","mg":5.6,"pv":450,"pr":180,"st":45,"e":"7350117050010"},{"id":162195127,"h":"klint-cola-lime","m":"Klint","t":"Cola Lime","s":"Cola y lima","f":"bebidas","mg":11.2,"pv":450,"pr":180,"st":59,"e":"7350117055008"},{"id":162921222,"h":"klint-cola-lime-mini","m":"Klint","t":"Cola Lime Mini","s":"Cola y lima","f":"bebidas","mg":3.2,"pv":450,"pr":180,"st":44,"fb":"Mini","e":"7350117058016"},{"id":163367780,"h":"klint-crystal-mint","m":"Klint","t":"Crystal Mint","s":"Menta","f":"menta","mg":11.2,"pv":450,"pr":180,"st":30},{"id":162194339,"h":"klint-mint","m":"Klint","t":"Mint","s":"Menta","f":"menta","mg":4.2,"pv":450,"pr":180,"st":50,"e":"7350117050003"},{"id":162193456,"h":"klint-polar-mint","m":"Klint","t":"Polar Mint","s":"Menta helada","f":"menta","mg":8.4,"pv":450,"pr":180,"st":69,"e":"7350117050027"},{"id":163367740,"h":"klint-racing-mint-limited-edition","m":"Klint","t":"Racing Mint Limited Edition","s":"Menta","f":"menta","mg":4.2,"pv":450,"pr":180,"st":31},{"id":162921246,"h":"klint-spearmint-mini","m":"Klint","t":"Spearmint Mini","s":"Hierbabuena","f":"menta","mg":4.8,"pv":450,"pr":180,"st":68,"fb":"Mini","e":"7350117058078"},{"id":162195322,"h":"klint-strawberry-mini","m":"Klint","t":"Strawberry Mini","s":"Fresa","f":"frutos-rojos","mg":3.2,"pv":450,"pr":180,"st":49,"fb":"Mini"},{"id":163367761,"h":"klint-tropical-breeze","m":"Klint","t":"Tropical Breeze","s":"Frutas tropicales","f":"tropical","mg":5.6,"pv":450,"pr":180,"st":52},{"id":162195234,"h":"klint-watermelon-mini","m":"Klint","t":"Watermelon Mini","s":"Sandía","f":"frutas","mg":4.8,"pv":450,"pr":180,"st":43,"fb":"Mini"},{"id":159270561,"h":"kuma-banana-toffee","m":"Kuma","t":"Banana Toffee","s":"Plátano y toffee","f":"dulces","mg":13.75,"pv":590,"pr":275,"st":64,"e":"7350129391415"},{"id":159270559,"h":"kuma-blood-orange","m":"Kuma","t":"Blood Orange","s":"Naranja sanguina","f":"citricos","mg":13.75,"pv":590,"pr":275,"st":62,"e":"7350129391422"},{"id":159270565,"h":"kuma-cherry","m":"Kuma","t":"Cherry","s":"Cereza","f":"frutos-rojos","mg":13.75,"pv":590,"pr":275,"st":68,"e":"7350129391408"},{"id":161896441,"h":"kuma-ice-cool","m":"Kuma","t":"Ice Cool","s":"Frescor helado","f":"menta","mg":13.75,"pv":590,"pr":275,"st":58},{"id":159270570,"h":"kuma-wintergreen","m":"Kuma","t":"Wintergreen","s":"Wintergreen","f":"menta","mg":13.75,"pv":590,"pr":275,"st":32,"e":"7350129391453"},{"id":159815635,"h":"loop-blackcurrant-strong","m":"LOOP","t":"Blackcurrant Strong","s":"Grosella negra","f":"frutos-rojos","mg":10.5,"pv":650,"pr":340,"st":43,"e":"7350159283711"},{"id":161647105,"h":"loop-blueberry-ice-strong","m":"LOOP","t":"Blueberry Ice Strong","s":"Arándano helado","f":"frutos-rojos","mg":10.5,"pv":650,"pr":340,"st":43},{"id":144476439,"h":"loop-habanero-mint-hyper-strong","m":"LOOP","t":"Habanero Mint Hyper Strong","s":"Habanero y menta","f":"menta","mg":17.5,"pv":650,"pr":340,"st":54,"e":"7350114310223"},{"id":146695505,"h":"loop-hot-mango-strong","m":"LOOP","t":"Hot Mango Strong","s":"Mango picante","f":"tropical","mg":10.5,"pv":650,"pr":340,"st":36,"e":"7350114310483"},{"id":145114570,"h":"loop-hot-rhubarb-strong","m":"LOOP","t":"Hot Rhubarb Strong","s":"Ruibarbo picante","f":"frutas","mg":10.5,"pv":650,"pr":340,"st":61,"e":"7350114318700"},{"id":144482281,"h":"loop-jalapeno-lime-strong","m":"LOOP","t":"Jalapeño Lime Strong","s":"Lima y jalapeño","f":"citricos","mg":10.5,"pv":650,"pr":340,"st":33,"e":"7350114310933"},{"id":164508013,"h":"loop-licorice-raspberry-strong","m":"LOOP","t":"Licorice Raspberry Strong","s":"Regaliz y frambuesa","f":"dulces","mg":10.5,"pv":650,"pr":340,"st":53},{"id":156220182,"h":"loop-smooth-mint-mini","m":"LOOP","t":"Smooth Mint Mini","s":"Menta suave","f":"menta","mg":6.8,"pv":650,"pr":340,"st":44,"fb":"Mini","e":"7350114316904"},{"id":156220175,"h":"loop-spicy-apple-strong","m":"LOOP","t":"Spicy Apple Strong","s":"Manzana especiada","f":"frutas","mg":10.5,"pv":650,"pr":340,"st":37,"e":"7350114319820"},{"id":161647108,"h":"loop-strawberry-ice-strong","m":"LOOP","t":"Strawberry Ice Strong","s":"Fresa helada","f":"frutos-rojos","mg":10.5,"pv":650,"pr":340,"st":46},{"id":158312117,"h":"maf-blue-ice","m":"MAF","t":"Blue Ice","s":"Menta helada","f":"menta","mg":18,"pv":650,"pr":320,"st":36,"e":"4748001025481"},{"id":162720628,"h":"maf-polar-cherry","m":"MAF","t":"Polar Cherry","s":"Cereza helada","f":"frutos-rojos","mg":20,"pv":650,"pr":320,"st":63,"e":"4748001953210"},{"id":162036721,"h":"mynt-sweet-extra-strong","m":"Mynt","t":"Sweet Extra Strong","s":"Sabor dulce","f":"dulces","mg":15,"pv":590,"pr":290,"st":36},{"id":164872876,"h":"nics-blueberry-raspberry","m":"NICS","t":"Blueberry Raspberry","s":"Arándano y frambuesa","f":"frutos-rojos","mg":8,"pv":550,"pr":265,"st":57,"b":"nuevo"},{"id":164872863,"h":"nics-mint","m":"NICS","t":"Mint","s":"Menta","f":"menta","mg":8,"pv":550,"pr":265,"st":44,"b":"nuevo"},{"id":164872849,"h":"nics-peach","m":"NICS","t":"Peach","s":"Melocotón","f":"frutas","mg":6,"pv":550,"pr":265,"st":30,"b":"nuevo"},{"id":164872827,"h":"nics-spearmint","m":"NICS","t":"Spearmint","s":"Hierbabuena","f":"menta","mg":4,"pv":550,"pr":265,"st":49,"b":"nuevo"},{"id":164872812,"h":"nics-wintergreen","m":"NICS","t":"Wintergreen","s":"Wintergreen","f":"menta","mg":8,"pv":550,"pr":265,"st":34,"b":"nuevo"},{"id":144482777,"h":"nois-blackcurrant-144482777","m":"NOIS","t":"Blackcurrant Ice","s":"Grosella negra helada","f":"frutos-rojos","mg":8,"pv":550,"pr":250,"st":37,"e":"4742024720071"},{"id":162734512,"h":"nois-blueberry-ice-light","m":"NOIS","t":"Blueberry Ice Light","s":"Arándano helado","f":"frutos-rojos","mg":4,"pv":550,"pr":250,"st":48},{"id":155289667,"h":"nois-extreme-cherry","m":"NOIS","t":"Cherry Extreme","s":"Cereza","f":"frutos-rojos","mg":25,"pv":590,"pr":280,"st":65,"e":"4742024720569"},{"id":155289665,"h":"nois-cherry-ice","m":"NOIS","t":"Cherry Ice","s":"Cereza helada","f":"frutos-rojos","mg":12.5,"pv":550,"pr":250,"st":63,"e":"4742024720552"},{"id":162734441,"h":"nois-cherry-ice-light","m":"NOIS","t":"Cherry Ice Light","s":"Cereza helada","f":"frutos-rojos","mg":4,"pv":550,"pr":250,"st":59},{"id":161356196,"h":"nois-cherry-mini","m":"NOIS","t":"Cherry Mini","s":"Cereza","f":"frutos-rojos","mg":16.5,"pv":590,"pr":280,"st":70,"fb":"Mini"},{"id":147310959,"h":"nois-cool-strong-extreme","m":"NOIS","t":"Cool Strong Extreme","s":"Menta fresca","f":"menta","mg":25,"pv":590,"pr":280,"st":39,"e":"4742024720293"},{"id":162860398,"h":"nois-cool-strong-light","m":"NOIS","t":"Cool Strong Light","s":"Menta fresca","f":"menta","mg":4,"pv":550,"pr":250,"st":64},{"id":154296948,"h":"nois-cool-strong-mini","m":"NOIS","t":"Cool Strong Mini","s":"Menta fresca","f":"menta","mg":10.5,"pv":590,"pr":280,"st":38,"fb":"Mini","e":"4742024720538"},{"id":150400606,"h":"nois-eucalyptus","m":"NOIS","t":"Eucalypt","s":"Eucalipto","f":"menta","mg":12.5,"pv":550,"pr":250,"st":49,"e":"4742024720354"},{"id":154296947,"h":"nois-extreme-blueberry-mini","m":"NOIS","t":"Extreme Blueberry Mini","s":"Arándano","f":"frutos-rojos","mg":15,"pv":590,"pr":280,"st":37,"fb":"Mini","e":"4742024720545"},{"id":162860414,"h":"nois-extreme-light","m":"NOIS","t":"Extreme Light","s":"Menta","f":"menta","mg":4,"pv":550,"pr":250,"st":39},{"id":154296946,"h":"nois-extreme-mini","m":"NOIS","t":"Extreme Mini","s":"Sabor original","f":"clasicos","mg":15,"pv":590,"pr":280,"st":36,"fb":"Mini","e":"4742024720521"},{"id":147601403,"h":"nois-extreme-grape","m":"NOIS","t":"Grape Extreme","s":"Uva","f":"frutas","mg":25,"pv":590,"pr":280,"st":39,"e":"4742024720378"},{"id":147601472,"h":"nois-grape-ice","m":"NOIS","t":"Grape Ice","s":"Uva helada","f":"frutas","mg":12.5,"pv":550,"pr":250,"st":67,"e":"4742024720347"},{"id":144474517,"h":"nois-extreme-mango","m":"NOIS","t":"Mango Extreme","s":"Mango","f":"tropical","mg":25,"pv":590,"pr":280,"st":59,"e":"4742024720224"},{"id":144482778,"h":"nois-mango-mint-144482778","m":"NOIS","t":"Mango Ice","s":"Mango helado","f":"tropical","mg":6,"pv":550,"pr":250,"st":38,"e":"4742024720064"},{"id":162860376,"h":"nois-mango-ice-light","m":"NOIS","t":"Mango Ice Light","s":"Mango helado","f":"tropical","mg":4,"pv":550,"pr":250,"st":42},{"id":144482781,"h":"nois-mint-144482781","m":"NOIS","t":"Mint","s":"Menta","f":"menta","mg":10,"pv":550,"pr":250,"st":41,"e":"4742024720026"},{"id":144482818,"h":"nois-spearmint-144482818","m":"NOIS","t":"Spearmint","s":"Hierbabuena","f":"menta","mg":10,"pv":550,"pr":250,"st":37,"e":"4742024720019"},{"id":155289666,"h":"nois-extreme-watermelon-155289666","m":"NOIS","t":"Watermelon Extreme","s":"Sandía","f":"frutas","mg":25,"pv":590,"pr":280,"st":64,"e":"4742024720361"},{"id":155289664,"h":"nois-watermelon-ice-155289664","m":"NOIS","t":"Watermelon Ice","s":"Sandía helada","f":"frutas","mg":12.5,"pv":550,"pr":250,"st":62,"e":"4742024720330"},{"id":162734520,"h":"nois-wintergreen-light","m":"NOIS","t":"Wintergreen Light","s":"Wintergreen","f":"menta","mg":4,"pv":550,"pr":250,"st":56},{"id":149071554,"h":"noto-bergamia","m":"Noto","t":"Bergamia","s":"Bergamota","f":"citricos","mg":9.8,"pv":650,"pr":330,"st":53,"e":"7350117059006"},{"id":149071582,"h":"noto-cedar","m":"Noto","t":"Cedar","s":"Cedro","f":"clasicos","mg":9.8,"pv":650,"pr":330,"st":40,"e":"7350117059013"},{"id":149071600,"h":"noto-jasmine","m":"Noto","t":"Jasmine","s":"Jazmín","f":"clasicos","mg":8.4,"pv":650,"pr":330,"st":58,"e":"7350117059044"},{"id":149071531,"h":"noto-pimenton","m":"Noto","t":"Pimentón","s":"Pimentón","f":"clasicos","mg":11.2,"pv":650,"pr":330,"st":30,"e":"7350117059051"},{"id":162847473,"h":"pablo-gold-cola","m":"Pablo","t":"Gold Cola","s":"Cola","f":"bebidas","mg":17,"pv":590,"pr":290,"st":54},{"id":162847192,"h":"pablo-gold-dark-cherry","m":"Pablo","t":"Gold Dark Cherry","s":"Cereza negra","f":"frutos-rojos","mg":17,"pv":590,"pr":290,"st":60},{"id":162846597,"h":"pablo-gold-kiwi","m":"Pablo","t":"Gold Kiwi","s":"Kiwi","f":"tropical","mg":17,"pv":590,"pr":290,"st":39},{"id":162847290,"h":"pablo-gold-passion-fruit","m":"Pablo","t":"Gold Passion Fruit","s":"Maracuyá","f":"tropical","mg":17,"pv":590,"pr":290,"st":35},{"id":162847507,"h":"pablo-gold-pear","m":"Pablo","t":"Gold Pear","s":"Pera","f":"frutas","mg":17,"pv":590,"pr":290,"st":47},{"id":162847525,"h":"pablo-gold-pineapple","m":"Pablo","t":"Gold Pineapple","s":"Piña","f":"tropical","mg":17,"pv":590,"pr":290,"st":65},{"id":162847552,"h":"pablo-gold-strawberry-kiwi","m":"Pablo","t":"Gold Strawberry Kiwi","s":"Fresa y kiwi","f":"frutos-rojos","mg":17,"pv":590,"pr":290,"st":51},{"id":162711431,"h":"pablo-gold-tropical-punch","m":"Pablo","t":"Gold Tropical Punch","s":"Ponche tropical","f":"bebidas","mg":17,"pv":590,"pr":290,"st":50},{"id":162847444,"h":"pablo-gold-white-mint","m":"Pablo","t":"Gold White Mint","s":"Menta","f":"menta","mg":17,"pv":590,"pr":290,"st":66},{"id":160609285,"h":"r4ve-cola-explosion-extra-strong","m":"R4VE","t":"Cola Explosion Extra Strong","s":"Cola","f":"bebidas","mg":19.5,"pv":450,"pr":180,"st":56},{"id":160609286,"h":"r4ve-frozen-citrus-extra-strong","m":"R4VE","t":"Frozen Citrus Extra Strong","s":"Cítricos helados","f":"citricos","mg":19.5,"pv":450,"pr":180,"st":57},{"id":160609287,"h":"r4ve-juicy-apple-extra-strong","m":"R4VE","t":"Juicy Apple Extra Strong","s":"Manzana jugosa","f":"frutas","mg":19.5,"pv":450,"pr":180,"st":58},{"id":160609288,"h":"r4ve-la-passion-fruit-extra-strong","m":"R4VE","t":"La Passion Fruit Extra Strong","s":"Maracuyá","f":"tropical","mg":19.5,"pv":450,"pr":180,"st":59},{"id":160609289,"h":"r4ve-lemoncello-fruit-extra-strong","m":"R4VE","t":"Lemoncello Fruit Extra Strong","s":"Limón","f":"citricos","mg":19.5,"pv":450,"pr":180,"st":60},{"id":160609293,"h":"r4ve-mango-django-extra-strong","m":"R4VE","t":"Mango Django Extra Strong","s":"Mango","f":"tropical","mg":19.5,"pv":450,"pr":180,"st":64},{"id":160609296,"h":"r4ve-merry-cherry-extra-strong","m":"R4VE","t":"Merry Cherry Extra Strong","s":"Cereza","f":"frutos-rojos","mg":19.5,"pv":450,"pr":180,"st":67},{"id":160609299,"h":"r4ve-minty-berry-extra-strong","m":"R4VE","t":"Minty Berry Extra Strong","s":"Frutos rojos con menta","f":"frutos-rojos","mg":19.5,"pv":450,"pr":180,"st":70},{"id":160609304,"h":"r4ve-skittler-extra-strong","m":"R4VE","t":"Skittler Extra Strong","s":"Sabor original","f":"clasicos","mg":19.5,"pv":450,"pr":180,"st":34},{"id":162250092,"h":"rush-blueberry-ice","m":"Rush","t":"Blueberry Ice","s":"Arándano helado","f":"frutos-rojos","mg":11.2,"pv":490,"pr":210,"st":43},{"id":162250761,"h":"rush-cherry-ice-extreme","m":"Rush","t":"Cherry Ice Extreme","s":"Cereza helada","f":"frutos-rojos","mg":21,"pv":490,"pr":210,"st":56},{"id":164256726,"h":"rush-classic-cola","m":"Rush","t":"Classic Cola","s":"Cola","f":"bebidas","mg":11,"pv":490,"pr":210,"st":55},{"id":162250179,"h":"rush-grape-ice","m":"Rush","t":"Grape Ice","s":"Uva helada","f":"frutas","mg":11.2,"pv":490,"pr":210,"st":48},{"id":154810391,"h":"rush-grape-ice-extreme","m":"Rush","t":"Grape Ice Extreme","s":"Uva helada","f":"frutas","mg":21,"pv":490,"pr":210,"st":38,"e":"8906001184751"},{"id":162250553,"h":"rush-mango-ice","m":"Rush","t":"Mango Ice","s":"Mango helado","f":"tropical","mg":11.2,"pv":490,"pr":210,"st":53},{"id":162249959,"h":"rush-nordic-peppermint","m":"Rush","t":"Nordic Peppermint","s":"Menta piperita","f":"menta","mg":11.2,"pv":490,"pr":210,"st":33},{"id":164256722,"h":"rush-nordic-peppermint-extreme","m":"Rush","t":"Nordic Peppermint Extreme","s":"Menta piperita","f":"menta","mg":17,"pv":490,"pr":210,"st":51},{"id":162250272,"h":"rush-peppermint-ice","m":"Rush","t":"Peppermint Ice","s":"Menta piperita helada","f":"menta","mg":11.2,"pv":490,"pr":210,"st":59},{"id":162250661,"h":"rush-peppermint-ice-extreme","m":"Rush","t":"Peppermint Ice Extreme","s":"Menta piperita helada","f":"menta","mg":21,"pv":490,"pr":210,"st":38},{"id":162250383,"h":"rush-spearmint","m":"Rush","t":"Spearmint","s":"Hierbabuena","f":"menta","mg":11.2,"pv":490,"pr":210,"st":47},{"id":164256827,"h":"rush-strawberry-ice","m":"Rush","t":"Strawberry Ice","s":"Fresa helada","f":"frutos-rojos","mg":11,"pv":490,"pr":210,"st":33},{"id":164256808,"h":"rush-watermelon-ice","m":"Rush","t":"Watermelon Ice","s":"Sandía helada","f":"frutas","mg":11,"pv":490,"pr":210,"st":55},{"id":144473601,"h":"siberia-80-all-white-original-nicotine","m":"Siberia","t":"-80 ℃ All White Original","s":"Menta helada","f":"menta","mg":24.75,"pv":790,"pr":475,"st":45,"e":"7350115297325"},{"id":144473591,"h":"siberia-80-all-white-super-slim-nicotine","m":"Siberia","t":"-80 ℃ All White Super Slim","s":"Menta helada","f":"menta","mg":24.75,"pv":750,"pr":450,"st":35,"fb":"Super slim","e":"7350115298551"},{"id":164078131,"h":"skruf-intense-no005-peppermint-ice-ultra-strong","m":"Skruf","t":"Intense No.005 Peppermint Ice Ultra Strong","s":"Menta piperita helada","f":"menta","mg":11.3,"pv":650,"pr":345,"st":56},{"id":164078141,"h":"skruf-intense-no008-peppermint-ice-crazy-strong","m":"Skruf","t":"Intense No.008 Peppermint Ice Crazy Strong","s":"Menta piperita helada","f":"menta","mg":17,"pv":650,"pr":345,"st":66},{"id":164078024,"h":"skruf-intense-no105-spearmint-ice-ultra-strong","m":"Skruf","t":"Intense No.105 Spearmint Ice Ultra Strong","s":"Hierbabuena helada","f":"menta","mg":11.3,"pv":650,"pr":345,"st":31},{"id":164078037,"h":"skruf-intense-no215-strawberry-ice-ultra-strong","m":"Skruf","t":"Intense No.215 Strawberry Ice Ultra Strong","s":"Fresa helada","f":"frutos-rojos","mg":11.3,"pv":650,"pr":345,"st":44},{"id":164078107,"h":"skruf-superwhite-no63-purple-cassic-strong","m":"Skruf","t":"Superwhite No.63 Purple Cassic Strong","s":"Grosella negra","f":"frutos-rojos","mg":6,"pv":650,"pr":345,"st":32},{"id":164078113,"h":"skruf-superwhite-no64-fresh-apple-extra-strong","m":"Skruf","t":"Superwhite No.64 Fresh Apple Extra Strong","s":"Manzana fresca","f":"frutas","mg":12,"pv":650,"pr":345,"st":38},{"id":159087611,"h":"snoberg-blueberry-ice-strong","m":"Snoberg","t":"Blueberry Ice Strong","s":"Arándano helado","f":"frutos-rojos","mg":10,"pv":590,"pr":275,"st":56,"e":"5901431200104"},{"id":159087648,"h":"snoberg-cherry-ice-strong","m":"Snoberg","t":"Cherry Ice Strong","s":"Cereza helada","f":"frutos-rojos","mg":10,"pv":590,"pr":275,"st":52,"e":"5901431200111"},{"id":159087650,"h":"snoberg-watermelon-ice-strong","m":"Snoberg","t":"Watermelon Ice Strong","s":"Sandía helada","f":"frutas","mg":10,"pv":590,"pr":275,"st":54,"e":"5901431200098"},{"id":164392669,"h":"syx-apple-mint-extra-strong","m":"SYX","t":"Apple Mint Extra Strong","s":"Manzana y menta","f":"frutas","mg":20,"pv":550,"pr":240,"st":42},{"id":164064482,"h":"syx-apple-mint-mini","m":"SYX","t":"Apple Mint Mini","s":"Manzana y menta","f":"frutas","mg":3,"pv":550,"pr":240,"st":60,"fb":"Mini"},{"id":164064492,"h":"syx-apple-mint-mini-medium","m":"SYX","t":"Apple Mint Mini Medium","s":"Manzana y menta","f":"frutas","mg":7,"pv":550,"pr":240,"st":70,"fb":"Mini"},{"id":163196189,"h":"syx-apple-mint-strong","m":"SYX","t":"Apple Mint Strong","s":"Manzana y menta","f":"frutas","mg":12,"pv":550,"pr":240,"st":65},{"id":164364983,"h":"syx-apple-sour-mini","m":"SYX","t":"Apple Sour Mini","s":"Manzana ácida","f":"frutas","mg":3,"pv":550,"pr":240,"st":31,"fb":"Mini"},{"id":164364797,"h":"syx-apple-sour-mini-medium","m":"SYX","t":"Apple Sour Mini Medium","s":"Manzana ácida","f":"frutas","mg":7,"pv":550,"pr":240,"st":50,"fb":"Mini"},{"id":164392622,"h":"syx-apple-sour-strong","m":"SYX","t":"Apple Sour Strong","s":"Manzana ácida","f":"frutas","mg":12,"pv":550,"pr":240,"st":36},{"id":157336136,"h":"syx-blueberry-extra-strong","m":"SYX","t":"Blueberry Extra Strong","s":"Arándano","f":"frutos-rojos","mg":20,"pv":550,"pr":240,"st":60,"e":"8594203206038"},{"id":156494815,"h":"syx-blueberry-low","m":"SYX","t":"Blueberry Mini","s":"Arándano","f":"frutos-rojos","mg":3,"pv":550,"pr":240,"st":59,"fb":"Mini","e":"850064816273"},{"id":157336066,"h":"syx-blueberry-medium","m":"SYX","t":"Blueberry Mini Medium","s":"Arándano","f":"frutos-rojos","mg":7,"pv":550,"pr":240,"st":31,"fb":"Mini","e":"8594203206014"},{"id":157336087,"h":"syx-blueberry-strong","m":"SYX","t":"Blueberry Strong","s":"Arándano","f":"frutos-rojos","mg":12,"pv":550,"pr":240,"st":52,"e":"8594203206021"},{"id":164109490,"h":"syx-cool-mint-extra-strong","m":"SYX","t":"Cool Mint Extra Strong","s":"Menta fresca","f":"menta","mg":20,"pv":550,"pr":240,"st":50},{"id":164109467,"h":"syx-cool-mint-mini","m":"SYX","t":"Cool Mint Mini","s":"Menta fresca","f":"menta","mg":3,"pv":550,"pr":240,"st":68,"fb":"Mini"},{"id":161008074,"h":"syx-cool-mint-medium","m":"SYX","t":"Cool Mint Mini Medium","s":"Menta fresca","f":"menta","mg":7,"pv":550,"pr":240,"st":38,"fb":"Mini","e":"8595738401608"},{"id":161008059,"h":"syx-cool-mint-strong","m":"SYX","t":"Cool Mint Strong","s":"Menta fresca","f":"menta","mg":12,"pv":550,"pr":240,"st":64,"e":"8595738401585"},{"id":164392690,"h":"syx-forest-fruit-extra-strong","m":"SYX","t":"Forest Fruit Extra Strong","s":"Frutos del bosque","f":"frutos-rojos","mg":20,"pv":550,"pr":240,"st":63},{"id":164370594,"h":"syx-forest-fruit-mini","m":"SYX","t":"Forest Fruit Mini","s":"Frutos del bosque","f":"frutos-rojos","mg":3,"pv":550,"pr":240,"st":66,"fb":"Mini"},{"id":164367679,"h":"syx-forest-fruit-mini-medium","m":"SYX","t":"Forest Fruit Mini Medium","s":"Frutos del bosque","f":"frutos-rojos","mg":7,"pv":550,"pr":240,"st":62,"fb":"Mini"},{"id":161008045,"h":"syx-forest-fruit-strong","m":"SYX","t":"Forest Fruit Strong","s":"Frutos del bosque","f":"frutos-rojos","mg":12,"pv":550,"pr":240,"st":50,"e":"8595738401615"},{"id":157336146,"h":"syx-freeze-extra-strong","m":"SYX","t":"Freeze Extra Strong","s":"Menta helada","f":"menta","mg":20,"pv":550,"pr":240,"st":70,"e":"8594203206182"},{"id":164364426,"h":"syx-freeze-mini","m":"SYX","t":"Freeze Mini","s":"Menta helada","f":"menta","mg":3,"pv":550,"pr":240,"st":48,"fb":"Mini"},{"id":157336065,"h":"syx-freeze-medium","m":"SYX","t":"Freeze Mini Medium","s":"Menta helada","f":"menta","mg":7,"pv":550,"pr":240,"st":30,"fb":"Mini","e":"8594203206168"},{"id":157336081,"h":"syx-freeze-strong","m":"SYX","t":"Freeze Strong","s":"Menta helada","f":"menta","mg":12,"pv":550,"pr":240,"st":46,"e":"8594203206175"},{"id":157336143,"h":"syx-icy-cola-extra-strong","m":"SYX","t":"Icy Cola Extra Strong","s":"Cola helada","f":"bebidas","mg":20,"pv":550,"pr":240,"st":67,"e":"8594203206212"},{"id":156494817,"h":"syx-icy-cola-low","m":"SYX","t":"Icy Cola Mini","s":"Cola helada","f":"bebidas","mg":3,"pv":550,"pr":240,"st":61,"fb":"Mini","e":"8594203205208"},{"id":157336063,"h":"syx-icy-cola-medium","m":"SYX","t":"Icy Cola Mini Medium","s":"Cola helada","f":"bebidas","mg":7,"pv":550,"pr":240,"st":69,"fb":"Mini","e":"8594203206199"},{"id":157336121,"h":"syx-icy-cola-strong","m":"SYX","t":"Icy Cola Strong","s":"Cola helada","f":"bebidas","mg":12,"pv":550,"pr":240,"st":45,"e":"8594203206205"},{"id":157336125,"h":"syx-peppermint-extra-strong","m":"SYX","t":"Peppermint Extra Strong","s":"Menta piperita","f":"menta","mg":20,"pv":550,"pr":240,"st":49,"e":"8594203206151"},{"id":156494813,"h":"syx-peppermint-low","m":"SYX","t":"Peppermint Mini","s":"Menta piperita","f":"menta","mg":3,"pv":550,"pr":240,"st":57,"fb":"Mini","e":"8594203205185"},{"id":157336062,"h":"syx-peppermint-medium","m":"SYX","t":"Peppermint Mini Medium","s":"Menta piperita","f":"menta","mg":7,"pv":550,"pr":240,"st":68,"fb":"Mini","e":"8594203206137"},{"id":157336073,"h":"syx-peppermint-strong","m":"SYX","t":"Peppermint Strong","s":"Menta piperita","f":"menta","mg":12,"pv":550,"pr":240,"st":38,"e":"8594203206144"},{"id":164370604,"h":"syx-salty-caramel-mini","m":"SYX","t":"Salty Caramel Mini","s":"Caramelo salado","f":"dulces","mg":3,"pv":550,"pr":240,"st":35,"fb":"Mini"},{"id":164370599,"h":"syx-salty-caramel-mini-medium","m":"SYX","t":"Salty Caramel Mini Medium","s":"Caramelo salado","f":"dulces","mg":7,"pv":550,"pr":240,"st":30,"fb":"Mini"},{"id":163195366,"h":"syx-salty-caramel-strong","m":"SYX","t":"Salty Caramel Strong","s":"Caramelo salado","f":"dulces","mg":12,"pv":550,"pr":240,"st":62},{"id":157336129,"h":"syx-spearmint-extra-strong","m":"SYX","t":"Spearmint Extra Strong","s":"Hierbabuena","f":"menta","mg":20,"pv":550,"pr":240,"st":53,"e":"8594203206069"},{"id":156494814,"h":"syx-spearmint-low","m":"SYX","t":"Spearmint Mini","s":"Hierbabuena","f":"menta","mg":3,"pv":550,"pr":240,"st":58,"fb":"Mini","e":"8594203205178"},{"id":157336060,"h":"syx-spearmint-medium","m":"SYX","t":"Spearmint Mini Medium","s":"Hierbabuena","f":"menta","mg":7,"pv":550,"pr":240,"st":66,"fb":"Mini","e":"8594203206045"},{"id":157336084,"h":"syx-spearmint-strong","m":"SYX","t":"Spearmint Strong","s":"Hierbabuena","f":"menta","mg":12,"pv":550,"pr":240,"st":49,"e":"8594203206052"},{"id":157336139,"h":"syx-tropical-extra-strong","m":"SYX","t":"Tropical Extra Strong","s":"Frutas tropicales","f":"tropical","mg":20,"pv":550,"pr":240,"st":63,"e":"8594203206090"},{"id":156494818,"h":"syx-tropical-low","m":"SYX","t":"Tropical Mini","s":"Frutas tropicales","f":"tropical","mg":3,"pv":550,"pr":240,"st":62,"fb":"Mini","e":"8594203205161"},{"id":157336059,"h":"syx-tropical-medium","m":"SYX","t":"Tropical Mini Medium","s":"Frutas tropicales","f":"tropical","mg":7,"pv":550,"pr":240,"st":65,"fb":"Mini","e":"8594203206076"},{"id":157336076,"h":"syx-tropical-strong","m":"SYX","t":"Tropical Strong","s":"Frutas tropicales","f":"tropical","mg":12,"pv":550,"pr":240,"st":41,"e":"8594203206083"},{"id":157336147,"h":"syx-wild-cherry-extra-strong","m":"SYX","t":"Wild Cherry Extra Strong","s":"Cereza silvestre","f":"frutos-rojos","mg":20,"pv":550,"pr":240,"st":30,"e":"8594203206120"},{"id":156494819,"h":"syx-wild-cherry-low","m":"SYX","t":"Wild Cherry Mini","s":"Cereza silvestre","f":"frutos-rojos","mg":3,"pv":550,"pr":240,"st":63,"fb":"Mini","e":"8594203205154"},{"id":157336069,"h":"syx-wild-cherry-medium","m":"SYX","t":"Wild Cherry Mini Medium","s":"Cereza silvestre","f":"frutos-rojos","mg":7,"pv":550,"pr":240,"st":34,"fb":"Mini","e":"8594203206106"},{"id":157336092,"h":"syx-wild-cherry-strong","m":"SYX","t":"Wild Cherry Strong","s":"Cereza silvestre","f":"frutos-rojos","mg":12,"pv":550,"pr":240,"st":57,"e":"8594203206113"},{"id":156494816,"h":"syx-wintergreen-low","m":"SYX","t":"Wintergreen Mini","s":"Wintergreen","f":"menta","mg":3,"pv":550,"pr":240,"st":60,"fb":"Mini","e":"8594203205147"},{"id":149520512,"h":"velo-blushy-berry","m":"VELO","t":"Blushy Berry","s":"Frutos rojos","f":"frutos-rojos","mg":5.6,"pv":750,"pr":465,"st":61,"e":"5715345008370"},{"id":149484287,"h":"velo-breezy-mango","m":"VELO","t":"Breezy Mango","s":"Mango fresco","f":"tropical","mg":5.6,"pv":750,"pr":465,"st":39,"e":"5715345008363"},{"id":160323070,"h":"velo-bright-peppermint","m":"VELO","t":"Bright Peppermint","s":"Menta piperita","f":"menta","mg":10,"pv":750,"pr":465,"st":62,"e":"5715435030890"},{"id":149520513,"h":"velo-crispy-peppermint-mini","m":"VELO","t":"Crispy Peppermint Mini","s":"Menta piperita","f":"menta","mg":8,"pv":750,"pr":465,"st":62,"fb":"Mini","e":"5715345008455"},{"id":161487373,"h":"velo-dark-cherry-mini","m":"VELO","t":"Dark Cherry Mini","s":"Cereza oscura","f":"frutos-rojos","mg":4,"pv":790,"pr":480,"st":47,"fb":"Mini","e":"5715345030920"},{"id":149796250,"h":"velo-humble-spearmint-mini","m":"VELO","t":"Humble Spearmint Mini","s":"Hierbabuena","f":"menta","mg":4,"pv":750,"pr":465,"st":33,"fb":"Mini","e":"5715345006420"},{"id":149797059,"h":"velo-lofty-liquorice","m":"VELO","t":"Lofty Liquorice","s":"Regaliz","f":"dulces","mg":10,"pv":750,"pr":465,"st":63,"e":"5715345008394"},{"id":149796265,"h":"velo-mango-flame","m":"VELO","t":"Mango Flame","s":"Mango picante","f":"tropical","mg":10,"pv":750,"pr":465,"st":48,"e":"5715345006512"},{"id":160936774,"h":"velo-sour-lime","m":"VELO","t":"Sour Lime","s":"Lima ácida","f":"citricos","mg":5.6,"pv":750,"pr":465,"st":37,"e":"5715345030944"},{"id":149485078,"h":"velo-spiffy-spearmint-mini","m":"VELO","t":"Spiffy Spearmint Mini","s":"Hierbabuena","f":"menta","mg":4,"pv":750,"pr":465,"st":51,"fb":"Mini","e":"5715345008448"},{"id":149796304,"h":"velo-tangled-berry","m":"VELO","t":"Tangled Berry","s":"Frutos del bosque","f":"frutos-rojos","mg":10,"pv":750,"pr":465,"st":46,"e":"5715345006529"},{"id":149797087,"h":"velo-wintery-watermelon-mini","m":"VELO","t":"Wintery Watermelon Mini","s":"Sandía helada","f":"frutas","mg":6,"pv":750,"pr":465,"st":50,"fb":"Mini","e":"5715345008479"},{"id":144470773,"h":"white-fox-double-mint","m":"White Fox","t":"Double Mint","s":"Doble menta","f":"menta","mg":12,"pv":690,"pr":405,"st":46,"e":"7350049929828"},{"id":163779259,"h":"xqs-apple-crisp","m":"XQS","t":"Apple Crisp","s":"Manzana crujiente","f":"frutas","mg":8,"pv":650,"pr":335,"st":33},{"id":151564023,"h":"xqs-arctic-freeze-ultra-strong","m":"XQS","t":"Arctic Freeze Ultra Strong","s":"Menta helada","f":"menta","mg":11.2,"pv":650,"pr":335,"st":50,"e":"8720400633265"},{"id":156096891,"h":"xqs-berrynana-twist","m":"XQS","t":"Berrynana Twist","s":"Plátano y frutos rojos","f":"tropical","mg":8,"pv":650,"pr":335,"st":40,"e":"8720400682652"},{"id":144471845,"h":"xqs-black-cherry","m":"XQS","t":"Black Cherry","s":"Cereza negra","f":"frutos-rojos","mg":8,"pv":650,"pr":335,"st":52,"e":"7340170000138"},{"id":144471871,"h":"xqs-blueberry-mint","m":"XQS","t":"Blueberry Mint","s":"Arándano y menta","f":"frutos-rojos","mg":8,"pv":650,"pr":335,"st":37,"e":"7340170000091"},{"id":144471843,"h":"xqs-cactus-sour","m":"XQS","t":"Cactus Sour","s":"Cactus ácido","f":"frutas","mg":8,"pv":650,"pr":335,"st":50,"e":"7340170000114"},{"id":162279027,"h":"xqs-citrus-cooling","m":"XQS","t":"Citrus Cooling","s":"Cítricos con frescor","f":"citricos","mg":8,"pv":650,"pr":335,"st":32,"e":"7340170004952"},{"id":163885070,"h":"xqs-citrus-cooling-light","m":"XQS","t":"Citrus Cooling Light","s":"Cítricos con frescor","f":"citricos","mg":4,"pv":650,"pr":335,"st":64},{"id":163779256,"h":"xqs-cola-lime","m":"XQS","t":"Cola Lime","s":"Cola y lima","f":"bebidas","mg":8,"pv":650,"pr":335,"st":30},{"id":163662541,"h":"xqs-fizzy-peach","m":"XQS","t":"Fizzy Peach","s":"Melocotón efervescente","f":"frutas","mg":8,"pv":650,"pr":335,"st":42},{"id":149084961,"h":"xqs-hallonsoda","m":"XQS","t":"Hallon Soda","s":"Refresco de frambuesa","f":"bebidas","mg":8,"pv":650,"pr":335,"st":53,"e":"8720400605316"},{"id":163779239,"h":"xqs-orange-squeeze","m":"XQS","t":"Orange Squeeze","s":"Naranja exprimida","f":"citricos","mg":8,"pv":650,"pr":335,"st":54},{"id":156096887,"h":"xqs-strawberry-kiwi","m":"XQS","t":"Strawberry Kiwi","s":"Fresa y kiwi","f":"frutos-rojos","mg":8,"pv":650,"pr":335,"st":36,"e":"8720400682614"},{"id":163779237,"h":"xqs-the-menthol-extra-strong","m":"XQS","t":"The Menthol Extra Strong","s":"Mentol","f":"menta","mg":11,"pv":650,"pr":335,"st":52},{"id":163779199,"h":"xqs-the-spearmint","m":"XQS","t":"The Spearmint","s":"Hierbabuena","f":"menta","mg":6,"pv":650,"pr":335,"st":55},{"id":162279019,"h":"xqs-tropical","m":"XQS","t":"Tropical","s":"Frutas tropicales","f":"tropical","mg":8,"pv":650,"pr":335,"st":65,"e":"7340170005041"},{"id":163885051,"h":"xqs-winter-green-light","m":"XQS","t":"Winter Green Light","s":"Wintergreen","f":"menta","mg":4,"pv":650,"pr":335,"st":45},{"id":146909528,"h":"xqs-wintergreen","m":"XQS","t":"Wintergreen","s":"Wintergreen","f":"menta","mg":8,"pv":650,"pr":335,"st":39,"e":"7340170005546"},{"id":157607236,"h":"zeus-arctic-freeze-extra-strong","m":"Zeus","t":"Arctic Freeze Extra Strong","s":"Menta helada","f":"menta","mg":25,"pv":590,"pr":295,"st":68,"e":"4751044000438"},{"id":157607239,"h":"zeus-cherry-blossom-extra-strong","m":"Zeus","t":"Cherry Blossom Extra Strong","s":"Flor de cerezo","f":"frutos-rojos","mg":25,"pv":590,"pr":295,"st":30,"e":"4751044000414"},{"id":157607237,"h":"zeus-frozen-citrus-extra-strong","m":"Zeus","t":"Frozen Citrus Extra Strong","s":"Cítricos helados","f":"citricos","mg":25,"pv":590,"pr":295,"st":69,"e":"4751044000421"},{"id":158517051,"h":"zeus-mint-rage-extra-strong","m":"Zeus","t":"Mint Rage Extra Strong","s":"Menta intensa","f":"menta","mg":25,"pv":590,"pr":295,"st":52,"e":"4751044000445"},{"id":158517047,"h":"zeus-true-north-extra-strong","m":"Zeus","t":"True North Extra Strong","s":"Sabor original","f":"clasicos","mg":25,"pv":590,"pr":295,"st":48,"e":"4751044000391"}]};
 
 </script>
   <script>
 /*
-  Solo para la vista previa local. Dibuja latas de ejemplo vistas desde arriba (en Shopify van las fotos
-  de producto), genera el mismo HTML que sections/b2b-catalogo.liquid y la acción de la entrada,
-  y simula /cart/add.js y /cart.js. No se sube a Shopify.
+  Solo para la vista previa (index.html, seo.html y producto.html). Lee el catálogo generado
+  (catalogo.js, desde el stock del proveedor), monta los formatos y precios de cada producto, simula
+  /cart/add.js y /cart.js con un carrito que se guarda entre páginas, y rellena los menús, la barra de
+  marcas y el pie con las marcas y sabores del catálogo. No se sube a Shopify.
 */
 (function () {
   'use strict';
 
-  // Estilo de lata por marca (dibujo genérico con el nombre; no son los diseños reales de cada marca).
-  var MARCAS = {
-    ZYN: 'blanco', VELO: 'solido', XQS: 'duo', Cuba: 'blanco',
-    'White Fox': 'negro', Pablo: 'solido', Killa: 'negro', LOOP: 'duo'
-  };
-
-  // Datos de ejemplo: marcas reales, precios, sabores y miligramos inventados o aproximados.
-  // Cada producto se vende por lata suelta, rollo de 10 y caja de 50; el precio por lata baja con el formato.
-  var LATA = 'Lata', ROLLO = 'Rollo 10', CAJA = 'Caja 50';
-  function redondear(c) { return Math.round(c / 10) * 10; }
-  function formatos(id, sku, lata, stockRollos) {
-    var rollo = redondear(lata * 10 * 0.905);
-    var caja = redondear(lata * 50 * 0.833);
-    var pvp = redondear(lata * 1.31); // precio de venta al público por lata, IVA incluido
-    return [
-      { id: id, titulo: LATA, latas: 1, sku: sku + '-1', precio: lata, pvp: pvp, tramos: [[5, redondear(lata * 0.97)]], stock: stockRollos * 10 },
-      { id: id + 1, titulo: ROLLO, latas: 10, sku: sku + '-10', precio: rollo, pvp: redondear(pvp * 10 * 0.9), tramos: [[10, redondear(rollo * 0.96)]], stock: stockRollos },
-      { id: id + 2, titulo: CAJA, latas: 50, sku: sku + '-50', precio: caja, pvp: redondear(pvp * 50 * 0.82), tramos: [[4, redondear(caja * 0.97)]], stock: Math.floor(stockRollos / 5) }
-    ];
+  var D = window.PV_CATALOGO || { marcas: [], familias: [], productos: [] };
+  // ?acceso=0 da por confirmada la edad (para capturas y pruebas de la vista previa).
+  if (new URLSearchParams(location.search).get('acceso') === '0') {
+    try { localStorage.setItem('b2b-acceso-confirmado', String(Date.now())); } catch (e) { /* sin almacenamiento */ }
   }
-  function p(marca, titulo, sabor, mg, color, lata, stock, insignia, id) {
-    return { marca: marca, titulo: titulo, sabor: sabor, mg: mg, color: color, insignia: insignia || '',
-      variantes: formatos(id, marca.replace(/\s/g, '').slice(0, 3).toUpperCase() + '-' + id, lata, stock) };
-  }
-  var PRODUCTOS = [
-    p('ZYN', 'Cool Mint', 'Menta', 6, '#3fa9c4', 420, 120, 'top', 100),
-    p('ZYN', 'Citrus Extra Strong', 'Cítricos', 11, '#e9b51f', 420, 80, '', 110),
-    p('ZYN', 'Black Cherry', 'Frutos rojos', 9, '#8a1f40', 430, 60, 'nuevo', 120),
-    p('VELO', 'Freezing Peppermint Max', 'Menta', 17, '#1f6fb8', 410, 140, 'top', 130),
-    p('VELO', 'Tropical Mango', 'Mango', 6, '#ff8a2b', 400, 90, '', 140),
-    p('VELO', 'Purple Grape', 'Uva', 10, '#6a2fb3', 400, 70, '', 150),
-    p('XQS', 'Blueberry Mint', 'Arándano', 4, '#4a5bd6', 360, 55, '', 160),
-    p('XQS', 'Tropical', 'Tropical', 4, '#f0782f', 350, 40, 'nuevo', 170),
-    p('Cuba', 'White Peach', 'Melocotón', 10, '#f39a6b', 330, 75, '', 180),
-    p('Cuba', 'White Watermelon', 'Sandía', 10, '#e8566a', 330, 0, '', 190),
-    p('White Fox', 'Full Charge', 'Menta', 16, '#9fd3e6', 380, 100, 'top', 200),
-    p('White Fox', 'Double Mint', 'Menta', 16, '#5fc28f', 380, 45, '', 210),
-    p('Pablo', 'Ice Cold', 'Menta', 30, '#2f9ad6', 450, 35, '', 220),
-    p('Pablo', 'Exclusive Grape Ice', 'Uva', 50, '#8a3fd1', 450, 25, '', 230),
-    p('Killa', 'Cold Mint', 'Menta', 16, '#8fd0f0', 360, 65, '', 240),
-    p('Killa', 'Watermelon', 'Sandía', 16, '#ff5f7a', 360, 6, '', 250),
-    p('LOOP', 'Jalapeño Lime', 'Lima', 9, '#7fc23f', 400, 50, 'nuevo', 260),
-    p('LOOP', 'Habanero Mint', 'Menta', 15, '#e0442b', 400, 40, '', 270)
-  ];
-
-  // Fotos oficiales de producto (preview/imagenes.js, por «marca|título»). Sin foto, se dibuja la lata.
-  var FOTOS = window.PV_FOTOS || {};
-  PRODUCTOS.forEach(function (p) { p.img = FOTOS[p.marca + '|' + p.titulo] || ''; });
-
-  var UMBRAL_STOCK = 10;
-  var MINIMO = 0; // sin pedido mínimo
-  // Particulares: hasta 10 latas de cada referencia (un rollo cuenta 10; la caja de 50 no se les enseña)
-  // y descuento por cantidad en la lata suelta, como en europesnus: 5 latas -5 %, 10 latas -10 %.
-  var TOPE_PARTICULAR = 10;
-  var TRAMOS_PARTICULAR = [[5, 5], [10, 10]];
   var fmt = new Intl.NumberFormat('es', { style: 'currency', currency: 'EUR', useGrouping: 'always' });
   function dinero(c) { return fmt.format(c / 100); }
   function esc(s) {
@@ -1823,91 +1927,106 @@ window.PV_FOTOS = {
   function handleize(s) {
     return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
-  function mezclar(a, b, t) {
-    function rgb(h) { h = h.replace('#', ''); return [0, 2, 4].map(function (i) { return parseInt(h.substr(i, 2), 16); }); }
-    var x = rgb(a), y = rgb(b);
-    return '#' + x.map(function (v, i) { return ('0' + Math.round(v + (y[i] - v) * t).toString(16)).slice(-2); }).join('');
-  }
-  // Rangos de nicotina por bolsa: baja hasta 5 mg, media hasta 9, alta hasta 14, muy alta desde 15.
+  function redondear(c) { return Math.round(c / 10) * 10; }
+  // Niveles de nicotina por bolsa: suave hasta 5 mg, media hasta 9, fuerte hasta 14, extra fuerte desde 15.
   function nivel(mg) { return mg <= 5 ? 1 : mg <= 9 ? 2 : mg <= 14 ? 3 : 4; }
   var NIVELES = ['', 'baja', 'media', 'alta', 'muy alta'];
+  var NIVEL_NOMBRE = ['', 'Suave', 'Media', 'Fuerte', 'Extra fuerte'];
+  var NIVEL_FICHA = ['', 'suave', 'medio', 'fuerte', 'extra fuerte'];
+  // Los cortes son «hasta»: 5,5 mg es media y 9,1 mg es fuerte.
+  var NIVEL_RANGO = ['', 'hasta 5 mg', 'de 5 a 9 mg', 'de 9 a 14 mg', 'más de 14 mg'];
+  function mgTxt(mg) { return String(mg).replace('.', ','); }
 
-  /* Lata vista desde arriba, como las fotos de producto de las tiendas de snus. */
-  function lata(p) {
-    var c = p.color, tapa, borde, aro, aroAncho = 2, tinta;
-    switch (MARCAS[p.marca]) {
-      case 'blanco': tapa = '#f7f7f7'; borde = '#d9d9d9'; aro = c; aroAncho = 8; tinta = mezclar(c, '#000000', 0.2); break;
-      case 'duo': tapa = mezclar(c, '#ffffff', 0.7); borde = c; aro = c; aroAncho = 3; tinta = mezclar(c, '#000000', 0.5); break;
-      case 'negro': tapa = '#161616'; borde = '#000000'; aro = c; aroAncho = 3; tinta = c; break;
-      default: tapa = c; borde = mezclar(c, '#000000', 0.25); aro = mezclar(c, '#ffffff', 0.4); tinta = '#ffffff';
-    }
-    var marca = p.marca.toUpperCase();
-    var tam = Math.min(36, Math.round(108 / (marca.length * 0.56)));
-    var n = nivel(p.mg), puntos = '';
-    for (var i = 1; i <= 4; i++) {
-      puntos += '<circle cx="' + (82 + (i - 1) * 12) + '" cy="64" r="3.6" fill="' + (i <= n ? tinta : 'none') + '" stroke="' + tinta + '" stroke-width="1.5"/>';
-    }
-    return '<svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">' +
-      '<circle cx="100" cy="107" r="86" fill="rgba(0,0,0,.13)"/>' +
-      '<circle cx="100" cy="100" r="86" fill="' + borde + '"/>' +
-      '<circle cx="100" cy="100" r="80" fill="' + tapa + '"/>' +
-      '<circle cx="100" cy="100" r="67" fill="none" stroke="' + aro + '" stroke-width="' + aroAncho + '"/>' +
-      puntos +
-      '<text x="100" y="' + (100 + tam * 0.34) + '" text-anchor="middle" style="font-family: Archivo, Helvetica, sans-serif; font-stretch: 70%; font-weight: 850" font-size="' + tam + '" fill="' + tinta + '">' + esc(marca) + '</text>' +
-      '<text x="100" y="134" text-anchor="middle" style="font-family: Archivo, Helvetica, sans-serif; font-stretch: 85%; font-weight: 700" font-size="11" letter-spacing="1.4" fill="' + tinta + '" opacity=".85">' + esc(p.sabor.toUpperCase()) + '</text>' +
-      '<text x="100" y="149" text-anchor="middle" style="font-family: Archivo, Helvetica, sans-serif; font-weight: 600" font-size="8.5" letter-spacing="1" fill="' + tinta + '" opacity=".7">' + p.mg + ' MG/BOLSA</text>' +
-      '<path d="M44 66 A68 68 0 0 1 116 33" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="5" stroke-linecap="round"/>' +
-      '</svg>';
+  var TOPE_PARTICULAR = 10;
+  var TRAMOS_PARTICULAR = [[5, 5], [10, 10]];
+  var UMBRAL_STOCK = 10;
+
+  // Formatos de cada referencia: lata, rollo de 10 y caja de 50. El precio por lata baja con el formato.
+  // p.pr: precio profesional por lata sin IVA; p.pv: precio de la tienda por lata con IVA (céntimos).
+  function variantes(p) {
+    var base = p.id * 10;
+    var rollo = redondear(p.pr * 10 * 0.905);
+    var caja = redondear(p.pr * 50 * 0.833);
+    var sku = p.h.toUpperCase().slice(0, 18);
+    return [
+      { id: base + 1, titulo: 'Lata', latas: 1, sku: sku + '-1', precio: p.pr, pvp: p.pv, tramos: [[5, redondear(p.pr * 0.97)]], stock: p.st * 10 },
+      { id: base + 2, titulo: 'Rollo 10', latas: 10, sku: sku + '-10', precio: rollo, pvp: redondear(p.pv * 10 * 0.9), tramos: [[10, redondear(rollo * 0.96)]], stock: p.st },
+      { id: base + 3, titulo: 'Caja 50', latas: 50, sku: sku + '-50', precio: caja, pvp: redondear(p.pv * 50 * 0.82), tramos: [[4, redondear(caja * 0.97)]], stock: Math.floor(p.st / 5) }
+    ];
   }
 
-  /* Foto real del producto si la hay; si no, la lata dibujada. */
-  function medio(p) {
-    return p.img
-      ? '<img src="' + esc(p.img) + '" alt="' + esc(p.marca + ' ' + p.titulo) + '" width="860" height="860" loading="lazy" decoding="async">'
-      : lata(p);
+  var porHandle = {}, porVariante = {}, porMarca = {};
+  var productos = D.productos.map(function (r) {
+    var p = {
+      id: r.id, h: r.h, marca: r.m, marcaH: handleize(r.m), titulo: r.t, sabor: r.s, familia: r.f,
+      mg: r.mg, formatoBolsa: r.fb || '', insignia: r.b || '',
+      ean: r.e || '', pv: r.pv, pr: r.pr, st: r.st
+    };
+    p.nivel = nivel(p.mg);
+    p.variantes = variantes(p);
+    p.variantes.forEach(function (v) { porVariante[v.id] = { p: p, v: v }; });
+    porHandle[p.h] = p;
+    (porMarca[p.marcaH] = porMarca[p.marcaH] || []).push(p);
+    return p;
+  });
+  var marcas = D.marcas.map(function (m) {
+    return { nombre: m.n, h: m.h, logo: m.l || '', ancho: m.w || 0, n: (porMarca[m.h] || []).length };
+  });
+  var marcaPorH = {};
+  marcas.forEach(function (m) { marcaPorH[m.h] = m; });
+  var familias = D.familias.map(function (f) { return { h: f.h, nombre: f.n, intro: f.i || '' }; });
+  var familiaPorH = {};
+  familias.forEach(function (f) { familiaPorH[f.h] = f; });
+
+  /* Estado de la vista previa: particular (invitado), profesional en revisión o profesional aprobado. */
+  function estado() {
+    var e = new URLSearchParams(location.search).get('estado');
+    return e === 'aprobado' || e === 'pendiente' ? e : 'invitado';
+  }
+  function conEstado(url) {
+    var e = estado();
+    if (e === 'invitado') return url;
+    var i = url.indexOf('#');
+    var base = i === -1 ? url : url.slice(0, i);
+    var hash = i === -1 ? '' : url.slice(i);
+    return base + (base.indexOf('?') === -1 ? '?' : '&') + 'estado=' + e + hash;
+  }
+  function enlaceProducto(p) { return conEstado('producto.html#' + p.h); }
+
+  /* Foto del producto (WebP de 400 y 800 px). */
+  function foto(p, opciones) {
+    opciones = opciones || {};
+    var alt = opciones.alt === undefined ? p.marca + ' ' + p.titulo : opciones.alt;
+    return '<img src="img/p/400/' + p.h + '.webp" srcset="img/p/400/' + p.h + '.webp 400w, img/p/800/' + p.h + '.webp 800w"' +
+      ' sizes="' + (opciones.sizes || '(min-width: 760px) 300px, 50vw') + '" alt="' + esc(alt) + '" width="800" height="800"' +
+      (opciones.prioridad ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">';
   }
 
-  /* Expositor de mostrador con tres baldas de latas. */
-  function expositor() {
-    var colores = PRODUCTOS.map(function (p) { return p.color; });
-    var h = '<svg viewBox="0 0 420 300" aria-hidden="true" focusable="false">' +
-      '<ellipse cx="210" cy="280" rx="170" ry="12" fill="rgba(255,255,255,.08)"/>' +
-      '<rect x="96" y="14" width="228" height="64" rx="8" fill="#aa2030"/>' +
-      '<text x="210" y="52" text-anchor="middle" style="font-family: Montserrat, Helvetica, sans-serif; font-weight: 900" font-size="22" letter-spacing="-0.4" fill="#f5f3eb">POUCHES</text>' +
-      '<text x="196" y="68" text-anchor="middle" style="font-family: Montserrat, Helvetica, sans-serif; font-weight: 600" font-size="8" letter-spacing="5" fill="#f5f3eb">SPAIN</text>' +
-      '<path d="M234 61 h22 l-3 8 h-22 Z" fill="#c8102e"/><path d="M233 63.6 h22 l-1.5 2.8 h-22 Z" fill="#f2c84b"/>' +
-      '<path d="M70 78 H350 L372 270 H48 Z" fill="#161820"/>' +
-      '<path d="M70 78 H350 L352 94 H68 Z" fill="#23252e"/>';
-    var baldas = [{ y: 128, x0: 92, n: 5, paso: 59 }, { y: 180, x0: 82, n: 6, paso: 51 }, { y: 232, x0: 72, n: 6, paso: 55 }];
-    var k = 0;
-    baldas.forEach(function (b) {
-      h += '<rect x="' + (b.x0 - 22) + '" y="' + (b.y + 14) + '" width="' + (b.paso * (b.n - 1) + 44) + '" height="10" rx="2" fill="#0f0f0f"/>';
-      for (var i = 0; i < b.n; i++) {
-        var c = colores[k++ % colores.length];
-        var x = b.x0 + i * b.paso;
-        h += '<rect x="' + (x - 21) + '" y="' + b.y + '" width="42" height="12" fill="' + mezclar(c, '#000000', 0.35) + '"/>' +
-          '<ellipse cx="' + x + '" cy="' + (b.y + 12) + '" rx="21" ry="7" fill="' + mezclar(c, '#000000', 0.35) + '"/>' +
-          '<ellipse cx="' + x + '" cy="' + b.y + '" rx="21" ry="7" fill="' + c + '"/>' +
-          '<ellipse cx="' + x + '" cy="' + b.y + '" rx="15" ry="4.6" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>';
-      }
-    });
-    return h + '</svg>';
+  function fuerza(n) {
+    var h = '';
+    for (var i = 1; i <= 4; i++) h += '<i' + (i <= n ? ' class="on"' : '') + '></i>';
+    return '<span class="b2b-fuerza" role="img" aria-label="Nicotina ' + NIVELES[n] + ', ' + n + ' de 4">' + h + '</span>';
   }
 
   var MENOS = '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   var MAS = '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M7 2v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   var CANDADO = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3.5 7h9v7h-9z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
 
-  function variante(p, v, compra, primera, mayorista) {
+  /* Tramos de precio que ve cada cliente: los profesionales los suyos; los particulares el descuento
+     por cantidad en la lata suelta. Cada tramo: [cantidad mínima, precio, % de ahorro]. */
+  function tramosDe(v, mayorista) {
+    if (mayorista) return v.tramos;
+    return v.latas === 1 ? TRAMOS_PARTICULAR.map(function (t) { return [t[0], Math.floor(v.pvp * (100 - t[1]) / 100), t[1]]; }) : [];
+  }
+
+  /* Fila de un formato: el mismo HTML que sections/b2b-catalogo.liquid y b2b-producto.liquid. */
+  function variante(p, v, compra, primera, mayorista, inicial) {
     var precio = mayorista ? v.precio : v.pvp;
-    var tramos = mayorista ? v.tramos : (v.latas === 1 ? TRAMOS_PARTICULAR.map(function (t) {
-      return [t[0], Math.floor(v.pvp * (100 - t[1]) / 100), t[1]];
-    }) : []);
+    var tramos = tramosDe(v, mayorista);
     var nombre = p.titulo + ', ' + v.titulo;
-    var paso = v.paso || 1, min = v.min || 1;
     var stock = v.stock <= 0 ? 'agotado' : (v.stock <= UMBRAL_STOCK ? 'pocas' : 'ok');
     var h = '<div class="b2b-var" data-b2b-row data-variant-id="' + v.id + '" data-price="' + precio + '"' +
-      ' data-breaks="' + JSON.stringify(tramos.map(function (t) { return [t[0], t[1]]; })) + '" data-min="' + min + '" data-step="' + paso + '" data-stock="' + v.stock + '"' +
+      ' data-breaks="' + JSON.stringify(tramos.map(function (t) { return [t[0], t[1]]; })) + '" data-min="1" data-step="1" data-stock="' + v.stock + '"' +
       (v.latas > 1 ? ' data-latas="' + v.latas + '"' : '') + (primera ? '' : ' data-b2b-oculta') + '>' +
       '<div class="b2b-var__fmt"><span class="b2b-var__nombre">' + esc(v.titulo) + '</span>' +
       '<span class="b2b-stock b2b-stock--' + stock + '">' + { agotado: 'Agotado', pocas: 'Quedan pocas', ok: 'En stock' }[stock] + '</span></div>';
@@ -1922,10 +2041,9 @@ window.PV_FOTOS = {
       }
       h += '</div><div class="b2b-var__cant">';
       if (v.stock > 0) {
-        h += '<div class="b2b-paso"><button type="button" class="b2b-paso__btn" data-b2b-menos aria-label="Quitar ' + paso + ' de ' + esc(nombre) + '">' + MENOS + '</button>' +
-          '<input class="b2b-paso__input" type="number" inputmode="numeric" min="0" step="' + paso + '" value="0" data-b2b-cant aria-label="Cantidad de ' + esc(nombre) + '">' +
-          '<button type="button" class="b2b-paso__btn" data-b2b-mas aria-label="Añadir ' + paso + ' de ' + esc(nombre) + '">' + MAS + '</button></div>';
-        if (min > 1 || paso > 1) h += '<span class="b2b-regla">Mínimo ' + min + (paso > 1 ? ', de ' + paso + ' en ' + paso : '') + '</span>';
+        h += '<div class="b2b-paso"><button type="button" class="b2b-paso__btn" data-b2b-menos aria-label="Quitar 1 de ' + esc(nombre) + '">' + MENOS + '</button>' +
+          '<input class="b2b-paso__input" type="number" inputmode="numeric" min="0" step="1" value="' + (inicial || 0) + '" data-b2b-cant aria-label="Cantidad de ' + esc(nombre) + '">' +
+          '<button type="button" class="b2b-paso__btn" data-b2b-mas aria-label="Añadir 1 de ' + esc(nombre) + '">' + MAS + '</button></div>';
       } else {
         h += '<span class="b2b-muted">No disponible</span>';
       }
@@ -1934,45 +2052,237 @@ window.PV_FOTOS = {
     return h + '</div>';
   }
 
+  /* Tarjeta de producto de las rejillas (colecciones y «Más de la marca»), como b2b-coleccion.liquid. */
+  function carta(p, mayorista) {
+    var precio = mayorista ? p.variantes[0].precio : p.variantes[0].pvp;
+    return '<li class="b2b-carta"><a class="b2b-carta__enlace" href="' + enlaceProducto(p) + '">' +
+      '<span class="b2b-carta__media"><span class="b2b-prod__mg">' + mgTxt(p.mg) + ' mg</span>' +
+      foto(p, { sizes: '(min-width: 760px) 240px, 45vw' }) + '</span>' +
+      '<span class="b2b-carta__cuerpo"><span class="b2b-carta__marca">' + esc(p.marca) + '</span>' +
+      '<span class="b2b-carta__nombre">' + esc(p.titulo) + '</span>' + fuerza(p.nivel) +
+      '<span class="b2b-carta__precio">Desde ' + dinero(precio) + '</span></span></a></li>';
+  }
+
+  var AVISO_ACCESO = '<dialog class="b2b b2b-gate" data-b2b-gate data-dias="30" aria-labelledby="b2b-gate-x">' +
+    '<div data-b2b-gate-paso1><h2 class="b2b-h3" id="b2b-gate-x">¿Tienes 18 años o más?</h2>' +
+    '<div class="b2b-rte b2b-gate__texto"><p>Vendemos bolsas de nicotina y solo podemos venderlas a mayores de edad. Confirma tu edad para entrar.</p></div>' +
+    '<div class="b2b-gate__acciones"><button type="button" class="b2b-btn" data-b2b-gate-si>Sí, tengo 18 o más</button>' +
+    '<button type="button" class="b2b-btn b2b-btn--ghost" data-b2b-gate-no>No</button></div></div>' +
+    '<div data-b2b-gate-paso2 hidden><h2 class="b2b-h3">No podemos venderte</h2>' +
+    '<div class="b2b-rte b2b-gate__texto"><p>La venta de productos con nicotina está prohibida a menores de 18 años. Puedes cerrar esta página.</p></div></div></dialog>';
+
+  /* Carrito simulado con el contrato de /cart/add.js y /cart.js de Shopify. Se guarda en la sesión
+     del navegador para que lo añadido en una página siga en las demás. */
+  var CLAVE_CARRITO = 'pv-carrito';
+  function leerGuardado() {
+    try { var c = JSON.parse(sessionStorage.getItem(CLAVE_CARRITO) || 'null'); if (c && c.items) return c.items; } catch (e) { /* sin almacenamiento */ }
+    return [];
+  }
+  var lineas = leerGuardado();
+  function precioLinea(id, q) {
+    var x = porVariante[id];
+    if (!x) return 0;
+    var mayorista = estado() === 'aprobado';
+    var precio = mayorista ? x.v.precio : x.v.pvp;
+    tramosDe(x.v, mayorista).forEach(function (t) { if (q >= t[0]) precio = t[1]; });
+    return precio;
+  }
+  function carrito() {
+    return {
+      items: lineas.map(function (l) { return { id: l.id, quantity: l.quantity }; }),
+      items_subtotal_price: lineas.reduce(function (s, l) { return s + precioLinea(l.id, l.quantity) * l.quantity; }, 0),
+      item_count: lineas.reduce(function (s, l) { return s + l.quantity; }, 0)
+    };
+  }
+  function guardarCarrito() {
+    try { sessionStorage.setItem(CLAVE_CARRITO, JSON.stringify({ items: lineas })); } catch (e) { /* sin almacenamiento */ }
+  }
+  var fetchReal = window.fetch.bind(window);
+  window.fetch = function (url, opts) {
+    var u = String(url);
+    function respuesta(cuerpo, codigo) {
+      return new Promise(function (ok) {
+        setTimeout(function () {
+          ok(new Response(JSON.stringify(cuerpo), { status: codigo || 200, headers: { 'Content-Type': 'application/json' } }));
+        }, 400);
+      });
+    }
+    if (/\/cart\/add\.js$/.test(u)) {
+      var datos = JSON.parse(opts.body);
+      datos.items.forEach(function (it) {
+        var ya = lineas.filter(function (x) { return x.id === it.id; })[0];
+        if (ya) ya.quantity += it.quantity; else lineas.push({ id: it.id, quantity: it.quantity });
+      });
+      guardarCarrito();
+      return respuesta({ items: datos.items });
+    }
+    if (/\/cart\.js$/.test(u)) return respuesta(carrito());
+    return fetchReal(url, opts);
+  };
+
+  /* Menús, barra de marcas, pie y cinta. Cada página indica a dónde llevan los enlaces
+     (data-base: «seo.html» desde la tienda y la ficha, vacío en seo.html). */
+  function principales(n) {
+    return marcas.slice().sort(function (a, b) { return b.n - a.n || a.nombre.localeCompare(b.nombre, 'es'); }).slice(0, n)
+      .sort(function (a, b) { return a.nombre.localeCompare(b.nombre, 'es'); });
+  }
+  function rellenar() {
+    document.querySelectorAll('[data-pv-menu-marcas]').forEach(function (el) {
+      var base = el.getAttribute('data-base') || '';
+      el.innerHTML = principales(10).map(function (m) { return '<a href="' + conEstado(base + '#marca-' + m.h) + '">' + esc(m.nombre) + '</a>'; }).join('') +
+        '<a href="' + conEstado(base + '#marcas') + '">Todas las marcas (' + marcas.length + ')</a>';
+    });
+    document.querySelectorAll('[data-pv-menu-sabores]').forEach(function (el) {
+      var base = el.getAttribute('data-base') || '';
+      el.innerHTML = familias.map(function (f) { return '<a href="' + conEstado(base + '#sabor-' + f.h) + '">' + esc(f.nombre) + '</a>'; }).join('');
+    });
+    document.querySelectorAll('[data-pv-pie-marcas]').forEach(function (el) {
+      var base = el.getAttribute('data-base') || '';
+      el.innerHTML = principales(7).map(function (m) { return '<li><a href="' + conEstado(base + '#marca-' + m.h) + '">' + esc(m.nombre) + '</a></li>'; }).join('') +
+        '<li><a href="' + conEstado(base + '#marcas') + '">Todas las marcas</a></li>';
+    });
+    document.querySelectorAll('[data-pv-pie-sabores]').forEach(function (el) {
+      var base = el.getAttribute('data-base') || '';
+      el.innerHTML = familias.map(function (f) { return '<li><a href="' + conEstado(base + '#sabor-' + f.h) + '">' + esc(f.nombre) + '</a></li>'; }).join('');
+    });
+    // Barra de marcas (snippets/b2b-marquesina-marcas.liquid): logo de cada marca, o su nombre si no hay.
+    // Se rellena una sola vez: después b2b-snus.js añade las copias del bucle.
+    document.querySelectorAll('[data-pv-marquesina]:not([data-pv-listo])').forEach(function (ul) {
+      ul.setAttribute('data-pv-listo', '');
+      var base = ul.getAttribute('data-base') || '';
+      ul.innerHTML = marcas.slice().sort(function (a, b) { return a.nombre.localeCompare(b.nombre, 'es'); }).map(function (m) {
+        var dentro = m.logo
+          ? '<img class="b2b-marquesina__logo" src="' + m.logo + '" alt="' + esc(m.nombre) + '" width="' + m.ancho + '" height="160" loading="lazy" decoding="async" draggable="false">'
+          : esc(m.nombre);
+        return '<li class="b2b-marquesina__item"><a href="' + (base === 'filtro' ? '#marca-' + m.h : conEstado(base + '#marca-' + m.h)) + '">' + dentro + '</a></li>';
+      }).join('');
+    });
+    // Copias de la cinta para que el bucle no deje huecos (en Liquid las pone un for).
+    var cinta = document.querySelector('[data-pv-cinta]');
+    if (cinta && !cinta.parentNode.querySelector('[aria-hidden="true"]')) {
+      for (var c = 0; c < 5; c++) {
+        var copia = cinta.cloneNode(true);
+        copia.removeAttribute('data-pv-cinta');
+        copia.setAttribute('aria-hidden', 'true');
+        cinta.parentNode.appendChild(copia);
+      }
+    }
+    var cuenta = carrito().item_count;
+    document.querySelectorAll('[data-b2b-carrito-cuenta]').forEach(function (el) { el.textContent = cuenta; });
+  }
+
+  window.PV = {
+    productos: productos, marcas: marcas, familias: familias,
+    porHandle: porHandle, porMarca: porMarca, marcaPorH: marcaPorH, familiaPorH: familiaPorH,
+    dinero: dinero, esc: esc, handleize: handleize, nivel: nivel, mgTxt: mgTxt,
+    NIVELES: NIVELES, NIVEL_NOMBRE: NIVEL_NOMBRE, NIVEL_RANGO: NIVEL_RANGO, NIVEL_FICHA: NIVEL_FICHA,
+    TOPE_PARTICULAR: TOPE_PARTICULAR, UMBRAL_STOCK: UMBRAL_STOCK, CANDADO: CANDADO,
+    estado: estado, conEstado: conEstado, enlaceProducto: enlaceProducto,
+    foto: foto, fuerza: fuerza, variante: variante, carta: carta, tramosDe: tramosDe,
+    AVISO_ACCESO: AVISO_ACCESO, rellenar: rellenar
+  };
+  rellenar();
+})();
+
+</script>
+  <script>
+/*
+  Solo para la vista previa local de la tienda (index.html). Genera el mismo HTML que
+  sections/b2b-catalogo.liquid y la acción de la entrada con el catálogo del proveedor (catalogo.js,
+  preparado por comun.js). No se sube a Shopify.
+*/
+(function () {
+  'use strict';
+  var PV = window.PV;
+  var esc = PV.esc, dinero = PV.dinero, handleize = PV.handleize;
+  var PRODUCTOS = PV.productos;
+  var MINIMO = 0; // sin pedido mínimo
+  var DE_GOLPE = 24; // fichas que se enseñan antes de «Ver más»
+
+  function mezclar(a, b, t) {
+    function rgb(h) { h = h.replace('#', ''); return [0, 2, 4].map(function (i) { return parseInt(h.substr(i, 2), 16); }); }
+    var x = rgb(a), y = rgb(b);
+    return '#' + x.map(function (v, i) { return ('0' + Math.round(v + (y[i] - v) * t).toString(16)).slice(-2); }).join('');
+  }
+  // Colores de lata para el dibujo del expositor (el proveedor no da el color de cada lata).
+  var COLORES_LATA = ['#aa2030', '#f2c84b', '#3fa9c4', '#1f6fb8', '#ff8a2b', '#6a2fb3', '#2f9e6a', '#e8566a', '#8a1f40', '#f5f3eb', '#161820', '#7fc23f'];
+  // Una referencia de cada marca, primero las más vendidas, para que el muro tenga variedad.
+  function escaparate(n) {
+    var vistas = {}, out = [];
+    var orden = PRODUCTOS.slice().sort(function (a, b) {
+      return (b.insignia === 'top') - (a.insignia === 'top') || a.id - b.id;
+    });
+    for (var ronda = 0; out.length < n && ronda < 6; ronda++) {
+      vistas = {};
+      orden.forEach(function (p) {
+        if (out.length >= n || vistas[p.marcaH] || out.indexOf(p) !== -1) return;
+        vistas[p.marcaH] = true;
+        out.push(p);
+      });
+    }
+    return out;
+  }
+
+  /* Expositor de mostrador con tres baldas de latas. */
+  function expositor() {
+    var colores = COLORES_LATA;
+    var h = '<svg viewBox="0 0 420 300" aria-hidden="true" focusable="false">' +
+      '<ellipse cx="210" cy="280" rx="170" ry="12" fill="rgba(255,255,255,.08)"/>' +
+      '<rect x="96" y="14" width="228" height="64" rx="8" fill="#aa2030"/>' +
+      '<text x="210" y="52" text-anchor="middle" style="font-family: Montserrat, Helvetica, sans-serif; font-weight: 900" font-size="22" letter-spacing="-0.4" fill="#f5f3eb">POUCHES</text>' +
+      '<text x="196" y="68" text-anchor="middle" style="font-family: Montserrat, Helvetica, sans-serif; font-weight: 600" font-size="8" letter-spacing="5" fill="#f5f3eb">SPAIN</text>' +
+      '<path d="M234 61 h22 l-3 8 h-22 Z" fill="#c8102e"/><path d="M233 63.6 h22 l-1.5 2.8 h-22 Z" fill="#f2c84b"/>' +
+      '<path d="M70 78 H350 L372 270 H48 Z" fill="#161820"/>' +
+      '<path d="M70 78 H350 L352 94 H68 Z" fill="#23252e"/>';
+    var baldas = [{ y: 128, x0: 92, n: 5, paso: 59 }, { y: 180, x0: 82, n: 6, paso: 51 }, { y: 232, x0: 72, n: 6, paso: 55 }];
+    var k = 0;
+    baldas.forEach(function (b) {
+      h += '<rect x="' + (b.x0 - 22) + '" y="' + (b.y + 14) + '" width="' + (b.paso * (b.n - 1) + 44) + '" height="10" rx="2" fill="#0f0f0f"/>';
+      for (var i = 0; i < b.n; i++) {
+        var c = colores[(k++ * 7) % colores.length];
+        var x = b.x0 + i * b.paso;
+        h += '<rect x="' + (x - 21) + '" y="' + b.y + '" width="42" height="12" fill="' + mezclar(c, '#000000', 0.35) + '"/>' +
+          '<ellipse cx="' + x + '" cy="' + (b.y + 12) + '" rx="21" ry="7" fill="' + mezclar(c, '#000000', 0.35) + '"/>' +
+          '<ellipse cx="' + x + '" cy="' + b.y + '" rx="21" ry="7" fill="' + c + '"/>' +
+          '<ellipse cx="' + x + '" cy="' + b.y + '" rx="15" ry="4.6" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>';
+      }
+    });
+    return h + '</svg>';
+  }
+
   function ficha(p, compra, mayorista) {
     // A particulares no se les enseñan los formatos que no caben en el tope (la caja de 50).
-    var variantes = p.variantes.filter(function (v) { return mayorista || v.latas <= TOPE_PARTICULAR; });
-    var buscar = [p.titulo, p.marca, p.sabor].concat(p.variantes.map(function (v) { return v.titulo + ' ' + v.sku; })).join(' ');
-    var n = nivel(p.mg), puntos = '';
-    for (var i = 1; i <= 4; i++) puntos += '<i' + (i <= n ? ' class="on"' : '') + '></i>';
+    var variantes = p.variantes.filter(function (v) { return mayorista || v.latas <= PV.TOPE_PARTICULAR; });
+    var buscar = [p.titulo, p.marca, p.sabor, PV.familiaPorH[p.familia] ? PV.familiaPorH[p.familia].nombre : ''].concat(p.variantes.map(function (v) { return v.titulo + ' ' + v.sku; })).join(' ');
     var varios = variantes.length > 1;
     var insignia = p.insignia === 'top' ? '<span class="b2b-insignia b2b-insignia--top">Más vendido</span>'
       : p.insignia === 'nuevo' ? '<span class="b2b-insignia b2b-insignia--nuevo">Novedad</span>' : '';
-    var h = '<article class="b2b-prod' + (varios ? ' b2b-prod--formatos' : '') + '" data-b2b-item data-marca="' + handleize(p.marca) + '"' +
-      ' data-sabor="' + handleize(p.sabor) + '" data-nicotina="' + p.mg + '" data-search="' + esc(buscar) + '">' +
-      '<div class="b2b-prod__media">' + insignia + '<span class="b2b-prod__mg">' + p.mg + ' mg</span>' + medio(p) + '</div>' +
-      '<div class="b2b-prod__info"><h3 class="b2b-prod__nombre"><a href="#">' + esc(p.titulo) + '</a></h3>' +
-      '<span class="b2b-fuerza" role="img" aria-label="Nicotina ' + NIVELES[n] + ', ' + n + ' de 4">' + puntos + '</span>' +
-      '<p class="b2b-prod__meta">' + esc(p.marca) + ' · ' + esc(p.sabor) + ' · Nicotina ' + NIVELES[n] + '</p></div>';
+    var url = PV.enlaceProducto(p);
+    var h = '<article class="b2b-prod' + (varios ? ' b2b-prod--formatos' : '') + '" data-b2b-item data-marca="' + p.marcaH + '"' +
+      ' data-sabor="' + handleize(p.sabor) + '" data-familia="' + p.familia + '" data-nicotina="' + p.mg + '" data-nivel="' + p.nivel + '"' +
+      ' data-search="' + esc(buscar) + '">' +
+      '<div class="b2b-prod__media">' + insignia + '<span class="b2b-prod__mg">' + PV.mgTxt(p.mg) + ' mg</span>' +
+      '<a class="b2b-prod__foto" href="' + url + '" tabindex="-1" aria-hidden="true">' + PV.foto(p, { alt: '' }) + '</a></div>' +
+      '<div class="b2b-prod__info"><h3 class="b2b-prod__nombre"><a href="' + url + '">' + esc(p.titulo) + '</a></h3>' +
+      PV.fuerza(p.nivel) +
+      '<p class="b2b-prod__meta">' + esc(p.marca) + ' · ' + esc(p.sabor) + ' · Nicotina ' + PV.NIVELES[p.nivel] + '</p></div>';
     if (varios) {
       h += '<div class="b2b-formatos" role="group" aria-label="Formato de ' + esc(p.titulo) + '">' + variantes.map(function (v, i) {
         return '<button type="button" class="b2b-formato" data-b2b-formato="' + v.id + '" aria-pressed="' + (i === 0) + '">' + esc(v.titulo) + '</button>';
       }).join('') + '</div>';
     }
-    h += '<div class="b2b-prod__vars">' + variantes.map(function (v, i) { return variante(p, v, compra, i === 0, mayorista); }).join('') +
-      (compra ? '' : '<p class="b2b-prod__bloqueo">' + CANDADO + 'Precio con cuenta profesional</p>') + '</div></article>';
+    h += '<div class="b2b-prod__vars">' + variantes.map(function (v, i) { return PV.variante(p, v, compra, i === 0, mayorista); }).join('') +
+      (compra ? '' : '<p class="b2b-prod__bloqueo">' + PV.CANDADO + 'Precio con cuenta profesional</p>') + '</div></article>';
     return h;
   }
 
   function catalogo(estado) {
     var mayorista = estado === 'aprobado';
     var compra = true; // venta también a particulares
-    var marcas = [], sabores = [], mgs = [];
-    PRODUCTOS.forEach(function (p) {
-      if (marcas.indexOf(p.marca) === -1) marcas.push(p.marca);
-      if (sabores.indexOf(p.sabor) === -1) sabores.push(p.sabor);
-      if (mgs.indexOf(String(p.mg)) === -1) mgs.push(String(p.mg));
-    });
-    marcas.sort(function (a, b) { return a.localeCompare(b, 'es'); });
-    sabores.sort(function (a, b) { return a.localeCompare(b, 'es'); });
+    var marcas = PV.marcas.filter(function (m) { return m.n > 0; }).sort(function (a, b) { return a.nombre.localeCompare(b.nombre, 'es'); });
 
     var h = '<section id="pedido" class="b2b b2b-section b2b-cat b2b-fondo--blanco" data-b2b-pedido data-locale="es" data-moneda="EUR"' +
-      ' data-minimo="' + MINIMO + '"' + (mayorista ? '' : ' data-tope="' + TOPE_PARTICULAR + '"') +
+      ' data-minimo="' + MINIMO + '"' + (mayorista ? '' : ' data-tope="' + PV.TOPE_PARTICULAR + '"') + ' data-mostrar="' + DE_GOLPE + '"' +
       ' data-cart-url="/cart" data-cart-add-url="/cart/add" data-despues="quedarse" aria-labelledby="b2b-cat-x">' +
       '<div class="b2b-wrap"><div class="b2b-cat__cabecera"><div><h2 class="b2b-h2" id="b2b-cat-x">Catálogo</h2>' +
       (compra ? '<p class="b2b-cat__intro b2b-muted">Elige formato y cantidad en cada ficha y añádelo todo al carrito de una vez. Puedes pedir desde una lata.</p>' : '') + '</div>' +
@@ -1988,23 +2298,24 @@ window.PV_FOTOS = {
       h += '<div class="b2b-nota b2b-nota--pendiente" role="status"><p>Tu cuenta profesional está en revisión. Cuando la aprobemos verás aquí tus precios mayoristas.</p></div>';
     }
 
-    h += '<div class="b2b-marcas" role="group" aria-label="Marca"><button type="button" class="b2b-pestana" data-b2b-marca="" aria-pressed="true">Todas<sup data-b2b-cuenta></sup></button>' +
-      marcas.map(function (m) { return '<button type="button" class="b2b-pestana" data-b2b-marca="' + handleize(m) + '" aria-pressed="false">' + esc(m) + '<sup data-b2b-cuenta></sup></button>'; }).join('') + '</div>';
-
+    // Más de 12 marcas: la marca se elige en un desplegable (ajuste «Marca: automático» del catálogo).
     h += '<div class="b2b-cat__herramientas" role="search">' +
       '<label class="b2b-field b2b-cat__buscar"><span>Buscar</span><input class="b2b-input" type="search" placeholder="Nombre, sabor o referencia" autocomplete="off" data-b2b-buscar></label>' +
-      '<label class="b2b-field"><span>Sabor</span><select class="b2b-select" data-b2b-filtro="sabor"><option value="">Todos</option>' +
-      sabores.map(function (s) { return '<option value="' + handleize(s) + '">' + esc(s) + '</option>'; }).join('') + '</select></label>' +
-      '<label class="b2b-field"><span>Nicotina</span><select class="b2b-select" data-b2b-filtro="nicotina"><option value="">Todas</option>' +
-      mgs.map(function (m) { return '<option value="' + m + '">' + m + ' mg</option>'; }).join('') + '</select></label>' +
+      '<label class="b2b-field"><span>Marca</span><select class="b2b-select" data-b2b-filtro="marca"><option value="">Todas</option>' +
+      marcas.map(function (m) { return '<option value="' + m.h + '">' + esc(m.nombre) + '</option>'; }).join('') + '</select></label>' +
+      '<label class="b2b-field"><span>Sabor</span><select class="b2b-select" data-b2b-filtro="familia"><option value="">Todos</option>' +
+      PV.familias.map(function (f) { return '<option value="' + f.h + '">' + esc(f.nombre) + '</option>'; }).join('') + '</select></label>' +
+      '<label class="b2b-field"><span>Nicotina</span><select class="b2b-select" data-b2b-filtro="nivel"><option value="">Todas</option>' +
+      [1, 2, 3, 4].map(function (n) { return '<option value="' + n + '">' + PV.NIVEL_NOMBRE[n] + ', ' + PV.NIVEL_RANGO[n] + '</option>'; }).join('') + '</select></label>' +
       '<p class="b2b-cat__contador" data-b2b-contador>' + PRODUCTOS.length + ' productos</p></div>';
 
     h += '<div class="b2b-items is-cuadricula" data-b2b-items>' + PRODUCTOS.map(function (p) { return ficha(p, compra, mayorista); }).join('') + '</div>' +
+      '<div class="b2b-ver-mas" data-b2b-ver-mas hidden><button type="button" class="b2b-btn b2b-btn--ghost">Ver más productos<span data-b2b-ver-mas-n></span></button></div>' +
       '<div class="b2b-cat__vacio" data-b2b-vacio hidden><p>Ningún producto coincide con la búsqueda.</p>' +
       '<button type="button" class="b2b-btn b2b-btn--ghost" data-b2b-limpiar>Quitar filtros</button></div>';
 
     if (!mayorista) {
-      h += '<p class="b2b-tope" data-b2b-tope-aviso role="status" hidden>Como particular puedes pedir hasta ' + TOPE_PARTICULAR +
+      h += '<p class="b2b-tope" data-b2b-tope-aviso role="status" hidden>Como particular puedes pedir hasta ' + PV.TOPE_PARTICULAR +
         ' latas de cada referencia. ¿Necesitas más? <a class="b2b-link" href="#alta">Escríbenos y te preparamos el pedido</a></p>';
     }
     if (compra) {
@@ -2029,65 +2340,10 @@ window.PV_FOTOS = {
       '<a class="b2b-btn b2b-btn--grande b2b-btn--blanco" href="#pedido">Ver catálogo</a>';
   }
 
-  var AVISO_ACCESO = '<dialog class="b2b b2b-gate" data-b2b-gate data-dias="30" aria-labelledby="b2b-gate-x">' +
-    '<div data-b2b-gate-paso1><h2 class="b2b-h3" id="b2b-gate-x">¿Tienes 18 años o más?</h2>' +
-    '<div class="b2b-rte b2b-gate__texto"><p>Vendemos bolsas de nicotina y solo podemos venderlas a mayores de edad. Confirma tu edad para entrar.</p></div>' +
-    '<div class="b2b-gate__acciones"><button type="button" class="b2b-btn" data-b2b-gate-si>Sí, tengo 18 o más</button>' +
-    '<button type="button" class="b2b-btn b2b-btn--ghost" data-b2b-gate-no>No</button></div></div>' +
-    '<div data-b2b-gate-paso2 hidden><h2 class="b2b-h3">No podemos venderte</h2>' +
-    '<div class="b2b-rte b2b-gate__texto"><p>La venta de productos con nicotina está prohibida a menores de 18 años. Puedes cerrar esta página.</p></div></div></dialog>';
-
-  // Carrito simulado: el mismo contrato que /cart/add.js y /cart.js de Shopify.
-  var carrito = { items: [], items_subtotal_price: 0, item_count: 0 };
-  function precioVariante(id, q) {
-    for (var i = 0; i < PRODUCTOS.length; i++) {
-      for (var j = 0; j < PRODUCTOS[i].variantes.length; j++) {
-        var v = PRODUCTOS[i].variantes[j];
-        if (v.id === id) { var p = v.precio; v.tramos.forEach(function (t) { if (q >= t[0]) p = t[1]; }); return p; }
-      }
-    }
-    return 0;
-  }
-  function recalcular() {
-    carrito.items_subtotal_price = carrito.items.reduce(function (s, it) { return s + precioVariante(it.id, it.quantity) * it.quantity; }, 0);
-    carrito.item_count = carrito.items.reduce(function (s, it) { return s + it.quantity; }, 0);
-  }
-  var fetchReal = window.fetch.bind(window);
-  window.fetch = function (url, opts) {
-    var u = String(url);
-    function respuesta(cuerpo, estado) {
-      return new Promise(function (ok) {
-        setTimeout(function () {
-          ok(new Response(JSON.stringify(cuerpo), { status: estado || 200, headers: { 'Content-Type': 'application/json' } }));
-        }, 450);
-      });
-    }
-    if (/\/cart\/add\.js$/.test(u)) {
-      var datos = JSON.parse(opts.body);
-      datos.items.forEach(function (it) {
-        var ya = carrito.items.filter(function (x) { return x.id === it.id; })[0];
-        if (ya) ya.quantity += it.quantity; else carrito.items.push({ id: it.id, quantity: it.quantity });
-      });
-      recalcular();
-      return respuesta({ items: datos.items });
-    }
-    if (/\/cart\.js$/.test(u)) return respuesta(carrito);
-    return fetchReal(url, opts);
-  };
-
-  // Copias de la cinta para que el bucle no deje huecos (en Liquid las pone un for; solo la primera se lee).
-  var cinta = document.querySelector('[data-pv-cinta]');
-  for (var c = 0; c < 5; c++) {
-    var copia = cinta.cloneNode(true);
-    copia.removeAttribute('data-pv-cinta');
-    copia.setAttribute('aria-hidden', 'true');
-    cinta.parentNode.appendChild(copia);
-  }
-
   // Muro de latas de la entrada (en Shopify, las fotos de los productos de la colección).
-  var muro = '';
-  for (var m = 0; m < 32; m++) muro += medio(PRODUCTOS[(m * 5) % PRODUCTOS.length]);
-  document.querySelector('[data-pv-muro]').innerHTML = muro;
+  document.querySelector('[data-pv-muro]').innerHTML = escaparate(32).map(function (p) {
+    return PV.foto(p, { alt: '', sizes: '160px' });
+  }).join('');
   document.querySelector('[data-pv-expositor]').innerHTML = expositor();
 
   function pintar(estado) {
@@ -2096,24 +2352,23 @@ window.PV_FOTOS = {
     document.querySelectorAll('[data-pv-estado]').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-pv-estado') === estado));
     });
-    document.querySelector('[data-pv-acceso-hueco]').innerHTML = estado === 'invitado' ? AVISO_ACCESO : '';
+    document.querySelector('[data-pv-acceso-hueco]').innerHTML = estado === 'invitado' ? PV.AVISO_ACCESO : '';
+    PV.rellenar();
     if (window.B2BSnus) window.B2BSnus.iniciar(document);
   }
 
-  var params = new URLSearchParams(location.search);
-  if (params.get('acceso') === '0') { try { localStorage.setItem('b2b-acceso-confirmado', String(Date.now())); } catch (e) {} }
-  pintar(params.get('estado') || 'invitado');
+  pintar(PV.estado());
 
   document.querySelectorAll('[data-pv-estado]').forEach(function (b) {
     b.addEventListener('click', function () {
       var estado = b.getAttribute('data-pv-estado');
-      try { history.replaceState(null, '', '?estado=' + estado); } catch (e) { /* el visor de Artifacts no admite cambiar la dirección */ }
+      try { history.replaceState(null, '', '?estado=' + estado + location.hash); } catch (e) { /* el visor de Artifacts no admite cambiar la dirección */ }
       pintar(estado);
     });
   });
   document.querySelector('[data-pv-acceso]').addEventListener('click', function () {
-    try { localStorage.removeItem('b2b-acceso-confirmado'); } catch (e) {}
-    document.querySelector('[data-pv-acceso-hueco]').innerHTML = AVISO_ACCESO;
+    try { localStorage.removeItem('b2b-acceso-confirmado'); } catch (e) { /* sin almacenamiento */ }
+    document.querySelector('[data-pv-acceso-hueco]').innerHTML = PV.AVISO_ACCESO;
     if (window.B2BSnus) window.B2BSnus.iniciar(document);
   });
   document.querySelector('[data-pv-form]').addEventListener('submit', function (e) {
@@ -2127,8 +2382,10 @@ window.PV_FOTOS = {
 /*
   B2B snus · comportamiento de las secciones.
   1. Aviso de acceso para profesionales (dialog nativo, se recuerda en localStorage).
-  2. Catálogo: cantidades por formato, tramos de precio, filtros (marca, sabor, nicotina, búsqueda),
-     vista de fichas o lista, total y alta en el carrito con /cart/add.js.
+  2. Catálogo y ficha de producto: cantidades por formato, tramos de precio, filtros (marca, sabor o
+     familia, nicotina o nivel, búsqueda), «Ver más», vista de fichas o lista, total y alta en el
+     carrito con /cart/add.js.
+  3. Cabecera. 4. Barra de marcas en movimiento. 5. Pestañas y fotos de la ficha de producto.
   Sin dependencias. Se inicia solo y otra vez cuando el editor de temas recarga una sección.
 */
 (function () {
@@ -2209,8 +2466,6 @@ window.PV_FOTOS = {
       return {
         el: el,
         marca: el.getAttribute('data-marca') || '',
-        sabor: el.getAttribute('data-sabor') || '',
-        nicotina: el.getAttribute('data-nicotina') || '',
         texto: normalizar(el.getAttribute('data-search'))
       };
     });
@@ -2275,6 +2530,13 @@ window.PV_FOTOS = {
     var marcaActiva = '';
     var enCarrito = 0;
     var ocupado = false;
+    // Con muchas marcas, la marca se elige en un desplegable en vez de con pestañas.
+    var selMarca = uno('[data-b2b-filtro="marca"]', root);
+    // «Ver más»: con data-mostrar se enseñan las fichas de N en N.
+    var paso = parseInt(root.getAttribute('data-mostrar') || '0', 10) || 0;
+    var limite = paso;
+    var verMas = uno('[data-b2b-ver-mas]', root);
+    var verMasN = uno('[data-b2b-ver-mas-n]', root);
 
     // Intensidades de menor a mayor (Liquid las ordena como texto).
     var selNicotina = uno('[data-b2b-filtro="nicotina"]', root);
@@ -2425,24 +2687,35 @@ window.PV_FOTOS = {
       }
     }
 
-    function filtrar() {
+    // mantener: true al pulsar «Ver más» (si cambia un filtro se vuelve a la primera tanda).
+    function filtrar(mantener) {
+      if (!mantener) limite = paso;
       var q = normalizar(buscador ? buscador.value : '');
-      var sel = {};
-      filtros.forEach(function (s) { sel[s.getAttribute('data-b2b-filtro')] = s.value; });
+      var sel = [];
+      filtros.forEach(function (s) { if (s.value) sel.push([s.getAttribute('data-b2b-filtro'), s.value]); });
       var visibles = 0;
       items.forEach(function (it) {
-        var ok = (!marcaActiva || it.marca === marcaActiva) &&
-          (!q || it.texto.indexOf(q) !== -1) &&
-          (!sel.sabor || it.sabor === sel.sabor) &&
-          (!sel.nicotina || it.nicotina === sel.nicotina);
-        it.el.hidden = !ok;
+        var ok = (!marcaActiva || it.marca === marcaActiva) && (!q || it.texto.indexOf(q) !== -1);
+        for (var i = 0; ok && i < sel.length; i++) ok = it.el.getAttribute('data-' + sel[i][0]) === sel[i][1];
+        it.el.hidden = !ok || (limite > 0 && visibles >= limite);
         if (ok) visibles++;
       });
       if (vacio) vacio.hidden = visibles > 0;
       if (contador) contador.textContent = plural(visibles, 'producto', 'productos');
+      if (verMas) {
+        var quedan = limite > 0 ? visibles - limite : 0;
+        verMas.hidden = quedan <= 0;
+        if (verMasN) verMasN.textContent = quedan > 0 ? String(quedan) : '';
+      }
     }
 
     function elegirMarca(valor) {
+      if (!chips.length && selMarca) {
+        var hay = todos('option', selMarca).some(function (o) { return o.value === valor; });
+        selMarca.value = hay ? valor : '';
+        filtrar();
+        return;
+      }
       var existe = chips.some(function (c) { return c.getAttribute('data-b2b-marca') === valor && !c.hidden; });
       marcaActiva = existe ? valor : '';
       chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.getAttribute('data-b2b-marca') === marcaActiva)); });
@@ -2568,6 +2841,16 @@ window.PV_FOTOS = {
         return;
       }
       if (e.target.closest('[data-b2b-limpiar]')) { limpiarFiltros(); return; }
+      if (e.target.closest('[data-b2b-ver-mas]')) {
+        // El foco pasa a la primera ficha nueva para seguir con el teclado.
+        var antes = items.filter(function (it) { return !it.el.hidden; }).length;
+        limite += paso;
+        filtrar(true);
+        var nueva = items.filter(function (it) { return !it.el.hidden; })[antes];
+        var enlace = nueva ? (uno('.b2b-prod__nombre a', nueva.el) || uno('a:not([tabindex="-1"])', nueva.el)) : null;
+        if (enlace) enlace.focus({ preventScroll: true });
+        return;
+      }
       if (e.target.closest('[data-b2b-anadir]')) anadir();
     });
 
@@ -2743,9 +3026,66 @@ window.PV_FOTOS = {
     montar();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(montar);
     var espera = null;
-    window.addEventListener('resize', function () {
+    function remontar() {
       clearTimeout(espera);
       espera = setTimeout(montar, 200);
+    }
+    window.addEventListener('resize', remontar);
+    // Los logos que aún no han cargado cambian el ancho de la fila: se vuelve a medir al cargar.
+    originales.forEach(function (li) {
+      todos('img', li).forEach(function (img) {
+        if (!img.complete) img.addEventListener('load', remontar, { once: true });
+      });
+    });
+  }
+
+  /* ---------- 5. Ficha de producto: pestañas y fotos ---------- */
+  function iniciarPestanas(caja) {
+    if (caja.dataset.b2bListo) return;
+    caja.dataset.b2bListo = '1';
+    var tabs = todos('[role="tab"]', caja);
+    function elegir(tab, enfocar) {
+      tabs.forEach(function (t) {
+        var activa = t === tab;
+        t.setAttribute('aria-selected', String(activa));
+        t.setAttribute('tabindex', activa ? '0' : '-1');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !activa;
+      });
+      if (enfocar) tab.focus();
+    }
+    caja.addEventListener('click', function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (tab && caja.contains(tab)) elegir(tab, false);
+    });
+    // Flechas, Inicio y Fin mueven entre pestañas (patrón de pestañas de WAI-ARIA).
+    caja.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(e.target);
+      if (i === -1) return;
+      var j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = tabs.length - 1;
+      if (j === null) return;
+      e.preventDefault();
+      elegir(tabs[j], true);
+    });
+  }
+
+  function iniciarGaleria(g) {
+    if (g.dataset.b2bListo) return;
+    g.dataset.b2bListo = '1';
+    var foto = uno('.b2b-ficha__foto img', g);
+    var minis = todos('[data-b2b-miniatura]', g);
+    if (!foto || !minis.length) return;
+    g.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-b2b-miniatura]');
+      if (!b) return;
+      foto.removeAttribute('srcset');
+      if (b.getAttribute('data-srcset')) foto.setAttribute('srcset', b.getAttribute('data-srcset'));
+      foto.src = b.getAttribute('data-src');
+      minis.forEach(function (m) { m.setAttribute('aria-pressed', String(m === b)); });
     });
   }
 
@@ -2755,6 +3095,8 @@ window.PV_FOTOS = {
     todos('[data-b2b-gate]', ctx).forEach(iniciarAcceso);
     todos('[data-b2b-pedido]', ctx).forEach(iniciarPedido);
     todos('[data-b2b-marquesina]', ctx).forEach(iniciarMarquesina);
+    todos('[data-b2b-pestanas]', ctx).forEach(iniciarPestanas);
+    todos('[data-b2b-galeria]', ctx).forEach(iniciarGaleria);
   }
 
   window.B2BSnus = { iniciar: iniciar };
