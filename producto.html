@@ -1058,6 +1058,7 @@ a.b2b-entrada__fondo { cursor: pointer; }
   line-height: 1.2;
 }
 .b2b-alta__nota { max-width: 46ch; margin-top: 20px; color: var(--b2b-muted); font-size: 14px; }
+.b2b-alta__datos { color: var(--b2b-muted); font-size: 13px; line-height: 1.5; }
 
 .b2b-form {
   display: grid;
@@ -1322,6 +1323,7 @@ html.b2b-sin-scroll { overflow: hidden; }
   color: var(--b2b-oro);
   font-size: 13px;
 }
+.b2b-pie__cookies { -webkit-appearance: none; appearance: none; margin: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .b2b-pie__pagos { display: flex; flex-wrap: wrap; gap: 6px; }
 .b2b-pie__pagos li { border-radius: 4px; background: var(--b2b-ink); line-height: 0; }
 .b2b-pie__pagos svg { display: block; width: 38px; height: 24px; }
@@ -3090,6 +3092,25 @@ window.PV_TEXTOS = {"77-apple-mint":["Manzana con final de menta","Sabor a manza
     });
   }
 
+  /* ---------- 6. Pie: enlace para cambiar las preferencias de cookies ---------- */
+  // Abre el panel del banner de cookies de Shopify (window.privacyBanner). Si el banner no está activo,
+  // el botón se queda oculto. La API puede tardar en cargar: se reintenta unos segundos.
+  function iniciarCookies(boton) {
+    if (boton.dataset.b2bListo) return;
+    boton.dataset.b2bListo = '1';
+    var intentos = 0;
+    function mirar() {
+      var api = window.privacyBanner;
+      if (api && typeof api.showPreferences === 'function') {
+        boton.hidden = false;
+        boton.addEventListener('click', function () { api.showPreferences(); });
+      } else if (intentos++ < 10) {
+        setTimeout(mirar, 800);
+      }
+    }
+    mirar();
+  }
+
   function iniciar(ctx) {
     ctx = ctx || document;
     todos('[data-b2b-cabecera]', ctx).forEach(iniciarCabecera);
@@ -3098,6 +3119,7 @@ window.PV_TEXTOS = {"77-apple-mint":["Manzana con final de menta","Sabor a manza
     todos('[data-b2b-marquesina]', ctx).forEach(iniciarMarquesina);
     todos('[data-b2b-pestanas]', ctx).forEach(iniciarPestanas);
     todos('[data-b2b-galeria]', ctx).forEach(iniciarGaleria);
+    todos('[data-b2b-preferencias-cookies]', ctx).forEach(iniciarCookies);
     todos('[data-b2b-orden-envio]', ctx).forEach(function (sel) {
       if (sel.dataset.b2bListo) return;
       sel.dataset.b2bListo = '1';

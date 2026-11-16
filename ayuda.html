@@ -1058,6 +1058,7 @@ a.b2b-entrada__fondo { cursor: pointer; }
   line-height: 1.2;
 }
 .b2b-alta__nota { max-width: 46ch; margin-top: 20px; color: var(--b2b-muted); font-size: 14px; }
+.b2b-alta__datos { color: var(--b2b-muted); font-size: 13px; line-height: 1.5; }
 
 .b2b-form {
   display: grid;
@@ -1322,6 +1323,7 @@ html.b2b-sin-scroll { overflow: hidden; }
   color: var(--b2b-oro);
   font-size: 13px;
 }
+.b2b-pie__cookies { -webkit-appearance: none; appearance: none; margin: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .b2b-pie__pagos { display: flex; flex-wrap: wrap; gap: 6px; }
 .b2b-pie__pagos li { border-radius: 4px; background: var(--b2b-ink); line-height: 0; }
 .b2b-pie__pagos svg { display: block; width: 38px; height: 24px; }
@@ -1787,7 +1789,207 @@ body:has(.b2b-barra.is-fija:not(.b2b-barra--ficha)) .b2b-whatsapp { bottom: calc
 
   <main id="main">
     <!-- En Shopify: páginas de políticas (Configuración › Políticas) y páginas propias. Textos en ../legal/. -->
-    <article class="b2b b2b-section b2b-guia b2b-ayuda b2b-fondo--blanco"><div class="b2b-wrap b2b-guia__grid"><header class="b2b-guia__cab"><p class="b2b-guia__ante">Ayuda</p><h1 class="b2b-h1 b2b-guia__titulo">Ayuda y textos legales</h1><div class="b2b-rte b2b-guia__lead"><p>Envíos, devoluciones, contacto y las condiciones de la tienda.</p></div><p class="b2b-ayuda__aviso" role="note">Borradores: faltan los datos de la empresa (marcados en amarillo) y la revisión de un abogado antes de publicarlos.</p></header><nav class="b2b-guia__indice" aria-label="En esta página"><p class="b2b-guia__indice-t">En esta página</p><ol><li><a href="#envios">Envíos y devoluciones</a></li><li><a href="#contacto">Contacto</a></li><li><a href="#cuenta">Entrar en tu cuenta</a></li><li><a href="#aviso-legal">Aviso legal</a></li><li><a href="#privacidad">Política de privacidad</a></li><li><a href="#cookies">Política de cookies</a></li><li><a href="#condiciones">Condiciones de venta</a></li></ol></nav><div class="b2b-guia__cuerpo b2b-rte"><section class="b2b-ayuda__apartado" aria-labelledby="envios"><h2 class="b2b-guia__h2" id="envios">Envíos y devoluciones</h2><p>Enviamos desde España en 24 a 48 horas laborables a la península, en un paquete sin marcas por fuera. Para Baleares, Canarias, Ceuta y Melilla, consulta plazos y condiciones antes de pedir.</p><h3 id="devoluciones">Devoluciones</h3><p>Si algo llega mal, escríbenos en 14 días y lo solucionamos. Por higiene, solo aceptamos devoluciones de latas sin abrir y con el precinto intacto.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="contacto"><h2 class="b2b-guia__h2" id="contacto">Contacto</h2><p>Escríbenos y te respondemos en horario laborable. Si eres un negocio y quieres más de 10 latas de una referencia o una cuenta profesional, cuéntanos qué necesitas.</p><ul><li>Email: <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark></li><li>WhatsApp y teléfono: <mark class="b2b-hueco">[TELÉFONO]</mark></li><li>Horario: <mark class="b2b-hueco">[HORARIO DE ATENCIÓN]</mark></li></ul><p>En la tienda, el botón verde de abajo a la derecha abre WhatsApp con este número.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="cuenta"><h2 class="b2b-guia__h2" id="cuenta">Entrar en tu cuenta</h2><p>En la tienda, «Entrar» abre el acceso de clientes de Shopify: escribes tu email y te llega un código, sin contraseña. Con la cuenta ves tus pedidos.</p><p>Si tienes un negocio, pide la cuenta profesional en el <a class="b2b-link" href="index.html#alta">formulario de alta</a>. Cuando la aprobemos, al entrar verás los precios mayoristas sin IVA y podrás pedir sin tope de latas.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="aviso-legal"><h2 class="b2b-guia__h2" id="aviso-legal">Aviso legal</h2><p><mark class="b2b-hueco">[TEXTO EN PREPARACIÓN]</mark></p></section><section class="b2b-ayuda__apartado" aria-labelledby="privacidad"><h2 class="b2b-guia__h2" id="privacidad">Política de privacidad</h2><p><mark class="b2b-hueco">[TEXTO EN PREPARACIÓN]</mark></p></section><section class="b2b-ayuda__apartado" aria-labelledby="cookies"><h2 class="b2b-guia__h2" id="cookies">Política de cookies</h2><p><mark class="b2b-hueco">[TEXTO EN PREPARACIÓN]</mark></p></section><section class="b2b-ayuda__apartado" aria-labelledby="condiciones"><h2 class="b2b-guia__h2" id="condiciones">Condiciones de venta</h2><p><mark class="b2b-hueco">[TEXTO EN PREPARACIÓN]</mark></p></section></div></div></article>
+    <article class="b2b b2b-section b2b-guia b2b-ayuda b2b-fondo--blanco"><div class="b2b-wrap b2b-guia__grid"><header class="b2b-guia__cab"><p class="b2b-guia__ante">Ayuda</p><h1 class="b2b-h1 b2b-guia__titulo">Ayuda y textos legales</h1><div class="b2b-rte b2b-guia__lead"><p>Envíos, devoluciones, contacto y las condiciones de la tienda.</p></div><p class="b2b-ayuda__aviso" role="note">Borradores: faltan los datos de la empresa (marcados en amarillo) y la revisión de un abogado antes de publicarlos.</p></header><nav class="b2b-guia__indice" aria-label="En esta página"><p class="b2b-guia__indice-t">En esta página</p><ol><li><a href="#envios">Envíos y devoluciones</a></li><li><a href="#contacto">Contacto</a></li><li><a href="#cuenta">Entrar en tu cuenta</a></li><li><a href="#aviso-legal">Aviso legal</a></li><li><a href="#privacidad">Política de privacidad</a></li><li><a href="#cookies">Política de cookies</a></li><li><a href="#condiciones">Condiciones de venta</a></li></ol></nav><div class="b2b-guia__cuerpo b2b-rte"><section class="b2b-ayuda__apartado" aria-labelledby="envios"><h2 class="b2b-guia__h2" id="envios">Envíos y devoluciones</h2><h3>Envíos</h3>
+<p>Última actualización: <mark class="b2b-hueco">[FECHA DE ACTUALIZACIÓN]</mark></p>
+<h4>Desde dónde y a dónde enviamos</h4>
+<p>Tenemos el stock en España y enviamos desde aquí.</p>
+<ul><li>Península (España peninsular): el pedido llega en 24 a 48 horas laborables <mark class="b2b-hueco">[DESDE CUÁNDO SE CUENTA EL PLAZO DE ENTREGA]</mark>.</li><li>Baleares, Canarias, Ceuta y Melilla: escríbenos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> antes de hacer el pedido y te diremos si podemos enviarlo, en qué plazo y con qué coste. En Canarias, Ceuta y Melilla no se aplica el IVA, sino otros impuestos, así que el precio final puede cambiar.</li></ul>
+<h4>Cuánto cuesta</h4>
+<p><mark class="b2b-hueco">[COSTES DE ENVÍO]</mark></p>
+<p>Ves el coste exacto en la página de pago, antes de pagar.</p>
+<h4>Cómo llega</h4>
+<p>Enviamos con <mark class="b2b-hueco">[TRANSPORTISTA]</mark>, en un paquete discreto.</p>
+<p><mark class="b2b-hueco">[SEGUIMIENTO DEL ENVÍO]</mark></p>
+<p><mark class="b2b-hueco">[QUÉ PASA SI NO HAY NADIE EN LA ENTREGA]</mark></p>
+<h4>Si el pedido se retrasa</h4>
+<p>Si tu pedido tarda más de lo previsto, escríbenos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark>. Si no acordamos otra cosa, la ley nos obliga a entregarte el pedido sin demoras indebidas y como máximo en 30 días naturales desde la compra (artículo 66 bis del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, TRLGDCU). Si no lo hacemos, puedes darnos un plazo adicional y, si tampoco cumplimos, cancelar el pedido y recuperar lo que pagaste.</p>
+<p>El riesgo de pérdida o daño del pedido es nuestro hasta que lo recibas tú o la persona que hayas indicado (artículo 66 ter del TRLGDCU). Si el paquete llega dañado, mira el apartado «Si el pedido llega mal» de nuestra política de devoluciones.</p>
+<h4>Clientes profesionales</h4>
+<p>Para las cuentas profesionales se aplican los portes y plazos que hayamos pactado. Si no hemos pactado nada, se aplica esta política.</p>
+<h3 id="devoluciones">Devoluciones y reembolsos</h3>
+<p>Última actualización: <mark class="b2b-hueco">[FECHA DE ACTUALIZACIÓN]</mark></p>
+<h4>Si el pedido llega mal</h4>
+<p>Si recibes una lata dañada, un producto que no pediste o falta algo, avísanos en los 14 días siguientes a la entrega escribiendo a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark>. Indica el número de pedido y, si puedes, manda una foto.</p>
+<p>Te enviamos el producto correcto o en buen estado o, si no es posible, te devolvemos su importe. No te cuesta nada: nos hacemos cargo de los envíos necesarios. Si eres consumidor, el plazo de 14 días para avisarnos no recorta la garantía legal de tres años que te da la ley (artículo 120 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, TRLGDCU).</p>
+<h4>Devolver latas sin abrir</h4>
+<p>Si eres consumidor, tienes 14 días naturales desde que recibes el pedido para decirnos que quieres devolverlo, sin dar explicaciones. Es el derecho de desistimiento (artículos 102 y 104 del TRLGDCU).</p>
+<p>Solo puedes devolver latas sin abrir y con el precinto intacto. Por razones de protección de la salud y de higiene, las latas que se hayan abierto o cuyo precinto se haya roto después de la entrega no se pueden devolver (artículo 103, letra e, del TRLGDCU).</p>
+<p>Para devolver latas:</p>
+<ol><li>Avísanos antes de que acaben los 14 días, por email a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> o por carta a <mark class="b2b-hueco">[DIRECCIÓN POSTAL]</mark>, con el número de pedido y las latas que devuelves. También puedes usar el formulario de desistimiento que está al final de nuestras Condiciones generales de venta.</li><li>Envía las latas a <mark class="b2b-hueco">[DIRECCIÓN PARA DEVOLUCIONES]</mark> en los 14 días naturales siguientes a tu aviso. Guarda el justificante del envío.</li><li>Gastos del envío de la devolución: <mark class="b2b-hueco">[QUIÉN PAGA EL ENVÍO DE LA DEVOLUCIÓN]</mark>.</li></ol>
+<h4>Reembolsos</h4>
+<p>Cuando desistes de una compra, te devolvemos el dinero en un máximo de 14 días naturales desde que nos avisas, con el mismo medio de pago que usaste, salvo que nos pidas otro y no te suponga ningún gasto (artículo 107 del TRLGDCU).</p>
+<ul><li>Te devolvemos lo que pagaste por las latas que devuelves.</li><li>Si devuelves el pedido entero, también te devolvemos los gastos de envío ordinarios. Si elegiste un envío más caro que el ordinario, la diferencia no se devuelve.</li><li>Podemos esperar a recibir las latas, o a que nos muestres que las has enviado, para hacer el reembolso.</li></ul>
+<p>Si el pedido llegó mal, te devolvemos el importe de lo que estaba mal y, si pagaste algún envío para devolvérnoslo, también ese gasto. Lo hacemos con el mismo medio de pago.</p>
+<h4>Clientes profesionales</h4>
+<p>Las compras con cuenta profesional no tienen derecho de desistimiento, porque no son compras de consumo. Si algo llega mal, avísanos en los 14 días siguientes a la entrega y lo resolveremos según lo que hayamos pactado.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="contacto"><h2 class="b2b-guia__h2" id="contacto">Contacto</h2><p>Escríbenos y te respondemos en horario laborable. Si eres un negocio y quieres más de 10 latas de una referencia o una cuenta profesional, cuéntanos qué necesitas.</p><ul><li>Email: <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark></li><li>WhatsApp y teléfono: <mark class="b2b-hueco">[TELÉFONO]</mark></li><li>Horario: <mark class="b2b-hueco">[HORARIO DE ATENCIÓN]</mark></li></ul><p>En la tienda, el botón verde de abajo a la derecha abre WhatsApp con este número.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="cuenta"><h2 class="b2b-guia__h2" id="cuenta">Entrar en tu cuenta</h2><p>En la tienda, «Entrar» abre el acceso de clientes de Shopify: escribes tu email y te llega un código, sin contraseña. Con la cuenta ves tus pedidos.</p><p>Si tienes un negocio, pide la cuenta profesional en el <a class="b2b-link" href="index.html#alta">formulario de alta</a>. Cuando la aprobemos, al entrar verás los precios mayoristas sin IVA y podrás pedir sin tope de latas.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="aviso-legal"><h2 class="b2b-guia__h2" id="aviso-legal">Aviso legal</h2><p>Última actualización: <mark class="b2b-hueco">[FECHA DE ACTUALIZACIÓN]</mark></p>
+<h3>1. Datos del titular</h3>
+<p>Pouches Spain es el nombre comercial de la tienda online <mark class="b2b-hueco">[DOMINIO DE LA TIENDA]</mark>. Como exige el artículo 10 de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), estos son los datos de quien la gestiona:</p>
+<ul><li>Titular: <mark class="b2b-hueco">[RAZÓN SOCIAL]</mark></li><li>NIF: <mark class="b2b-hueco">[NIF]</mark></li><li>Domicilio: <mark class="b2b-hueco">[DOMICILIO SOCIAL]</mark></li><li>Email: <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark></li><li>Teléfono: <mark class="b2b-hueco">[TELÉFONO]</mark></li><li>Datos registrales: <mark class="b2b-hueco">[DATOS REGISTRALES]</mark></li><li>Autorizaciones o registros administrativos de la actividad: <mark class="b2b-hueco">[AUTORIZACIONES O REGISTROS ADMINISTRATIVOS]</mark></li><li>Códigos de conducta: <mark class="b2b-hueco">[CÓDIGOS DE CONDUCTA]</mark></li></ul>
+<h3>2. Qué regula este aviso</h3>
+<p>Si navegas por la web, aceptas este aviso. Las compras se rigen por las Condiciones generales de venta; el tratamiento de tus datos, por la Política de privacidad, y las cookies, por la Política de cookies.</p>
+<p>Los precios para particulares incluyen el IVA y el impuesto especial sobre las bolsas de nicotina. Los precios mayoristas de las cuentas profesionales incluyen el impuesto especial y se muestran sin IVA. Los gastos de envío se indican aparte antes de pagar.</p>
+<h3>3. Solo para mayores de 18 años</h3>
+<p>Esta web vende bolsas de nicotina y está dirigida solo a mayores de 18 años. Al entrar te pedimos que confirmes que tienes 18 años o más. Es una declaración tuya: no te pedimos documento de identidad ni fotos. Si eres menor de edad, no puedes usar la tienda ni comprar en ella.</p>
+<p>Los productos que vendemos contienen nicotina, una sustancia muy adictiva.</p>
+<h3>4. Condiciones de uso</h3>
+<p>Puedes navegar por la web gratis y sin registrarte. Al usarla te comprometes a:</p>
+<ul><li>usarla de forma lícita y de acuerdo con este aviso;</li><li>no intentar dañarla, entrar en zonas restringidas ni alterar su funcionamiento;</li><li>dar datos verdaderos cuando rellenes un formulario o hagas un pedido.</li></ul>
+<p>Si tienes una cuenta de cliente o una cuenta profesional, guarda bien tu acceso y avísanos si crees que alguien la está usando sin tu permiso.</p>
+<h3>5. Propiedad intelectual e industrial</h3>
+<p>Los textos, el diseño de la web, el nombre Pouches Spain y su logotipo son de <mark class="b2b-hueco">[RAZÓN SOCIAL]</mark> o se usan con permiso de su titular. No puedes copiarlos, distribuirlos ni modificarlos sin nuestra autorización, salvo para tu uso personal y privado, como guardar o imprimir una página.</p>
+<p>Las fotos de los productos, los nombres de las marcas y sus logotipos pertenecen a cada marca. Los mostramos solo para identificar los productos que vendemos. Que aparezcan en esta web no quiere decir que esas marcas patrocinen la tienda ni que la respalden.</p>
+<p>Si eres titular de algún contenido de esta web y crees que lo usamos sin derecho, escríbenos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> y lo revisaremos.</p>
+<h3>6. Enlaces a otras webs</h3>
+<p>Si la web enlaza a páginas de terceros, no controlamos su contenido ni respondemos de él. Si encuentras un enlace a un contenido ilícito, avísanos y lo revisaremos.</p>
+<h3>7. Responsabilidad</h3>
+<p>Hacemos lo razonable para que la web funcione y para que la información sea correcta y esté al día. Aun así, puede haber errores, interrupciones por mantenimiento o fallos técnicos que no dependen de nosotros. No respondemos de los daños que cause un uso de la web contrario a este aviso.</p>
+<p>Nada de lo que dice este aviso limita los derechos que la ley te reconoce como consumidor.</p>
+<h3>8. Datos personales y cookies</h3>
+<p>Cómo tratamos tus datos está en la Política de privacidad. Qué cookies usamos y cómo rechazarlas está en la Política de cookies.</p>
+<h3>9. Ley aplicable y tribunales</h3>
+<p>Este aviso se rige por la ley española. Si eres consumidor, puedes acudir a los juzgados de tu domicilio (artículo 52.3 de la Ley 1/2000, de Enjuiciamiento Civil). En los demás casos, serán competentes los juzgados que correspondan según la ley.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="privacidad"><h2 class="b2b-guia__h2" id="privacidad">Política de privacidad</h2><p>Última actualización: <mark class="b2b-hueco">[FECHA DE ACTUALIZACIÓN]</mark></p>
+<p>Aquí te contamos qué datos personales tratamos en Pouches Spain, para qué, con qué base legal, cuánto tiempo los guardamos, con quién los compartimos y qué derechos tienes, como exigen el Reglamento (UE) 2016/679, general de protección de datos (RGPD), y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD).</p>
+<h3>1. Quién es el responsable</h3>
+<p>El responsable del tratamiento es <mark class="b2b-hueco">[RAZÓN SOCIAL]</mark>, que gestiona la tienda Pouches Spain.</p>
+<ul><li>NIF: <mark class="b2b-hueco">[NIF]</mark></li><li>Domicilio: <mark class="b2b-hueco">[DOMICILIO SOCIAL]</mark></li><li>Email: <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark></li><li>Teléfono: <mark class="b2b-hueco">[TELÉFONO]</mark></li></ul>
+<p><mark class="b2b-hueco">[DELEGADO DE PROTECCIÓN DE DATOS]</mark></p>
+<h3>2. Qué datos tratamos, para qué y con qué base legal</h3>
+<h4>Pedidos</h4>
+<p>Cuando compras, tratamos tu nombre y apellidos, tu email, tu teléfono, tus direcciones de envío y de facturación, los productos que compras, el importe y el estado del pago. No vemos ni guardamos los datos completos de tu tarjeta. Usamos estos datos para tramitar el pedido, cobrarlo, enviarlo, atender devoluciones y garantías y hacer las facturas.</p>
+<p>Base legal: son necesarios para el contrato de compraventa (artículo 6.1.b del RGPD). Las facturas y la contabilidad son además una obligación legal (artículo 6.1.c del RGPD). Si no nos das los datos marcados como obligatorios, no podemos tramitar el pedido.</p>
+<h4>Cuenta de cliente</h4>
+<p>Si abres una cuenta, tratamos tu email, tu nombre, las direcciones que guardes y tu historial de pedidos, para que puedas entrar, ver tus pedidos y comprar más rápido.</p>
+<p>Base legal: el contrato de la cuenta que nos pides (artículo 6.1.b del RGPD).</p>
+<h4>Cuenta profesional</h4>
+<p>Para dar de alta a un cliente profesional tratamos los datos del formulario de alta: nombre y apellidos de la persona de contacto, teléfono, email, razón social y NIF del negocio, tipo de negocio, provincia y dirección de entrega. Si nos los das, también el volumen mensual previsto y tus comentarios. Guardamos además tu declaración de que compras para un negocio y eres mayor de 18 años. Revisamos cada solicitud a mano: no hay decisiones automatizadas. Si la aprobamos, usamos esos datos para gestionar la cuenta, los pedidos, los pagos y la relación comercial.</p>
+<p>Base legal: la gestión de la solicitud y el contrato con tu negocio (artículo 6.1.b del RGPD). Para los datos de contacto de las personas que trabajan en una empresa cliente, nuestro interés legítimo en mantener la relación con esa empresa (artículo 6.1.f del RGPD y artículo 19 de la LOPDGDD). Las facturas, como en cualquier pedido, son una obligación legal (artículo 6.1.c del RGPD).</p>
+<h4>Atención al cliente</h4>
+<p>Si nos escribes o nos llamas, tratamos tus datos de contacto y lo que nos cuentes para responderte. Si haces una reclamación, la registramos para darte un número de referencia y un justificante.</p>
+<p>Base legal: si tu consulta tiene que ver con un pedido, el contrato (artículo 6.1.b del RGPD). Si es una reclamación, la obligación legal de atenderla (artículo 6.1.c del RGPD y artículo 21 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios). En los demás casos, nuestro interés legítimo en responderte (artículo 6.1.f del RGPD).</p>
+<h4>Declaración de edad</h4>
+<p>Al entrar en la web te pedimos que confirmes que tienes 18 años o más. Tu respuesta se guarda en tu propio navegador, en el almacenamiento local (con el nombre <code>b2b-acceso-confirmado</code>), para no preguntarte en cada visita. Ese dato no llega a nuestros sistemas, y no te pedimos documento de identidad ni fotos. Al hacer un pedido declaras también que eres mayor de edad.</p>
+<p>Base legal: nuestro interés legítimo en no vender productos con nicotina a menores (artículo 6.1.f del RGPD).</p>
+<h4>Envíos</h4>
+<p>Damos al transportista los datos necesarios para entregarte el pedido: nombre, dirección y teléfono.</p>
+<p>Base legal: el contrato (artículo 6.1.b del RGPD).</p>
+<h4>Comunicaciones comerciales</h4>
+<p>Solo te enviamos ofertas y novedades por email u otro medio electrónico si nos das tu consentimiento, por ejemplo, marcando la casilla de suscripción. Puedes retirarlo cuando quieras con el enlace de baja que llevan todos los mensajes o escribiéndonos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark>. Retirarlo no afecta a la licitud de los envíos anteriores.</p>
+<p>Base legal: tu consentimiento (artículo 6.1.a del RGPD y artículo 21 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico).</p>
+<h4>Cookies</h4>
+<p>Solo usamos cookies de análisis y de marketing si las aceptas. Lo explicamos en la Política de cookies.</p>
+<h3>3. Cuánto tiempo guardamos tus datos</h3>
+<ul><li>Pedidos y facturas: seis años, que es el plazo que el artículo 30 del Código de Comercio fija para conservar la documentación del negocio. Cubre el plazo de cuatro años en que Hacienda puede revisar los impuestos (artículo 66 de la Ley 58/2003, General Tributaria).</li><li>Cuenta de cliente: mientras la mantengas. Si la borras, los datos de tus pedidos se quedan durante el plazo del punto anterior.</li><li>Cuenta profesional: mientras dure la relación comercial y, después, los plazos legales del primer punto. Si rechazamos una solicitud, borramos sus datos en <mark class="b2b-hueco">[PLAZO PARA SOLICITUDES RECHAZADAS]</mark>.</li><li>Atención al cliente y reclamaciones: el tiempo necesario para resolverlas y, después, mientras puedan pedirse responsabilidades por ese asunto (con carácter general, cinco años: artículo 1964 del Código Civil).</li><li>Comunicaciones comerciales: hasta que retires tu consentimiento.</li><li>Cookies: lo que dura cada una, según la Política de cookies.</li></ul>
+<p>Cuando ya no necesitamos unos datos pero la ley nos obliga a conservarlos, los bloqueamos: solo se pueden usar para ponerlos a disposición de jueces, tribunales y autoridades mientras puedan exigirse responsabilidades. Pasado ese plazo, los borramos (artículo 32 de la LOPDGDD).</p>
+<h3>4. Con quién compartimos tus datos</h3>
+<p>Solo compartimos tus datos con quien necesitamos para darte el servicio o cuando una ley nos obliga:</p>
+<ul><li>Shopify International Limited (Irlanda), la plataforma que aloja la tienda, el carrito, el proceso de pago y las cuentas de cliente. Trata los datos por cuenta nuestra, como encargado del tratamiento.</li><li><mark class="b2b-hueco">[PASARELA DE PAGO]</mark>, que procesa los pagos. Si pagas con Apple Pay, Google Pay o Bizum, esos servicios y tu banco también tratan los datos de tu pago, según sus propias políticas.</li><li><mark class="b2b-hueco">[TRANSPORTISTA]</mark>, que entrega los pedidos.</li><li><mark class="b2b-hueco">[ASESORÍA FISCAL Y CONTABLE]</mark>, que lleva nuestra contabilidad y nuestros impuestos, como encargado del tratamiento.</li><li><mark class="b2b-hueco">[OTRAS APPS O PROVEEDORES QUE TRATEN DATOS]</mark></li><li>Administraciones públicas, como la Agencia Tributaria, y jueces y tribunales, cuando una ley nos obligue.</li></ul>
+<h3>5. Shopify y transferencias fuera del Espacio Económico Europeo</h3>
+<p>La tienda está alojada en Shopify, y la información que nos das en ella se comparte con Shopify. Nuestro contrato es con Shopify International Limited, en Irlanda. Shopify puede tratar datos fuera del Espacio Económico Europeo, en otras empresas de su grupo o en sus proveedores, por ejemplo en Canadá, Estados Unidos o Singapur. Según su acuerdo de tratamiento de datos, para esas transferencias usa la decisión de adecuación de la Comisión Europea sobre Canadá (artículo 45 del RGPD), sus normas corporativas vinculantes para los envíos dentro de su grupo (artículo 47 del RGPD) y las cláusulas contractuales tipo aprobadas por la Comisión Europea en 2021 (artículo 46.2.c del RGPD).</p>
+<p>Puedes consultar el acuerdo de tratamiento de datos de Shopify en https://www.shopify.com/legal/dpa y su lista de proveedores en https://help.shopify.com/en/manual/your-account/privacy/subprocessors.</p>
+<p><mark class="b2b-hueco">[TRANSFERENCIAS DE OTROS PROVEEDORES]</mark></p>
+<p><mark class="b2b-hueco">[MANTÉN ESTE PÁRRAFO SI SHOPIFY NETWORK INTELLIGENCE ESTÁ ACTIVADO; SI LO DESACTIVÁIS, BÓRRALO]</mark> Además, Shopify puede usar como responsable independiente los datos de tus interacciones con esta tienda, junto con los de otras tiendas, para prestar y mejorar sus servicios: por ejemplo, para mejorar sus productos y la personalización, el rendimiento de las tiendas y la segmentación de la publicidad. Según Shopify, si rechazas las cookies que no son necesarias, no usa los datos de tu dispositivo para fines no esenciales. Lo explica en su política de privacidad para consumidores: https://www.shopify.com/legal/privacy/consumers. Para oponerte a ese tratamiento o pedir a Shopify acceso a tus datos o su borrado, entra en https://privacy.shopify.com.</p>
+<h3>6. Tus derechos y cómo ejercerlos</h3>
+<p>Puedes pedirnos:</p>
+<ul><li>acceso a tus datos;</li><li>que los corrijamos si son inexactos;</li><li>que los borremos;</li><li>que limitemos su tratamiento;</li><li>recibirlos en un formato que puedas llevar a otra empresa (portabilidad);</li><li>oponerte a que los tratemos cuando la base legal sea nuestro interés legítimo, y en todo caso a recibir comunicaciones comerciales.</li></ul>
+<p>También puedes retirar en cualquier momento el consentimiento que nos hayas dado. No tomamos decisiones automatizadas que tengan efectos jurídicos sobre ti.</p>
+<p>Para ejercer tus derechos, escríbenos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> o por carta a <mark class="b2b-hueco">[DOMICILIO SOCIAL]</mark>. Dinos qué derecho quieres ejercer y con qué email compraste o tienes tu cuenta. Solo te pediremos más datos para identificarte si tenemos dudas razonables sobre tu identidad (artículo 12.6 del RGPD). Te responderemos sin demoras y como máximo en un mes. Si la petición es compleja o recibimos muchas, ese plazo puede ampliarse dos meses más, y te lo diremos dentro del primer mes (artículo 12.3 del RGPD).</p>
+<h3>7. Reclamar ante la Agencia Española de Protección de Datos</h3>
+<p>Si crees que no hemos tratado bien tus datos, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es, calle Jorge Juan, 6, 28001 Madrid). Si prefieres, escríbenos antes para intentar resolverlo.</p>
+<h3>8. Menores de edad</h3>
+<p>No vendemos a menores de 18 años y no queremos sus datos. Si descubrimos que tenemos datos de un menor, los borraremos, salvo los que la ley nos obligue a conservar. Si eres madre, padre o tutor y crees que un menor a tu cargo nos ha dado sus datos, escríbenos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark>.</p>
+<h3>9. Cambios en esta política</h3>
+<p>Si cambiamos esta política, publicaremos aquí la nueva versión con su fecha.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="cookies"><h2 class="b2b-guia__h2" id="cookies">Política de cookies</h2><p>Última actualización: <mark class="b2b-hueco">[FECHA DE ACTUALIZACIÓN]</mark></p>
+<h3>Qué son las cookies</h3>
+<p>Las cookies son pequeños archivos que una web guarda en tu navegador para recordar información entre páginas o entre visitas. Hay tecnologías parecidas, como el almacenamiento local del navegador. En esta política llamamos cookies a todas ellas.</p>
+<p>Con esta política te informamos como exige el artículo 22.2 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), y como indica la Guía sobre el uso de las cookies de la Agencia Española de Protección de Datos (versión de mayo de 2024).</p>
+<h3>Quién usa las cookies de esta web</h3>
+<p>Las usamos nosotros, Pouches Spain (<mark class="b2b-hueco">[RAZÓN SOCIAL]</mark>), y Shopify, la plataforma en la que funciona la tienda. Shopify instala sus cookies con el dominio de la tienda y trata la información que recogen. Te explicamos cómo trata Shopify los datos en la Política de privacidad.</p>
+<h3>Qué cookies usamos</h3>
+<h4>Cookies necesarias</h4>
+<p>Sin ellas la tienda no funciona, o son preferencias que eliges tú. Por eso no necesitan tu consentimiento.</p>
+<div class="b2b-tabla"><table><thead><tr><th>Nombre</th><th>Quién la pone</th><th>Para qué sirve</th><th>Duración</th></tr></thead><tbody><tr><td><code>_shopify_essential</code></td><td>Shopify</td><td>Guarda lo básico para que la tienda funcione: la sesión, el proceso de pago y datos de seguridad contra manipulaciones</td><td>1 año</td></tr><tr><td><code>_shopify_cmp</code></td><td>Shopify</td><td>Guarda tus preferencias de cookies</td><td>1 año</td></tr><tr><td><code>cart</code></td><td>Shopify</td><td>Guarda lo que tienes en el carrito</td><td>91 días</td></tr><tr><td><code>cart_currency</code></td><td>Shopify</td><td>Después de comprar, abre un carrito nuevo en la misma moneda</td><td>91 días</td></tr><tr><td><code>localization</code></td><td>Shopify</td><td>Ajusta el carrito a tu país</td><td>1 año</td></tr><tr><td><code>discount_code</code></td><td>Shopify</td><td>Guarda un código de descuento que te llega en un enlace, para aplicarlo al pagar</td><td>Hasta que cierras el navegador</td></tr><tr><td><code>_shopify_test</code></td><td>Shopify</td><td>Comprueba si tu navegador admite cookies</td><td>1 minuto</td></tr><tr><td><code>__Host-Http-shop_binding</code></td><td>Shopify</td><td>Vincula a tu sesión el inicio de sesión con Shop, si lo usas</td><td>3 horas</td></tr><tr><td><code>b2b-acceso-confirmado</code> (almacenamiento local)</td><td>Pouches Spain</td><td>Recuerda que has confirmado que tienes 18 años o más, para no preguntarte en cada visita</td><td>Queda en tu navegador hasta que borres sus datos; a los 30 días te volvemos a preguntar</td></tr><tr><td><code>b2b-vista</code> (almacenamiento local)</td><td>Pouches Spain</td><td>Recuerda si prefieres ver el catálogo en fichas o en lista, cuando lo eliges tú</td><td>Queda en tu navegador hasta que borres sus datos</td></tr></tbody></table></div>
+<h4>Cookies de análisis</h4>
+<p>Solo las usamos si las aceptas.</p>
+<div class="b2b-tabla"><table><thead><tr><th>Nombre</th><th>Quién la pone</th><th>Para qué sirve</th><th>Duración</th></tr></thead><tbody><tr><td><code>_shopify_analytics</code></td><td>Shopify</td><td>Guarda datos de analítica de la tienda y del proceso de pago, para saber cómo se usa la tienda</td><td>1 año</td></tr></tbody></table></div>
+<h4>Cookies de marketing</h4>
+<p>Solo las usamos si las aceptas.</p>
+<div class="b2b-tabla"><table><thead><tr><th>Nombre</th><th>Quién la pone</th><th>Para qué sirve</th><th>Duración</th></tr></thead><tbody><tr><td><code>_shopify_marketing</code></td><td>Shopify</td><td>Guarda datos de marketing de la tienda y del proceso de pago</td><td>1 año</td></tr></tbody></table></div>
+<h4>Cookies de preferencias</h4>
+<p>El banner de cookies de Shopify tiene también una categoría de preferencias. Hoy Shopify no publica ninguna cookie suya de este tipo para las tiendas. Si alguna app de la tienda la usa, la añadiremos a esta lista.</p>
+<h4>Cookies de terceros</h4>
+<p><mark class="b2b-hueco">[TABLA CON LAS COOKIES DE LAS APPS Y PÍXELES QUE INSTALÉIS]</mark></p>
+<p><mark class="b2b-hueco">[REVISAR ANTES DE PUBLICAR: LAS COOKIES DE SHOPIFY DE ESTAS TABLAS SON LAS QUE SHOPIFY PUBLICA EN https://www.shopify.com/legal/cookies (VERSIÓN DEL 4 DE NOVIEMBRE DE 2026) PARA LAS TIENDAS. COMPROBAD EN LA TIENDA REAL, CON LAS HERRAMIENTAS DEL NAVEGADOR, QUÉ COOKIES Y QUÉ DATOS DE ALMACENAMIENTO LOCAL APARECEN, Y AÑADID LOS DE LAS APPS QUE INSTALÉIS]</mark></p>
+<h3>Cómo aceptas, rechazas o cambias tu elección</h3>
+<p>La primera vez que entras en la tienda te mostramos un banner de cookies. Puedes aceptar todas las cookies, rechazar las que no son necesarias o elegir por categorías. Mientras no aceptes, no usamos cookies de análisis ni de marketing. Tu elección se guarda en la cookie <code>_shopify_cmp</code>, que dura un año.</p>
+<p>Puedes cambiar de opinión o retirar tu consentimiento cuando quieras desde el enlace de preferencias de cookies que hay en el pie de la web. Retirarlo es tan fácil como darlo.</p>
+<p>También puedes borrar o bloquear las cookies y el almacenamiento local desde la configuración de tu navegador (Chrome, Firefox, Safari, Edge u otro); busca «cookies» o «datos de sitios» en su ayuda. Si bloqueas las cookies necesarias, puede que el carrito o el pago no funcionen. Si has aceptado cookies de terceros y quieres eliminarlas, hazlo desde tu navegador o desde el sistema que ofrezca cada tercero.</p>
+<h3>Transferencias internacionales</h3>
+<p>Shopify puede tratar fuera del Espacio Económico Europeo los datos que recogen sus cookies, con las garantías que explicamos en la Política de privacidad. Si se usan cookies de terceros, cada tercero informa de sus transferencias en su propia política.</p>
+<h3>Perfiles y decisiones automatizadas</h3>
+<p>No usamos las cookies para tomar decisiones automatizadas que tengan efectos jurídicos sobre ti ni que te afecten de forma parecida.</p>
+<h3>Más información</h3>
+<p>Tus derechos y el resto de la información sobre tus datos están en la Política de privacidad.</p></section><section class="b2b-ayuda__apartado" aria-labelledby="condiciones"><h2 class="b2b-guia__h2" id="condiciones">Condiciones de venta</h2><p>Última actualización: <mark class="b2b-hueco">[FECHA DE ACTUALIZACIÓN]</mark></p>
+<p>Estas condiciones se aplican a las compras que hagas en Pouches Spain (<mark class="b2b-hueco">[DOMINIO DE LA TIENDA]</mark>). Léelas antes de pedir, porque al hacer un pedido las aceptas. Puedes guardarlas o imprimirlas desde esta página.</p>
+<h3>1. Quiénes somos</h3>
+<p>Pouches Spain es la tienda online de <mark class="b2b-hueco">[RAZÓN SOCIAL]</mark>, con NIF <mark class="b2b-hueco">[NIF]</mark> y domicilio en <mark class="b2b-hueco">[DOMICILIO SOCIAL]</mark>. Puedes escribirnos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> o llamarnos al <mark class="b2b-hueco">[TELÉFONO]</mark>. El resto de nuestros datos está en el Aviso legal.</p>
+<p>La tienda está alojada en Shopify. Los datos que nos das al comprar se comparten con Shopify, que los trata para que la tienda funcione. En la Política de privacidad te explicamos cómo, y desde https://privacy.shopify.com puedes oponerte a que Shopify trate tus datos para ciertos fines.</p>
+<h3>2. Quién puede comprar</h3>
+<p>Solo vendemos a mayores de 18 años. La venta a menores está prohibida. Al entrar en la web y al hacer un pedido declaras que tienes 18 años o más. No te pedimos documento de identidad. Si tenemos motivos para pensar que un pedido lo ha hecho un menor, lo cancelaremos y te devolveremos lo que hayas pagado.</p>
+<p>En la tienda compran dos tipos de clientes:</p>
+<ul><li>Particulares, que compran para su uso personal como consumidores.</li><li>Profesionales, es decir, negocios con una cuenta profesional aprobada (apartado 6).</li></ul>
+<h3>3. Qué vendemos</h3>
+<p>Vendemos bolsas de nicotina sin tabaco de distintas marcas, con stock en España. En la ficha de cada producto tienes su marca, su sabor y su cantidad de nicotina. Las fotos son las que publica cada marca, y el diseño de la lata puede cambiar. Las bolsas de nicotina no son un medicamento ni un tratamiento para dejar de fumar.</p>
+<p>Este producto contiene nicotina, una sustancia muy adictiva.</p>
+<h3>4. Precios e impuestos</h3>
+<ul><li>Los precios están en euros.</li><li>Para particulares, los precios incluyen el IVA.</li><li>Para cuentas profesionales, los precios son mayoristas y se muestran sin IVA. El IVA, y el recargo de equivalencia si tu negocio está en ese régimen, se suman al hacer el pedido.</li><li>Todos los precios incluyen el Impuesto sobre los Líquidos para Cigarrillos Electrónicos y otros Productos relacionados con el Tabaco, que es el impuesto especial que grava las bolsas de nicotina (artículo 64 de la Ley 38/1992, de Impuestos Especiales).</li><li>Los gastos de envío no están incluidos. Los ves antes de pagar y los explicamos en la Política de envío.</li><li>Pagas el precio que aparece en la tienda en el momento de hacer el pedido. Si un precio tiene un error evidente (por ejemplo, un cero de menos), te avisaremos antes de enviar el pedido y podrás aceptar el precio correcto o cancelar el pedido y recuperar lo que pagaste.</li></ul>
+<p>En Canarias, Ceuta y Melilla no se aplica el IVA, sino otros impuestos, así que el precio final puede cambiar. Te lo confirmaremos cuando nos consultes el envío (apartado 9).</p>
+<h3>5. Cuántas latas puedes comprar como particular</h3>
+<p>Puedes comprar desde una sola lata. El máximo es de 10 latas de cada referencia (cada producto de la tienda) en un mismo pedido. Si compras rollos, cuentan las latas que lleva cada rollo. Si quieres más, escríbenos a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> antes de hacer el pedido.</p>
+<p>Este límite no se aplica a las cuentas profesionales.</p>
+<h3>6. Cuentas profesionales</h3>
+<p>La cuenta profesional es para empresas y autónomos con un negocio, como estancos, tiendas o gasolineras, que quieren comprar a precio mayorista.</p>
+<ul><li>Para pedirla, rellenas el formulario de alta con la razón social y el NIF (el antiguo CIF) del negocio, tus datos de contacto, el tipo de negocio y la dirección de entrega.</li><li>Revisamos cada solicitud a mano y podemos rechazar las que no correspondan a un negocio.</li><li>Con la cuenta aprobada ves los precios mayoristas, sin IVA.</li><li>Pagas por transferencia bancaria o en las condiciones de pago que pactemos contigo.</li><li>Al pedir la cuenta declaras que compras para tu negocio y que eres mayor de 18 años.</li></ul>
+<p>Las compras profesionales no son compras de consumo. Por eso no tienen derecho de desistimiento ni se les aplican las normas de protección de los consumidores. Si hemos pactado contigo condiciones particulares, esas condiciones prevalecen sobre estas en lo que digan de forma distinta.</p>
+<h3>7. Cómo hacer un pedido</h3>
+<ol><li>Elige los productos y la cantidad, y añádelos al carrito.</li><li>En el carrito revisa lo que llevas. Puedes cambiar cantidades o quitar productos.</li><li>Pasa a la página de pago e indica tu email, la dirección de envío y el método de envío. Antes de pagar ves el total, con los impuestos y los gastos de envío.</li><li>Elige cómo pagar y pulsa el botón final de pago. Al pulsarlo haces un pedido con obligación de pago.</li><li>Te enviamos un email que confirma que hemos recibido tu pedido, con su resumen.</li></ol>
+<p>Hasta el último paso puedes corregir cualquier dato volviendo atrás o cambiándolo en el carrito o en la página de pago. El contrato se celebra en español. Guardamos una copia de cada pedido: la tienes en el email de confirmación y, si compras con tu cuenta, también en ella.</p>
+<h3>8. Pago</h3>
+<p>Si eres particular, pagas al hacer el pedido con los métodos que veas en la página de pago. Según la pasarela de pago que usamos (<mark class="b2b-hueco">[PASARELA DE PAGO]</mark>), pueden ser tarjeta (Visa o Mastercard), Apple Pay, Google Pay y Bizum. No vemos ni guardamos los datos completos de tu tarjeta: los trata la pasarela.</p>
+<p>Si tienes cuenta profesional, pagas por transferencia bancaria o en las condiciones que hayamos pactado contigo.</p>
+<h3>9. Envío</h3>
+<p>Enviamos desde España. A la península (España peninsular), el pedido llega en 24 a 48 horas laborables, en un paquete discreto. Para Baleares, Canarias, Ceuta y Melilla, consúltanos antes de hacer el pedido. Los costes y el resto de detalles están en la Política de envío.</p>
+<p>Si no acordamos otra cosa, la ley nos obliga a entregarte el pedido sin demoras indebidas y como máximo en 30 días naturales desde la compra (artículo 66 bis del TRLGDCU, el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, aprobado por el Real Decreto Legislativo 1/2007). Si no lo hacemos, puedes darnos un plazo adicional y, si tampoco cumplimos, cancelar el pedido. El riesgo de pérdida o daño del pedido es nuestro hasta que lo recibas tú o la persona que hayas indicado (artículo 66 ter del TRLGDCU).</p>
+<h3>10. Derecho de desistimiento</h3>
+<p>Si eres consumidor, puedes desistir de la compra durante 14 días naturales desde el día en que recibes el pedido, sin dar explicaciones (artículos 102 y 104 del TRLGDCU).</p>
+<p>Las latas van precintadas. Por razones de protección de la salud y de higiene, no puedes desistir de las latas que hayas abierto o cuyo precinto se haya roto después de la entrega (artículo 103, letra e, del TRLGDCU). Solo aceptamos la devolución de latas sin abrir y con el precinto intacto.</p>
+<p>Para desistir:</p>
+<ol><li>Dínoslo antes de que acaben los 14 días, por email a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark> o por carta a <mark class="b2b-hueco">[DIRECCIÓN POSTAL]</mark>. Puedes usar el formulario que hay al final de estas condiciones o escribirnos con tus palabras, siempre que quede clara tu decisión. Indica el número de pedido y las latas que devuelves.</li><li>Envíanos las latas en los 14 días naturales siguientes a tu aviso, a <mark class="b2b-hueco">[DIRECCIÓN PARA DEVOLUCIONES]</mark>.</li><li>Gastos del envío de la devolución: <mark class="b2b-hueco">[QUIÉN PAGA EL ENVÍO DE LA DEVOLUCIÓN]</mark>.</li><li>Te devolvemos el dinero en un máximo de 14 días naturales desde que nos avisas, con el mismo medio de pago que usaste, salvo que nos pidas otro y no te suponga ningún gasto. Si desistes del pedido entero, también te devolvemos los gastos de envío ordinarios; si elegiste un envío más caro que el ordinario, no te devolvemos la diferencia. Podemos esperar a recibir las latas, o a que nos muestres que las has enviado, para hacer el reembolso.</li></ol>
+<h3>11. Garantía</h3>
+<p>Si eres consumidor, tienes la garantía legal: respondemos de las faltas de conformidad que ya existieran cuando te entregamos el producto y que aparezcan en los tres años siguientes a la entrega (artículo 120 del TRLGDCU). Si aparecen en los dos primeros años, se presume que ya existían, salvo que eso no encaje con la naturaleza del producto o del defecto (artículo 121 del TRLGDCU).</p>
+<p>Si algo llega mal (una lata dañada, un producto que no pediste o falta algo), avísanos en los 14 días siguientes a la entrega escribiendo a <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark>, con el número de pedido y, si puedes, una foto. Este plazo de aviso no recorta tu garantía legal.</p>
+<p>Para solucionarlo, te enviamos el producto correcto o en buen estado. Si no es posible, te rebajamos el precio o te devolvemos su importe, como prevén los artículos 117 a 119 ter del TRLGDCU. No te cuesta nada: nos hacemos cargo de los envíos necesarios (artículo 118.4 del TRLGDCU).</p>
+<p>Si eres cliente profesional, avísanos de cualquier incidencia en los 14 días siguientes a la entrega. Se aplica lo que hayamos pactado y, en lo demás, la normativa mercantil.</p>
+<h3>12. Atención al cliente y reclamaciones</h3>
+<p>Puedes contactarnos por:</p>
+<ul><li>Email: <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark></li><li>Teléfono: <mark class="b2b-hueco">[TELÉFONO]</mark>, en horario de <mark class="b2b-hueco">[HORARIO DE ATENCIÓN]</mark></li><li>Correo postal: <mark class="b2b-hueco">[DIRECCIÓN POSTAL]</mark></li></ul>
+<p>Si nos haces una reclamación, te daremos un número de referencia y un justificante por escrito, y te responderemos lo antes posible y como máximo en 15 días desde que la presentes (artículo 21 del TRLGDCU).</p>
+<p><mark class="b2b-hueco">[HOJAS DE RECLAMACIONES]</mark></p>
+<h3>13. Resolución de conflictos</h3>
+<p>Si tienes un problema con un pedido, escríbenos primero.</p>
+<p>Si no quedas conforme con nuestra respuesta, puedes acudir a una entidad de resolución alternativa de litigios de consumo. <mark class="b2b-hueco">[ELIGE UNA DE LAS DOS FRASES SIGUIENTES Y BORRA LA OTRA]</mark></p>
+<p>Estamos adheridos a <mark class="b2b-hueco">[ENTIDAD DE RESOLUCIÓN ALTERNATIVA]</mark> (<mark class="b2b-hueco">[WEB DE LA ENTIDAD]</mark>).</p>
+<p>No estamos adheridos a ninguna entidad de resolución alternativa. Si no resolvemos tu reclamación, al responderte te indicaremos al menos una entidad competente y si participaremos en el procedimiento (artículo 40 de la Ley 7/2017, de 2 de noviembre).</p>
+<p>Tienes la lista de entidades acreditadas en España en la web del Ministerio de Derechos Sociales, Consumo y Agenda 2030: https://www.dsca.gob.es/es/consumo/resoluci-n-alternativa-de-conflictos/listado-entidades-notificadas-comision-europea-autoridades-competentes-espana. También puedes pedir ayuda a la oficina de información al consumidor de tu ayuntamiento o a los servicios de consumo de tu comunidad autónoma.</p>
+<h3>14. Ley aplicable y tribunales</h3>
+<p>Estas condiciones se rigen por la ley española. Si eres consumidor, puedes reclamar ante los juzgados de tu domicilio (artículo 52.3 de la Ley 1/2000, de Enjuiciamiento Civil). Si eres cliente profesional, serán competentes los juzgados que correspondan según la ley.</p>
+<h3>15. Datos personales</h3>
+<p>Cómo tratamos tus datos está en la Política de privacidad.</p>
+<h3>16. Cambios en estas condiciones</h3>
+<p>Podemos cambiar estas condiciones. A cada pedido se le aplican las que estaban publicadas el día en que lo hiciste.</p>
+<h3>Formulario de desistimiento</h3>
+<p>Modelo del anexo B del TRLGDCU. Solo tienes que rellenarlo y enviarlo si quieres desistir del contrato.</p>
+<ul><li>A la atención de <mark class="b2b-hueco">[RAZÓN SOCIAL]</mark>, <mark class="b2b-hueco">[DIRECCIÓN POSTAL]</mark>, <mark class="b2b-hueco">[EMAIL DE CONTACTO]</mark>:</li><li>Por la presente le comunico/comunicamos (<em>) que desisto de mi/desistimos de nuestro (</em>) contrato de venta del siguiente bien:</li><li>Pedido el/recibido el (*):</li><li>Nombre del consumidor o de los consumidores:</li><li>Domicilio del consumidor o de los consumidores:</li><li>Firma del consumidor o de los consumidores (solo si el formulario se presenta en papel):</li><li>Fecha:</li></ul>
+<p>(*) Táchese lo que no proceda.</p></section></div></div></article>
   </main>
 
   <!-- sections/b2b-marcas-movimiento.liquid (fondo rojo) -->
@@ -2894,6 +3096,25 @@ window.PV_CATALOGO = {"marcas":[{"n":"77","h":"77","l":"img/marcas/77.png","w":4
     });
   }
 
+  /* ---------- 6. Pie: enlace para cambiar las preferencias de cookies ---------- */
+  // Abre el panel del banner de cookies de Shopify (window.privacyBanner). Si el banner no está activo,
+  // el botón se queda oculto. La API puede tardar en cargar: se reintenta unos segundos.
+  function iniciarCookies(boton) {
+    if (boton.dataset.b2bListo) return;
+    boton.dataset.b2bListo = '1';
+    var intentos = 0;
+    function mirar() {
+      var api = window.privacyBanner;
+      if (api && typeof api.showPreferences === 'function') {
+        boton.hidden = false;
+        boton.addEventListener('click', function () { api.showPreferences(); });
+      } else if (intentos++ < 10) {
+        setTimeout(mirar, 800);
+      }
+    }
+    mirar();
+  }
+
   function iniciar(ctx) {
     ctx = ctx || document;
     todos('[data-b2b-cabecera]', ctx).forEach(iniciarCabecera);
@@ -2902,6 +3123,7 @@ window.PV_CATALOGO = {"marcas":[{"n":"77","h":"77","l":"img/marcas/77.png","w":4
     todos('[data-b2b-marquesina]', ctx).forEach(iniciarMarquesina);
     todos('[data-b2b-pestanas]', ctx).forEach(iniciarPestanas);
     todos('[data-b2b-galeria]', ctx).forEach(iniciarGaleria);
+    todos('[data-b2b-preferencias-cookies]', ctx).forEach(iniciarCookies);
     todos('[data-b2b-orden-envio]', ctx).forEach(function (sel) {
       if (sel.dataset.b2bListo) return;
       sel.dataset.b2bListo = '1';
