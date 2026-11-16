@@ -457,6 +457,27 @@
 .b2b-entrada .b2b-link { color: var(--b2b-crema); }
 .b2b-entrada .b2b-estado { background: rgba(245, 243, 235, 0.16); color: var(--b2b-crema); }
 .b2b-entrada__esquinas .b2b-bandera { width: 2em; height: 0.66em; }
+
+/* Portada clara (estilo por defecto): las latas a color se ven detrás de un velo crema traslúcido,
+   casi transparente arriba y más tupido abajo, donde van el titular, el texto y el botón. */
+.b2b-entrada--claro .b2b-entrada__marco { background: var(--b2b-gris); color: var(--b2b-ink); }
+.b2b-entrada--claro .b2b-entrada__marco::after {
+  background: linear-gradient(180deg, rgba(236, 231, 219, 0.22) 0%, rgba(236, 231, 219, 0.04) 30%, rgba(236, 231, 219, 0.5) 47%, rgba(236, 231, 219, 0.82) 60%, rgba(236, 231, 219, 0.94) 76%, rgba(236, 231, 219, 0.97) 100%);
+}
+/* El sol asoma por detrás de las latas. */
+.b2b-entrada--claro .b2b-entrada__marco > .b2b-sol { z-index: -3; }
+.b2b-entrada--claro .b2b-entrada__fondo--muro { mix-blend-mode: normal; }
+.b2b-entrada--claro .b2b-muro { opacity: 1; filter: none; }
+.b2b-entrada--claro .b2b-entrada__titulo { color: var(--b2b-rojo); }
+.b2b-entrada--claro .b2b-entrada__titulo em { color: var(--b2b-ink); }
+.b2b-entrada--claro .b2b-entrada__lead { color: var(--b2b-ink); }
+.b2b-entrada--claro .b2b-entrada__sub { color: var(--b2b-muted); }
+.b2b-entrada--claro .b2b-link { color: var(--b2b-ink); }
+.b2b-entrada--claro .b2b-estado { background: var(--b2b-warn-soft); color: var(--b2b-warn); }
+.b2b-entrada--claro .b2b-btn--blanco { border-color: var(--b2b-rojo); background: var(--b2b-rojo); color: var(--b2b-crema); }
+@media (hover: hover) {
+  .b2b-entrada--claro .b2b-btn--blanco:hover:not(:disabled) { border-color: var(--b2b-rojo-osc); background: var(--b2b-rojo-osc); color: var(--b2b-crema); }
+}
 /* El texto va por encima del sol y de las rayas. */
 .b2b-entrada__capa { position: relative; z-index: 1; }
 
