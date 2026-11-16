@@ -299,13 +299,14 @@
 }
 .b2b-entrada__fondo { position: absolute; inset: 0; z-index: -2; }
 .b2b-entrada__foto { display: block; width: 100%; height: 100%; object-fit: cover; }
-/* Oscurece la parte baja de la imagen para que el titular blanco se lea sobre cualquier foto. */
+/* Oscurece la imagen, sobre todo la mitad baja, para que el titular blanco y el de contorno se lean
+   sobre cualquier foto (las latas blancas de las fotos de producto incluidas). */
 .b2b-entrada__marco::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 28%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.72) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.18) 26%, rgba(0, 0, 0, 0.42) 52%, rgba(0, 0, 0, 0.84) 100%);
   pointer-events: none;
 }
 /* El muro es textura de fondo: atenuado para que el titular mande. */
@@ -316,7 +317,7 @@
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 22px;
   align-content: center;
-  opacity: 0.42;
+  opacity: 0.36;
   rotate: -9deg;
   scale: 1.06;
 }
@@ -542,6 +543,12 @@
   .b2b-prod:hover .b2b-prod__media svg { transform: scale(1.05) rotate(-3deg); }
 }
 .b2b-prod.is-activa .b2b-prod__media { box-shadow: inset 0 0 0 2px var(--b2b-ink); }
+/* Fotos de producto con fondo blanco: el blanco se funde con el gris de la ficha.
+   Las PNG sin fondo se ven igual. */
+.b2b-prod__media img,
+.b2b-carta__media img,
+.b2b-tarjeta__media.is-producto img,
+.b2b-col__media.is-producto img { mix-blend-mode: multiply; }
 .b2b-insignia {
   position: absolute;
   top: 10px;
@@ -639,6 +646,7 @@
 .b2b-porlata { display: block; color: var(--b2b-muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .b2b-tramos { color: var(--b2b-muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .b2b-tramos li.is-actual { color: var(--b2b-ink); font-size: 15px; font-weight: 700; }
+.b2b-ahorro { margin-left: 4px; padding: 1px 5px; border-radius: 3px; background: #e5f2ea; color: var(--b2b-ok); font-size: 11px; font-weight: 700; }
 .b2b-importe { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .b2b-items.is-cuadricula .b2b-var:not(.is-activa) .b2b-var__imp { visibility: hidden; }
 .b2b-regla { display: block; margin-top: 5px; color: var(--b2b-muted); font-size: 12px; }
@@ -893,6 +901,155 @@ html.b2b-sin-scroll { overflow: hidden; }
   to { opacity: 1; transform: none; }
 }
 
+/* ---------- Tope de unidades para particulares ---------- */
+.b2b-tope {
+  margin: 20px 0 0;
+  padding: 14px 18px;
+  border: 1px solid var(--b2b-warn);
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-warn-soft);
+  color: var(--b2b-warn);
+  font-size: 14px;
+  font-weight: 600;
+}
+.b2b-tope a { color: inherit; }
+
+/* ---------- Páginas SEO: colección, índice y guía ---------- */
+.b2b-miga { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; color: var(--b2b-muted); font-size: 13px; }
+.b2b-miga a { text-decoration: none; }
+.b2b-miga a:hover { text-decoration: underline; }
+.b2b-miga [aria-current] { color: var(--b2b-ink); }
+
+.b2b-col__cab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 28px 48px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.b2b-col__titulo { font-size: clamp(40px, 6vw, 84px); line-height: 0.88; }
+.b2b-col__texto { max-width: 56ch; margin-top: 16px; color: var(--b2b-muted); }
+.b2b-col__dato { margin-top: 16px; font-size: 13px; letter-spacing: 0.04em; /* lint-ia: permitido rótulo de dato en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
+.b2b-col__media { border-radius: var(--b2b-radius); overflow: hidden; background: var(--b2b-gris); }
+.b2b-col__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.b2b-col__media.is-producto { display: grid; place-items: center; aspect-ratio: 1; padding: 8%; }
+.b2b-col__media.is-producto img,
+.b2b-col__media.is-producto svg { width: 100%; height: 100%; object-fit: contain; }
+
+.b2b-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px 20px; }
+.b2b-carta { display: flex; }
+.b2b-carta__enlace { display: flex; flex-direction: column; width: 100%; text-decoration: none; }
+.b2b-carta__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  margin-bottom: 14px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+}
+.b2b-carta__media img { width: 78%; height: 78%; object-fit: contain; transition: transform 0.4s var(--b2b-ease); }
+@media (hover: hover) { .b2b-carta__enlace:hover .b2b-carta__media img { transform: scale(1.05); } }
+.b2b-carta__cuerpo { display: flex; flex-direction: column; gap: 5px; }
+.b2b-carta__marca { font-size: 12px; letter-spacing: 0.05em; /* lint-ia: permitido etiqueta de marca en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
+.b2b-carta__nombre { font-size: 16px; font-weight: 700; line-height: 1.2; }
+.b2b-carta__precio { margin-top: 2px; font-size: 15px; font-weight: 700; }
+.b2b-carta__enlace:hover .b2b-carta__nombre { text-decoration: underline; text-underline-offset: 2px; }
+
+.b2b-col__sigue { margin-top: 56px; }
+.b2b-col__sigue .b2b-h3 { margin-bottom: 16px; }
+.b2b-pildoras { display: flex; flex-wrap: wrap; gap: 10px; }
+.b2b-pildora-enlace {
+  display: inline-flex;
+  padding: 9px 16px;
+  border: 1px solid var(--b2b-line-strong);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+@media (hover: hover) { .b2b-pildora-enlace:hover { background: var(--b2b-ink); border-color: var(--b2b-ink); color: #fff; } }
+.b2b-col__faq { margin-top: 56px; }
+.b2b-col__faq .b2b-h2 { margin-bottom: 20px; font-size: clamp(28px, 3.4vw, 46px); }
+
+.b2b-indice__cab { max-width: 60ch; margin-bottom: 40px; }
+.b2b-indice__cab .b2b-h1 { font-size: clamp(40px, 6vw, 84px); line-height: 0.88; }
+.b2b-indice__texto { margin-top: 16px; }
+.b2b-indice__rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+.b2b-tarjeta { display: flex; }
+.b2b-tarjeta__enlace {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid var(--b2b-line);
+  border-radius: var(--b2b-radius);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+@media (hover: hover) { .b2b-tarjeta__enlace:hover { border-color: var(--b2b-ink); transform: translateY(-2px); } }
+.b2b-tarjeta__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 14px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+}
+.b2b-tarjeta__media img { width: 100%; height: 100%; object-fit: cover; }
+.b2b-tarjeta__media.is-producto img,
+.b2b-tarjeta__media.is-producto svg { width: 100%; height: 100%; padding: 6%; object-fit: contain; }
+.b2b-tarjeta__inicial {
+  font-family: var(--b2b-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  /* lint-ia: permitido inicial de marca en mayúscula como rótulo */
+  text-transform: uppercase;
+  font-size: 44px;
+  color: var(--b2b-soft);
+}
+.b2b-tarjeta__nombre { font-size: 17px; font-weight: 700; line-height: 1.15; }
+.b2b-tarjeta__dato { margin-top: 4px; font-size: 13px; color: var(--b2b-muted); }
+.b2b-indice__pie { max-width: 62ch; margin-top: 40px; color: var(--b2b-muted); }
+
+.b2b-guia__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr);
+  gap: 24px 56px;
+  align-items: start;
+}
+.b2b-guia__cab { grid-column: 1 / -1; max-width: 32ch; }
+.b2b-guia__ante { margin-bottom: 10px; font-size: 13px; letter-spacing: 0.06em; /* lint-ia: permitido antetítulo en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
+.b2b-guia__titulo { font-size: clamp(40px, 5.6vw, 76px); line-height: 0.9; max-width: 18ch; }
+.b2b-guia__lead { max-width: 60ch; margin-top: 18px; font-size: 19px; color: var(--b2b-muted); }
+.b2b-guia__meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 13px; letter-spacing: 0.03em; /* lint-ia: permitido meta en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
+.b2b-guia__indice { position: sticky; top: 96px; padding-top: 6px; border-top: 2px solid var(--b2b-ink); }
+.b2b-guia__indice-t { margin-bottom: 10px; font-size: 12px; letter-spacing: 0.06em; /* lint-ia: permitido rótulo del índice en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
+.b2b-guia__indice ol { padding-left: 1.2em; list-style: decimal; color: var(--b2b-muted); }
+.b2b-guia__indice li { margin-bottom: 7px; font-size: 14px; }
+.b2b-guia__indice a { text-decoration: none; }
+.b2b-guia__indice a:hover { color: var(--b2b-ink); text-decoration: underline; }
+.b2b-guia__cuerpo { max-width: 68ch; font-size: 17px; line-height: 1.65; }
+.b2b-guia__cuerpo > * + * { margin-top: 18px; }
+.b2b-guia__h2 { margin-top: 40px; font-size: clamp(26px, 3vw, 38px); line-height: 1; scroll-margin-top: 90px; }
+.b2b-guia__cuerpo p + p { margin-top: 14px; }
+.b2b-guia__destacado {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--b2b-ink);
+  background: var(--b2b-gris);
+  border-radius: 0 var(--b2b-radius) var(--b2b-radius) 0;
+}
+.b2b-guia__destacado p { margin: 0; }
+.b2b-guia__cta { margin: 24px 0; }
+.b2b-guia__aviso { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--b2b-line); font-size: 13px; color: var(--b2b-muted); }
+.b2b-guia__cuerpo .b2b-faq__item:first-of-type { border-top: 2px solid var(--b2b-ink); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
   .b2b-items.is-lista .b2b-prod { grid-template-columns: 76px minmax(0, 1fr); }
@@ -911,6 +1068,10 @@ html.b2b-sin-scroll { overflow: hidden; }
   .b2b-muro { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .b2b-pildora__enlaces { display: none; }
   .b2b-pildora__menu { display: block; }
+  .b2b-col__cab { grid-template-columns: minmax(0, 1fr); }
+  .b2b-col__media { order: -1; max-height: 280px; }
+  .b2b-guia__grid { grid-template-columns: minmax(0, 1fr); }
+  .b2b-guia__indice { position: static; }
 }
 
 @media (max-width: 760px) {
@@ -956,6 +1117,9 @@ html.b2b-sin-scroll { overflow: hidden; }
   .b2b-bento__item { min-height: 0; padding: 22px; }
   .b2b-cond__fila { grid-template-columns: minmax(0, 1fr); }
   .b2b-form { grid-template-columns: minmax(0, 1fr); }
+  .b2b-rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .b2b-indice__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .b2b-guia__cuerpo { font-size: 16px; }
   .b2b-pildora { top: calc(40px + env(safe-area-inset-top, 0px)); padding-left: 16px; font-size: 16px; }
   .b2b-pildora__logo { margin-right: 8px; font-size: 22px; }
   .b2b-gate { padding: 26px 20px 22px; }
@@ -982,6 +1146,7 @@ html.b2b-sin-scroll { overflow: hidden; }
     .pv-barra__panel { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; padding: 10px; border-radius: 12px; background: #fff7d6; border: 1px solid #e0cf86; }
     .pv-barra button { font: inherit; padding: 4px 10px; border: 1px solid #c9bb7d; border-radius: 999px; background: #fff; cursor: pointer; }
     .pv-barra button[aria-pressed="true"] { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
+    .pv-barra a { padding: 4px 10px; border: 1px solid #c9bb7d; border-radius: 999px; background: #fff; color: inherit; font-weight: 700; text-decoration: none; }
     .pv-pie { padding: 28px 0 80px; font-size: 12px; color: #6f6f6f; }
     .pv-pie__in { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 10px 26px; }
     .pv-pie a { color: inherit; }
@@ -995,6 +1160,7 @@ html.b2b-sin-scroll { overflow: hidden; }
       <button type="button" data-pv-estado="pendiente">Profesional en revisión</button>
       <button type="button" data-pv-estado="aprobado">Profesional</button>
       <button type="button" data-pv-acceso>Aviso de acceso</button>
+      <a href="seo.html">Páginas SEO</a>
     </div>
   </details>
 
@@ -1179,6 +1345,7 @@ html.b2b-sin-scroll { overflow: hidden; }
           <details class="b2b-faq__item"><summary>¿Vendéis a particulares?</summary><div class="b2b-rte b2b-faq__resp"><p>Sí, a mayores de 18 años. Compras sin cuenta y desde una lata. La cuenta profesional es para negocios y da precios mayoristas.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Qué necesito para abrir cuenta profesional?</summary><div class="b2b-rte b2b-faq__resp"><p>El CIF o NIF del negocio, la dirección de entrega y una persona de contacto. Si tu actividad necesita licencia, te la pedimos al revisar la solicitud.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Puedo mezclar sabores e intensidades?</summary><div class="b2b-rte b2b-faq__resp"><p>Sí, y sin pedido mínimo: puedes pedir una sola lata de cada referencia.</p></div></details>
+          <details class="b2b-faq__item"><summary>¿Cuántas latas puedo pedir?</summary><div class="b2b-rte b2b-faq__resp"><p>Como particular puedes pedir hasta 10 unidades de cada lata. Si necesitas más, escríbenos y te preparamos el pedido o te abrimos una cuenta profesional. Los negocios con cuenta profesional no tienen tope.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Cómo funciona el precio por volumen?</summary><div class="b2b-rte b2b-faq__resp"><p>Cada referencia tiene tramos por cantidad. En el catálogo ves el precio de cada tramo y el importe cambia al subir o bajar unidades.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Qué pasa si una referencia está agotada?</summary><div class="b2b-rte b2b-faq__resp"><p>Aparece como agotada y no se puede pedir. Escríbenos y te decimos cuándo vuelve a entrar.</p></div></details>
           <details class="b2b-faq__item"><summary>¿Cómo verificáis la edad?</summary><div class="b2b-rte b2b-faq__resp"><p>Antes de pagar tu primer pedido te pedimos una foto de tu DNI o NIE y un selfie corto. La verificación la hace iDenfy, un proveedor europeo especializado. Si compras con tu cuenta de cliente, solo la haces una vez. Las cuentas profesionales no la necesitan.</p></div></details>
@@ -1198,6 +1365,36 @@ html.b2b-sin-scroll { overflow: hidden; }
   <!-- sections/b2b-aviso-acceso.liquid -->
   <div data-pv-acceso-hueco></div>
 
+  <script>
+/*
+  Solo para la vista previa. Fotos oficiales de producto de cada marca (packshots de 860 px con fondo
+  transparente, tomados de las fichas de snusdaddy.com). Decisión de Rubén: se usan también en la web
+  pública y él asume el riesgo de derechos. Clave «marca|título» del producto de ejemplo.
+  En Shopify no hace falta: cada ficha usa la foto que se sube al producto.
+*/
+window.PV_FOTOS = {
+  'ZYN|Cool Mint': 'img/zyn-cool-mint.png',
+  'ZYN|Citrus Extra Strong': 'img/zyn-citrus-extra-strong.png',
+  'ZYN|Black Cherry': 'img/zyn-black-cherry.png',
+  'VELO|Freezing Peppermint Max': 'img/velo-freezing-peppermint-max.png',
+  'VELO|Tropical Mango': 'img/velo-tropical-mango.png',
+  'VELO|Purple Grape': 'img/velo-purple-grape.png',
+  'VELO|Bright Spearmint Mini': 'img/velo-bright-spearmint-mini.png',
+  'XQS|Blueberry Mint': 'img/xqs-blueberry-mint.png',
+  'XQS|Tropical': 'img/xqs-tropical.png',
+  'Cuba|White Peach': 'img/cuba-white-peach.png',
+  'Cuba|White Watermelon': 'img/cuba-white-watermelon.png',
+  'White Fox|Full Charge': 'img/white-fox-full-charge.png',
+  'White Fox|Double Mint': 'img/white-fox-double-mint.png',
+  'Pablo|Ice Cold': 'img/pablo-ice-cold.png',
+  'Pablo|Exclusive Grape Ice': 'img/pablo-exclusive-grape-ice.png',
+  'Killa|Cold Mint': 'img/killa-cold-mint.png',
+  'Killa|Watermelon': 'img/killa-watermelon.png',
+  'LOOP|Jalapeño Lime': 'img/loop-jalapeno-lime.png',
+  'LOOP|Habanero Mint': 'img/loop-habanero-mint.png'
+};
+
+</script>
   <script>
 /*
   Solo para la vista previa local. Dibuja latas de ejemplo vistas desde arriba (en Shopify van las fotos
@@ -1233,27 +1430,35 @@ html.b2b-sin-scroll { overflow: hidden; }
   }
   var PRODUCTOS = [
     p('ZYN', 'Cool Mint', 'Menta', 6, '#3fa9c4', 420, 120, 'top', 100),
-    p('ZYN', 'Citrus', 'Cítricos', 6, '#e9b51f', 420, 80, '', 110),
+    p('ZYN', 'Citrus Extra Strong', 'Cítricos', 11, '#e9b51f', 420, 80, '', 110),
     p('ZYN', 'Black Cherry', 'Frutos rojos', 9, '#8a1f40', 430, 60, 'nuevo', 120),
-    p('VELO', 'Freezing Peppermint', 'Menta', 17, '#1f6fb8', 410, 140, 'top', 130),
+    p('VELO', 'Freezing Peppermint Max', 'Menta', 17, '#1f6fb8', 410, 140, 'top', 130),
     p('VELO', 'Tropical Mango', 'Mango', 6, '#ff8a2b', 400, 90, '', 140),
     p('VELO', 'Purple Grape', 'Uva', 10, '#6a2fb3', 400, 70, '', 150),
-    p('XQS', 'Blueberry Mint', 'Arándano', 8, '#4a5bd6', 360, 55, '', 160),
+    p('XQS', 'Blueberry Mint', 'Arándano', 4, '#4a5bd6', 360, 55, '', 160),
     p('XQS', 'Tropical', 'Tropical', 4, '#f0782f', 350, 40, 'nuevo', 170),
     p('Cuba', 'White Peach', 'Melocotón', 10, '#f39a6b', 330, 75, '', 180),
     p('Cuba', 'White Watermelon', 'Sandía', 10, '#e8566a', 330, 0, '', 190),
-    p('White Fox', 'Peppered Mint', 'Menta', 16, '#9fd3e6', 380, 100, 'top', 200),
+    p('White Fox', 'Full Charge', 'Menta', 16, '#9fd3e6', 380, 100, 'top', 200),
     p('White Fox', 'Double Mint', 'Menta', 16, '#5fc28f', 380, 45, '', 210),
     p('Pablo', 'Ice Cold', 'Menta', 30, '#2f9ad6', 450, 35, '', 220),
-    p('Pablo', 'Grape Ice', 'Uva', 30, '#8a3fd1', 450, 25, '', 230),
+    p('Pablo', 'Exclusive Grape Ice', 'Uva', 50, '#8a3fd1', 450, 25, '', 230),
     p('Killa', 'Cold Mint', 'Menta', 16, '#8fd0f0', 360, 65, '', 240),
     p('Killa', 'Watermelon', 'Sandía', 16, '#ff5f7a', 360, 6, '', 250),
     p('LOOP', 'Jalapeño Lime', 'Lima', 9, '#7fc23f', 400, 50, 'nuevo', 260),
     p('LOOP', 'Habanero Mint', 'Menta', 15, '#e0442b', 400, 40, '', 270)
   ];
 
+  // Fotos oficiales de producto (preview/imagenes.js, por «marca|título»). Sin foto, se dibuja la lata.
+  var FOTOS = window.PV_FOTOS || {};
+  PRODUCTOS.forEach(function (p) { p.img = FOTOS[p.marca + '|' + p.titulo] || ''; });
+
   var UMBRAL_STOCK = 10;
   var MINIMO = 0; // sin pedido mínimo
+  // Particulares: hasta 10 latas de cada referencia (un rollo cuenta 10; la caja de 50 no se les enseña)
+  // y descuento por cantidad en la lata suelta, como en europesnus: 5 latas -5 %, 10 latas -10 %.
+  var TOPE_PARTICULAR = 10;
+  var TRAMOS_PARTICULAR = [[5, 5], [10, 10]];
   var fmt = new Intl.NumberFormat('es', { style: 'currency', currency: 'EUR', useGrouping: 'always' });
   function dinero(c) { return fmt.format(c / 100); }
   function esc(s) {
@@ -1301,6 +1506,13 @@ html.b2b-sin-scroll { overflow: hidden; }
       '</svg>';
   }
 
+  /* Foto real del producto si la hay; si no, la lata dibujada. */
+  function medio(p) {
+    return p.img
+      ? '<img src="' + esc(p.img) + '" alt="' + esc(p.marca + ' ' + p.titulo) + '" width="860" height="860" loading="lazy" decoding="async">'
+      : lata(p);
+  }
+
   /* Expositor de mostrador con tres baldas de latas. */
   function expositor() {
     var colores = PRODUCTOS.map(function (p) { return p.color; });
@@ -1332,12 +1544,14 @@ html.b2b-sin-scroll { overflow: hidden; }
 
   function variante(p, v, compra, primera, mayorista) {
     var precio = mayorista ? v.precio : v.pvp;
-    var tramos = mayorista ? v.tramos : [];
+    var tramos = mayorista ? v.tramos : (v.latas === 1 ? TRAMOS_PARTICULAR.map(function (t) {
+      return [t[0], Math.floor(v.pvp * (100 - t[1]) / 100), t[1]];
+    }) : []);
     var nombre = p.titulo + ', ' + v.titulo;
     var paso = v.paso || 1, min = v.min || 1;
     var stock = v.stock <= 0 ? 'agotado' : (v.stock <= UMBRAL_STOCK ? 'pocas' : 'ok');
     var h = '<div class="b2b-var" data-b2b-row data-variant-id="' + v.id + '" data-price="' + precio + '"' +
-      ' data-breaks="' + JSON.stringify(tramos) + '" data-min="' + min + '" data-step="' + paso + '" data-stock="' + v.stock + '"' +
+      ' data-breaks="' + JSON.stringify(tramos.map(function (t) { return [t[0], t[1]]; })) + '" data-min="' + min + '" data-step="' + paso + '" data-stock="' + v.stock + '"' +
       (v.latas > 1 ? ' data-latas="' + v.latas + '"' : '') + (primera ? '' : ' data-b2b-oculta') + '>' +
       '<div class="b2b-var__fmt"><span class="b2b-var__nombre">' + esc(v.titulo) + '</span>' +
       '<span class="b2b-stock b2b-stock--' + stock + '">' + { agotado: 'Agotado', pocas: 'Quedan pocas', ok: 'En stock' }[stock] + '</span></div>';
@@ -1345,8 +1559,9 @@ html.b2b-sin-scroll { overflow: hidden; }
       h += '<div class="b2b-var__precio"><span class="b2b-precio" data-b2b-base>' + dinero(precio) + '</span>' +
         (v.latas > 1 ? '<span class="b2b-porlata" data-b2b-porlata>' + dinero(Math.round(precio / v.latas)) + ' / lata</span>' : '');
       if (tramos.length) {
-        h += '<ul class="b2b-tramos" aria-label="Precio por volumen">' + tramos.map(function (t) {
-          return '<li data-b2b-tramo="' + t[0] + '">' + t[0] + '+ ' + dinero(t[1]) + '</li>';
+        h += '<ul class="b2b-tramos" aria-label="' + (mayorista ? 'Precio por volumen' : 'Descuento por cantidad') + '">' + tramos.map(function (t) {
+          return '<li data-b2b-tramo="' + t[0] + '">' + t[0] + '+ ' + dinero(t[1]) +
+            (t[2] ? ' <span class="b2b-ahorro">-' + t[2] + '&nbsp;%</span>' : '') + '</li>';
         }).join('') + '</ul>';
       }
       h += '</div><div class="b2b-var__cant">';
@@ -1364,24 +1579,26 @@ html.b2b-sin-scroll { overflow: hidden; }
   }
 
   function ficha(p, compra, mayorista) {
+    // A particulares no se les enseñan los formatos que no caben en el tope (la caja de 50).
+    var variantes = p.variantes.filter(function (v) { return mayorista || v.latas <= TOPE_PARTICULAR; });
     var buscar = [p.titulo, p.marca, p.sabor].concat(p.variantes.map(function (v) { return v.titulo + ' ' + v.sku; })).join(' ');
     var n = nivel(p.mg), puntos = '';
     for (var i = 1; i <= 4; i++) puntos += '<i' + (i <= n ? ' class="on"' : '') + '></i>';
-    var varios = p.variantes.length > 1;
+    var varios = variantes.length > 1;
     var insignia = p.insignia === 'top' ? '<span class="b2b-insignia b2b-insignia--top">Más vendido</span>'
       : p.insignia === 'nuevo' ? '<span class="b2b-insignia b2b-insignia--nuevo">Novedad</span>' : '';
     var h = '<article class="b2b-prod' + (varios ? ' b2b-prod--formatos' : '') + '" data-b2b-item data-marca="' + handleize(p.marca) + '"' +
       ' data-sabor="' + handleize(p.sabor) + '" data-nicotina="' + p.mg + '" data-search="' + esc(buscar) + '">' +
-      '<div class="b2b-prod__media">' + insignia + '<span class="b2b-prod__mg">' + p.mg + ' mg</span>' + lata(p) + '</div>' +
+      '<div class="b2b-prod__media">' + insignia + '<span class="b2b-prod__mg">' + p.mg + ' mg</span>' + medio(p) + '</div>' +
       '<div class="b2b-prod__info"><h3 class="b2b-prod__nombre"><a href="#">' + esc(p.titulo) + '</a></h3>' +
       '<span class="b2b-fuerza" role="img" aria-label="Nicotina ' + NIVELES[n] + ', ' + n + ' de 4">' + puntos + '</span>' +
       '<p class="b2b-prod__meta">' + esc(p.marca) + ' · ' + esc(p.sabor) + ' · Nicotina ' + NIVELES[n] + '</p></div>';
     if (varios) {
-      h += '<div class="b2b-formatos" role="group" aria-label="Formato de ' + esc(p.titulo) + '">' + p.variantes.map(function (v, i) {
+      h += '<div class="b2b-formatos" role="group" aria-label="Formato de ' + esc(p.titulo) + '">' + variantes.map(function (v, i) {
         return '<button type="button" class="b2b-formato" data-b2b-formato="' + v.id + '" aria-pressed="' + (i === 0) + '">' + esc(v.titulo) + '</button>';
       }).join('') + '</div>';
     }
-    h += '<div class="b2b-prod__vars">' + p.variantes.map(function (v, i) { return variante(p, v, compra, i === 0, mayorista); }).join('') +
+    h += '<div class="b2b-prod__vars">' + variantes.map(function (v, i) { return variante(p, v, compra, i === 0, mayorista); }).join('') +
       (compra ? '' : '<p class="b2b-prod__bloqueo">' + CANDADO + 'Precio con cuenta profesional</p>') + '</div></article>';
     return h;
   }
@@ -1399,7 +1616,8 @@ html.b2b-sin-scroll { overflow: hidden; }
     sabores.sort(function (a, b) { return a.localeCompare(b, 'es'); });
 
     var h = '<section id="pedido" class="b2b b2b-section b2b-cat b2b-fondo--blanco" data-b2b-pedido data-locale="es" data-moneda="EUR"' +
-      ' data-minimo="' + MINIMO + '" data-cart-url="/cart" data-cart-add-url="/cart/add" data-despues="quedarse" aria-labelledby="b2b-cat-x">' +
+      ' data-minimo="' + MINIMO + '"' + (mayorista ? '' : ' data-tope="' + TOPE_PARTICULAR + '"') +
+      ' data-cart-url="/cart" data-cart-add-url="/cart/add" data-despues="quedarse" aria-labelledby="b2b-cat-x">' +
       '<div class="b2b-wrap"><div class="b2b-cat__cabecera"><div><h2 class="b2b-h2" id="b2b-cat-x">Catálogo</h2>' +
       (compra ? '<p class="b2b-cat__intro b2b-muted">Elige formato y cantidad en cada ficha y añádelo todo al carrito de una vez. Puedes pedir desde una lata.</p>' : '') + '</div>' +
       '<div class="b2b-vista" role="group" aria-label="Vista del catálogo">' +
@@ -1429,6 +1647,10 @@ html.b2b-sin-scroll { overflow: hidden; }
       '<div class="b2b-cat__vacio" data-b2b-vacio hidden><p>Ningún producto coincide con la búsqueda.</p>' +
       '<button type="button" class="b2b-btn b2b-btn--ghost" data-b2b-limpiar>Quitar filtros</button></div>';
 
+    if (!mayorista) {
+      h += '<p class="b2b-tope" data-b2b-tope-aviso role="status" hidden>Como particular puedes pedir hasta ' + TOPE_PARTICULAR +
+        ' latas de cada referencia. ¿Necesitas más? <a class="b2b-link" href="#alta">Escríbenos y te preparamos el pedido</a></p>';
+    }
     if (compra) {
       h += '<div class="b2b-barra" data-b2b-barra><div><p class="b2b-barra__resumen" data-b2b-resumen>Elige cantidades para preparar el pedido.</p>' +
         (mayorista ? '' : '<p class="b2b-barra__nota">Primera compra: verificamos tu edad con DNI o NIE y un selfie antes de pagar.</p>') +
@@ -1509,7 +1731,7 @@ html.b2b-sin-scroll { overflow: hidden; }
 
   // Muro de latas de la entrada (en Shopify, las fotos de los productos de la colección).
   var muro = '';
-  for (var m = 0; m < 32; m++) muro += lata(PRODUCTOS[(m * 5) % PRODUCTOS.length]);
+  for (var m = 0; m < 32; m++) muro += medio(PRODUCTOS[(m * 5) % PRODUCTOS.length]);
   document.querySelector('[data-pv-muro]').innerHTML = muro;
   document.querySelector('[data-pv-expositor]').innerHTML = expositor();
 
@@ -1637,6 +1859,8 @@ html.b2b-sin-scroll { overflow: hidden; }
     var locale = root.getAttribute('data-locale') || 'es';
     var moneda = root.getAttribute('data-moneda') || 'EUR';
     var minimo = parseInt(root.getAttribute('data-minimo') || '0', 10) || 0;
+    // Tope de unidades por referencia para particulares (los profesionales no lo llevan).
+    var topeParticular = parseInt(root.getAttribute('data-tope') || '0', 10) || 0;
     var urlCarrito = root.getAttribute('data-cart-url') || '/cart';
     var urlAnadir = (root.getAttribute('data-cart-add-url') || '/cart/add') + '.js';
     var despues = root.getAttribute('data-despues') || 'carrito';
@@ -1669,7 +1893,7 @@ html.b2b-sin-scroll { overflow: hidden; }
         var stock = parseInt(fila.getAttribute('data-stock'), 10);
         if (!isNaN(stock)) tope = Math.min(tope, Math.max(stock, 0));
       }
-
+      var latas = parseInt(fila.getAttribute('data-latas') || '0', 10) || 0;
       var item = fila.closest('[data-b2b-item]');
       var vid = fila.getAttribute('data-variant-id');
       return {
@@ -1680,16 +1904,25 @@ html.b2b-sin-scroll { overflow: hidden; }
         linea: uno('[data-b2b-linea]', fila),
         base: uno('[data-b2b-base]', fila),
         porLata: uno('[data-b2b-porlata]', fila),
-        latas: parseInt(fila.getAttribute('data-latas') || '0', 10) || 0,
+        latas: latas,
+        // Latas que suma cada unidad de este formato (lata suelta 1, rollo 10, caja 50).
+        unidad: latas > 1 ? latas : 1,
         tramosLi: todos('[data-b2b-tramo]', fila),
         id: parseInt(fila.getAttribute('data-variant-id'), 10),
         precio: parseInt(fila.getAttribute('data-price') || '0', 10),
         tramos: tramos,
         min: Math.max(parseInt(fila.getAttribute('data-min') || '1', 10) || 1, 1),
         paso: Math.max(parseInt(fila.getAttribute('data-step') || '1', 10) || 1, 1),
-        tope: tope
+        // Límite por disponibilidad: stock o regla de cantidad de Shopify.
+        tope: tope,
+        q: 0
       };
     });
+    var avisoTope = uno('[data-b2b-tope-aviso]', root);
+    // Fila que se está tocando: al repartir el tope de una referencia se ajusta la última.
+    var filaEditada = null;
+    // Se pulsó «+» y el tope de particulares no dejó subir.
+    var avisoForzado = false;
 
     var contenedor = uno('[data-b2b-items]', root);
     var botonesVista = todos('[data-b2b-vista]', root);
@@ -1742,16 +1975,53 @@ html.b2b-sin-scroll { overflow: hidden; }
       return null;
     }
 
-    // Ajusta una cantidad a las reglas de Shopify: mínimo, múltiplo del incremento y máximo.
-    function ajustar(f, q) {
+    // Ajusta una cantidad a las reglas de Shopify (mínimo y múltiplo del incremento) y a un máximo.
+    function ajustar(f, q, tope) {
       q = Math.floor(Number(q));
       if (!(q > 0)) return 0;
       q = Math.ceil(q / f.paso) * f.paso;
       if (q < f.min) q = Math.ceil(f.min / f.paso) * f.paso;
-      if (q > f.tope) q = Math.floor(f.tope / f.paso) * f.paso;
+      if (q > tope) q = Math.floor(tope / f.paso) * f.paso;
       return q < f.min ? 0 : q;
     }
-    function cantidad(f) { return f.input ? ajustar(f, f.input.value) : 0; }
+
+    // Calcula la cantidad válida de cada fila. Con tope de particulares, las latas de una misma
+    // referencia se suman entre formatos (un rollo de 10 cuenta como 10 latas): las filas que no se
+    // están tocando conservan lo que tenían y la que se edita se queda con lo que sobre.
+    function resolver() {
+      var usadas = [];
+      function cuenta(item) {
+        for (var i = 0; i < usadas.length; i++) if (usadas[i].item === item) return usadas[i];
+        var c = { item: item, latas: 0 };
+        usadas.push(c);
+        return c;
+      }
+      var orden = filas.filter(function (f) { return f !== filaEditada; });
+      if (filaEditada) orden.push(filaEditada);
+      orden.forEach(function (f) {
+        if (!f.input) { f.q = 0; f.libre = Infinity; return; }
+        var c = cuenta(f.item);
+        f.libre = topeParticular > 0 ? Math.max(0, Math.floor((topeParticular - c.latas) / f.unidad)) : Infinity;
+        f.q = ajustar(f, f.input.value, Math.min(f.tope, f.libre));
+        c.latas += f.q * f.unidad;
+      });
+      // Máximo de cada casilla según lo que ya llevan los otros formatos de la misma referencia,
+      // para que el teclado y las flechas tampoco lo pasen.
+      filas.forEach(function (f) {
+        if (!f.input) return;
+        var maxPart = Infinity;
+        if (topeParticular > 0) {
+          var otras = cuenta(f.item).latas - f.q * f.unidad;
+          maxPart = Math.max(0, Math.floor((topeParticular - otras) / f.unidad));
+        }
+        var max = Math.min(f.tope, maxPart);
+        if (isFinite(max)) f.input.setAttribute('max', String(max));
+        else f.input.removeAttribute('max');
+        // Llegó al tope de particulares y el stock aún daba para más.
+        f.alTope = f.q > 0 && maxPart < f.tope && f.q + f.paso > maxPart;
+      });
+    }
+    function cantidad(f) { return f.input ? (f.q || 0) : 0; }
     function tramoDe(f, q) {
       var min = 0;
       f.tramos.forEach(function (t) { if (q >= t[0]) min = t[0]; });
@@ -1777,11 +2047,14 @@ html.b2b-sin-scroll { overflow: hidden; }
     }
 
     function actualizar() {
+      resolver();
       var refs = 0, uds = 0, suma = 0;
       var activos = [];
+      var topeTocado = false;
       filas.forEach(function (f) {
         if (!f.input) return;
         var q = cantidad(f);
+        if (f.alTope) topeTocado = true;
         var importe = q * precioUnidad(f, q);
         var tramo = q > 0 ? tramoDe(f, q) : -1;
         if (f.linea) f.linea.textContent = dinero(importe);
@@ -1795,6 +2068,7 @@ html.b2b-sin-scroll { overflow: hidden; }
         if (q > 0) { refs++; uds += q; suma += importe; activos.push(f.item); }
       });
       items.forEach(function (it) { it.el.classList.toggle('is-activa', activos.indexOf(it.el) !== -1); });
+      if (avisoTope) avisoTope.hidden = !(topeTocado || avisoForzado);
 
       if (resumen) {
         resumen.textContent = refs
@@ -1871,6 +2145,7 @@ html.b2b-sin-scroll { overflow: hidden; }
     }
 
     function anadir() {
+      resolver();
       var lineas = filas
         .filter(function (f) { return cantidad(f) > 0; })
         .map(function (f) { return { id: f.id, quantity: cantidad(f) }; });
@@ -1913,15 +2188,22 @@ html.b2b-sin-scroll { overflow: hidden; }
       if (btn) {
         var f = filaDe(btn);
         if (!f || !f.input) return;
+        filaEditada = f;
+        resolver();
         var actual = cantidad(f);
-        var q;
-        if (btn.hasAttribute('data-b2b-mas')) {
-          q = actual === 0 ? ajustar(f, Math.max(f.min, f.paso)) : ajustar(f, actual + f.paso);
+        var mas = btn.hasAttribute('data-b2b-mas');
+        var objetivo;
+        if (mas) {
+          objetivo = actual === 0 ? Math.max(f.min, f.paso) : actual + f.paso;
         } else {
-          q = actual - f.paso;
-          if (q < f.min) q = 0;
+          objetivo = actual - f.paso;
+          if (objetivo < f.min) objetivo = 0;
         }
-        f.input.value = q;
+        f.input.value = objetivo;
+        resolver();
+        f.input.value = f.q;
+        // «+» sin poder subir por el tope de particulares (no por falta de stock): avisa.
+        avisoForzado = mas && f.q < objetivo && f.libre < f.tope;
         if (mensaje && mensaje.textContent) escribirMensaje('');
         actualizar();
         return;
@@ -1956,14 +2238,20 @@ html.b2b-sin-scroll { overflow: hidden; }
     });
 
     root.addEventListener('input', function (e) {
-      if (e.target.matches('[data-b2b-cant]')) actualizar();
-      else if (e.target.matches('[data-b2b-buscar]')) filtrar();
+      if (e.target.matches('[data-b2b-cant]')) {
+        filaEditada = filaDe(e.target) || null;
+        avisoForzado = false;
+        actualizar();
+      } else if (e.target.matches('[data-b2b-buscar]')) filtrar();
     });
 
     root.addEventListener('change', function (e) {
       if (e.target.matches('[data-b2b-cant]')) {
         var f = filaDe(e.target);
+        filaEditada = f || null;
+        resolver();
         if (f) e.target.value = cantidad(f);
+        avisoForzado = false;
         actualizar();
       } else if (e.target.matches('[data-b2b-filtro]')) {
         filtrar();
@@ -1975,6 +2263,8 @@ html.b2b-sin-scroll { overflow: hidden; }
       if (e.key !== 'Enter' || !e.target.matches('[data-b2b-cant]')) return;
       e.preventDefault();
       var f = filaDe(e.target);
+      filaEditada = f || null;
+      resolver();
       if (f) e.target.value = cantidad(f);
       actualizar();
       var visibles = filas.filter(function (x) { return x.input && !(x.item && x.item.hidden); });

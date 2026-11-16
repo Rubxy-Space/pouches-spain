@@ -1,0 +1,2041 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Vista previa de las páginas de colección, índice y guía de Pouches Spain.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%226%22%20fill%3D%22%23aa151b%22%2F%3E%3Crect%20y%3D%228%22%20width%3D%2232%22%20height%3D%2216%22%20fill%3D%22%23f1bf00%22%2F%3E%3C%2Fsvg%3E">
+  <title>Pouches Spain · Páginas SEO</title>
+  <!-- Solo para la vista previa local de las páginas de colección, índice y guía. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+  <style>
+/*
+  B2B snus · estilos de las secciones mayoristas.
+  Lenguaje visual: blanco y negro, grotesca condensada en mayúsculas para títulos y etiquetas,
+  fichas sobre gris claro y menú en píldora negra.
+  Todo cuelga de .b2b para no tocar el resto del tema.
+  Colores: variables de .b2b. Fuente de títulos: la elige la sección «B2B · Cabecera» (--b2b-fuente-display);
+  si no está, la de títulos del tema. Medidas en px porque cada tema define html{font-size} a su manera.
+*/
+
+.b2b {
+  --b2b-ink: #0a0a0a;
+  --b2b-paper: #ffffff;
+  --b2b-gris: #f2f2f2;
+  --b2b-gris-2: #e7e7e7;
+  --b2b-line: #e3e3e3;
+  --b2b-line-strong: #bdbdbd;
+  --b2b-muted: #6f6f6f;
+  --b2b-soft: #b3b3b3;
+  --b2b-ok: #1d7a3e;
+  --b2b-warn: #9a5b00;
+  --b2b-warn-soft: #fbf1df;
+  --b2b-bad: #b3261e;
+  --b2b-radius: 4px;
+  --b2b-head: var(--font-heading-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  --b2b-body: var(--font-body-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  --b2b-display: var(--b2b-fuente-display, var(--b2b-head));
+  --b2b-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  box-sizing: border-box;
+  color: var(--b2b-ink);
+  font-family: var(--b2b-body);
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+}
+.b2b *,
+.b2b *::before,
+.b2b *::after { box-sizing: inherit; }
+.b2b [hidden] { display: none !important; }
+/* :where deja la especificidad en 0 para que las clases de cada pieza ganen. */
+.b2b :where(p) { margin: 0; }
+.b2b :where(a) { color: inherit; }
+.b2b :where(ul) { margin: 0; padding: 0; list-style: none; }
+.b2b :where(h1, h2, h3) { margin: 0; color: inherit; font-family: var(--b2b-head); }
+.b2b :focus-visible { outline: 2px solid var(--b2b-ink); outline-offset: 2px; }
+
+.b2b-sr {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Rótulo de marca: condensada, negrita y en mayúsculas. Lo comparten titulares, cifras, botones,
+   pestañas de marca, insignias, la cinta y el menú. */
+.b2b-rotulo,
+.b2b-h1,
+.b2b-h2,
+.b2b-btn,
+.b2b-cifras dd,
+.b2b-bento__cifra,
+.b2b-pestana,
+.b2b-vista button,
+.b2b-insignia,
+.b2b-cinta,
+.b2b-pildora,
+.b2b-entrada__esquina,
+.b2b-entrada__marcas {
+  font-family: var(--b2b-display);
+  font-stretch: 75%;
+  font-weight: 700;
+  /* lint-ia: permitido mayúsculas condensadas como rótulo de marca, pedido por Rubén con Palace y EME Studios de referencia */
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+
+/* Estructura */
+.b2b-section { padding: 88px 0; }
+.b2b-fondo--papel,
+.b2b-fondo--blanco { background: var(--b2b-paper); }
+.b2b-fondo--gris { background: var(--b2b-gris); }
+.b2b-wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+.b2b-dos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 32px 64px;
+  align-items: start;
+}
+.b2b-dos__titulo { position: sticky; top: 96px; }
+.b2b-dos__titulo .b2b-rte { margin-top: 14px; max-width: 34ch; }
+
+/* Tipografía */
+.b2b-h1 { line-height: 0.86; text-wrap: balance; }
+.b2b-h2 { font-size: clamp(34px, 4.4vw, 64px); line-height: 0.9; text-wrap: balance; }
+.b2b-h3 { font-size: 20px; font-weight: 700; line-height: 1.2; }
+.b2b-muted { color: var(--b2b-muted); }
+.b2b-rte p + p,
+.b2b-rte p + ul,
+.b2b-rte ul + p { margin-top: 0.75em; }
+.b2b-rte ul { padding-left: 1.1em; list-style: disc; }
+.b2b-link { color: inherit; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.b2b-link:hover { text-decoration-thickness: 2px; }
+
+/* Botones */
+.b2b-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  margin: 0;
+  padding: 0 22px;
+  border: 1px solid var(--b2b-ink);
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-ink);
+  box-shadow: none;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.b2b-btn:active { transform: translateY(1px); }
+.b2b-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.b2b-btn--grande { min-height: 54px; padding: 0 30px; font-size: 21px; }
+.b2b-btn--ghost { background: transparent; color: var(--b2b-ink); }
+.b2b-btn--blanco { border-color: #fff; background: #fff; color: var(--b2b-ink); }
+@media (hover: hover) {
+  .b2b-btn:hover:not(:disabled) { background: #2b2b2b; border-color: #2b2b2b; }
+  .b2b-btn--ghost:hover:not(:disabled) { background: var(--b2b-ink); color: #fff; }
+  .b2b-btn--blanco:hover:not(:disabled) { background: var(--b2b-gris-2); border-color: var(--b2b-gris-2); }
+}
+
+/* Campos */
+.b2b-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.b2b-field > span { font-size: 13px; font-weight: 700; }
+.b2b-input,
+.b2b-select,
+.b2b-textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: 46px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  box-shadow: none;
+  color: var(--b2b-ink);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.b2b-textarea { min-height: 104px; padding: 12px 14px; resize: vertical; }
+.b2b-select {
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230a0a0a' stroke-width='1.8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.b2b-input:hover,
+.b2b-select:hover,
+.b2b-textarea:hover { background-color: var(--b2b-gris-2); }
+.b2b-input:focus,
+.b2b-select:focus,
+.b2b-textarea:focus { border-color: var(--b2b-ink); background-color: #fff; }
+
+.b2b-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--b2b-warn-soft);
+  color: var(--b2b-warn);
+  font-size: 14px;
+  font-weight: 700;
+}
+.b2b-estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+/* ---------- Cabecera: cinta y menú en píldora ---------- */
+.b2b-cabecera { position: relative; z-index: 50; }
+.b2b-cinta {
+  overflow: hidden;
+  background: var(--b2b-ink);
+  color: #fff;
+  font-size: 13px;
+  line-height: 30px;
+  white-space: nowrap;
+}
+.b2b-cinta__pista { display: inline-flex; animation: b2b-cinta 38s linear infinite; }
+.b2b-cinta__pista span { padding-right: 56px; }
+.b2b-cinta:hover .b2b-cinta__pista { animation-play-state: paused; }
+@keyframes b2b-cinta { to { transform: translateX(-50%); } }
+
+.b2b-pildora-hueco { height: 76px; }
+.b2b-pildora {
+  position: fixed;
+  top: calc(44px + env(safe-area-inset-top, 0px));
+  left: 50%;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px 6px 20px;
+  border-radius: 999px;
+  background: var(--b2b-ink);
+  color: #fff;
+  font-size: 17px;
+  white-space: nowrap;
+  translate: -50% 0;
+  transition: top 0.25s var(--b2b-ease);
+}
+.b2b-pildora.is-arriba { top: calc(12px + env(safe-area-inset-top, 0px)); }
+.b2b-pildora__logo { display: inline-flex; align-items: center; gap: 10px; margin-right: 14px; font-size: 26px; letter-spacing: -0.02em; text-decoration: none; }
+
+/* Bandera de España: rojo, gualda (el doble de alta) y rojo. Es el único color del marco gráfico. */
+.b2b-bandera {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1.4em;
+  height: 0.94em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #aa151b 0 25%, #f1bf00 25% 75%, #aa151b 75% 100%);
+  vertical-align: -0.12em;
+}
+.b2b-pildora__logo .b2b-bandera { width: 26px; height: 17px; }
+.b2b-entrada__esquinas .b2b-bandera { margin-right: 10px; }
+.b2b-pildora__logo img { display: block; width: auto; height: 26px; }
+.b2b-pildora a { color: #fff; text-decoration: none; }
+.b2b-pildora__enlaces { display: flex; align-items: center; gap: 2px; }
+.b2b-pildora__enlaces a,
+.b2b-pildora__carrito,
+.b2b-pildora summary { padding: 8px 12px; border-radius: 999px; transition: background-color 0.15s ease; }
+.b2b-pildora__enlaces a:hover,
+.b2b-pildora__carrito:hover,
+.b2b-pildora summary:hover { background: rgba(255, 255, 255, 0.14); }
+.b2b-pildora__carrito span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--b2b-ink);
+  font-size: 14px;
+}
+.b2b-pildora__menu { display: none; position: relative; }
+.b2b-pildora summary { list-style: none; cursor: pointer; }
+.b2b-pildora summary::-webkit-details-marker { display: none; }
+.b2b-pildora__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -8px;
+  display: grid;
+  min-width: 220px;
+  padding: 10px;
+  border-radius: 18px;
+  background: var(--b2b-ink);
+}
+.b2b-pildora__panel a { padding: 10px 14px; border-radius: 10px; font-size: 22px; }
+.b2b-pildora__panel a:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ---------- Entrada ---------- */
+.b2b-entrada { padding: 8px 8px 0; background: var(--b2b-paper); }
+.b2b-entrada__marco {
+  position: relative;
+  display: grid;
+  min-height: min(92vh, 860px);
+  border-radius: 10px;
+  background: var(--b2b-ink);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+.b2b-entrada__fondo { position: absolute; inset: 0; z-index: -2; }
+.b2b-entrada__foto { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Oscurece la imagen, sobre todo la mitad baja, para que el titular blanco y el de contorno se lean
+   sobre cualquier foto (las latas blancas de las fotos de producto incluidas). */
+.b2b-entrada__marco::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.18) 26%, rgba(0, 0, 0, 0.42) 52%, rgba(0, 0, 0, 0.84) 100%);
+  pointer-events: none;
+}
+/* El muro es textura de fondo: atenuado para que el titular mande. */
+.b2b-muro {
+  position: absolute;
+  inset: -14% -8%;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 22px;
+  align-content: center;
+  opacity: 0.36;
+  rotate: -9deg;
+  scale: 1.06;
+}
+.b2b-muro > * { animation: b2b-aparece 1s var(--b2b-ease) both; }
+.b2b-muro > *:nth-child(3n + 2) { animation-delay: 0.08s; }
+.b2b-muro > *:nth-child(3n) { animation-delay: 0.16s; }
+.b2b-muro img,
+.b2b-muro svg { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+@keyframes b2b-aparece {
+  from { opacity: 0; translate: 0 24px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+.b2b-entrada__capa {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 20px;
+  padding: 92px 28px 28px;
+}
+.b2b-entrada__esquinas { display: flex; justify-content: space-between; gap: 16px; font-size: 17px; }
+.b2b-entrada__titulo {
+  align-self: end;
+  font-size: clamp(64px, 13.4vw, 236px);
+  letter-spacing: -0.03em;
+}
+.b2b-entrada__titulo em { font-style: normal; color: transparent; -webkit-text-stroke: 2px #fff; }
+.b2b-entrada__pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px 40px;
+}
+.b2b-entrada__lead { max-width: 44ch; color: rgba(255, 255, 255, 0.86); font-size: 16px; line-height: 1.45; }
+.b2b-entrada__accion { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.b2b-entrada__sub { color: rgba(255, 255, 255, 0.8); font-size: 14px; }
+.b2b-entrada .b2b-link { color: #fff; }
+.b2b-entrada .b2b-estado { background: rgba(255, 255, 255, 0.16); color: #fff; }
+
+.b2b-cifras {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0 16px;
+}
+.b2b-cifras > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 26px 16px 28px;
+  border-bottom: 1px solid var(--b2b-line);
+}
+.b2b-cifras > div + div { border-left: 1px solid var(--b2b-line); }
+.b2b-cifras dd { margin: 0; font-size: clamp(44px, 5vw, 76px); line-height: 0.9; letter-spacing: -0.02em; }
+.b2b-cifras dt { color: var(--b2b-muted); font-size: 14px; }
+
+.b2b-entrada__marcas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 22px;
+  padding: 18px 32px 22px;
+  font-size: clamp(22px, 2.2vw, 30px);
+}
+.b2b-entrada__marcas p { color: var(--b2b-ink); }
+.b2b-entrada__marcas ul { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.b2b-entrada__marcas a { color: var(--b2b-soft); text-decoration: none; transition: color 0.15s ease; }
+.b2b-entrada__marcas a:hover { color: var(--b2b-ink); }
+
+/* ---------- Ventajas ---------- */
+.b2b-ventajas__cabecera {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px 64px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+.b2b-ventajas__cabecera .b2b-rte { max-width: 44ch; font-size: 16px; }
+.b2b-bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 8px;
+}
+.b2b-bento__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+  min-height: 260px;
+  padding: 24px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+}
+.b2b-bento__item--ancho { grid-column: span 2; }
+.b2b-bento__item--grande { grid-column: span 2; grid-row: span 2; }
+.b2b-bento__item.is-oscuro { background: var(--b2b-ink); color: #fff; }
+.b2b-bento__img { display: grid; flex: 1 1 auto; place-items: center; min-height: 180px; }
+.b2b-bento__img img,
+.b2b-bento__img svg { display: block; width: 100%; max-width: 460px; height: auto; max-height: 320px; object-fit: contain; }
+.b2b-bento__txt { display: flex; flex-direction: column; gap: 8px; }
+.b2b-bento__cifra { font-size: clamp(60px, 6.4vw, 104px); line-height: 0.82; letter-spacing: -0.03em; }
+.b2b-bento__titulo { max-width: 26ch; font-size: 17px; font-weight: 700; line-height: 1.25; }
+.b2b-bento__texto { max-width: 42ch; color: var(--b2b-muted); font-size: 14px; }
+.is-oscuro .b2b-bento__texto { color: rgba(255, 255, 255, 0.7); }
+
+/* ---------- Catálogo ---------- */
+.b2b-cat__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 22px;
+}
+.b2b-cat__intro { max-width: 60ch; margin-top: 12px; }
+
+.b2b-vista { display: inline-flex; gap: 14px; }
+.b2b-vista button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--b2b-soft);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.b2b-vista svg { width: 13px; height: 13px; }
+.b2b-vista button[aria-pressed="true"] { color: var(--b2b-ink); }
+.b2b-vista button:hover { color: var(--b2b-ink); }
+
+.b2b-nota {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 32px;
+  margin-bottom: 22px;
+  padding: 16px 20px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+}
+.b2b-nota p { max-width: 66ch; }
+.b2b-nota--pendiente { background: var(--b2b-warn-soft); color: #5a3a00; }
+.b2b-nota__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+
+.b2b-marcas {
+  display: flex;
+  gap: 4px 20px;
+  margin: 0 -24px 18px;
+  padding: 0 24px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.b2b-marcas::-webkit-scrollbar { display: none; }
+.b2b-pestana {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--b2b-soft);
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.1;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.b2b-pestana sup { margin-left: 2px; font-size: 0.45em; vertical-align: 0.9em; font-variant-numeric: tabular-nums; }
+.b2b-pestana:hover { color: var(--b2b-ink); }
+.b2b-pestana[aria-pressed="true"] { color: var(--b2b-ink); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 5px; }
+
+.b2b-cat__herramientas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.b2b-cat__herramientas .b2b-field > span { color: var(--b2b-muted); font-size: 12px; }
+.b2b-cat__buscar { flex: 1 1 300px; }
+.b2b-cat__herramientas .b2b-select { min-width: 170px; }
+.b2b-cat__contador { margin-left: auto; padding-bottom: 12px; color: var(--b2b-muted); font-size: 13px; }
+
+/* Ficha: cuadrícula */
+.b2b-items.is-cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 28px 10px;
+}
+.b2b-prod { display: flex; flex-direction: column; min-width: 0; }
+.b2b-prod__media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 12%;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.b2b-prod__media[style*="--tono"] { background: color-mix(in srgb, var(--tono) 16%, var(--b2b-gris)); }
+.b2b-prod__media img,
+.b2b-prod__media svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.45s var(--b2b-ease);
+}
+@media (hover: hover) {
+  .b2b-prod:hover .b2b-prod__media img,
+  .b2b-prod:hover .b2b-prod__media svg { transform: scale(1.05) rotate(-3deg); }
+}
+.b2b-prod.is-activa .b2b-prod__media { box-shadow: inset 0 0 0 2px var(--b2b-ink); }
+/* Fotos de producto con fondo blanco: el blanco se funde con el gris de la ficha.
+   Las PNG sin fondo se ven igual. */
+.b2b-prod__media img,
+.b2b-carta__media img,
+.b2b-tarjeta__media.is-producto img,
+.b2b-col__media.is-producto img { mix-blend-mode: multiply; }
+.b2b-insignia {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 4px 7px 3px;
+  border-radius: 2px;
+  background: #fff;
+  color: var(--b2b-ink);
+  font-size: 14px;
+  line-height: 1;
+}
+.b2b-insignia--top { background: var(--b2b-ink); color: #fff; }
+.b2b-prod__mg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.b2b-prod__info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1px 12px;
+  padding: 12px 2px 6px;
+}
+.b2b-prod__nombre { font-family: var(--b2b-body); font-size: 15px; font-weight: 700; line-height: 1.3; }
+.b2b-prod__nombre a { text-decoration: none; }
+.b2b-prod__nombre a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.b2b-prod__meta { grid-column: 1; color: var(--b2b-muted); font-size: 13px; }
+.b2b-fuerza { display: inline-flex; grid-column: 2; grid-row: 1; align-self: center; gap: 3px; }
+.b2b-fuerza i { width: 7px; height: 7px; border: 1.5px solid var(--b2b-ink); border-radius: 50%; }
+.b2b-fuerza i.on { background: var(--b2b-ink); }
+
+.b2b-formatos { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 2px 2px; }
+.b2b-formato {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  margin: 0;
+  padding: 7px 11px;
+  border: 1px solid var(--b2b-line-strong);
+  border-radius: var(--b2b-radius);
+  background: #fff;
+  color: var(--b2b-ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.b2b-formato:hover { border-color: var(--b2b-ink); }
+.b2b-formato[aria-pressed="true"] { border-color: var(--b2b-ink); background: var(--b2b-ink); color: #fff; }
+.b2b-formato[data-cant]:not([data-cant=""])::after {
+  content: attr(data-cant);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--b2b-ok);
+  color: #fff;
+  font-size: 10px;
+}
+
+.b2b-prod__vars { margin-top: auto; padding: 4px 2px 0; }
+.b2b-var {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "fmt precio"
+    "cant imp";
+  gap: 8px 12px;
+  align-items: center;
+  padding: 10px 0 2px;
+}
+.b2b-items.is-cuadricula .b2b-var[data-b2b-oculta] { display: none; }
+.b2b-var__fmt { grid-area: fmt; min-width: 0; align-self: start; }
+.b2b-var__precio { grid-area: precio; text-align: right; }
+.b2b-var__cant { grid-area: cant; }
+.b2b-var__imp { grid-area: imp; text-align: right; }
+.b2b-var__nombre { display: block; font-size: 13px; font-weight: 700; }
+.b2b-items.is-cuadricula .b2b-prod--formatos .b2b-var__nombre { display: none; }
+.b2b-var .b2b-stock { font-size: 12px; }
+.b2b-precio { font-size: 15px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.b2b-precio.is-tachado { color: var(--b2b-muted); font-size: 12px; font-weight: 400; text-decoration: line-through; }
+.b2b-porlata { display: block; color: var(--b2b-muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.b2b-tramos { color: var(--b2b-muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.b2b-tramos li.is-actual { color: var(--b2b-ink); font-size: 15px; font-weight: 700; }
+.b2b-ahorro { margin-left: 4px; padding: 1px 5px; border-radius: 3px; background: #e5f2ea; color: var(--b2b-ok); font-size: 11px; font-weight: 700; }
+.b2b-importe { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.b2b-items.is-cuadricula .b2b-var:not(.is-activa) .b2b-var__imp { visibility: hidden; }
+.b2b-regla { display: block; margin-top: 5px; color: var(--b2b-muted); font-size: 12px; }
+.b2b-prod__bloqueo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+  color: var(--b2b-muted);
+  font-size: 13px;
+}
+.b2b-prod__bloqueo svg { flex: 0 0 15px; width: 15px; height: 15px; }
+
+/* Ficha: lista */
+.b2b-items.is-lista { border-top: 1px solid var(--b2b-ink); }
+.b2b-items.is-lista .b2b-prod {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr) minmax(0, 1.6fr);
+  align-items: center;
+  gap: 0 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--b2b-line);
+}
+.b2b-items.is-lista .b2b-prod.is-activa { background: var(--b2b-gris); }
+.b2b-items.is-lista .b2b-prod__media { padding: 10px; }
+.b2b-items.is-lista .b2b-prod.is-activa .b2b-prod__media { box-shadow: none; background: #fff; }
+.b2b-items.is-lista .b2b-insignia,
+.b2b-items.is-lista .b2b-prod__mg,
+.b2b-items.is-lista .b2b-formatos { display: none; }
+.b2b-items.is-lista .b2b-prod__info { padding: 0; }
+.b2b-items.is-lista .b2b-prod__vars { margin: 0; padding: 0 12px 0 0; }
+.b2b-items.is-lista .b2b-var {
+  grid-template-columns: minmax(0, 1fr) 150px auto 96px;
+  grid-template-areas: "fmt precio cant imp";
+  gap: 6px 18px;
+  padding: 8px 0;
+}
+.b2b-items.is-lista .b2b-var + .b2b-var { border-top: 1px solid var(--b2b-line); }
+.b2b-items.is-lista .b2b-var:not(.is-activa) .b2b-importe { color: var(--b2b-muted); font-weight: 400; }
+
+.b2b-stock { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+.b2b-stock::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.b2b-stock--ok { color: var(--b2b-ok); }
+.b2b-stock--pocas { color: var(--b2b-warn); }
+.b2b-stock--agotado { color: var(--b2b-muted); }
+
+.b2b-paso {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.b2b-paso__btn {
+  -webkit-appearance: none;
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--b2b-ink);
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+.b2b-paso__btn svg { width: 13px; height: 13px; }
+@media (hover: hover) { .b2b-paso__btn:hover { background: var(--b2b-gris-2); } }
+.b2b-paso__btn:active { background: var(--b2b-line-strong); }
+.b2b .b2b-paso__input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  width: 48px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.b2b-paso__input::-webkit-outer-spin-button,
+.b2b-paso__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.b2b-var.is-activa .b2b-paso { background: var(--b2b-ink); color: #fff; }
+.b2b-var.is-activa .b2b-paso__btn { color: #fff; }
+@media (hover: hover) { .b2b-var.is-activa .b2b-paso__btn:hover { background: #2b2b2b; } }
+
+.b2b-cat__vacio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 32px 24px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+}
+.b2b-cat__paginas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 20px; font-size: 14px; }
+
+/* Barra del pedido */
+.b2b-barra {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 8px 28px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 10px 10px 10px 24px;
+  border-radius: 999px;
+  background: var(--b2b-ink);
+  color: #fff;
+}
+/* Solo se queda fija abajo cuando hay algo seleccionado; vacía no tapa el catálogo. */
+.b2b-barra.is-fija { position: sticky; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25); }
+.b2b-barra__resumen { font-size: 14px; font-weight: 700; }
+.b2b-barra__minimo { margin-top: 1px; color: rgba(255, 255, 255, 0.68); font-size: 12px; }
+.b2b-barra__nota { margin-top: 2px; color: rgba(255, 255, 255, 0.72); font-size: 12px; }
+.b2b-barra__progreso { max-width: 320px; height: 3px; margin-top: 6px; border-radius: 2px; background: rgba(255, 255, 255, 0.2); overflow: hidden; }
+.b2b-barra__progreso i { display: block; width: 0; height: 100%; background: #fff; transition: width 0.3s ease; }
+.b2b-barra__total { text-align: right; }
+.b2b-barra__total span { display: block; color: rgba(255, 255, 255, 0.65); font-size: 11px; }
+.b2b-barra__total strong { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.b2b-barra .b2b-btn { border-color: #fff; border-radius: 999px; background: #fff; color: var(--b2b-ink); }
+@media (hover: hover) { .b2b-barra .b2b-btn:hover:not(:disabled) { border-color: var(--b2b-gris-2); background: var(--b2b-gris-2); } }
+.b2b-barra .b2b-btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+.b2b-barra__msg { grid-column: 1 / -1; padding-bottom: 4px; font-size: 13px; }
+.b2b-barra__msg:empty { display: none; }
+.b2b-barra__msg a { color: #fff; font-weight: 700; text-underline-offset: 3px; }
+.b2b-barra__msg.is-error { color: #ffb4ad; }
+
+/* ---------- Condiciones ---------- */
+.b2b-cond__lista { margin: 0; border-top: 2px solid var(--b2b-ink); }
+.b2b-cond__fila {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 6px 32px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--b2b-line);
+}
+.b2b-cond__fila dt { font-weight: 700; }
+.b2b-cond__fila dd { margin: 0; max-width: 62ch; }
+
+/* ---------- Alta ---------- */
+.b2b-alta__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 48px 72px;
+  align-items: start;
+}
+.b2b-alta__intro { max-width: 44ch; margin-top: 14px; color: var(--b2b-muted); }
+.b2b-pasos { margin: 28px 0 0; padding: 0; list-style: none; counter-reset: paso; border-top: 2px solid var(--b2b-ink); }
+.b2b-pasos li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--b2b-line);
+  counter-increment: paso;
+}
+.b2b-pasos li::before {
+  content: counter(paso, decimal-leading-zero);
+  font-family: var(--b2b-display);
+  font-stretch: 75%;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.b2b-alta__nota { max-width: 46ch; margin-top: 20px; color: var(--b2b-muted); font-size: 14px; }
+
+.b2b-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 12px;
+  margin: 0;
+}
+.b2b-form .b2b-completo { grid-column: 1 / -1; }
+.b2b-check {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  font-size: 14px;
+  cursor: pointer;
+}
+.b2b .b2b-check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--b2b-ink); }
+.b2b-form .b2b-btn { width: 100%; margin-top: 4px; }
+.b2b-respuesta { padding: 18px 20px; border-radius: var(--b2b-radius); font-size: 15px; }
+.b2b-respuesta--ok { background: var(--b2b-gris); }
+.b2b-respuesta--error { background: #fdecea; color: var(--b2b-bad); }
+.b2b-respuesta ul { margin: 6px 0 0; padding-left: 1.1em; list-style: disc; }
+
+/* ---------- Preguntas ---------- */
+.b2b-faq__lista { border-top: 2px solid var(--b2b-ink); }
+.b2b-faq__item { border-bottom: 1px solid var(--b2b-line); }
+.b2b-faq__item summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 19px 0;
+  font-size: 16px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+.b2b-faq__item summary::-webkit-details-marker { display: none; }
+.b2b-faq__item summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+.b2b-faq__item[open] summary::after { transform: rotate(45deg); }
+.b2b-faq__resp { max-width: 62ch; padding: 0 0 20px; color: var(--b2b-muted); }
+
+/* ---------- Aviso sanitario ---------- */
+.b2b-aviso { padding: 18px 0; background: var(--b2b-ink); color: rgba(255, 255, 255, 0.78); font-size: 14px; }
+.b2b-aviso strong { color: #fff; }
+
+/* ---------- Aviso de acceso ---------- */
+html.b2b-sin-scroll { overflow: hidden; }
+.b2b-gate {
+  width: calc(100% - 32px);
+  max-width: 460px;
+  padding: 30px 28px 26px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+  color: var(--b2b-ink);
+}
+.b2b-gate::backdrop { background: rgba(0, 0, 0, 0.8); }
+.b2b-gate[open] { animation: b2b-entra 0.22s ease-out; }
+.b2b-gate .b2b-h3 { font-family: var(--b2b-display); font-stretch: 75%; font-size: 34px; line-height: 0.95; }
+.b2b-gate__texto { margin-top: 12px; color: var(--b2b-muted); }
+.b2b-gate__acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.b2b-gate__acciones .b2b-btn { flex: 1 1 160px; }
+@keyframes b2b-entra {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Tope de unidades para particulares ---------- */
+.b2b-tope {
+  margin: 20px 0 0;
+  padding: 14px 18px;
+  border: 1px solid var(--b2b-warn);
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-warn-soft);
+  color: var(--b2b-warn);
+  font-size: 14px;
+  font-weight: 600;
+}
+.b2b-tope a { color: inherit; }
+
+/* ---------- Páginas SEO: colección, índice y guía ---------- */
+.b2b-miga { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; color: var(--b2b-muted); font-size: 13px; }
+.b2b-miga a { text-decoration: none; }
+.b2b-miga a:hover { text-decoration: underline; }
+.b2b-miga [aria-current] { color: var(--b2b-ink); }
+
+.b2b-col__cab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 28px 48px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.b2b-col__titulo { font-size: clamp(40px, 6vw, 84px); line-height: 0.88; }
+.b2b-col__texto { max-width: 56ch; margin-top: 16px; color: var(--b2b-muted); }
+.b2b-col__dato { margin-top: 16px; font-size: 13px; letter-spacing: 0.04em; /* lint-ia: permitido rótulo de dato en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
+.b2b-col__media { border-radius: var(--b2b-radius); overflow: hidden; background: var(--b2b-gris); }
+.b2b-col__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.b2b-col__media.is-producto { display: grid; place-items: center; aspect-ratio: 1; padding: 8%; }
+.b2b-col__media.is-producto img,
+.b2b-col__media.is-producto svg { width: 100%; height: 100%; object-fit: contain; }
+
+.b2b-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px 20px; }
+.b2b-carta { display: flex; }
+.b2b-carta__enlace { display: flex; flex-direction: column; width: 100%; text-decoration: none; }
+.b2b-carta__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  margin-bottom: 14px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+}
+.b2b-carta__media img { width: 78%; height: 78%; object-fit: contain; transition: transform 0.4s var(--b2b-ease); }
+@media (hover: hover) { .b2b-carta__enlace:hover .b2b-carta__media img { transform: scale(1.05); } }
+.b2b-carta__cuerpo { display: flex; flex-direction: column; gap: 5px; }
+.b2b-carta__marca { font-size: 12px; letter-spacing: 0.05em; /* lint-ia: permitido etiqueta de marca en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
+.b2b-carta__nombre { font-size: 16px; font-weight: 700; line-height: 1.2; }
+.b2b-carta__precio { margin-top: 2px; font-size: 15px; font-weight: 700; }
+.b2b-carta__enlace:hover .b2b-carta__nombre { text-decoration: underline; text-underline-offset: 2px; }
+
+.b2b-col__sigue { margin-top: 56px; }
+.b2b-col__sigue .b2b-h3 { margin-bottom: 16px; }
+.b2b-pildoras { display: flex; flex-wrap: wrap; gap: 10px; }
+.b2b-pildora-enlace {
+  display: inline-flex;
+  padding: 9px 16px;
+  border: 1px solid var(--b2b-line-strong);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+@media (hover: hover) { .b2b-pildora-enlace:hover { background: var(--b2b-ink); border-color: var(--b2b-ink); color: #fff; } }
+.b2b-col__faq { margin-top: 56px; }
+.b2b-col__faq .b2b-h2 { margin-bottom: 20px; font-size: clamp(28px, 3.4vw, 46px); }
+
+.b2b-indice__cab { max-width: 60ch; margin-bottom: 40px; }
+.b2b-indice__cab .b2b-h1 { font-size: clamp(40px, 6vw, 84px); line-height: 0.88; }
+.b2b-indice__texto { margin-top: 16px; }
+.b2b-indice__rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 20px; }
+.b2b-tarjeta { display: flex; }
+.b2b-tarjeta__enlace {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid var(--b2b-line);
+  border-radius: var(--b2b-radius);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+@media (hover: hover) { .b2b-tarjeta__enlace:hover { border-color: var(--b2b-ink); transform: translateY(-2px); } }
+.b2b-tarjeta__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 14px;
+  border-radius: var(--b2b-radius);
+  background: var(--b2b-gris);
+  overflow: hidden;
+}
+.b2b-tarjeta__media img { width: 100%; height: 100%; object-fit: cover; }
+.b2b-tarjeta__media.is-producto img,
+.b2b-tarjeta__media.is-producto svg { width: 100%; height: 100%; padding: 6%; object-fit: contain; }
+.b2b-tarjeta__inicial {
+  font-family: var(--b2b-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  /* lint-ia: permitido inicial de marca en mayúscula como rótulo */
+  text-transform: uppercase;
+  font-size: 44px;
+  color: var(--b2b-soft);
+}
+.b2b-tarjeta__nombre { font-size: 17px; font-weight: 700; line-height: 1.15; }
+.b2b-tarjeta__dato { margin-top: 4px; font-size: 13px; color: var(--b2b-muted); }
+.b2b-indice__pie { max-width: 62ch; margin-top: 40px; color: var(--b2b-muted); }
+
+.b2b-guia__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr);
+  gap: 24px 56px;
+  align-items: start;
+}
+.b2b-guia__cab { grid-column: 1 / -1; max-width: 32ch; }
+.b2b-guia__ante { margin-bottom: 10px; font-size: 13px; letter-spacing: 0.06em; /* lint-ia: permitido antetítulo en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
+.b2b-guia__titulo { font-size: clamp(40px, 5.6vw, 76px); line-height: 0.9; max-width: 18ch; }
+.b2b-guia__lead { max-width: 60ch; margin-top: 18px; font-size: 19px; color: var(--b2b-muted); }
+.b2b-guia__meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 13px; letter-spacing: 0.03em; /* lint-ia: permitido meta en mayúscula */ text-transform: uppercase; color: var(--b2b-soft); }
+.b2b-guia__indice { position: sticky; top: 96px; padding-top: 6px; border-top: 2px solid var(--b2b-ink); }
+.b2b-guia__indice-t { margin-bottom: 10px; font-size: 12px; letter-spacing: 0.06em; /* lint-ia: permitido rótulo del índice en mayúscula */ text-transform: uppercase; color: var(--b2b-muted); }
+.b2b-guia__indice ol { padding-left: 1.2em; list-style: decimal; color: var(--b2b-muted); }
+.b2b-guia__indice li { margin-bottom: 7px; font-size: 14px; }
+.b2b-guia__indice a { text-decoration: none; }
+.b2b-guia__indice a:hover { color: var(--b2b-ink); text-decoration: underline; }
+.b2b-guia__cuerpo { max-width: 68ch; font-size: 17px; line-height: 1.65; }
+.b2b-guia__cuerpo > * + * { margin-top: 18px; }
+.b2b-guia__h2 { margin-top: 40px; font-size: clamp(26px, 3vw, 38px); line-height: 1; scroll-margin-top: 90px; }
+.b2b-guia__cuerpo p + p { margin-top: 14px; }
+.b2b-guia__destacado {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--b2b-ink);
+  background: var(--b2b-gris);
+  border-radius: 0 var(--b2b-radius) var(--b2b-radius) 0;
+}
+.b2b-guia__destacado p { margin: 0; }
+.b2b-guia__cta { margin: 24px 0; }
+.b2b-guia__aviso { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--b2b-line); font-size: 13px; color: var(--b2b-muted); }
+.b2b-guia__cuerpo .b2b-faq__item:first-of-type { border-top: 2px solid var(--b2b-ink); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .b2b-items.is-lista .b2b-prod { grid-template-columns: 76px minmax(0, 1fr); }
+  .b2b-items.is-lista .b2b-prod__vars { grid-column: 1 / -1; padding: 6px 0 0; }
+}
+
+@media (max-width: 900px) {
+  .b2b-alta__grid,
+  .b2b-dos,
+  .b2b-ventajas__cabecera { grid-template-columns: minmax(0, 1fr); }
+  .b2b-dos__titulo { position: static; }
+  .b2b-cifras { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .b2b-cifras > div:nth-child(3) { border-left: 0; }
+  .b2b-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .b2b-bento__item--grande { grid-row: span 1; }
+  .b2b-muro { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .b2b-pildora__enlaces { display: none; }
+  .b2b-pildora__menu { display: block; }
+  .b2b-col__cab { grid-template-columns: minmax(0, 1fr); }
+  .b2b-col__media { order: -1; max-height: 280px; }
+  .b2b-guia__grid { grid-template-columns: minmax(0, 1fr); }
+  .b2b-guia__indice { position: static; }
+}
+
+@media (max-width: 760px) {
+  .b2b-items.is-lista .b2b-var {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "fmt precio"
+      "cant imp";
+  }
+  .b2b-cat__contador { flex-basis: 100%; margin-left: 0; padding-bottom: 0; }
+  .b2b-cat__herramientas .b2b-field:not(.b2b-cat__buscar) { flex: 1 1 140px; }
+  .b2b-cat__herramientas .b2b-select { min-width: 0; }
+  .b2b-items.is-cuadricula { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 8px; }
+  .b2b-items.is-cuadricula .b2b-var { grid-template-columns: minmax(0, 1fr); grid-template-areas: "precio" "fmt" "cant" "imp"; gap: 6px; }
+  .b2b-items.is-cuadricula .b2b-var__precio,
+  .b2b-items.is-cuadricula .b2b-var__imp { text-align: left; }
+  .b2b-items.is-cuadricula .b2b-var:not(.is-activa) .b2b-var__imp { display: none; }
+  .b2b-paso { display: flex; width: 100%; }
+  .b2b .b2b-paso__input { flex: 1 1 auto; width: 40px; }
+
+  .b2b-barra { grid-template-columns: minmax(0, 1fr) auto; padding: 12px 12px 12px 18px; border-radius: 18px; }
+  .b2b-barra.is-fija { bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+  .b2b-barra .b2b-btn { grid-column: 1 / -1; width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .b2b-wrap { padding: 0 16px; }
+  .b2b-marcas { margin: 0 -16px 14px; padding: 0 16px 4px; }
+  .b2b-section { padding: 60px 0; }
+  .b2b-entrada { padding: 6px 6px 0; }
+  .b2b-entrada__marco { min-height: 640px; }
+  .b2b-entrada__capa { padding: 84px 16px 18px; }
+  .b2b-entrada__esquinas { font-size: 14px; }
+  .b2b-entrada__titulo { font-size: clamp(56px, 19vw, 96px); }
+  .b2b-entrada__titulo em { -webkit-text-stroke-width: 1.5px; }
+  .b2b-muro { grid-template-columns: repeat(3, minmax(0, 1fr)); inset: -6% -20%; gap: 12px; }
+  .b2b-cifras { padding: 0 6px; }
+  .b2b-cifras > div { padding: 20px 10px 22px; }
+  .b2b-entrada__marcas { padding: 16px 16px 20px; }
+  .b2b-bento { grid-template-columns: minmax(0, 1fr); }
+  .b2b-bento__item--ancho,
+  .b2b-bento__item--grande { grid-column: auto; }
+  .b2b-bento__item { min-height: 0; padding: 22px; }
+  .b2b-cond__fila { grid-template-columns: minmax(0, 1fr); }
+  .b2b-form { grid-template-columns: minmax(0, 1fr); }
+  .b2b-rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .b2b-indice__rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .b2b-guia__cuerpo { font-size: 16px; }
+  .b2b-pildora { top: calc(40px + env(safe-area-inset-top, 0px)); padding-left: 16px; font-size: 16px; }
+  .b2b-pildora__logo { margin-right: 8px; font-size: 22px; }
+  .b2b-gate { padding: 26px 20px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .b2b *,
+  .b2b-gate,
+  .b2b-pildora { animation: none !important; transition: none !important; }
+}
+
+</style>
+  <style>
+    :root {
+      --b2b-fuente-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-heading-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-body-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { margin: 0; background: #fff; color: #0a0a0a; font-family: var(--font-body-family); }
+    .pv-barra { position: fixed; left: calc(10px + env(safe-area-inset-left, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); z-index: 100; max-width: calc(100% - 20px); font: 12px/1.4 var(--font-body-family); }
+    .pv-barra summary { display: inline-block; padding: 7px 12px; border-radius: 999px; background: #fff7d6; border: 1px solid #e0cf86; cursor: pointer; list-style: none; font-weight: 700; }
+    .pv-barra summary::-webkit-details-marker { display: none; }
+    .pv-barra__panel { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; padding: 10px; border-radius: 12px; background: #fff7d6; border: 1px solid #e0cf86; max-width: 320px; }
+    .pv-barra strong { flex: 1 1 100%; font-size: 11px; letter-spacing: 0.02em; color: #6a5a1e; }
+    .pv-barra button { font: inherit; padding: 4px 10px; border: 1px solid #c9bb7d; border-radius: 999px; background: #fff; cursor: pointer; }
+    .pv-barra button[aria-pressed="true"] { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
+  </style>
+</head>
+<body>
+  <details class="pv-barra">
+    <summary>Vista previa · páginas SEO</summary>
+    <div class="pv-barra__panel" role="group" aria-label="Controles de la vista previa">
+      <strong>Colecciones</strong>
+      <button type="button" data-pv-vista="marca" aria-pressed="true">Marca: VELO</button>
+      <button type="button" data-pv-vista="sabor">Sabor: Menta</button>
+      <button type="button" data-pv-vista="nivel">Nivel: muy fuerte</button>
+      <strong>Índices</strong>
+      <button type="button" data-pv-vista="indice-marcas">Marcas</button>
+      <button type="button" data-pv-vista="indice-sabores">Sabores</button>
+      <button type="button" data-pv-vista="indice-niveles">Niveles</button>
+      <strong>Guía</strong>
+      <button type="button" data-pv-vista="guia">¿Qué son?</button>
+    </div>
+  </details>
+
+  <!-- sections/b2b-cabecera.liquid -->
+  <div class="b2b b2b-cabecera" data-b2b-cabecera>
+    <div class="b2b-cinta">
+      <div class="b2b-cinta__pista">
+        <span data-pv-cinta>Marca española · Stock en España y envío en 24 a 48 h · Desde una lata, sin pedido mínimo · Precios mayoristas con cuenta profesional ·</span>
+      </div>
+    </div>
+    <nav class="b2b-pildora" aria-label="Principal" data-b2b-pildora>
+      <a class="b2b-pildora__logo" href="index.html"><span class="b2b-bandera" aria-hidden="true"></span>Pouches Spain</a>
+      <div class="b2b-pildora__enlaces">
+        <a href="index.html#pedido">Catálogo</a>
+        <a href="#" data-pv-vista="indice-marcas">Marcas</a>
+        <a href="#" data-pv-vista="indice-sabores">Sabores</a>
+        <a href="#" data-pv-vista="indice-niveles">Niveles</a>
+        <a href="#" data-pv-vista="guia">Guías</a>
+      </div>
+      <details class="b2b-pildora__menu">
+        <summary>Menú</summary>
+        <div class="b2b-pildora__panel">
+          <a href="index.html#pedido">Catálogo</a>
+          <a href="#" data-pv-vista="indice-marcas">Marcas</a>
+          <a href="#" data-pv-vista="indice-sabores">Sabores</a>
+          <a href="#" data-pv-vista="indice-niveles">Niveles</a>
+          <a href="#" data-pv-vista="guia">Guías</a>
+        </div>
+      </details>
+      <a class="b2b-pildora__carrito" href="index.html">Catálogo</a>
+    </nav>
+  </div>
+
+  <main id="main" data-pv-seo></main>
+
+  <script>
+/*
+  Solo para la vista previa. Fotos oficiales de producto de cada marca (packshots de 860 px con fondo
+  transparente, tomados de las fichas de snusdaddy.com). Decisión de Rubén: se usan también en la web
+  pública y él asume el riesgo de derechos. Clave «marca|título» del producto de ejemplo.
+  En Shopify no hace falta: cada ficha usa la foto que se sube al producto.
+*/
+window.PV_FOTOS = {
+  'ZYN|Cool Mint': 'img/zyn-cool-mint.png',
+  'ZYN|Citrus Extra Strong': 'img/zyn-citrus-extra-strong.png',
+  'ZYN|Black Cherry': 'img/zyn-black-cherry.png',
+  'VELO|Freezing Peppermint Max': 'img/velo-freezing-peppermint-max.png',
+  'VELO|Tropical Mango': 'img/velo-tropical-mango.png',
+  'VELO|Purple Grape': 'img/velo-purple-grape.png',
+  'VELO|Bright Spearmint Mini': 'img/velo-bright-spearmint-mini.png',
+  'XQS|Blueberry Mint': 'img/xqs-blueberry-mint.png',
+  'XQS|Tropical': 'img/xqs-tropical.png',
+  'Cuba|White Peach': 'img/cuba-white-peach.png',
+  'Cuba|White Watermelon': 'img/cuba-white-watermelon.png',
+  'White Fox|Full Charge': 'img/white-fox-full-charge.png',
+  'White Fox|Double Mint': 'img/white-fox-double-mint.png',
+  'Pablo|Ice Cold': 'img/pablo-ice-cold.png',
+  'Pablo|Exclusive Grape Ice': 'img/pablo-exclusive-grape-ice.png',
+  'Killa|Cold Mint': 'img/killa-cold-mint.png',
+  'Killa|Watermelon': 'img/killa-watermelon.png',
+  'LOOP|Jalapeño Lime': 'img/loop-jalapeno-lime.png',
+  'LOOP|Habanero Mint': 'img/loop-habanero-mint.png'
+};
+
+</script>
+  <script>
+/*
+  Solo para la vista previa local. Genera las páginas de colección, índice y guía igual que
+  sections/b2b-coleccion.liquid, b2b-indice.liquid y b2b-guia.liquid, con datos de ejemplo.
+  No se sube a Shopify. Las latas son dibujos genéricos, no los diseños reales de cada marca.
+*/
+(function () {
+  'use strict';
+
+  var MARCAS = {
+    ZYN: 'blanco', VELO: 'solido', XQS: 'duo', Cuba: 'blanco',
+    'White Fox': 'negro', Pablo: 'solido', Killa: 'negro', LOOP: 'duo'
+  };
+  // marca, titulo, sabor, mg, color, precio (céntimos, IVA incluido)
+  var PRODUCTOS = [
+    ['ZYN', 'Cool Mint', 'Menta', 6, '#3fa9c4', 550],
+    ['ZYN', 'Citrus Extra Strong', 'Cítricos', 11, '#e9b51f', 550],
+    ['ZYN', 'Black Cherry', 'Frutos rojos', 9, '#8a1f40', 560],
+    ['VELO', 'Freezing Peppermint Max', 'Menta', 17, '#1f6fb8', 540],
+    ['VELO', 'Tropical Mango', 'Mango', 6, '#ff8a2b', 520],
+    ['VELO', 'Purple Grape', 'Uva', 10, '#6a2fb3', 520],
+    ['VELO', 'Bright Spearmint Mini', 'Menta', 4, '#2f9e6a', 520],
+    ['XQS', 'Blueberry Mint', 'Arándano', 4, '#4a5bd6', 470],
+    ['XQS', 'Tropical', 'Tropical', 4, '#f0782f', 460],
+    ['Cuba', 'White Peach', 'Melocotón', 10, '#f39a6b', 430],
+    ['Cuba', 'White Watermelon', 'Sandía', 10, '#e8566a', 430],
+    ['White Fox', 'Full Charge', 'Menta', 16, '#9fd3e6', 500],
+    ['White Fox', 'Double Mint', 'Menta', 16, '#5fc28f', 500],
+    ['Pablo', 'Ice Cold', 'Menta', 30, '#2f9ad6', 590],
+    ['Pablo', 'Exclusive Grape Ice', 'Uva', 50, '#8a3fd1', 590],
+    ['Killa', 'Cold Mint', 'Menta', 16, '#8fd0f0', 470],
+    ['Killa', 'Watermelon', 'Sandía', 16, '#ff5f7a', 470],
+    ['LOOP', 'Jalapeño Lime', 'Lima', 9, '#7fc23f', 520],
+    ['LOOP', 'Habanero Mint', 'Menta', 15, '#e0442b', 520]
+  ].map(function (a) { return { marca: a[0], titulo: a[1], sabor: a[2], mg: a[3], color: a[4], precio: a[5] }; });
+
+  // Fotos oficiales de producto (preview/imagenes.js, por «marca|título»). Sin foto, se dibuja la lata.
+  var FOTOS = window.PV_FOTOS || {};
+  PRODUCTOS.forEach(function (p) { p.img = FOTOS[p.marca + '|' + p.titulo] || ''; });
+
+  var fmt = new Intl.NumberFormat('es', { style: 'currency', currency: 'EUR', useGrouping: 'always' });
+  function dinero(c) { return fmt.format(c / 100); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function handleize(s) {
+    return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  function mezclar(a, b, t) {
+    function rgb(h) { h = h.replace('#', ''); return [0, 2, 4].map(function (i) { return parseInt(h.substr(i, 2), 16); }); }
+    var x = rgb(a), y = rgb(b);
+    return '#' + x.map(function (v, i) { return ('0' + Math.round(v + (y[i] - v) * t).toString(16)).slice(-2); }).join('');
+  }
+  function nivel(mg) { return mg <= 5 ? 1 : mg <= 9 ? 2 : mg <= 14 ? 3 : 4; }
+  var NIVELES = ['', 'baja', 'media', 'alta', 'muy alta'];
+
+  function lata(p) {
+    var c = p.color, tapa, borde, aro, aroAncho = 2, tinta;
+    switch (MARCAS[p.marca]) {
+      case 'blanco': tapa = '#f7f7f7'; borde = '#d9d9d9'; aro = c; aroAncho = 8; tinta = mezclar(c, '#000000', 0.2); break;
+      case 'duo': tapa = mezclar(c, '#ffffff', 0.7); borde = c; aro = c; aroAncho = 3; tinta = mezclar(c, '#000000', 0.5); break;
+      case 'negro': tapa = '#161616'; borde = '#000000'; aro = c; aroAncho = 3; tinta = c; break;
+      default: tapa = c; borde = mezclar(c, '#000000', 0.25); aro = mezclar(c, '#ffffff', 0.4); tinta = '#ffffff';
+    }
+    var marca = p.marca.toUpperCase();
+    var tam = Math.min(36, Math.round(108 / (marca.length * 0.56)));
+    var n = nivel(p.mg), puntos = '';
+    for (var i = 1; i <= 4; i++) {
+      puntos += '<circle cx="' + (82 + (i - 1) * 12) + '" cy="64" r="3.6" fill="' + (i <= n ? tinta : 'none') + '" stroke="' + tinta + '" stroke-width="1.5"/>';
+    }
+    return '<svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">' +
+      '<circle cx="100" cy="107" r="86" fill="rgba(0,0,0,.13)"/>' +
+      '<circle cx="100" cy="100" r="86" fill="' + borde + '"/>' +
+      '<circle cx="100" cy="100" r="80" fill="' + tapa + '"/>' +
+      '<circle cx="100" cy="100" r="67" fill="none" stroke="' + aro + '" stroke-width="' + aroAncho + '"/>' +
+      puntos +
+      '<text x="100" y="' + (100 + tam * 0.34) + '" text-anchor="middle" style="font-family: Archivo, Helvetica, sans-serif; font-stretch: 70%; font-weight: 850" font-size="' + tam + '" fill="' + tinta + '">' + esc(marca) + '</text>' +
+      '<text x="100" y="134" text-anchor="middle" style="font-family: Archivo, Helvetica, sans-serif; font-stretch: 85%; font-weight: 700" font-size="11" letter-spacing="1.4" fill="' + tinta + '" opacity=".85">' + esc(p.sabor.toUpperCase()) + '</text>' +
+      '<text x="100" y="149" text-anchor="middle" style="font-family: Archivo, Helvetica, sans-serif; font-weight: 600" font-size="8.5" letter-spacing="1" fill="' + tinta + '" opacity=".7">' + p.mg + ' MG/BOLSA</text>' +
+      '</svg>';
+  }
+
+  /* Foto real del producto si la hay; si no, la lata dibujada. */
+  function medio(p) {
+    return p.img
+      ? '<img src="' + esc(p.img) + '" alt="' + esc(p.marca + ' ' + p.titulo) + '" width="860" height="860" loading="lazy" decoding="async">'
+      : lata(p);
+  }
+
+  function carta(p) {
+    var n = nivel(p.mg), puntos = '';
+    for (var i = 1; i <= 4; i++) puntos += '<i' + (i <= n ? ' class="on"' : '') + '></i>';
+    return '<li class="b2b-carta"><a class="b2b-carta__enlace" href="#">' +
+      '<span class="b2b-carta__media"><span class="b2b-prod__mg">' + p.mg + ' mg</span>' + medio(p) + '</span>' +
+      '<span class="b2b-carta__cuerpo"><span class="b2b-carta__marca">' + esc(p.marca) + '</span>' +
+      '<span class="b2b-carta__nombre">' + esc(p.titulo) + '</span>' +
+      '<span class="b2b-fuerza" role="img" aria-label="Nicotina ' + NIVELES[n] + ', ' + n + ' de 4">' + puntos + '</span>' +
+      '<span class="b2b-carta__precio">' + dinero(p.precio) + '</span></span></a></li>';
+  }
+
+  function coleccion(opts) {
+    var items = PRODUCTOS.filter(opts.filtro);
+    var sigue = opts.sigue.map(function (s) {
+      return '<li><a class="b2b-pildora-enlace" href="#" data-pv-vista="' + s.vista + '">' + esc(s.txt) + '</a></li>';
+    }).join('');
+    var faq = opts.faq.map(function (q) {
+      return '<details class="b2b-faq__item"><summary>' + esc(q[0]) + '</summary><div class="b2b-rte b2b-faq__resp"><p>' + esc(q[1]) + '</p></div></details>';
+    }).join('');
+    return '<section class="b2b b2b-section b2b-col b2b-fondo--blanco"><div class="b2b-wrap">' +
+      '<nav class="b2b-miga" aria-label="Ruta"><a href="#">Inicio</a><span aria-hidden="true">/</span>' +
+      '<a href="#" data-pv-vista="' + opts.hubVista + '">' + esc(opts.hub) + '</a><span aria-hidden="true">/</span>' +
+      '<span aria-current="page">' + esc(opts.titulo) + '</span></nav>' +
+      '<header class="b2b-col__cab"><div class="b2b-col__intro">' +
+      '<h1 class="b2b-h1 b2b-col__titulo">' + esc(opts.titulo) + '</h1>' +
+      '<div class="b2b-rte b2b-col__texto"><p>' + opts.intro + '</p></div>' +
+      '<p class="b2b-col__dato">' + items.length + ' referencias en stock</p></div>' +
+      '<div class="b2b-col__media is-producto">' + medio(items[0]) + '</div></header>' +
+      '<ul class="b2b-rejilla">' + items.map(carta).join('') + '</ul>' +
+      '<nav class="b2b-col__sigue" aria-label="Sigue explorando"><h2 class="b2b-h3">Sigue explorando</h2>' +
+      '<ul class="b2b-pildoras">' + sigue + '</ul></nav>' +
+      '<div class="b2b-col__faq"><h2 class="b2b-h2">' + esc(opts.faqTitulo) + '</h2>' +
+      '<div class="b2b-faq__lista">' + faq + '</div></div>' +
+      '</div></section>';
+  }
+
+  function tarjeta(nombre, n, vista, muestra) {
+    return '<li class="b2b-tarjeta"><a class="b2b-tarjeta__enlace" href="#"' + (vista ? ' data-pv-vista="' + vista + '"' : '') + '>' +
+      '<span class="b2b-tarjeta__media' + (muestra ? ' is-producto' : '') + '">' + (muestra ? medio(muestra) : '<span class="b2b-tarjeta__inicial" aria-hidden="true">' + esc(nombre.slice(0, 1)) + '</span>') + '</span>' +
+      '<span class="b2b-tarjeta__nombre">' + esc(nombre) + '</span>' +
+      '<span class="b2b-tarjeta__dato">' + n + ' ' + (n === 1 ? 'referencia' : 'referencias') + '</span></a></li>';
+  }
+
+  function indice(opts) {
+    return '<section class="b2b b2b-section b2b-indice b2b-fondo--blanco"><div class="b2b-wrap">' +
+      '<header class="b2b-indice__cab"><h1 class="b2b-h1">' + esc(opts.titulo) + '</h1>' +
+      '<div class="b2b-rte b2b-muted b2b-indice__texto"><p>' + opts.texto + '</p></div></header>' +
+      '<ul class="b2b-indice__rejilla">' + opts.tarjetas.join('') + '</ul>' +
+      (opts.pie ? '<div class="b2b-rte b2b-indice__pie"><p>' + opts.pie + '</p></div>' : '') +
+      '</div></section>';
+  }
+
+  // Familias de sabor (metacampo custom.familia en la tienda): pocas y claras, como europesnus.
+  var FAMILIAS = { 'Menta': 'Menta', 'Cítricos': 'Cítricos', 'Lima': 'Cítricos', 'Frutos rojos': 'Frutos rojos', 'Arándano': 'Frutos rojos' };
+  function familia(p) { return FAMILIAS[p.sabor] || 'Frutas'; }
+  function agrupar(clave) {
+    var mapa = {};
+    PRODUCTOS.forEach(function (p) { var k = typeof clave === 'function' ? clave(p) : p[clave]; (mapa[k] = mapa[k] || []).push(p); });
+    return mapa;
+  }
+
+  function guia() {
+    var secs = [
+      ['Qué son', '<p>Las bolsas de nicotina son bolsitas blancas que se colocan entre el labio y la encía. Llevan nicotina y fibras vegetales, sin tabaco y sin humo. En Suecia se llaman tradicionalmente snus, aunque el snus clásico sí lleva tabaco.</p>'],
+      ['Cómo se usan', '<p>Se pone la bolsa bajo el labio y se deja ahí entre veinte minutos y una hora. No se mastica ni se traga. Al terminar se tira a la basura, nunca al váter.</p>'],
+      ['Niveles de nicotina', '<p>Van de menos a más fuertes. En cada ficha indicamos los miligramos por bolsa para que elijas con criterio: por debajo de 5 mg es baja, hasta 9 media, hasta 14 alta y por encima muy alta.</p>']
+    ];
+    var toc = secs.map(function (s, i) { return '<li><a href="#g' + i + '">' + esc(s[0]) + '</a></li>'; }).join('');
+    var cuerpo = secs.map(function (s, i) {
+      return '<h2 class="b2b-guia__h2" id="g' + i + '">' + esc(s[0]) + '</h2>' + s[1];
+    }).join('');
+    cuerpo += '<aside class="b2b-guia__destacado"><p>Si es tu primera vez, empieza por un nivel bajo y ve subiendo solo si lo necesitas.</p></aside>';
+    cuerpo += '<p class="b2b-guia__cta"><a class="b2b-btn" href="index.html">Ver el catálogo</a></p>';
+    cuerpo += '<h2 class="b2b-guia__h2">Preguntas frecuentes</h2>';
+    [['¿Llevan tabaco?', 'No. Llevan nicotina y fibras vegetales, sin tabaco.'],
+     ['¿Son legales en España?', 'Sí, para mayores de 18 años. La normativa está cambiando, así que conviene estar al día.']].forEach(function (q) {
+      cuerpo += '<details class="b2b-faq__item"><summary>' + esc(q[0]) + '</summary><div class="b2b-rte b2b-faq__resp"><p>' + esc(q[1]) + '</p></div></details>';
+    });
+    return '<article class="b2b b2b-section b2b-guia b2b-fondo--blanco"><div class="b2b-wrap b2b-guia__grid">' +
+      '<header class="b2b-guia__cab"><p class="b2b-guia__ante">Guía</p>' +
+      '<h1 class="b2b-h1 b2b-guia__titulo">¿Qué son las bolsas de nicotina?</h1>' +
+      '<div class="b2b-rte b2b-guia__lead"><p>Qué son, cómo se usan y qué tener en cuenta antes de probarlas.</p></div>' +
+      '<p class="b2b-guia__meta"><span>16 de noviembre de 2026</span><span>4 min de lectura</span></p></header>' +
+      '<nav class="b2b-guia__indice" aria-label="En esta guía"><p class="b2b-guia__indice-t">En esta guía</p><ol>' + toc + '</ol></nav>' +
+      '<div class="b2b-guia__cuerpo b2b-rte">' + cuerpo +
+      '<p class="b2b-guia__aviso">Este producto contiene nicotina, una sustancia muy adictiva. Prohibida la venta a menores de 18 años.</p>' +
+      '</div></div></article>';
+  }
+
+  var VISTAS = {
+    marca: function () {
+      return coleccion({
+        titulo: 'Snus VELO', hub: 'Marcas', hubVista: 'indice-marcas',
+        intro: 'Todo el catálogo de VELO con stock en España: menta, frutas y sus versiones más fuertes, por lata suelta o por caja. Envío en 24 a 48 horas.',
+        filtro: function (p) { return p.marca === 'VELO'; },
+        faqTitulo: 'Preguntas sobre VELO',
+        faq: [['¿Qué nivel tiene VELO?', 'Hay de 4 a 17 mg por bolsa. En cada ficha ves los miligramos.'],
+              ['¿Cuál es el VELO más fuerte?', 'El Freezing Peppermint Max, con 17 mg por bolsa.']],
+        sigue: [{ txt: 'Todas las marcas', vista: 'indice-marcas' }, { txt: 'Sabor menta', vista: 'sabor' }, { txt: 'Muy fuertes', vista: 'nivel' }]
+      });
+    },
+    sabor: function () {
+      return coleccion({
+        titulo: 'Bolsas de nicotina de menta', hub: 'Sabores', hubVista: 'indice-sabores',
+        intro: 'La menta es el sabor más pedido. Aquí tienes todas las marcas con menta, de las suaves a las heladas más fuertes.',
+        filtro: function (p) { return p.sabor === 'Menta'; },
+        faqTitulo: 'Preguntas sobre el sabor menta',
+        faq: [['¿Cuál es la menta más fuerte?', 'Entre las de menta, Pablo Ice Cold con 30 mg por bolsa.'],
+              ['¿Hay menta suave?', 'Sí: VELO Bright Spearmint Mini, con 4 mg, y ZYN Cool Mint, con 6 mg.']],
+        sigue: [{ txt: 'Todos los sabores', vista: 'indice-sabores' }, { txt: 'Marca VELO', vista: 'marca' }, { txt: 'Muy fuertes', vista: 'nivel' }]
+      });
+    },
+    nivel: function () {
+      return coleccion({
+        titulo: 'Bolsas de nicotina muy fuertes', hub: 'Niveles', hubVista: 'indice-niveles',
+        intro: 'Las de mayor intensidad, por encima de 14 mg por bolsa. Pensadas para quien ya viene de niveles altos. Si empiezas, mejor una suave.',
+        filtro: function (p) { return p.mg >= 15; },
+        faqTitulo: 'Preguntas sobre las muy fuertes',
+        faq: [['¿Cuánta nicotina llevan?', 'Más de 14 mg por bolsa. La Pablo Exclusive llega a 50 mg.'],
+              ['¿Son para principiantes?', 'No. Si es tu primera vez, empieza por un nivel bajo.']],
+        sigue: [{ txt: 'Todos los niveles', vista: 'indice-niveles' }, { txt: 'Nivel suave', vista: 'sabor' }, { txt: 'Marca Pablo', vista: 'marca' }]
+      });
+    },
+    'indice-marcas': function () {
+      var g = agrupar('marca');
+      var orden = Object.keys(g).sort(function (a, b) { return a.localeCompare(b, 'es'); });
+      return indice({
+        titulo: 'Marcas de bolsas de nicotina',
+        texto: 'Todas las marcas que tenemos en stock en España. Entra en cada una para ver sus sabores y niveles.',
+        tarjetas: orden.map(function (m) { return tarjeta(m, g[m].length, 'marca', g[m][0]); }),
+        pie: 'Trabajamos solo con producto original. Si buscas una marca que no está, escríbenos y te decimos si podemos traerla.'
+      });
+    },
+    'indice-sabores': function () {
+      var g = agrupar(familia);
+      var orden = ['Menta', 'Frutas', 'Frutos rojos', 'Cítricos'].filter(function (k) { return g[k]; });
+      return indice({
+        titulo: 'Sabores de bolsas de nicotina',
+        texto: 'De la menta helada a los frutos rojos. Elige familia de sabor y compara marcas y niveles.',
+        tarjetas: orden.map(function (s) { return tarjeta(s, g[s].length, 'sabor', g[s][0]); })
+      });
+    },
+    'indice-niveles': function () {
+      var cuenta = [0, 0, 0, 0];
+      var muestra = [null, null, null, null];
+      PRODUCTOS.forEach(function (p) { var n = nivel(p.mg) - 1; cuenta[n]++; if (!muestra[n]) muestra[n] = p; });
+      var nombres = ['Nivel bajo, hasta 5 mg', 'Nivel medio, hasta 9 mg', 'Nivel alto, hasta 14 mg', 'Muy fuerte, más de 14 mg'];
+      return indice({
+        titulo: 'Niveles de nicotina',
+        texto: 'Las clasificamos por miligramos de nicotina por bolsa para que elijas según lo que buscas.',
+        tarjetas: nombres.map(function (nm, i) { return tarjeta(nm, cuenta[i], 'nivel', muestra[i]); })
+      });
+    },
+    guia: guia
+  };
+
+  var main = document.querySelector('[data-pv-seo]');
+  function pintar(vista) {
+    if (!VISTAS[vista]) vista = 'marca';
+    main.innerHTML = VISTAS[vista]();
+    window.scrollTo(0, 0);
+    document.querySelectorAll('[data-pv-vista]').forEach(function (b) {
+      if (b.hasAttribute('aria-pressed')) b.setAttribute('aria-pressed', String(b.getAttribute('data-pv-vista') === vista));
+    });
+    if (window.B2BSnus) window.B2BSnus.iniciar(document);
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pv-vista]');
+    if (!b) return;
+    e.preventDefault();
+    pintar(b.getAttribute('data-pv-vista'));
+    var panel = document.querySelector('.pv-barra');
+    if (panel) panel.open = false;
+  });
+
+  // Copias de la cinta para que el bucle no deje huecos.
+  var cinta = document.querySelector('[data-pv-cinta]');
+  if (cinta) {
+    for (var c = 0; c < 5; c++) {
+      var copia = cinta.cloneNode(true);
+      copia.removeAttribute('data-pv-cinta');
+      copia.setAttribute('aria-hidden', 'true');
+      cinta.parentNode.appendChild(copia);
+    }
+  }
+
+  pintar('marca');
+})();
+
+</script>
+  <script>
+/*
+  B2B snus · comportamiento de las secciones.
+  1. Aviso de acceso para profesionales (dialog nativo, se recuerda en localStorage).
+  2. Catálogo: cantidades por formato, tramos de precio, filtros (marca, sabor, nicotina, búsqueda),
+     vista de fichas o lista, total y alta en el carrito con /cart/add.js.
+  Sin dependencias. Se inicia solo y otra vez cuando el editor de temas recarga una sección.
+*/
+(function () {
+  'use strict';
+  if (window.B2BSnus) return;
+
+  var CLAVE_ACCESO = 'b2b-acceso-confirmado';
+  var CLAVE_VISTA = 'b2b-vista';
+
+  function uno(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function todos(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+  function leer(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
+  function guardar(k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* modo privado */ } }
+  function normalizar(s) {
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim();
+  }
+  function plural(n, uno, varios) { return n + ' ' + (n === 1 ? uno : varios); }
+  function sinMovimiento() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  /* ---------- 1. Aviso de acceso ---------- */
+  function iniciarAcceso(dlg) {
+    if (dlg.dataset.b2bListo) return;
+    dlg.dataset.b2bListo = '1';
+
+    var dias = parseInt(dlg.getAttribute('data-dias') || '30', 10);
+    var marca = parseInt(leer(CLAVE_ACCESO) || '0', 10);
+    if (marca && Date.now() - marca < dias * 86400000) return;
+
+    var paso1 = uno('[data-b2b-gate-paso1]', dlg);
+    var paso2 = uno('[data-b2b-gate-paso2]', dlg);
+
+    function cerrar() {
+      if (typeof dlg.close === 'function') dlg.close();
+      else dlg.removeAttribute('open');
+      document.documentElement.classList.remove('b2b-sin-scroll');
+    }
+
+    // Escape no cierra el aviso: hay que elegir una opción.
+    dlg.addEventListener('cancel', function (e) { e.preventDefault(); });
+
+    uno('[data-b2b-gate-si]', dlg).addEventListener('click', function () {
+      guardar(CLAVE_ACCESO, String(Date.now()));
+      cerrar();
+    });
+    uno('[data-b2b-gate-no]', dlg).addEventListener('click', function () {
+      paso1.hidden = true;
+      paso2.hidden = false;
+      var titulo = uno('h2', paso2);
+      if (titulo) { titulo.setAttribute('tabindex', '-1'); titulo.focus(); }
+    });
+
+    document.documentElement.classList.add('b2b-sin-scroll');
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+  }
+
+  /* ---------- 2. Catálogo ---------- */
+  function iniciarPedido(root) {
+    if (root.dataset.b2bListo) return;
+    root.dataset.b2bListo = '1';
+
+    var locale = root.getAttribute('data-locale') || 'es';
+    var moneda = root.getAttribute('data-moneda') || 'EUR';
+    var minimo = parseInt(root.getAttribute('data-minimo') || '0', 10) || 0;
+    // Tope de unidades por referencia para particulares (los profesionales no lo llevan).
+    var topeParticular = parseInt(root.getAttribute('data-tope') || '0', 10) || 0;
+    var urlCarrito = root.getAttribute('data-cart-url') || '/cart';
+    var urlAnadir = (root.getAttribute('data-cart-add-url') || '/cart/add') + '.js';
+    var despues = root.getAttribute('data-despues') || 'carrito';
+
+    var formato;
+    // useGrouping 'always': 1.346,80 € como el filtro money de Shopify (es no agrupa 4 cifras por defecto).
+    try { formato = new Intl.NumberFormat(locale, { style: 'currency', currency: moneda, useGrouping: 'always' }); }
+    catch (e) { formato = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }); }
+    function dinero(centimos) { return formato.format((centimos || 0) / 100); }
+
+    var items = todos('[data-b2b-item]', root).map(function (el) {
+      return {
+        el: el,
+        marca: el.getAttribute('data-marca') || '',
+        sabor: el.getAttribute('data-sabor') || '',
+        nicotina: el.getAttribute('data-nicotina') || '',
+        texto: normalizar(el.getAttribute('data-search'))
+      };
+    });
+
+    var filas = todos('[data-b2b-row]', root).map(function (fila) {
+      var tramos = [];
+      try { tramos = JSON.parse(fila.getAttribute('data-breaks') || '[]'); } catch (e) { tramos = []; }
+      tramos.sort(function (a, b) { return a[0] - b[0]; });
+
+      var tope = Infinity;
+      var max = parseInt(fila.getAttribute('data-max') || '', 10);
+      if (max > 0) tope = max;
+      if (fila.hasAttribute('data-stock')) {
+        var stock = parseInt(fila.getAttribute('data-stock'), 10);
+        if (!isNaN(stock)) tope = Math.min(tope, Math.max(stock, 0));
+      }
+      var latas = parseInt(fila.getAttribute('data-latas') || '0', 10) || 0;
+      var item = fila.closest('[data-b2b-item]');
+      var vid = fila.getAttribute('data-variant-id');
+      return {
+        el: fila,
+        item: item,
+        chip: item ? uno('[data-b2b-formato="' + vid + '"]', item) : null,
+        input: uno('[data-b2b-cant]', fila),
+        linea: uno('[data-b2b-linea]', fila),
+        base: uno('[data-b2b-base]', fila),
+        porLata: uno('[data-b2b-porlata]', fila),
+        latas: latas,
+        // Latas que suma cada unidad de este formato (lata suelta 1, rollo 10, caja 50).
+        unidad: latas > 1 ? latas : 1,
+        tramosLi: todos('[data-b2b-tramo]', fila),
+        id: parseInt(fila.getAttribute('data-variant-id'), 10),
+        precio: parseInt(fila.getAttribute('data-price') || '0', 10),
+        tramos: tramos,
+        min: Math.max(parseInt(fila.getAttribute('data-min') || '1', 10) || 1, 1),
+        paso: Math.max(parseInt(fila.getAttribute('data-step') || '1', 10) || 1, 1),
+        // Límite por disponibilidad: stock o regla de cantidad de Shopify.
+        tope: tope,
+        q: 0
+      };
+    });
+    var avisoTope = uno('[data-b2b-tope-aviso]', root);
+    // Fila que se está tocando: al repartir el tope de una referencia se ajusta la última.
+    var filaEditada = null;
+    // Se pulsó «+» y el tope de particulares no dejó subir.
+    var avisoForzado = false;
+
+    var contenedor = uno('[data-b2b-items]', root);
+    var botonesVista = todos('[data-b2b-vista]', root);
+    var chips = todos('[data-b2b-marca]', root);
+    var buscador = uno('[data-b2b-buscar]', root);
+    var filtros = todos('[data-b2b-filtro]', root);
+    var vacio = uno('[data-b2b-vacio]', root);
+    var contador = uno('[data-b2b-contador]', root);
+    var barra = uno('[data-b2b-barra]', root);
+    var resumen = uno('[data-b2b-resumen]', root);
+    var elMinimo = uno('[data-b2b-minimo]', root);
+    var progreso = uno('[data-b2b-progreso]', root);
+    var total = uno('[data-b2b-total]', root);
+    var boton = uno('[data-b2b-anadir]', root);
+    var mensaje = uno('[data-b2b-msg]', root);
+    var marcaActiva = '';
+    var enCarrito = 0;
+    var ocupado = false;
+
+    // Intensidades de menor a mayor (Liquid las ordena como texto).
+    var selNicotina = uno('[data-b2b-filtro="nicotina"]', root);
+    if (selNicotina) {
+      todos('option', selNicotina)
+        .filter(function (o) { return o.value; })
+        .sort(function (a, b) { return parseFloat(a.value) - parseFloat(b.value); })
+        .forEach(function (o) { selNicotina.appendChild(o); });
+    }
+
+    // Cuántos productos hay de cada marca; se ocultan las marcas sin productos en esta página.
+    chips.forEach(function (chip) {
+      var valor = chip.getAttribute('data-b2b-marca');
+      var n = items.filter(function (it) { return !valor || it.marca === valor; }).length;
+      var cuenta = uno('[data-b2b-cuenta]', chip);
+      if (cuenta) cuenta.textContent = n;
+      if (valor && n === 0) chip.hidden = true;
+    });
+
+    /* Vista: fichas o lista */
+    function aplicarVista(vista) {
+      if (!contenedor || (vista !== 'cuadricula' && vista !== 'lista')) return;
+      contenedor.classList.toggle('is-cuadricula', vista === 'cuadricula');
+      contenedor.classList.toggle('is-lista', vista === 'lista');
+      botonesVista.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-b2b-vista') === vista)); });
+    }
+    aplicarVista(leer(CLAVE_VISTA));
+
+    function filaDe(el) {
+      var nodo = el.closest('[data-b2b-row]');
+      for (var i = 0; i < filas.length; i++) if (filas[i].el === nodo) return filas[i];
+      return null;
+    }
+
+    // Ajusta una cantidad a las reglas de Shopify (mínimo y múltiplo del incremento) y a un máximo.
+    function ajustar(f, q, tope) {
+      q = Math.floor(Number(q));
+      if (!(q > 0)) return 0;
+      q = Math.ceil(q / f.paso) * f.paso;
+      if (q < f.min) q = Math.ceil(f.min / f.paso) * f.paso;
+      if (q > tope) q = Math.floor(tope / f.paso) * f.paso;
+      return q < f.min ? 0 : q;
+    }
+
+    // Calcula la cantidad válida de cada fila. Con tope de particulares, las latas de una misma
+    // referencia se suman entre formatos (un rollo de 10 cuenta como 10 latas): las filas que no se
+    // están tocando conservan lo que tenían y la que se edita se queda con lo que sobre.
+    function resolver() {
+      var usadas = [];
+      function cuenta(item) {
+        for (var i = 0; i < usadas.length; i++) if (usadas[i].item === item) return usadas[i];
+        var c = { item: item, latas: 0 };
+        usadas.push(c);
+        return c;
+      }
+      var orden = filas.filter(function (f) { return f !== filaEditada; });
+      if (filaEditada) orden.push(filaEditada);
+      orden.forEach(function (f) {
+        if (!f.input) { f.q = 0; f.libre = Infinity; return; }
+        var c = cuenta(f.item);
+        f.libre = topeParticular > 0 ? Math.max(0, Math.floor((topeParticular - c.latas) / f.unidad)) : Infinity;
+        f.q = ajustar(f, f.input.value, Math.min(f.tope, f.libre));
+        c.latas += f.q * f.unidad;
+      });
+      // Máximo de cada casilla según lo que ya llevan los otros formatos de la misma referencia,
+      // para que el teclado y las flechas tampoco lo pasen.
+      filas.forEach(function (f) {
+        if (!f.input) return;
+        var maxPart = Infinity;
+        if (topeParticular > 0) {
+          var otras = cuenta(f.item).latas - f.q * f.unidad;
+          maxPart = Math.max(0, Math.floor((topeParticular - otras) / f.unidad));
+        }
+        var max = Math.min(f.tope, maxPart);
+        if (isFinite(max)) f.input.setAttribute('max', String(max));
+        else f.input.removeAttribute('max');
+        // Llegó al tope de particulares y el stock aún daba para más.
+        f.alTope = f.q > 0 && maxPart < f.tope && f.q + f.paso > maxPart;
+      });
+    }
+    function cantidad(f) { return f.input ? (f.q || 0) : 0; }
+    function tramoDe(f, q) {
+      var min = 0;
+      f.tramos.forEach(function (t) { if (q >= t[0]) min = t[0]; });
+      return min;
+    }
+    function precioUnidad(f, q) {
+      var p = f.precio;
+      f.tramos.forEach(function (t) { if (q >= t[0]) p = t[1]; });
+      return p;
+    }
+
+    function escribirMensaje(texto, tipo, conEnlace) {
+      if (!mensaje) return;
+      mensaje.textContent = texto || '';
+      mensaje.classList.toggle('is-error', tipo === 'error');
+      if (conEnlace) {
+        mensaje.appendChild(document.createTextNode(' '));
+        var a = document.createElement('a');
+        a.href = urlCarrito;
+        a.textContent = 'Ver carrito';
+        mensaje.appendChild(a);
+      }
+    }
+
+    function actualizar() {
+      resolver();
+      var refs = 0, uds = 0, suma = 0;
+      var activos = [];
+      var topeTocado = false;
+      filas.forEach(function (f) {
+        if (!f.input) return;
+        var q = cantidad(f);
+        if (f.alTope) topeTocado = true;
+        var importe = q * precioUnidad(f, q);
+        var tramo = q > 0 ? tramoDe(f, q) : -1;
+        if (f.linea) f.linea.textContent = dinero(importe);
+        f.el.classList.toggle('is-activa', q > 0);
+        f.tramosLi.forEach(function (li) {
+          li.classList.toggle('is-actual', tramo > 0 && Number(li.getAttribute('data-b2b-tramo')) === tramo);
+        });
+        if (f.base) f.base.classList.toggle('is-tachado', tramo > 0);
+        if (f.porLata && f.latas > 1) f.porLata.textContent = dinero(Math.round(precioUnidad(f, Math.max(q, 1)) / f.latas)) + ' / lata';
+        if (f.chip) f.chip.setAttribute('data-cant', q > 0 ? String(q) : '');
+        if (q > 0) { refs++; uds += q; suma += importe; activos.push(f.item); }
+      });
+      items.forEach(function (it) { it.el.classList.toggle('is-activa', activos.indexOf(it.el) !== -1); });
+      if (avisoTope) avisoTope.hidden = !(topeTocado || avisoForzado);
+
+      if (resumen) {
+        resumen.textContent = refs
+          ? plural(refs, 'formato', 'formatos') + ' · ' + plural(uds, 'unidad', 'unidades')
+          : 'Elige cantidades para preparar el pedido.';
+      }
+      if (barra) barra.classList.toggle('is-fija', refs > 0 || (mensaje && mensaje.textContent !== ''));
+      if (total) total.textContent = dinero(suma);
+      if (boton) boton.disabled = refs === 0 || ocupado;
+
+      if (minimo > 0 && elMinimo) {
+        var acumulado = suma + enCarrito;
+        var falta = minimo - acumulado;
+        var texto = falta > 0
+          ? 'Te faltan ' + dinero(falta) + ' para el pedido mínimo de ' + dinero(minimo)
+          : 'Pedido mínimo de ' + dinero(minimo) + ' cubierto';
+        if (enCarrito > 0) texto += ' (cuenta ' + dinero(enCarrito) + ' que ya tienes en el carrito)';
+        elMinimo.textContent = texto;
+        if (progreso) progreso.style.width = Math.min(100, (acumulado / minimo) * 100) + '%';
+      }
+    }
+
+    function filtrar() {
+      var q = normalizar(buscador ? buscador.value : '');
+      var sel = {};
+      filtros.forEach(function (s) { sel[s.getAttribute('data-b2b-filtro')] = s.value; });
+      var visibles = 0;
+      items.forEach(function (it) {
+        var ok = (!marcaActiva || it.marca === marcaActiva) &&
+          (!q || it.texto.indexOf(q) !== -1) &&
+          (!sel.sabor || it.sabor === sel.sabor) &&
+          (!sel.nicotina || it.nicotina === sel.nicotina);
+        it.el.hidden = !ok;
+        if (ok) visibles++;
+      });
+      if (vacio) vacio.hidden = visibles > 0;
+      if (contador) contador.textContent = plural(visibles, 'producto', 'productos');
+    }
+
+    function elegirMarca(valor) {
+      var existe = chips.some(function (c) { return c.getAttribute('data-b2b-marca') === valor && !c.hidden; });
+      marcaActiva = existe ? valor : '';
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.getAttribute('data-b2b-marca') === marcaActiva)); });
+      filtrar();
+    }
+
+    function limpiarFiltros() {
+      if (buscador) buscador.value = '';
+      filtros.forEach(function (s) { s.value = ''; });
+      elegirMarca('');
+      if (buscador) buscador.focus();
+    }
+
+    // Enlaces #marca-xxx (la fila de marcas de la entrada) filtran el catálogo y bajan hasta él.
+    function marcaDesdeHash(desplazar) {
+      var m = window.location.hash.match(/^#marca-(.+)$/);
+      if (!m) return;
+      elegirMarca(decodeURIComponent(m[1]));
+      if (desplazar) root.scrollIntoView({ behavior: sinMovimiento() ? 'auto' : 'smooth', block: 'start' });
+    }
+
+    function leerCarrito() {
+      return fetch(urlCarrito + '.js', { credentials: 'same-origin', headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (c) {
+          if (!c) return;
+          enCarrito = typeof c.items_subtotal_price === 'number' ? c.items_subtotal_price : (c.total_price || 0);
+          if (typeof c.item_count === 'number') {
+            todos('[data-b2b-carrito-cuenta]').forEach(function (el) { el.textContent = c.item_count; });
+          }
+          actualizar();
+        })
+        .catch(function () { /* sin carrito: el mínimo se calcula solo con la selección */ });
+    }
+
+    function anadir() {
+      resolver();
+      var lineas = filas
+        .filter(function (f) { return cantidad(f) > 0; })
+        .map(function (f) { return { id: f.id, quantity: cantidad(f) }; });
+      if (!lineas.length || ocupado) return;
+
+      ocupado = true;
+      boton.disabled = true;
+      boton.setAttribute('aria-busy', 'true');
+      escribirMensaje('Añadiendo al carrito…');
+
+      fetch(urlAnadir, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        body: JSON.stringify({ items: lineas })
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; });
+        })
+        .then(function (res) {
+          if (!res.ok) {
+            throw new Error(res.d.description || res.d.message || 'No se ha podido añadir el pedido. Revisa las cantidades y prueba otra vez.');
+          }
+          document.dispatchEvent(new CustomEvent('b2b:carrito-actualizado', { detail: res.d }));
+          if (despues === 'carrito') { window.location.href = urlCarrito; return null; }
+          filas.forEach(function (f) { if (f.input) f.input.value = 0; });
+          escribirMensaje(plural(lineas.length, 'formato añadido', 'formatos añadidos') + ' al carrito.', 'ok', true);
+          return leerCarrito();
+        })
+        .catch(function (err) { escribirMensaje(err.message, 'error'); })
+        .then(function () {
+          ocupado = false;
+          boton.removeAttribute('aria-busy');
+          actualizar();
+        });
+    }
+
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-b2b-mas], [data-b2b-menos]');
+      if (btn) {
+        var f = filaDe(btn);
+        if (!f || !f.input) return;
+        filaEditada = f;
+        resolver();
+        var actual = cantidad(f);
+        var mas = btn.hasAttribute('data-b2b-mas');
+        var objetivo;
+        if (mas) {
+          objetivo = actual === 0 ? Math.max(f.min, f.paso) : actual + f.paso;
+        } else {
+          objetivo = actual - f.paso;
+          if (objetivo < f.min) objetivo = 0;
+        }
+        f.input.value = objetivo;
+        resolver();
+        f.input.value = f.q;
+        // «+» sin poder subir por el tope de particulares (no por falta de stock): avisa.
+        avisoForzado = mas && f.q < objetivo && f.libre < f.tope;
+        if (mensaje && mensaje.textContent) escribirMensaje('');
+        actualizar();
+        return;
+      }
+      // Botones de formato de una ficha: enseñan la fila de ese formato y esconden las demás.
+      var fmt = e.target.closest('[data-b2b-formato]');
+      if (fmt) {
+        var ficha = fmt.closest('[data-b2b-item]');
+        var id = fmt.getAttribute('data-b2b-formato');
+        todos('[data-b2b-formato]', ficha).forEach(function (b) { b.setAttribute('aria-pressed', String(b === fmt)); });
+        todos('[data-b2b-row]', ficha).forEach(function (r) {
+          if (r.getAttribute('data-variant-id') === id) r.removeAttribute('data-b2b-oculta');
+          else r.setAttribute('data-b2b-oculta', '');
+        });
+        return;
+      }
+      var chip = e.target.closest('[data-b2b-marca]');
+      if (chip) {
+        elegirMarca(chip.getAttribute('data-b2b-marca'));
+        if (window.location.hash.indexOf('#marca-') === 0) history.replaceState(null, '', window.location.pathname + window.location.search);
+        return;
+      }
+      var vista = e.target.closest('[data-b2b-vista]');
+      if (vista) {
+        var valor = vista.getAttribute('data-b2b-vista');
+        aplicarVista(valor);
+        guardar(CLAVE_VISTA, valor);
+        return;
+      }
+      if (e.target.closest('[data-b2b-limpiar]')) { limpiarFiltros(); return; }
+      if (e.target.closest('[data-b2b-anadir]')) anadir();
+    });
+
+    root.addEventListener('input', function (e) {
+      if (e.target.matches('[data-b2b-cant]')) {
+        filaEditada = filaDe(e.target) || null;
+        avisoForzado = false;
+        actualizar();
+      } else if (e.target.matches('[data-b2b-buscar]')) filtrar();
+    });
+
+    root.addEventListener('change', function (e) {
+      if (e.target.matches('[data-b2b-cant]')) {
+        var f = filaDe(e.target);
+        filaEditada = f || null;
+        resolver();
+        if (f) e.target.value = cantidad(f);
+        avisoForzado = false;
+        actualizar();
+      } else if (e.target.matches('[data-b2b-filtro]')) {
+        filtrar();
+      }
+    });
+
+    // Intro en una cantidad salta al siguiente formato visible: se rellena el pedido sin ratón.
+    root.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' || !e.target.matches('[data-b2b-cant]')) return;
+      e.preventDefault();
+      var f = filaDe(e.target);
+      filaEditada = f || null;
+      resolver();
+      if (f) e.target.value = cantidad(f);
+      actualizar();
+      var visibles = filas.filter(function (x) { return x.input && !(x.item && x.item.hidden); });
+      var siguiente = visibles[visibles.indexOf(f) + 1];
+      if (siguiente) { siguiente.input.focus(); siguiente.input.select(); }
+      else if (boton && !boton.disabled) boton.focus();
+    });
+
+    window.addEventListener('hashchange', function () { marcaDesdeHash(true); });
+
+    filtrar();
+    marcaDesdeHash(false);
+    actualizar();
+    if (boton) leerCarrito();
+  }
+
+  /* ---------- 3. Cabecera: la píldora sube al hueco de la cinta al bajar ---------- */
+  function iniciarCabecera(cab) {
+    if (cab.dataset.b2bListo) return;
+    cab.dataset.b2bListo = '1';
+    var pildora = uno('[data-b2b-pildora]', cab);
+    var cinta = uno('.b2b-cinta', cab);
+    if (!pildora || !cinta) return;
+    var pendiente = false;
+    function revisar() {
+      pendiente = false;
+      pildora.classList.toggle('is-arriba', window.scrollY > cinta.offsetHeight);
+    }
+    window.addEventListener('scroll', function () {
+      if (!pendiente) { pendiente = true; window.requestAnimationFrame(revisar); }
+    }, { passive: true });
+    revisar();
+  }
+
+  function iniciar(ctx) {
+    ctx = ctx || document;
+    todos('[data-b2b-cabecera]', ctx).forEach(iniciarCabecera);
+    todos('[data-b2b-gate]', ctx).forEach(iniciarAcceso);
+    todos('[data-b2b-pedido]', ctx).forEach(iniciarPedido);
+  }
+
+  window.B2BSnus = { iniciar: iniciar };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { iniciar(document); });
+  else iniciar(document);
+
+  // Editor de temas: vuelve a iniciar la sección que se acaba de recargar.
+  document.addEventListener('shopify:section:load', function (e) { iniciar(e.target); });
+})();
+
+</script>
+</body>
+</html>
